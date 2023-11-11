@@ -1,0 +1,13 @@
+@import './reset.scss';
+
+body {
+  background-color: var(--van-background-3);
+}
+
+.application {
+  margin: auto;
+  max-width: 100wh;
+  height: 100vh;
+  background-color: var(--van-background);
+  overflow: hidden;
+}
