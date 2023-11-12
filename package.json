@@ -9,8 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vant/touch-emulator": "^1.4.0",
+    "@vueuse/core": "^10.6.0",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.0",
     "vant": "^4.7.3",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-i18n": "^9.6.5",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",
