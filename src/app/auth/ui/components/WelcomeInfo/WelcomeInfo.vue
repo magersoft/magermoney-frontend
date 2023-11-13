@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<div>Magermoney</div>
+	<div :class="$style['welcome-info']">Magermoney</div>
 </template>
 
 <style module lang="scss">

@@ -33,7 +33,7 @@ export default defineConfig(({ mode }) => {
 			extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue']
 		},
 		server: {
-			port: parseInt(env.APP_PORT, 10) || 3000,
+			port: parseInt(env.VITE_APP_PORT, 10) || 3000,
 			https: {
 				key: fs.readFileSync(resolve(__dirname, env.SSL_KEY_PATH)),
 				cert: fs.readFileSync(resolve(__dirname, env.SSL_CERT_PATH))

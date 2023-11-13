@@ -2,7 +2,7 @@ import { Locale } from 'vant';
 import { useI18n } from 'vue-i18n';
 
 import { useSettingsStore } from '@/app/settings/infrastructure/stores';
-import { vantLangs } from '@/plugins/i18n.ts';
+import { vantLangs } from '@/plugins/vant';
 import { appConfig } from '@/shared/config';
 
 export function useLanguage() {

@@ -15,15 +15,14 @@ import { AppNav } from '@/shared/ui/AppNav';
 const route = useRoute();
 const { t } = useI18n();
 
-const pageTitle = ref(t(`routes.${route.name as string}`));
-watch(route, (route) => {
-	pageTitle.value = t(`routes.${route.name as string}`);
-});
+const pageTitle = computed(() => t(`routes.${route.name as string}`));
 
-const pageNavigation = welcomeNavigations.map((item) => ({
-	...item,
-	title: t(`nav.${item.title}`)
-}));
+const pageNavigation = computed(() =>
+	welcomeNavigations.map((item) => ({
+		...item,
+		title: t(`nav.${item.title}`)
+	}))
+);
 </script>
 
 <template>

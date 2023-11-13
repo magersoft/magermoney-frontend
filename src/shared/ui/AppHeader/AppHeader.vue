@@ -4,8 +4,17 @@ interface AppHeaderProps {
 }
 
 defineProps<AppHeaderProps>();
+
+const onClickLeft = () => {
+	console.log('back');
+};
 </script>
 
 <template>
-	<van-nav-bar :title="title" />
+	<van-nav-bar
+		:title="title"
+		left-text="Back"
+		left-arrow
+		@click-left="onClickLeft"
+	/>
 </template>

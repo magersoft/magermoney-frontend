@@ -3,7 +3,11 @@ export default {
 	auth: {
 		phone: 'Phone',
 		email: 'Email',
-		submit: 'Login'
+		submit: 'Login',
+		emailOrPhone: 'Email or phone',
+		authCode: 'Enter code from {where}',
+		authCodeFromSms: 'SMS',
+		authCodeFromEmail: 'email'
 	},
 	settings: {
 		app: 'Application settings',
@@ -12,11 +16,16 @@ export default {
 		changeLanguage: 'Change language'
 	},
 	routes: {
-		Login: 'Sign in',
+		Login: 'Sign in/Sign up',
 		Settings: 'Settings'
 	},
 	nav: {
 		Dashboard: 'Home',
 		Settings: 'Settings'
+	},
+	validation: {
+		required: 'Field is required',
+		isEmail: 'Field must be a valid email',
+		isPhone: 'Field must be a valid phone number'
 	}
 };

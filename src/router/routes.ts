@@ -1,11 +1,12 @@
 import { RouteRecordRaw } from 'vue-router';
 
 import { authMiddleware, loginMiddleware } from '@/app/auth';
+import { AppRoutes } from '@/router/constants';
 
 const routes: RouteRecordRaw[] = [
 	{
 		path: '/',
-		name: 'Dashboard',
+		name: AppRoutes.Dashboard,
 		meta: {
 			middleware: authMiddleware
 		},
@@ -14,13 +15,13 @@ const routes: RouteRecordRaw[] = [
 	},
 	{
 		path: '/login',
-		name: 'Login',
+		name: AppRoutes.Login,
 		meta: { layout: 'Welcome', middleware: loginMiddleware },
 		component: () => import('@/app/auth/ui/views/LoginView/LoginView.vue')
 	},
 	{
 		path: '/settings',
-		name: 'Settings',
+		name: AppRoutes.Settings,
 		meta: { layout: 'Welcome' },
 		component: () =>
 			import('@/app/settings/ui/views/SettingsView/SettingsView.vue')

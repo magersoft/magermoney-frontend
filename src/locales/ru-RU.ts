@@ -3,7 +3,11 @@ export default {
 	auth: {
 		phone: 'Телефон',
 		email: 'Почта',
-		submit: 'Войти'
+		submit: 'Войти',
+		emailOrPhone: 'Email или телефон',
+		authCode: 'Введите код из {where}',
+		authCodeFromSms: 'SMS',
+		authCodeFromEmail: 'почты'
 	},
 	settings: {
 		app: 'Настойки приложения',
@@ -12,11 +16,16 @@ export default {
 		changeLanguage: 'Сменить язык'
 	},
 	routes: {
-		Login: 'Авторизация',
+		Login: 'Вход и регистрация',
 		Settings: 'Настройки'
 	},
 	nav: {
 		Dashboard: 'Главная',
 		Settings: 'Настройки'
+	},
+	validation: {
+		required: 'Поле обязательно для заполнения',
+		isEmail: 'Введите корректный email',
+		isPhone: 'Введите корректный номер телефона'
 	}
 };

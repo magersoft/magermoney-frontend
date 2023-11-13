@@ -6,6 +6,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
     'prettier'
   ],
@@ -15,6 +16,8 @@ module.exports = {
   plugins: ['vue', 'prettier', 'simple-import-sort'],
   rules: {
     "no-undef": "off",
-    "simple-import-sort/imports": "error"
+    "simple-import-sort/imports": "error",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-explicit-any": "off",
   }
 }

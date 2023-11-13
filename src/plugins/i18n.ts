@@ -1,6 +1,4 @@
 import { useStorage } from '@vueuse/core';
-import { default as enUSVant } from 'vant/es/locale/lang/en-US';
-import { default as ruRuVant } from 'vant/es/locale/lang/ru-RU';
 import { createI18n } from 'vue-i18n';
 
 import enUS from '@/locales/en-US';
@@ -10,11 +8,6 @@ import { appConfig } from '@/shared/config';
 export const langFiles: Record<string, any> = {
 	'en-US': enUS,
 	'ru-RU': ruRU
-};
-
-export const vantLangs: Record<string, any> = {
-	'en-US': enUSVant,
-	'ru-RU': ruRuVant
 };
 
 const storage = useStorage('settings', {
