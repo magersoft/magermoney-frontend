@@ -46,6 +46,13 @@ const authStore = defineStore('auth', {
 			this.isAuthorization = false;
 			this.accessToken = '';
 			this.expireDate = 0;
+
+			this.resetUser();
+		},
+		resetError() {
+			this.error = null;
+		},
+		resetUser() {
 			this.user = null;
 		}
 	}

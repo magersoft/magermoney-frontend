@@ -140,7 +140,7 @@ export namespace Api {
 	 * No description
 	 * @tags Auth
 	 * @name AuthControllerVerifyUser
-	 * @request POST:/api/v1/auth/verify-code
+	 * @request POST:/api/v1/auth/verify-user
 	 * @response `201` `VerifyUserDto`
 	 */
 	export namespace AuthControllerVerifyUser {

@@ -1,5 +1,6 @@
 export default {
 	loading: 'Загрузка',
+	back: 'Назад',
 	auth: {
 		phone: 'Телефон',
 		email: 'Почта',
@@ -16,6 +17,7 @@ export default {
 		changeLanguage: 'Сменить язык'
 	},
 	routes: {
+		Dashboard: 'Главная',
 		Login: 'Вход и регистрация',
 		Settings: 'Настройки'
 	},

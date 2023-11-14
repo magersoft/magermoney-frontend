@@ -1,5 +1,6 @@
 export default {
 	loading: 'Loading',
+	back: 'Back',
 	auth: {
 		phone: 'Phone',
 		email: 'Email',
@@ -16,6 +17,7 @@ export default {
 		changeLanguage: 'Change language'
 	},
 	routes: {
+		Dashboard: 'Dashboard',
 		Login: 'Sign in/Sign up',
 		Settings: 'Settings'
 	},

@@ -19,7 +19,7 @@ export function useBaseFetch<T, P extends any[], E = RequestReturnError>({
 
 	const fetchBase: BaseFetchMethod<T, P> = async (
 		{ force, quite, showError }: BaseFetchMethodParams = {},
-		...args: P
+		...args: (P[number] | undefined)[]
 	) => {
 		if (!force && skipFetch && skipFetch()) return;
 
@@ -29,11 +29,11 @@ export function useBaseFetch<T, P extends any[], E = RequestReturnError>({
 
 		const response = await fetchData(...args).json();
 
-		if (response.error && onError) {
+		if (unref(response.error) && onError) {
 			onError(unref(response.error));
 		}
 
-		if (showError && response.error) {
+		if (showError && unref(response.error)) {
 			showErrorNotify(unref(response.error));
 		}
 

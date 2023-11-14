@@ -14,15 +14,18 @@ import { useAuthStore } from '@/app/auth/infrastructure/stores';
 import { AppRoutes } from '@/router/constants';
 import { useForm } from '@/shared/features';
 import { FieldRule } from '@/shared/types/utils';
+import { useAppHeader } from '@/shared/ui/AppHeader/features';
 import { isEmail, isPhoneNumber } from '@/shared/utils';
 
 export function useAuthForm() {
 	const loginFormData = ref<IInitialLoginFormData>(initialLoginFormControls);
 	const { t } = useI18n();
 	const { createOrLoginUser } = useDetectUserService();
-	const { user, isLoading, error } = useAuthStore();
+	const { user, isLoading, error, resetUser, resetError } = useAuthStore();
 	const { formRef, validateForm, hasServerError, errorMessages } =
 		useForm(error);
+	const { setHeader, resetHeader } = useAppHeader();
+	const router = useRouter();
 
 	const loginSubmitHandler = () => {
 		if (!validateForm()) return;
@@ -75,8 +78,6 @@ export function useAuthForm() {
 		})
 	);
 
-	const router = useRouter();
-
 	watch(authCode, (value) => {
 		if (value.length === AUTH_CODE_LENGTH) {
 			verifyAuthCode({}, { userId: unref(user)!.id, authCode: value })
@@ -84,6 +85,7 @@ export function useAuthForm() {
 					if (response) {
 						if (unref(response.data)!.accessToken) {
 							loginFormData.value = initialLoginFormControls;
+							resetError();
 							router.push({ name: AppRoutes.Dashboard });
 						}
 					}
@@ -93,6 +95,22 @@ export function useAuthForm() {
 				});
 		}
 	});
+
+	watch(
+		isAuthCode,
+		(value) =>
+			value
+				? setHeader({
+						textLeft: t('back'),
+						isLeftArrow: true,
+						onClickLeft: () => {
+							resetUser();
+							resetError();
+						}
+				  })
+				: resetHeader(),
+		{ immediate: true }
+	);
 
 	return {
 		formRef,

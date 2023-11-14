@@ -44,14 +44,6 @@ export interface LoginAuthDto {
 
 export interface DetectUserDto {
 	id: number;
-	email: string;
-	phone?: string | null;
-	darkMode: boolean;
-	language: string;
-	/** @format date-time */
-	createdAt: string;
-	/** @format date-time */
-	updatedAt: string;
 }
 
 export interface VerifyAuthDto {

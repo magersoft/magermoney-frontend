@@ -1,1 +1,1 @@
-export * from './welcomeNavigations.ts';
+export * from './navigations.ts';

@@ -4,3 +4,11 @@ export interface IFetchState<E = RequestReturnError> {
 	isLoading: boolean;
 	error: E | null;
 }
+
+export interface AppHeaderState {
+	title?: string;
+	textLeft?: string;
+	isLeftArrow?: boolean;
+	isHidden?: boolean;
+	onClickLeft?: () => void;
+}

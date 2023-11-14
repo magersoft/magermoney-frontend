@@ -12,7 +12,7 @@ const { isLoading } = useRouterStore();
 	<van-config-provider :theme="theme">
 		<div class="application">
 			<app-loading v-if="isLoading" />
-			<layout-provider v-else />
+			<layout-provider />
 		</div>
 	</van-config-provider>
 </template>

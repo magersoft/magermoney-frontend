@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { useLogout } from '@/app/auth';
+import { useAuth } from '@/app/auth';
+import { useAppHeader } from '@/shared/ui/AppHeader/features';
 
-const { logout } = useLogout();
+const { logout } = useAuth();
+const { setHeader } = useAppHeader();
+
+setHeader({
+	isHidden: true
+});
 </script>
 
 <template>

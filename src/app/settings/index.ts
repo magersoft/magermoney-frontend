@@ -1,1 +1,1 @@
-export { useTheme } from './features';
+export { useTheme, useLanguage } from './features';

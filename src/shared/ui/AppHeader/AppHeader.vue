@@ -1,20 +1,27 @@
 <script setup lang="ts">
+import { useAppHeader } from '@/shared/ui/AppHeader/features';
+
 interface AppHeaderProps {
 	title: string;
 }
 
 defineProps<AppHeaderProps>();
 
-const onClickLeft = () => {
-	console.log('back');
-};
+const {
+	title: customTitle,
+	textLeft,
+	isLeftArrow,
+	isHidden,
+	onClickLeft
+} = useAppHeader();
 </script>
 
 <template>
 	<van-nav-bar
-		:title="title"
-		left-text="Back"
-		left-arrow
+		v-if="!isHidden"
+		:title="customTitle || title"
+		:left-text="textLeft"
+		:left-arrow="isLeftArrow"
 		@click-left="onClickLeft"
 	/>
 </template>

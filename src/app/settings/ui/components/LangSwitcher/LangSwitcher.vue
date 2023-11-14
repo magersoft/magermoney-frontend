@@ -3,7 +3,7 @@ import { useToggle } from '@vueuse/core';
 import { PickerConfirmEventParams } from 'vant/es/picker/types';
 import { useI18n } from 'vue-i18n';
 
-import { useLanguage } from '@/app/settings/features/useLanguage.ts';
+import { useLanguage } from '@/app/settings';
 
 const { languages, changeLanguage } = useLanguage();
 const { t } = useI18n();
