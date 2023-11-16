@@ -1,12 +1,12 @@
-import './styles/index.scss';
+import './app/styles/index.scss';
 import '@vant/touch-emulator';
 
 import { createApp } from 'vue';
 
-import { registerLayouts } from '@/layouts';
-import { registerPlugins } from '@/plugins';
+import { registerLayouts } from '@/app/layouts';
+import { registerPlugins } from '@/app/plugins';
 
-import App from './App.vue';
+import App from './app/App.vue';
 
 const app = createApp(App);
 

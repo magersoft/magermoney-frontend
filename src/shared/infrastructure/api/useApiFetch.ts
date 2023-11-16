@@ -1,8 +1,8 @@
 import { createFetch } from '@vueuse/core';
 import { useRouter } from 'vue-router';
 
-import { useAuthStore } from '@/app/auth/infrastructure/stores';
-import { AppRoutes } from '@/router/constants';
+import { AppRoutes } from '@/app/router/constants';
+import { useAuthStore } from '@/modules/auth/infrastructure/stores';
 import { ResponseStatuses } from '@/shared/types/api';
 
 import { appConfig } from '../../config';
