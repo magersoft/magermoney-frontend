@@ -18,15 +18,16 @@ export interface CreateUserDto {
 
 export interface UserEntity {
 	id: number;
-	email: string;
-	phone?: string | null;
-	authCode?: string | null;
-	darkMode: boolean;
-	language: string;
 	/** @format date-time */
 	createdAt: string;
 	/** @format date-time */
 	updatedAt: string;
+	email: string;
+	phone?: string | null;
+	authCode?: string | null;
+	darkMode: boolean;
+	isFirstTime: boolean;
+	language: string;
 }
 
 export interface UpdateUserDto {
@@ -35,6 +36,33 @@ export interface UpdateUserDto {
 	darkMode?: boolean;
 	language?: string;
 	authCode?: string | null;
+}
+
+export interface CreateIncomeSourceDto {
+	title: string;
+	description?: string | null;
+	amount: number;
+	currency: string;
+}
+
+export interface IncomeSourceEntity {
+	id: number;
+	/** @format date-time */
+	createdAt: string;
+	/** @format date-time */
+	updatedAt: string;
+	title: string;
+	description?: string | null;
+	amount: number;
+	currency: string;
+	userId?: number | null;
+}
+
+export interface UpdateIncomeSourceDto {
+	title?: string;
+	description?: string | null;
+	amount?: number;
+	currency?: string;
 }
 
 export interface LoginAuthDto {

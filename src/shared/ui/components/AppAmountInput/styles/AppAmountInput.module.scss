@@ -1,0 +1,15 @@
+.app-amount-input {
+  &__currency {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    > span {
+      color: var(--van-text-color-3);
+    }
+
+    > :global(.van-button) {
+      border: none;
+    }
+  }
+}

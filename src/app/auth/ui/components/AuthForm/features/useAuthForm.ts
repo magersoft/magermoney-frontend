@@ -1,10 +1,11 @@
+import { PasswordInput } from 'vant';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
 import { AUTH_CODE_LENGTH } from '@/app/auth/constants';
 import {
-	IInitialLoginFormData,
-	initialLoginFormControls
+	initialLoginFormControls,
+	TInitialLoginFormData
 } from '@/app/auth/domain';
 import {
 	useDetectUserService,
@@ -14,11 +15,13 @@ import { useAuthStore } from '@/app/auth/infrastructure/stores';
 import { AppRoutes } from '@/router/constants';
 import { useForm } from '@/shared/features';
 import { FieldRule } from '@/shared/types/utils';
-import { useAppHeader } from '@/shared/ui/AppHeader/features';
-import { isEmail, isPhoneNumber } from '@/shared/utils';
+import { useAppHeader } from '@/shared/ui/components';
+import { cloneDeep, isEmail, isPhoneNumber } from '@/shared/utils';
 
 export function useAuthForm() {
-	const loginFormData = ref<IInitialLoginFormData>(initialLoginFormControls);
+	const loginFormData = ref<TInitialLoginFormData>(
+		cloneDeep(initialLoginFormControls)
+	);
 	const { t } = useI18n();
 	const { createOrLoginUser } = useDetectUserService();
 	const { user, isLoading, error, resetUser, resetError } = useAuthStore();
@@ -27,8 +30,10 @@ export function useAuthForm() {
 	const { setHeader, resetHeader } = useAppHeader();
 	const router = useRouter();
 
-	const loginSubmitHandler = () => {
-		if (!validateForm()) return;
+	const passwordInputRef = ref<InstanceType<typeof PasswordInput> | null>(null);
+
+	const loginSubmitHandler = async () => {
+		if (!(await validateForm())) return;
 
 		const { login } = unref(loginFormData);
 		const payload = isEmail(login)
@@ -37,7 +42,11 @@ export function useAuthForm() {
 			? { phone: login }
 			: { email: '', phone: '' };
 
-		createOrLoginUser({}, payload);
+		const response = await createOrLoginUser({}, payload);
+
+		if (unref(response?.data)) {
+			unref(passwordInputRef)?.$el.focus();
+		}
 	};
 
 	const isLetters = ref(false);
@@ -68,7 +77,7 @@ export function useAuthForm() {
 	]);
 
 	const { verifyAuthCode } = useVerifyUserService();
-	const isAuthCode = computed(() => !!unref(user));
+	const isSendAuthCode = computed(() => !!unref(user));
 	const authCode = ref('');
 	const authCodeTitle = computed(() =>
 		t('auth.authCode', {
@@ -97,7 +106,7 @@ export function useAuthForm() {
 	});
 
 	watch(
-		isAuthCode,
+		isSendAuthCode,
 		(value) =>
 			value
 				? setHeader({
@@ -114,12 +123,13 @@ export function useAuthForm() {
 
 	return {
 		formRef,
+		passwordInputRef,
 		isLoading,
 		validationRules,
 		hasServerError,
 		errorMessages,
 		loginFormData,
-		isAuthCode,
+		isSendAuthCode,
 		authCode,
 		authCodeTitle,
 		loginSubmitHandler

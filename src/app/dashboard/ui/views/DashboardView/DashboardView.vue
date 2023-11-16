@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAuth } from '@/app/auth';
-import { useAppHeader } from '@/shared/ui/AppHeader/features';
+import { useAppHeader } from '@/shared/ui/components';
 
 const { logout } = useAuth();
 const { setHeader } = useAppHeader();

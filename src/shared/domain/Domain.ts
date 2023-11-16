@@ -12,3 +12,12 @@ export interface AppHeaderState {
 	isHidden?: boolean;
 	onClickLeft?: () => void;
 }
+
+export interface AppNavState {
+	isHidden?: boolean;
+}
+
+export interface AppState {
+	header: AppHeaderState;
+	nav: AppNavState;
+}

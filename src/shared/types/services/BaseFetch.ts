@@ -1,9 +1,9 @@
 import { RequestReturnValue } from '@/shared/types/api';
 
-export interface BaseFetch<T, P extends any[], E = unknown> {
+export interface BaseFetchParams<T, P extends any[], E = unknown> {
 	fetchData: (...args: (P[number] | undefined)[]) => RequestReturnValue<T>;
 	setIsLoading: (value: boolean) => void;
-	setData: (data: T | null) => void;
+	setData: (data: T) => void;
 	setError: (error: E | null) => void;
 	skipFetch?: () => boolean;
 	onError?: (error: E) => void;

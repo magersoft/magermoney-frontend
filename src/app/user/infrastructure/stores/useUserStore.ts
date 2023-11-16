@@ -8,7 +8,7 @@ const userStore = defineStore('user', {
 		...userInitialState
 	}),
 	actions: {
-		setUser(user: NUser.IUser | null) {
+		setUser(user: NUser.IUser) {
 			this.user = user;
 		},
 		setIsLoading(value: boolean) {

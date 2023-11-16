@@ -4,10 +4,13 @@ import { RequestReturnError } from '@/shared/types/api';
 export function useResponseError() {
 	const notify = useNotifyAdapter();
 
-	const showErrorNotify = (error: RequestReturnError) => {
-		const messages = Array.isArray(error.message)
-			? error.message.join(', ')
-			: error.message;
+	const showErrorNotify = (error: RequestReturnError | string) => {
+		const messages =
+			typeof error === 'string'
+				? error
+				: Array.isArray(error.message)
+				? error.message.join(', ')
+				: error.message;
 		notify.fail(messages, {
 			position: 'top',
 			wordBreak: 'break-word',

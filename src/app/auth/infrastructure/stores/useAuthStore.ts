@@ -28,10 +28,10 @@ const authStore = defineStore('auth', {
 		setError(error: NAuth.IError | null) {
 			this.error = error;
 		},
-		setUser(user: NAuth.IDetectUser | null) {
+		setUser(user: NAuth.IDetectUser) {
 			this.user = user;
 		},
-		setAuthTokens(data: NAuth.IVerifyUser | null) {
+		setAuthTokens(data: NAuth.IVerifyUser) {
 			if (!data) return this.resetAuthState();
 
 			const { accessToken } = data;

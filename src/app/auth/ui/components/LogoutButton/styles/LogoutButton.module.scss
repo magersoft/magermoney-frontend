@@ -1,0 +1,9 @@
+.logout-button {
+  :global(.van-cell__title) {
+    color: var(--van-danger-color);
+  }
+
+  :global(.van-icon) {
+    display: none;
+  }
+}

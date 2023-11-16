@@ -4,7 +4,7 @@ import { AuthForm } from '@/app/auth/ui/components/AuthForm';
 
 <template>
 	<div :class="$style['login-view']">
-		<AuthForm />
+		<auth-form />
 	</div>
 </template>
 

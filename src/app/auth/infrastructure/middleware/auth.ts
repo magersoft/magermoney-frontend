@@ -1,3 +1,4 @@
+import { AppRoutes } from '@/router/constants';
 import { RouterContext } from '@/router/types';
 
 import { useAuthStore } from '../stores';
@@ -7,7 +8,7 @@ export default async function auth({ next }: RouterContext) {
 
 	if (!unref(isAuthorization)) {
 		return next({
-			name: 'Login'
+			name: AppRoutes.Login
 		});
 	}
 

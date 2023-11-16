@@ -1,6 +1,16 @@
 export default {
 	loading: 'Loading',
 	back: 'Back',
+	addMore: 'Add one more',
+	continue: 'Continue',
+	delete: 'Delete',
+	edit: 'Edit',
+	removing: 'Removing',
+	cancel: 'Cancel',
+	removedSuccessfully: 'Removed successfully',
+	removedFailed: 'Removed failed',
+	confirmRemoveContent: 'Are you sure you want to delete {entityName}?',
+	currency: 'Currency',
 	auth: {
 		phone: 'Phone',
 		email: 'Email',
@@ -8,7 +18,26 @@ export default {
 		emailOrPhone: 'Email or phone',
 		authCode: 'Enter code from {where}',
 		authCodeFromSms: 'SMS',
-		authCodeFromEmail: 'email'
+		authCodeFromEmail: 'email',
+		logout: 'Logout'
+	},
+	welcome: {
+		incomeSource: {
+			title: 'Sources of monthly income',
+			description:
+				'Indicate your monthly income, this could be your salary, pension, deposits, etc.',
+			source: 'Source',
+			selectIncome: 'Select source of income',
+			name: 'Name',
+			enterIncome: 'Enter name of income',
+			other: 'Other',
+			amount: 'Amount',
+			enterAmount: 'Enter amount',
+			sourceOfIncome: 'Source of income',
+			sourceOfIncomeDescription:
+				'You can edit or delete income sources by swiping',
+			removeTitle: 'Remove income source'
+		}
 	},
 	settings: {
 		app: 'Application settings',
@@ -19,7 +48,9 @@ export default {
 	routes: {
 		Dashboard: 'Dashboard',
 		Login: 'Sign in/Sign up',
-		Settings: 'Settings'
+		Settings: 'Settings',
+		Welcome: 'Welcome',
+		InternalServerError: 'Internal server error'
 	},
 	nav: {
 		Dashboard: 'Home',

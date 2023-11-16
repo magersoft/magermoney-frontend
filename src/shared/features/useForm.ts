@@ -26,10 +26,12 @@ export function useForm<E extends RequestReturnError = RequestReturnError>(
 	});
 
 	const validateForm = async () => {
-		const status = unref(formRef)!.getValidationStatus();
-		isValidForm.value = Object.values(status).every(
-			(status) => status === 'passed'
-		);
+		try {
+			await unref(formRef)!.validate();
+			isValidForm.value = true;
+		} catch (err) {
+			isValidForm.value = false;
+		}
 
 		return unref(isValidForm);
 	};

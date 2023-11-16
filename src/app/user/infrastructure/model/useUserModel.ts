@@ -1,8 +1,10 @@
-import { NUser } from '@/app/user/domain';
+import { API_NAMESPACE, NUser } from '@/app/user/domain';
 import { useApiFetch } from '@/shared/infrastructure/api';
 
 export const useUserModel = (): NUser.IModel => {
-	const findOne = (id: number) => useApiFetch<NUser.IUser>(`/user/${id}`).get();
+	const { fetch } = useApiFetch();
+	const findOne = (id: number) =>
+		fetch<NUser.IUser>(`${API_NAMESPACE}/${id}`).get();
 
 	return {
 		findOne

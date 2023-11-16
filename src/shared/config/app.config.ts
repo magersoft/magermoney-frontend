@@ -3,6 +3,7 @@ export default {
 	defaultLayout: 'Main',
 	defaultLanguage: 'ru-RU',
 	fallbackLanguage: 'en-US',
+	defaultCurrency: 'RUB',
 	defaultTheme: 'dark',
 	availableLanguages: [
 		{

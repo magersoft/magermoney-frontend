@@ -10,9 +10,12 @@
  */
 
 import {
+	CreateIncomeSourceDto,
 	CreateUserDto,
 	DetectUserDto,
+	IncomeSourceEntity,
 	LoginAuthDto,
+	UpdateIncomeSourceDto,
 	UpdateUserDto,
 	UserEntity,
 	VerifyAuthDto,
@@ -22,7 +25,6 @@ import {
 export namespace Api {
 	/**
 	 * No description
-	 * @tags Application
 	 * @name AppControllerApplication
 	 * @request GET:/api/v1
 	 * @response `200` `void`
@@ -37,7 +39,7 @@ export namespace Api {
 
 	/**
 	 * No description
-	 * @tags User
+	 * @tags user
 	 * @name UserControllerCreate
 	 * @request POST:/api/v1/user
 	 * @secure
@@ -53,7 +55,7 @@ export namespace Api {
 
 	/**
 	 * No description
-	 * @tags User
+	 * @tags user
 	 * @name UserControllerFindAll
 	 * @request GET:/api/v1/user
 	 * @secure
@@ -69,7 +71,7 @@ export namespace Api {
 
 	/**
 	 * No description
-	 * @tags User
+	 * @tags user
 	 * @name UserControllerFindOne
 	 * @request GET:/api/v1/user/{id}
 	 * @secure
@@ -87,7 +89,7 @@ export namespace Api {
 
 	/**
 	 * No description
-	 * @tags User
+	 * @tags user
 	 * @name UserControllerUpdate
 	 * @request PATCH:/api/v1/user/{id}
 	 * @secure
@@ -105,7 +107,7 @@ export namespace Api {
 
 	/**
 	 * No description
-	 * @tags User
+	 * @tags user
 	 * @name UserControllerRemove
 	 * @request DELETE:/api/v1/user/{id}
 	 * @secure
@@ -123,7 +125,93 @@ export namespace Api {
 
 	/**
 	 * No description
-	 * @tags Auth
+	 * @tags income-source
+	 * @name IncomeSourceControllerCreate
+	 * @request POST:/api/v1/income-source
+	 * @secure
+	 * @response `201` `IncomeSourceEntity`
+	 */
+	export namespace IncomeSourceControllerCreate {
+		export type RequestParams = {};
+		export type RequestQuery = {};
+		export type RequestBody = CreateIncomeSourceDto;
+		export type RequestHeaders = {};
+		export type ResponseBody = IncomeSourceEntity;
+	}
+
+	/**
+	 * No description
+	 * @tags income-source
+	 * @name IncomeSourceControllerFindAll
+	 * @request GET:/api/v1/income-source
+	 * @secure
+	 * @response `200` `(IncomeSourceEntity)[]`
+	 */
+	export namespace IncomeSourceControllerFindAll {
+		export type RequestParams = {};
+		export type RequestQuery = {};
+		export type RequestBody = never;
+		export type RequestHeaders = {};
+		export type ResponseBody = IncomeSourceEntity[];
+	}
+
+	/**
+	 * No description
+	 * @tags income-source
+	 * @name IncomeSourceControllerFindOne
+	 * @request GET:/api/v1/income-source/{id}
+	 * @secure
+	 * @response `200` `void`
+	 */
+	export namespace IncomeSourceControllerFindOne {
+		export type RequestParams = {
+			id: string;
+		};
+		export type RequestQuery = {};
+		export type RequestBody = never;
+		export type RequestHeaders = {};
+		export type ResponseBody = void;
+	}
+
+	/**
+	 * No description
+	 * @tags income-source
+	 * @name IncomeSourceControllerUpdate
+	 * @request PATCH:/api/v1/income-source/{id}
+	 * @secure
+	 * @response `200` `void`
+	 */
+	export namespace IncomeSourceControllerUpdate {
+		export type RequestParams = {
+			id: string;
+		};
+		export type RequestQuery = {};
+		export type RequestBody = UpdateIncomeSourceDto;
+		export type RequestHeaders = {};
+		export type ResponseBody = void;
+	}
+
+	/**
+	 * No description
+	 * @tags income-source
+	 * @name IncomeSourceControllerRemove
+	 * @request DELETE:/api/v1/income-source/{id}
+	 * @secure
+	 * @response `200` `void`
+	 */
+	export namespace IncomeSourceControllerRemove {
+		export type RequestParams = {
+			id: string;
+		};
+		export type RequestQuery = {};
+		export type RequestBody = never;
+		export type RequestHeaders = {};
+		export type ResponseBody = void;
+	}
+
+	/**
+	 * No description
+	 * @tags auth
 	 * @name AuthControllerDetectUser
 	 * @request POST:/api/v1/auth/detect-user
 	 * @response `201` `DetectUserDto`
@@ -138,7 +226,7 @@ export namespace Api {
 
 	/**
 	 * No description
-	 * @tags Auth
+	 * @tags auth
 	 * @name AuthControllerVerifyUser
 	 * @request POST:/api/v1/auth/verify-user
 	 * @response `201` `VerifyUserDto`

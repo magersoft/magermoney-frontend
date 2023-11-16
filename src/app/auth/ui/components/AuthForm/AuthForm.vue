@@ -10,12 +10,13 @@ const { t } = useI18n();
 
 const {
 	formRef,
+	passwordInputRef,
 	isLoading,
 	loginFormData,
 	errorMessages,
 	hasServerError,
 	validationRules,
-	isAuthCode,
+	isSendAuthCode,
 	authCode,
 	authCodeTitle,
 	loginSubmitHandler
@@ -30,8 +31,8 @@ const showKeyboard = ref(true);
 		:class="$style['auth-form']"
 		@submit="loginSubmitHandler"
 	>
-		<WelcomeInfo />
-		<template v-if="!isAuthCode">
+		<welcome-info />
+		<template v-if="!isSendAuthCode">
 			<van-cell-group inset>
 				<van-field
 					v-model="loginFormData.login"
@@ -57,12 +58,14 @@ const showKeyboard = ref(true);
 			</van-cell-group>
 		</template>
 		<transition name="van-fade">
-			<div v-if="isAuthCode">
+			<div v-if="isSendAuthCode">
 				<h2 class="cell-title">{{ authCodeTitle }}</h2>
 				<van-password-input
+					ref="passwordInputRef"
 					:value="authCode"
 					:length="AUTH_CODE_LENGTH"
 					:error-info="errorMessages"
+					info="Запросить повторный код через 15 сек"
 					:focused="showKeyboard"
 					@focus="showKeyboard = true"
 				/>

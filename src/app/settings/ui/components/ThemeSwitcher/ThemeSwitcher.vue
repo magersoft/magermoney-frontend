@@ -8,11 +8,9 @@ const { isDark, toggleTheme } = useTheme();
 </script>
 
 <template>
-	<van-cell-group>
-		<van-cell :title="t('settings.darkMode')" center>
-			<template #right-icon>
-				<van-switch :model-value="isDark" @change="toggleTheme" />
-			</template>
-		</van-cell>
-	</van-cell-group>
+	<van-cell :title="t('settings.darkMode')" center>
+		<template #right-icon>
+			<van-switch :model-value="isDark" @change="toggleTheme" />
+		</template>
+	</van-cell>
 </template>

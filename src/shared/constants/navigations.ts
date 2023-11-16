@@ -4,7 +4,7 @@ export interface Navigation {
 	path: string;
 }
 
-export const welcomeNavigations: Navigation[] = [
+export const loginNavigations: Navigation[] = [
 	{
 		title: 'Dashboard',
 		icon: 'home-o',

@@ -11,8 +11,7 @@ import { useRoute } from 'vue-router';
 import { useInitLayout } from '@/layouts/main/features/useInitLayout.ts';
 import { AppRoutes } from '@/router/constants';
 import { mainNavigations } from '@/shared/constants';
-import AppHeader from '@/shared/ui/AppHeader/AppHeader.vue';
-import AppNav from '@/shared/ui/AppNav/AppNav.vue';
+import { AppHeader, AppNav } from '@/shared/ui/components';
 
 const route = useRoute();
 const { t } = useI18n();

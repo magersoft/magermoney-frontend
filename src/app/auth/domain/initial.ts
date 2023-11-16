@@ -1,7 +1,7 @@
-export type IInitialLoginFormData = {
+export type TInitialLoginFormData = {
 	login: string;
 };
 
-export const initialLoginFormControls: IInitialLoginFormData = {
+export const initialLoginFormControls: TInitialLoginFormData = {
 	login: ''
 };

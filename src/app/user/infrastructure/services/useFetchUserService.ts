@@ -1,6 +1,6 @@
 import { useUserModel } from '@/app/user/infrastructure/model';
 import { useUserStore } from '@/app/user/infrastructure/stores';
-import { useBaseFetch } from '@/shared/services';
+import { useBaseFetch } from '@/shared/infrastructure/services';
 
 export function useFetchUserService() {
 	const { setUser, setIsLoading, setError } = useUserStore();

@@ -1,43 +1,56 @@
 import { createFetch } from '@vueuse/core';
+import { useRouter } from 'vue-router';
 
-import { useAuth } from '@/app/auth';
 import { useAuthStore } from '@/app/auth/infrastructure/stores';
+import { AppRoutes } from '@/router/constants';
 import { ResponseStatuses } from '@/shared/types/api';
 
 import { appConfig } from '../../config';
 
-export const useApiFetch = createFetch({
-	baseUrl: appConfig.apiBaseUrl,
-	options: {
-		async beforeFetch({ options }) {
-			const { accessToken } = useAuthStore();
-			options.headers = {
-				...options.headers,
-				Authorization: `Bearer ${unref(accessToken)}`
-			};
+export const useApiFetch = () => {
+	const router = useRouter();
 
-			return { options };
-		},
-		async onFetchError(ctx) {
-			const { resetAuthState } = useAuth();
+	const fetch = createFetch({
+		baseUrl: appConfig.apiBaseUrl,
+		options: {
+			async beforeFetch({ options }) {
+				const { accessToken } = useAuthStore();
+				options.headers = {
+					...options.headers,
+					Authorization: `Bearer ${unref(accessToken)}`
+				};
 
-			if (ctx.response?.status === ResponseStatuses.Unauthorized) {
-				resetAuthState();
+				return { options };
+			},
+			async onFetchError(ctx) {
+				const { resetAuthState } = useAuthStore();
 
-				setTimeout(() => {
-					window.location.reload();
-				}, 3000);
-			}
-
-			return {
-				...ctx,
-				error: {
-					...ctx.data
+				if (
+					ctx.response?.status === ResponseStatuses.InternalServerError ||
+					ctx.error.message === 'Failed to fetch'
+				) {
+					router.push({ name: AppRoutes.InternalServerError });
 				}
-			};
+
+				if (ctx.response?.status === ResponseStatuses.Unauthorized) {
+					resetAuthState();
+					router.push({ name: AppRoutes.Login });
+				}
+
+				return {
+					...ctx,
+					error: {
+						...ctx.data
+					}
+				};
+			}
+		},
+		fetchOptions: {
+			mode: 'cors'
 		}
-	},
-	fetchOptions: {
-		mode: 'cors'
-	}
-});
+	});
+
+	return {
+		fetch
+	};
+};

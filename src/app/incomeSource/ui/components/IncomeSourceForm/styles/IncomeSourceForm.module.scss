@@ -1,0 +1,9 @@
+.income-source-form {
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--van-padding-lg);
+    border-radius: 0;
+    background: transparent;
+  }
+}

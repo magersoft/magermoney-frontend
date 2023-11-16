@@ -2,7 +2,7 @@
 import { useTheme } from '@/app/settings';
 import LayoutProvider from '@/layouts/LayoutProvider.vue';
 import { useRouterStore } from '@/router/store';
-import { AppLoading } from '@/shared/ui/AppLoading';
+import { AppLoading } from '@/shared/ui/components';
 
 const { theme } = useTheme();
 const { isLoading } = useRouterStore();

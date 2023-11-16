@@ -1,5 +1,8 @@
 export enum AppRoutes {
 	Dashboard = 'Dashboard',
 	Login = 'Login',
-	Settings = 'Settings'
+	Welcome = 'Welcome',
+	Settings = 'Settings',
+	NotFound = 'NotFound',
+	InternalServerError = 'InternalServerError'
 }
