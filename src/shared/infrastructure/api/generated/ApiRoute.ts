@@ -10,12 +10,15 @@
  */
 
 import {
+	AccumulatedFundEntity,
+	CreateAccumulatedFundDto,
 	CreateIncomeSourceDto,
 	CreateUserDto,
 	CurrencyEntity,
 	DetectUserDto,
 	IncomeSourceEntity,
 	LoginAuthDto,
+	UpdateAccumulatedFundDto,
 	UpdateIncomeSourceDto,
 	UpdateUserDto,
 	UserEntity,
@@ -192,7 +195,7 @@ export namespace Api {
 	 * @name IncomeSourceControllerFindOne
 	 * @request GET:/api/v1/income-source/{id}
 	 * @secure
-	 * @response `200` `void`
+	 * @response `200` `IncomeSourceEntity`
 	 */
 	export namespace IncomeSourceControllerFindOne {
 		export type RequestParams = {
@@ -201,7 +204,7 @@ export namespace Api {
 		export type RequestQuery = {};
 		export type RequestBody = never;
 		export type RequestHeaders = {};
-		export type ResponseBody = void;
+		export type ResponseBody = IncomeSourceEntity;
 	}
 
 	/**
@@ -210,7 +213,7 @@ export namespace Api {
 	 * @name IncomeSourceControllerUpdate
 	 * @request PATCH:/api/v1/income-source/{id}
 	 * @secure
-	 * @response `200` `void`
+	 * @response `200` `IncomeSourceEntity`
 	 */
 	export namespace IncomeSourceControllerUpdate {
 		export type RequestParams = {
@@ -219,7 +222,7 @@ export namespace Api {
 		export type RequestQuery = {};
 		export type RequestBody = UpdateIncomeSourceDto;
 		export type RequestHeaders = {};
-		export type ResponseBody = void;
+		export type ResponseBody = IncomeSourceEntity;
 	}
 
 	/**
@@ -228,7 +231,7 @@ export namespace Api {
 	 * @name IncomeSourceControllerRemove
 	 * @request DELETE:/api/v1/income-source/{id}
 	 * @secure
-	 * @response `200` `void`
+	 * @response `200` `IncomeSourceEntity`
 	 */
 	export namespace IncomeSourceControllerRemove {
 		export type RequestParams = {
@@ -237,7 +240,7 @@ export namespace Api {
 		export type RequestQuery = {};
 		export type RequestBody = never;
 		export type RequestHeaders = {};
-		export type ResponseBody = void;
+		export type ResponseBody = IncomeSourceEntity;
 	}
 
 	/**
@@ -254,5 +257,91 @@ export namespace Api {
 		export type RequestBody = never;
 		export type RequestHeaders = {};
 		export type ResponseBody = CurrencyEntity[];
+	}
+
+	/**
+	 * No description
+	 * @tags accumulated-funds
+	 * @name AccumulatedFundsControllerCreate
+	 * @request POST:/api/v1/accumulated-funds
+	 * @secure
+	 * @response `201` `AccumulatedFundEntity`
+	 */
+	export namespace AccumulatedFundsControllerCreate {
+		export type RequestParams = {};
+		export type RequestQuery = {};
+		export type RequestBody = CreateAccumulatedFundDto;
+		export type RequestHeaders = {};
+		export type ResponseBody = AccumulatedFundEntity;
+	}
+
+	/**
+	 * No description
+	 * @tags accumulated-funds
+	 * @name AccumulatedFundsControllerFindAll
+	 * @request GET:/api/v1/accumulated-funds
+	 * @secure
+	 * @response `200` `(AccumulatedFundEntity)[]`
+	 */
+	export namespace AccumulatedFundsControllerFindAll {
+		export type RequestParams = {};
+		export type RequestQuery = {};
+		export type RequestBody = never;
+		export type RequestHeaders = {};
+		export type ResponseBody = AccumulatedFundEntity[];
+	}
+
+	/**
+	 * No description
+	 * @tags accumulated-funds
+	 * @name AccumulatedFundsControllerFindOne
+	 * @request GET:/api/v1/accumulated-funds/{id}
+	 * @secure
+	 * @response `200` `AccumulatedFundEntity`
+	 */
+	export namespace AccumulatedFundsControllerFindOne {
+		export type RequestParams = {
+			id: string;
+		};
+		export type RequestQuery = {};
+		export type RequestBody = never;
+		export type RequestHeaders = {};
+		export type ResponseBody = AccumulatedFundEntity;
+	}
+
+	/**
+	 * No description
+	 * @tags accumulated-funds
+	 * @name AccumulatedFundsControllerUpdate
+	 * @request PATCH:/api/v1/accumulated-funds/{id}
+	 * @secure
+	 * @response `200` `AccumulatedFundEntity`
+	 */
+	export namespace AccumulatedFundsControllerUpdate {
+		export type RequestParams = {
+			id: string;
+		};
+		export type RequestQuery = {};
+		export type RequestBody = UpdateAccumulatedFundDto;
+		export type RequestHeaders = {};
+		export type ResponseBody = AccumulatedFundEntity;
+	}
+
+	/**
+	 * No description
+	 * @tags accumulated-funds
+	 * @name AccumulatedFundsControllerRemove
+	 * @request DELETE:/api/v1/accumulated-funds/{id}
+	 * @secure
+	 * @response `200` `AccumulatedFundEntity`
+	 */
+	export namespace AccumulatedFundsControllerRemove {
+		export type RequestParams = {
+			id: string;
+		};
+		export type RequestQuery = {};
+		export type RequestBody = never;
+		export type RequestHeaders = {};
+		export type ResponseBody = AccumulatedFundEntity;
 	}
 }

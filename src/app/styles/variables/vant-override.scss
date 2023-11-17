@@ -1,7 +1,9 @@
 :root {
   --van-toast-default-width: 150px !important;
+  --van-nav-bar-height: 55px !important;
 }
 
 .van-pull-refresh {
   height: 100%;
+  overflow: auto !important;
 }

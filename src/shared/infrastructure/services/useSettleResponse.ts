@@ -21,7 +21,8 @@ export function useSettleResponse<T, E extends SettleResponseError>() {
 		}: SettleResponseOptions<E>
 	) => {
 		if (checkActionSuccess(unref(statusCode)) || !unref(error)) {
-			isNotifySuccess && notify.success(messages.success);
+			isNotifySuccess &&
+				notify.success(messages.success, { closeOnClick: true });
 			onSuccess && onSuccess();
 			return true;
 		}

@@ -20,9 +20,11 @@ const { activeStep } = useWelcomeSteps();
 <template>
 	<div :class="$style['welcome-view']">
 		<welcome-steps />
-		<keep-alive>
-			<component :is="stepsComponents[activeStep]" />
-		</keep-alive>
+		<transition name="van-fade" mode="out-in">
+			<keep-alive>
+				<component :is="stepsComponents[activeStep]" />
+			</keep-alive>
+		</transition>
 	</div>
 </template>
 

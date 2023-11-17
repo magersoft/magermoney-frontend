@@ -38,6 +38,11 @@ export default {
 			sourceOfIncomeDescription:
 				'Вы можете редактировать или удалять источники дохода свайпом',
 			removeTitle: 'Удалить источник дохода'
+		},
+		accumulatedFunds: {
+			title: 'Накопленные средства',
+			description:
+				'Укажите ваши накопления, это могут быть ваши сбережения, вклады и т.д.'
 		}
 	},
 	settings: {

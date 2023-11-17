@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
+import { incomeSourceTypes } from '@/modules/incomeSource/constants';
 import {
 	useIncomeSourceForm,
 	useInitIncomeSourcesForm
@@ -26,42 +27,6 @@ const {
 	addSubmitHandler,
 	continueHandler
 } = useIncomeSourceForm();
-
-// @todo move to useIncomeSourceForm and get from backend
-const incomeTypes = ref([
-	{
-		text: 'Зарплата',
-		value: 'salary'
-	},
-	{
-		text: 'Подработка',
-		value: 'sideJob'
-	},
-	{
-		text: 'Стипендия',
-		value: 'scholarship'
-	},
-	{
-		text: 'Доход от сдачи в аренду',
-		value: 'rentalIncome'
-	},
-	{
-		text: 'Доход от вклада',
-		value: 'depositIncome'
-	},
-	{
-		text: 'Инвестиции',
-		value: 'investments'
-	},
-	{
-		text: 'Пенсия',
-		value: 'pension'
-	},
-	{
-		text: 'Другое',
-		value: 'other'
-	}
-]);
 
 useInitIncomeSourcesForm();
 </script>
@@ -89,7 +54,7 @@ useInitIncomeSourcesForm();
 				:error-message="errorMessages"
 				:rules="[{ required: true, message: t('validation.required') }]"
 				:disabled="isLoading"
-				:items="incomeTypes"
+				:items="incomeSourceTypes"
 			/>
 			<app-amount-input
 				v-model="incomeSourceFormData.amount"
@@ -104,12 +69,18 @@ useInitIncomeSourcesForm();
 				:disabled="isLoading"
 				:loading="isLoadingCurrencies"
 				show-currencies
+				enable-keyboard
 				@add="addSubmitHandler"
 			/>
 		</van-cell-group>
 
 		<van-cell-group inset :class="$style['income-source-form__actions']">
-			<van-button size="small" :disabled="isLoading" native-type="submit">
+			<van-button
+				size="small"
+				icon="plus"
+				:disabled="isLoading"
+				native-type="submit"
+			>
 				{{ t('add') }}
 			</van-button>
 			<van-button

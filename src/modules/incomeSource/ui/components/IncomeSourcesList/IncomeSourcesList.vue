@@ -14,7 +14,7 @@ const {
 </script>
 
 <template>
-	<div v-if="hasIncomeSources">
+	<van-list v-if="hasIncomeSources">
 		<h2 class="cell-title">{{ t('welcome.incomeSource.sourceOfIncome') }}</h2>
 		<p class="cell-description">
 			{{ t('welcome.incomeSource.sourceOfIncomeDescription') }}
@@ -40,5 +40,5 @@ const {
 				<van-button square type="primary" :text="t('edit')" />
 			</template>
 		</van-swipe-cell>
-	</div>
+	</van-list>
 </template>

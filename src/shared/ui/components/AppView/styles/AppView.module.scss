@@ -1,10 +1,11 @@
 .app-view {
   width: 100%;
   height: calc(100vh - var(--header-nav-bar-height) - var(--footer-tabbar-height));
-  position: relative;
+  margin-top: var(--header-nav-bar-height);
   overflow: auto;
 
   &--hidden-header {
+    margin-top: 0;
     height: calc(100vh - var(--footer-tabbar-height));
   }
 

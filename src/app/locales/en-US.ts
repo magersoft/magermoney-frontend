@@ -38,6 +38,11 @@ export default {
 			sourceOfIncomeDescription:
 				'You can edit or delete income sources by swiping',
 			removeTitle: 'Remove income source'
+		},
+		accumulatedFunds: {
+			title: 'Accumulated funds',
+			description:
+				'Indicate your savings, this could be your savings, deposits, etc.'
 		}
 	},
 	settings: {

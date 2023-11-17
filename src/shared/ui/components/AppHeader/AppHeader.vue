@@ -22,6 +22,11 @@ const {
 		:title="customTitle || title"
 		:left-text="textLeft"
 		:left-arrow="isLeftArrow"
+		fixed
 		@click-left="onClickLeft"
 	/>
 </template>
+
+<style module lang="scss">
+@import './styles/AppHeader.module';
+</style>

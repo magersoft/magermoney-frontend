@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { useWelcomeSteps } from '@/modules/welcome';
-import { WelcomeStepsType } from '@/modules/welcome/constants';
-
-const { setStep } = useWelcomeSteps();
+import { AccumulatedFundsForm } from '@/modules/accumulatedFunds/ui/components';
 </script>
 
 <template>
-	<div>
-		<van-button @click="setStep(WelcomeStepsType.INCOME_SOURCES)">
-			Назад
-		</van-button>
-	</div>
+	<van-pull-refresh>
+		<accumulated-funds-form continue-button />
+	</van-pull-refresh>
 </template>

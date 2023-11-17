@@ -90,3 +90,27 @@ export interface CurrencyEntity {
 	name: string;
 	code: string;
 }
+
+export interface CreateAccumulatedFundDto {
+	source: string;
+	amount: number;
+	currency: string;
+}
+
+export interface AccumulatedFundEntity {
+	id: number;
+	/** @format date-time */
+	createdAt: string;
+	/** @format date-time */
+	updatedAt: string;
+	source: string;
+	amount: number;
+	currency: string;
+	userId?: number | null;
+}
+
+export interface UpdateAccumulatedFundDto {
+	source?: string;
+	amount?: number;
+	currency?: string;
+}

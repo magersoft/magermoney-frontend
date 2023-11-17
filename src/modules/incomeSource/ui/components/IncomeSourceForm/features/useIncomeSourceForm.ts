@@ -23,8 +23,13 @@ export function useIncomeSourceForm() {
 	const { hasIncomeSources, fetchIncomeSources } =
 		useFetchIncomeSourcesService();
 	const { isLoading, error } = useIncomeSourceStore();
-	const { formRef, validateForm, hasServerError, errorMessages } =
-		useForm(error);
+	const {
+		formRef,
+		validateForm,
+		resetValidationForm,
+		hasServerError,
+		errorMessages
+	} = useForm(error);
 	const { currencies, isLoading: isLoadingCurrencies } = useCurrencies();
 	const { setStep } = useWelcomeSteps();
 
@@ -32,8 +37,14 @@ export function useIncomeSourceForm() {
 		mappingCurrenciesForPicker(unref(currencies))
 	);
 
-	const continueHandler = () => {
+	const continueHandler = async () => {
 		if (!unref(hasIncomeSources)) return;
+
+		if (await validateForm()) {
+			await addSubmitHandler();
+		}
+
+		resetValidationForm();
 
 		setStep(WelcomeStepsType.ACCUMULATED_FUNDS);
 	};

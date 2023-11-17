@@ -56,39 +56,39 @@ const onChangeCustomValue = () => {
 </script>
 
 <template>
-	<div :class="$style['app-combobox']">
-		<van-field
-			v-model="internalValue"
-			is-link
-			readonly
-			:name="name"
-			:label="label"
-			:placeholder="placeholder"
-			:error="error"
-			:error-message="errorMessage"
-			:rules="!isCustom ? rules : []"
-			:disabled="disabled"
-			@click="showPicker = true"
-		/>
-		<van-field
-			v-if="isCustom"
-			v-model="customInternalValue"
-			:name="name"
-			:label="enterLabel"
-			:placeholder="enterPlaceholder"
-			:disabled="disabled"
-			:rules="rules"
-			@blur="onChangeCustomValue"
-		/>
+	<van-field
+		v-model="internalValue"
+		is-link
+		readonly
+		:name="name"
+		:label="label"
+		:placeholder="placeholder"
+		:error="error"
+		:error-message="errorMessage"
+		:rules="!isCustom ? rules : []"
+		:disabled="disabled"
+		:class="$style['app-combobox']"
+		@click="showPicker = true"
+	/>
 
-		<van-popup v-model:show="showPicker" position="bottom">
-			<van-picker
-				:columns="items"
-				@confirm="onConfirm"
-				@cancel="showPicker = false"
-			/>
-		</van-popup>
-	</div>
+	<van-field
+		v-if="isCustom"
+		v-model="customInternalValue"
+		:name="name"
+		:label="enterLabel"
+		:placeholder="enterPlaceholder"
+		:disabled="disabled"
+		:rules="rules"
+		@blur="onChangeCustomValue"
+	/>
+
+	<van-popup v-model:show="showPicker" position="bottom">
+		<van-picker
+			:columns="items"
+			@confirm="onConfirm"
+			@cancel="showPicker = false"
+		/>
+	</van-popup>
 </template>
 
 <style module lang="scss">
