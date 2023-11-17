@@ -18,11 +18,11 @@ export default defineConfig(({ mode }) => {
 			vue(),
 			AutoImport({
 				imports: ['vue'],
-				dts: 'src/types/auto-imports.d.ts'
+				dts: 'src/app/types/auto-imports.d.ts'
 			}),
 			Components({
 				resolvers: [VantResolver()],
-				dts: 'src/types/components.d.ts'
+				dts: 'src/app/types/components.d.ts'
 			})
 		],
 		define: { 'process.env': env },

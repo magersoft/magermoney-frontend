@@ -1,3 +1,6 @@
+import { mappingCurrenciesForPicker, useCurrencies } from '@/modules/currency';
+import { useWelcomeSteps } from '@/modules/welcome';
+import { WelcomeStepsType } from '@/modules/welcome/constants';
 import { useForm } from '@/shared/features';
 import { cloneDeep } from '@/shared/utils';
 
@@ -17,27 +20,25 @@ export function useIncomeSourceForm() {
 		cloneDeep(initialIncomeSourceFormControls)
 	);
 	const { createIncomeSource } = useCreateIncomeSourceService();
-	const { fetchIncomeSources } = useFetchIncomeSourcesService();
+	const { hasIncomeSources, fetchIncomeSources } =
+		useFetchIncomeSourcesService();
 	const { isLoading, error } = useIncomeSourceStore();
 	const { formRef, validateForm, hasServerError, errorMessages } =
 		useForm(error);
+	const { currencies, isLoading: isLoadingCurrencies } = useCurrencies();
+	const { setStep } = useWelcomeSteps();
 
-	const continueSubmitHandler = async () => {
-		if (!(await validateForm())) return;
+	const currenciesItems = computed(() =>
+		mappingCurrenciesForPicker(unref(currencies))
+	);
 
-		const response = await createIncomeSource(
-			{},
-			mappingIncomeSourceFormData(unref(incomeSourceFormData))
-		);
+	const continueHandler = () => {
+		if (!unref(hasIncomeSources)) return;
 
-		if (unref(response?.data)) {
-			incomeSourceFormData.value = { ...initialIncomeSourceFormControls };
-
-			console.log('next step');
-		}
+		setStep(WelcomeStepsType.ACCUMULATED_FUNDS);
 	};
 
-	const addMoreSubmitHandler = async () => {
+	const addSubmitHandler = async () => {
 		if (!(await validateForm())) return;
 
 		const response = await createIncomeSource(
@@ -57,8 +58,11 @@ export function useIncomeSourceForm() {
 		incomeSourceFormData,
 		hasServerError,
 		errorMessages,
+		hasIncomeSources,
+		currenciesItems,
 		isLoading,
-		addMoreSubmitHandler,
-		continueSubmitHandler
+		isLoadingCurrencies,
+		addSubmitHandler,
+		continueHandler
 	};
 }

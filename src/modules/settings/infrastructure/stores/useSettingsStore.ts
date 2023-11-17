@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ConfigProviderTheme } from 'vant';
 
-import { appConfig } from '@/shared/config';
+import { appConfig } from '@/app/config';
 import { useStoreAdapter } from '@/shared/infrastructure/adapters';
 
 import { NSettings } from '../../domain';

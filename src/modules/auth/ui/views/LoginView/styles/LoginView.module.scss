@@ -3,6 +3,5 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - var(--header-nav-bar-height) - var(--footer-tabbar-height));
-  position: relative;
+  height: 100%;
 }

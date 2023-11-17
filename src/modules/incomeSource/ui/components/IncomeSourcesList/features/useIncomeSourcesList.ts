@@ -3,12 +3,13 @@ import {
 	useFetchIncomeSourcesService,
 	useRemoveIncomeSourceService
 } from '@/modules/incomeSource/infrastructure/services';
-import { useIncomeSourceStore } from '@/modules/incomeSource/infrastructure/stores';
+import { useCurrencyFormat } from '@/shared/features';
 
 export function useIncomeSourcesList() {
-	const { incomeSources } = useIncomeSourceStore();
-	const { fetchIncomeSources } = useFetchIncomeSourcesService();
+	const { incomeSources, hasIncomeSources, fetchIncomeSources } =
+		useFetchIncomeSourcesService();
 	const { removeIncomeSource } = useRemoveIncomeSourceService();
+	const { formatMoneyWithCurrency } = useCurrencyFormat();
 
 	const handleRemove = async (incomeSource: NIncomeSource.IIncomeSource) => {
 		const isRemovedSuccess = await removeIncomeSource(
@@ -23,6 +24,8 @@ export function useIncomeSourcesList() {
 
 	return {
 		incomeSources,
+		hasIncomeSources,
+		formatMoneyWithCurrency,
 		handleRemove
 	};
 }

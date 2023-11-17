@@ -1,0 +1,21 @@
+body {
+  background-color: var(--van-background-3);
+}
+
+.cell-title {
+  margin: 0;
+  padding: 32px 16px 16px;
+  color: var(--van-text-color-2);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.cell-description {
+  margin: 0;
+  padding: 0 16px 16px;
+  color: var(--van-text-color-3);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}

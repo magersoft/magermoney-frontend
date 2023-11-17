@@ -6,7 +6,7 @@ import { ConfigProvider as vant, Locale } from 'vant';
 import { default as enUSVant } from 'vant/es/locale/lang/en-US';
 import { default as ruRuVant } from 'vant/es/locale/lang/ru-RU';
 
-import { appConfig } from '@/shared/config';
+import { appConfig } from '@/app/config';
 
 export const vantLangs: Record<string, any> = {
 	'en-US': enUSVant,

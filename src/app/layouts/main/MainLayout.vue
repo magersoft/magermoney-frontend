@@ -32,7 +32,7 @@ useInitLayout();
 
 <template>
 	<app-header :title="pageTitle" />
-	<router-view />
+	<slot />
 	<app-nav :items="pageNavigation" />
 </template>
 

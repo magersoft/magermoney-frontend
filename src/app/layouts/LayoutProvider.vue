@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 
-import { appConfig } from '@/shared/config';
+import { appConfig } from '@/app/config';
+import { AppView } from '@/shared/ui/components';
 
 const route = useRoute();
 
@@ -18,6 +19,8 @@ const layout = computed(() => {
 
 <template>
 	<component :is="layout">
-		<router-view />
+		<app-view>
+			<router-view />
+		</app-view>
 	</component>
 </template>

@@ -15,12 +15,15 @@ interface AppAmountInputProps {
 	readonly error?: boolean;
 	readonly errorMessage?: string;
 	readonly disabled?: boolean;
+	readonly loading?: boolean;
+	readonly showCurrencies?: boolean;
 	readonly rules?: FieldRule[];
 }
 
 interface AppAmountInputEvents {
 	(event: 'update:modelValue', value: string): void;
 	(event: 'update:currency', value: string): void;
+	(event: 'add'): void;
 }
 
 const props = defineProps<AppAmountInputProps>();
@@ -49,13 +52,14 @@ const internalCurrency = computed({
 });
 
 const pickerValue = ref([unref(internalCurrency)] as Numeric[]);
-const hasCurrenciesPicker = computed(() => !!props.currencies?.length);
 
 const displayCurrencySymbol = computed(
 	() =>
 		props.currencies?.find((item) => item.value === unref(internalCurrency))
 			?.symbol
 );
+
+const showKeyboard = ref(false);
 
 const onConfirm = ({ selectedOptions }: PickerConfirmEventParams) => {
 	const [options] = selectedOptions;
@@ -64,6 +68,10 @@ const onConfirm = ({ selectedOptions }: PickerConfirmEventParams) => {
 	emit('update:currency', options?.value as string);
 
 	showPicker.value = false;
+};
+
+const onCloseKeyboard = () => {
+	emit('add');
 };
 
 const amountMask: MaskOptions = reactive({
@@ -83,7 +91,6 @@ const amountMask: MaskOptions = reactive({
 		<van-field
 			v-model="internalValue"
 			v-maska:[amountMask]
-			inputmode="decimal"
 			:label="label"
 			:name="name"
 			center
@@ -92,28 +99,43 @@ const amountMask: MaskOptions = reactive({
 			:error-message="errorMessage"
 			:rules="rules"
 			:disabled="disabled"
+			@focus="showKeyboard = true"
 		>
-			<template v-if="hasCurrenciesPicker" #button>
+			<template v-if="showCurrencies" #button>
 				<div
 					:class="$style['app-amount-input__currency']"
 					@click="showPicker = true"
 				>
 					<span>{{ t('currency') }}</span>
-					<van-button size="small" @click="showPicker = true">
+					<van-button
+						size="small"
+						:loading="loading"
+						@click="showPicker = true"
+					>
 						{{ displayCurrencySymbol }}
 					</van-button>
 				</div>
 			</template>
 		</van-field>
 
+		<van-number-keyboard
+			v-model="internalValue"
+			:show="showKeyboard"
+			theme="custom"
+			:close-button-text="t('add')"
+			@blur="showKeyboard = false"
+			@close="onCloseKeyboard"
+		/>
+
 		<van-popup
-			v-if="hasCurrenciesPicker"
+			v-if="showCurrencies"
 			v-model:show="showPicker"
 			position="bottom"
 		>
 			<van-picker
 				v-model="pickerValue"
 				:columns="currencies"
+				:loading="loading"
 				@confirm="onConfirm"
 				@cancel="showPicker = false"
 			/>

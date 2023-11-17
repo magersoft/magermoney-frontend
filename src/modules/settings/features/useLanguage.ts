@@ -1,9 +1,9 @@
 import { Locale } from 'vant';
 import { useI18n } from 'vue-i18n';
 
+import { appConfig } from '@/app/config';
 import { vantLangs } from '@/app/plugins/vant';
 import { useSettingsStore } from '@/modules/settings/infrastructure/stores';
-import { appConfig } from '@/shared/config';
 
 export function useLanguage() {
 	const { lang, setLang } = useSettingsStore();

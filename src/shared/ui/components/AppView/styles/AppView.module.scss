@@ -1,0 +1,18 @@
+.app-view {
+  width: 100%;
+  height: calc(100vh - var(--header-nav-bar-height) - var(--footer-tabbar-height));
+  position: relative;
+  overflow: auto;
+
+  &--hidden-header {
+    height: calc(100vh - var(--footer-tabbar-height));
+  }
+
+  &--hidden-nav {
+    height: calc(100vh - var(--header-nav-bar-height));
+  }
+
+  &.app-view--hidden-header.app-view--hidden-nav {
+    height: 100vh;
+  }
+}

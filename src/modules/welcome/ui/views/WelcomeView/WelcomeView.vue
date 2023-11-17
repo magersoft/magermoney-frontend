@@ -1,22 +1,28 @@
 <script setup lang="ts">
-import { IncomeSourceForm, IncomeSourcesList } from '@/modules/incomeSource';
+import { useWelcomeSteps } from '@/modules/welcome';
+import { stepsComponents } from '@/modules/welcome/constants';
+import { WelcomeSteps } from '@/modules/welcome/ui/components';
 import { useAppHeader, useAppNav } from '@/shared/ui/components';
 
 const { setHeader } = useAppHeader();
 const { setNav } = useAppNav();
 
 setHeader({
-	isHidden: true
+	isHidden: false
 });
 setNav({
 	isHidden: true
 });
+
+const { activeStep } = useWelcomeSteps();
 </script>
 
 <template>
 	<div :class="$style['welcome-view']">
-		<income-source-form />
-		<income-sources-list />
+		<welcome-steps />
+		<keep-alive>
+			<component :is="stepsComponents[activeStep]" />
+		</keep-alive>
 	</div>
 </template>
 

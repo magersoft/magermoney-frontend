@@ -1,11 +1,10 @@
 import { createFetch } from '@vueuse/core';
 import { useRouter } from 'vue-router';
 
+import { appConfig } from '@/app/config';
 import { AppRoutes } from '@/app/router/constants';
 import { useAuthStore } from '@/modules/auth/infrastructure/stores';
 import { ResponseStatuses } from '@/shared/types/api';
-
-import { appConfig } from '../../config';
 
 export const useApiFetch = () => {
 	const router = useRouter();

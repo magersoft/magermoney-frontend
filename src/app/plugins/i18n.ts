@@ -1,9 +1,9 @@
 import { useStorage } from '@vueuse/core';
 import { createI18n } from 'vue-i18n';
 
+import { appConfig } from '@/app/config';
 import enUS from '@/app/locales/en-US';
 import ruRU from '@/app/locales/ru-RU';
-import { appConfig } from '@/shared/config';
 
 export const langFiles: Record<string, any> = {
 	'en-US': enUS,

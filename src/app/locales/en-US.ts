@@ -3,6 +3,7 @@ export default {
 	back: 'Back',
 	addMore: 'Add one more',
 	continue: 'Continue',
+	add: 'Add',
 	delete: 'Delete',
 	edit: 'Edit',
 	removing: 'Removing',

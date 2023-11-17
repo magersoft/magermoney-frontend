@@ -10,6 +10,9 @@ const incomeSourceStore = defineStore('incomeSource', {
 		incomeSources: [],
 		incomeSource: null
 	}),
+	getters: {
+		hasIncomeSources: (state) => !!state.incomeSources.length
+	},
 	actions: {
 		setIncomeSources(incomeSources: NIncomeSource.IIncomeSource[]) {
 			this.incomeSources = incomeSources;

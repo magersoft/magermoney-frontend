@@ -1,4 +1,4 @@
-import { appConfig } from '@/shared/config';
+import { appConfig } from '@/app/config';
 
 export const API_NAMESPACE = '/income-source';
 

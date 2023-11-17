@@ -3,9 +3,15 @@ import { useI18n } from 'vue-i18n';
 
 import {
 	useIncomeSourceForm,
-	useInitIncomeSources
+	useInitIncomeSourcesForm
 } from '@/modules/incomeSource/ui/components/IncomeSourceForm/features';
 import { AppAmountInput, AppCombobox } from '@/shared/ui/components';
+
+interface IncomeSourceFormProps {
+	continueButton?: boolean;
+}
+
+defineProps<IncomeSourceFormProps>();
 
 const { t } = useI18n();
 const {
@@ -13,11 +19,15 @@ const {
 	incomeSourceFormData,
 	hasServerError,
 	errorMessages,
+	hasIncomeSources,
+	currenciesItems,
 	isLoading,
-	addMoreSubmitHandler,
-	continueSubmitHandler
+	isLoadingCurrencies,
+	addSubmitHandler,
+	continueHandler
 } = useIncomeSourceForm();
 
+// @todo move to useIncomeSourceForm and get from backend
 const incomeTypes = ref([
 	{
 		text: 'Зарплата',
@@ -52,32 +62,15 @@ const incomeTypes = ref([
 		value: 'other'
 	}
 ]);
-const currencies = ref([
-	{
-		text: 'Доллар',
-		symbol: '$',
-		value: 'USD'
-	},
-	{
-		text: 'Рубль',
-		symbol: '₽',
-		value: 'RUB'
-	},
-	{
-		text: 'Евро',
-		symbol: '€',
-		value: 'EUR'
-	}
-]);
 
-useInitIncomeSources();
+useInitIncomeSourcesForm();
 </script>
 
 <template>
 	<van-form
 		ref="formRef"
 		:class="$style['income-source-form']"
-		@submit="continueSubmitHandler"
+		@submit="addSubmitHandler"
 	>
 		<h2 class="cell-title">{{ t('welcome.incomeSource.title') }}</h2>
 		<p class="cell-description">
@@ -104,28 +97,27 @@ useInitIncomeSources();
 				name="amount"
 				:label="t('welcome.incomeSource.amount')"
 				:placeholder="t('welcome.incomeSource.enterAmount')"
-				:currencies="currencies"
+				:currencies="currenciesItems"
 				:error="hasServerError"
 				:error-message="errorMessages"
 				:rules="[{ required: true, message: t('validation.required') }]"
 				:disabled="isLoading"
+				:loading="isLoadingCurrencies"
+				show-currencies
+				@add="addSubmitHandler"
 			/>
 		</van-cell-group>
 
 		<van-cell-group inset :class="$style['income-source-form__actions']">
-			<van-button
-				size="small"
-				:disabled="isLoading"
-				@click="addMoreSubmitHandler"
-			>
-				{{ t('addMore') }}
+			<van-button size="small" :disabled="isLoading" native-type="submit">
+				{{ t('add') }}
 			</van-button>
 			<van-button
+				v-if="continueButton && hasIncomeSources"
 				size="small"
 				:disabled="isLoading"
 				type="primary"
-				native-type="submit"
-				@click="continueSubmitHandler"
+				@click="continueHandler"
 			>
 				{{ t('continue') }}
 			</van-button>

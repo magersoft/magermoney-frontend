@@ -9,6 +9,26 @@
  * ---------------------------------------------------------------
  */
 
+export interface LoginAuthDto {
+	email?: string | null;
+	phone?: string | null;
+}
+
+export interface DetectUserDto {
+	id: number;
+}
+
+export interface VerifyAuthDto {
+	authCode: string;
+	userId: number;
+}
+
+export interface VerifyUserDto {
+	accessToken: string | null;
+	email: string;
+	phone: string;
+}
+
 export interface CreateUserDto {
 	email: string;
 	phone?: string | null;
@@ -65,22 +85,8 @@ export interface UpdateIncomeSourceDto {
 	currency?: string;
 }
 
-export interface LoginAuthDto {
-	email?: string | null;
-	phone?: string | null;
-}
-
-export interface DetectUserDto {
-	id: number;
-}
-
-export interface VerifyAuthDto {
-	authCode: string;
-	userId: number;
-}
-
-export interface VerifyUserDto {
-	accessToken: string | null;
-	email: string;
-	phone: string;
+export interface CurrencyEntity {
+	symbol: string;
+	name: string;
+	code: string;
 }

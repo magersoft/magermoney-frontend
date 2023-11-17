@@ -3,8 +3,14 @@ import { useIncomeSourceStore } from '@/modules/incomeSource/infrastructure/stor
 import { useBaseFetchList } from '@/shared/infrastructure/services';
 
 export function useFetchIncomeSourcesService() {
-	const { incomeSources, setIncomeSources, setIsLoading, setError } =
-		useIncomeSourceStore();
+	const {
+		incomeSources,
+		hasIncomeSources,
+		isLoading,
+		setIncomeSources,
+		setIsLoading,
+		setError
+	} = useIncomeSourceStore();
 	const { findAll } = useIncomeSourceModel();
 
 	const { fetchBaseList: fetchIncomeSources } = useBaseFetchList({
@@ -16,6 +22,9 @@ export function useFetchIncomeSourcesService() {
 	});
 
 	return {
+		incomeSources,
+		hasIncomeSources,
+		isLoading,
 		fetchIncomeSources
 	};
 }

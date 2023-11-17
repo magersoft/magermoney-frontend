@@ -12,6 +12,7 @@
 import {
 	CreateIncomeSourceDto,
 	CreateUserDto,
+	CurrencyEntity,
 	DetectUserDto,
 	IncomeSourceEntity,
 	LoginAuthDto,
@@ -35,6 +36,36 @@ export namespace Api {
 		export type RequestBody = never;
 		export type RequestHeaders = {};
 		export type ResponseBody = void;
+	}
+
+	/**
+	 * No description
+	 * @tags auth
+	 * @name AuthControllerDetectUser
+	 * @request POST:/api/v1/auth/detect-user
+	 * @response `201` `DetectUserDto`
+	 */
+	export namespace AuthControllerDetectUser {
+		export type RequestParams = {};
+		export type RequestQuery = {};
+		export type RequestBody = LoginAuthDto;
+		export type RequestHeaders = {};
+		export type ResponseBody = DetectUserDto;
+	}
+
+	/**
+	 * No description
+	 * @tags auth
+	 * @name AuthControllerVerifyUser
+	 * @request POST:/api/v1/auth/verify-user
+	 * @response `201` `VerifyUserDto`
+	 */
+	export namespace AuthControllerVerifyUser {
+		export type RequestParams = {};
+		export type RequestQuery = {};
+		export type RequestBody = VerifyAuthDto;
+		export type RequestHeaders = {};
+		export type ResponseBody = VerifyUserDto;
 	}
 
 	/**
@@ -211,31 +242,17 @@ export namespace Api {
 
 	/**
 	 * No description
-	 * @tags auth
-	 * @name AuthControllerDetectUser
-	 * @request POST:/api/v1/auth/detect-user
-	 * @response `201` `DetectUserDto`
+	 * @tags currency
+	 * @name CurrencyControllerGetCurrencies
+	 * @request GET:/api/v1/currency
+	 * @secure
+	 * @response `200` `(CurrencyEntity)[]`
 	 */
-	export namespace AuthControllerDetectUser {
+	export namespace CurrencyControllerGetCurrencies {
 		export type RequestParams = {};
 		export type RequestQuery = {};
-		export type RequestBody = LoginAuthDto;
+		export type RequestBody = never;
 		export type RequestHeaders = {};
-		export type ResponseBody = DetectUserDto;
-	}
-
-	/**
-	 * No description
-	 * @tags auth
-	 * @name AuthControllerVerifyUser
-	 * @request POST:/api/v1/auth/verify-user
-	 * @response `201` `VerifyUserDto`
-	 */
-	export namespace AuthControllerVerifyUser {
-		export type RequestParams = {};
-		export type RequestQuery = {};
-		export type RequestBody = VerifyAuthDto;
-		export type RequestHeaders = {};
-		export type ResponseBody = VerifyUserDto;
+		export type ResponseBody = CurrencyEntity[];
 	}
 }
