@@ -1,4 +1,4 @@
-import { useAuthModel } from '@/modules/auth/infrastructure/model';
+import { useAuthModel } from '@/modules/auth/infrastructure/models';
 import { useAuthStore } from '@/modules/auth/infrastructure/stores';
 import { useBaseFetch } from '@/shared/infrastructure/services';
 

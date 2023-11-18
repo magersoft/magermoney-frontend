@@ -1,4 +1,4 @@
-import { useFetchIncomeSourcesService } from '@/modules/incomeSource/infrastructure/services';
+import { useFetchIncomeSourcesService } from '@/modules/incomeSources/infrastructure/services';
 
 export function useWelcomeIncomeSourceStep() {
 	const { fetchIncomeSources } = useFetchIncomeSourcesService();

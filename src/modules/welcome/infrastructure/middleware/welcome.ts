@@ -1,6 +1,6 @@
 import { AppRoutes } from '@/app/router/constants';
 import { RouterContext } from '@/app/router/types';
-import { useUser } from '@/modules/user';
+import { useUser } from '@/modules/users';
 
 export default async function welcome({ next }: RouterContext) {
 	const { user } = useUser();

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IncomeSourceForm, IncomeSourcesList } from '@/modules/incomeSource';
+import { IncomeSourceForm, IncomeSourcesList } from '@/modules/incomeSources';
 import { useWelcomeIncomeSourceStep } from '@/modules/welcome/ui/components/WelcomeIncomeSourceStep/features';
 
 const { isLoading, onRefresh } = useWelcomeIncomeSourceStep();

@@ -1,11 +1,11 @@
 import { IFetchState } from '@/shared/domain';
+import { RequestReturnError, RequestReturnValue } from '@/shared/types/api';
 import {
 	DetectUserDto,
 	LoginAuthDto,
 	VerifyAuthDto,
 	VerifyUserDto
-} from '@/shared/infrastructure/api/generated';
-import { RequestReturnError, RequestReturnValue } from '@/shared/types/api';
+} from '@/shared/types/api/generated';
 
 export namespace NAuth {
 	export interface ILoginAuth extends LoginAuthDto {}

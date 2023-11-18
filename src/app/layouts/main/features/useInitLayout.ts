@@ -2,7 +2,7 @@ import { useRouter } from 'vue-router';
 
 import { AppRoutes } from '@/app/router/constants';
 import { useAuth } from '@/modules/auth';
-import { useUser } from '@/modules/user';
+import { useUser } from '@/modules/users';
 
 export function useInitLayout() {
 	const { user, isAuthorization } = useAuth();
