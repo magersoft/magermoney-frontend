@@ -8,7 +8,7 @@ const { t } = useI18n();
 const {
 	incomeSources,
 	hasIncomeSources,
-	formatMoneyWithCurrency,
+	formatAmountWithCurrency,
 	handleRemove
 } = useIncomeSourcesList();
 </script>
@@ -24,10 +24,9 @@ const {
 			:key="incomeSource.id"
 		>
 			<van-cell
-				:border="false"
 				:title="incomeSource.title"
 				:value="
-					formatMoneyWithCurrency(incomeSource.amount, incomeSource.currency)
+					formatAmountWithCurrency(incomeSource.amount, incomeSource.currency)
 				"
 			/>
 			<template #right>
@@ -37,7 +36,6 @@ const {
 					:text="t('delete')"
 					@click="() => handleRemove(incomeSource)"
 				/>
-				<van-button square type="primary" :text="t('edit')" />
 			</template>
 		</van-swipe-cell>
 	</van-list>

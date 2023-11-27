@@ -7,7 +7,9 @@ import {
 } from '@/shared/types/api/generated';
 import { CRUDModel } from '@/shared/types/models';
 
-export namespace NAccumulatedFund {
+export namespace NAccumulatedFunds {
+	export const API_NAMESPACE = 'accumulated-funds';
+
 	export interface IAccumulatedFund extends AccumulatedFundEntity {}
 	export interface ICreateAccumulatedFund extends CreateAccumulatedFundDto {}
 	export interface IUpdateAccumulatedFund extends UpdateAccumulatedFundDto {}

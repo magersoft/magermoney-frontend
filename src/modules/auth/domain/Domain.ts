@@ -8,14 +8,12 @@ import {
 } from '@/shared/types/api/generated';
 
 export namespace NAuth {
+	export const API_NAMESPACE = 'auth';
+
 	export interface ILoginAuth extends LoginAuthDto {}
-
 	export interface IDetectUser extends DetectUserDto {}
-
 	export interface IVerifyAuth extends VerifyAuthDto {}
-
 	export interface IVerifyUser extends VerifyUserDto {}
-
 	export interface IError extends RequestReturnError {}
 
 	export interface IState extends IFetchState<IError> {

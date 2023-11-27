@@ -8,6 +8,8 @@ import {
 import { CRUDModel } from '@/shared/types/models';
 
 export namespace NUsers {
+	export const API_NAMESPACE = 'users';
+
 	export interface IUser extends UserEntity {}
 	export interface ICreateUser extends CreateUserDto {}
 	export interface IUpdateUser extends UpdateUserDto {}

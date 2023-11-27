@@ -27,6 +27,7 @@ export default {
 			title: 'Источники ежемесячного дохода',
 			description:
 				'Укажите ваши ежемесячные доходы, это может быть ваша зарплата, пенсия, вклады и т.д.',
+			stepName: 'Доходы',
 			source: 'Источник',
 			selectIncome: 'Выберите источник дохода',
 			name: 'Название',
@@ -35,14 +36,31 @@ export default {
 			amount: 'Сумма',
 			enterAmount: 'Введите сумму',
 			sourceOfIncome: 'Источники дохода',
-			sourceOfIncomeDescription:
-				'Вы можете редактировать или удалять источники дохода свайпом',
+			sourceOfIncomeDescription: 'Вы можете удалять источники дохода свайпом',
 			removeTitle: 'Удалить источник дохода'
 		},
 		accumulatedFunds: {
 			title: 'Накопленные средства',
 			description:
-				'Укажите ваши накопления, это могут быть ваши сбережения, вклады и т.д.'
+				'Укажите ваши накопления, это могут быть ваши сбережения, вклады и т.д.',
+			stepName: 'Накопления',
+			source: 'Место',
+			selectAccumulated: 'Выберите место хранения',
+			name: 'Название',
+			enterAccumulated: 'Введите название',
+			other: 'Другое',
+			amount: 'Сумма',
+			enterAmount: 'Введите сумму',
+			sourceOfAccumulated: 'Места хранения',
+			sourceOfAccumulatedDescription:
+				'Вы можете удалять места хранения свайпом',
+			removeTitle: 'Удалить накопление'
+		},
+		accumulationFunds: {
+			stepName: 'Накопления'
+		},
+		monthlyExpense: {
+			stepName: 'Расходы'
 		}
 	},
 	settings: {

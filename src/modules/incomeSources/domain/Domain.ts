@@ -8,6 +8,8 @@ import {
 import { CRUDModel } from '@/shared/types/models';
 
 export namespace NIncomeSources {
+	export const API_NAMESPACE = 'income-sources';
+
 	export interface IIncomeSource extends IncomeSourceEntity {}
 	export interface ICreateIncomeSource extends CreateIncomeSourceDto {}
 	export interface IUpdateIncomeSource extends UpdateIncomeSourceDto {}

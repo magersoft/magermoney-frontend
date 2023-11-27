@@ -1,7 +1,4 @@
-import {
-	mappingCurrenciesForPicker,
-	useCurrencies
-} from '@/modules/currencies';
+import { useCurrencies } from '@/modules/currencies';
 import { useWelcomeSteps } from '@/modules/welcome';
 import { WelcomeStepsType } from '@/modules/welcome/constants';
 import { useForm } from '@/shared/features';
@@ -26,6 +23,8 @@ export function useIncomeSourceForm() {
 	const { hasIncomeSources, fetchIncomeSources } =
 		useFetchIncomeSourcesService();
 	const { isLoading, error } = useIncomeSourcesStore();
+	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
+
 	const {
 		formRef,
 		validateForm,
@@ -33,12 +32,7 @@ export function useIncomeSourceForm() {
 		hasServerError,
 		errorMessages
 	} = useForm(error);
-	const { currencies, isLoading: isLoadingCurrencies } = useCurrencies();
 	const { setStep } = useWelcomeSteps();
-
-	const currenciesItems = computed(() =>
-		mappingCurrenciesForPicker(unref(currencies))
-	);
 
 	const continueHandler = async () => {
 		if (!unref(hasIncomeSources)) return;

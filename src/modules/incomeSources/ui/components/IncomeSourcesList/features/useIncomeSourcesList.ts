@@ -9,7 +9,7 @@ export function useIncomeSourcesList() {
 	const { incomeSources, hasIncomeSources, fetchIncomeSources } =
 		useFetchIncomeSourcesService();
 	const { removeIncomeSource } = useRemoveIncomeSourceService();
-	const { formatMoneyWithCurrency } = useCurrencyFormat();
+	const { formatAmountWithCurrency } = useCurrencyFormat();
 
 	const handleRemove = async (incomeSource: NIncomeSources.IIncomeSource) => {
 		const isRemovedSuccess = await removeIncomeSource(
@@ -25,7 +25,7 @@ export function useIncomeSourcesList() {
 	return {
 		incomeSources,
 		hasIncomeSources,
-		formatMoneyWithCurrency,
+		formatAmountWithCurrency,
 		handleRemove
 	};
 }

@@ -27,6 +27,7 @@ export default {
 			title: 'Sources of monthly income',
 			description:
 				'Indicate your monthly income, this could be your salary, pension, deposits, etc.',
+			stepName: 'Income',
 			source: 'Source',
 			selectIncome: 'Select source of income',
 			name: 'Name',
@@ -42,7 +43,15 @@ export default {
 		accumulatedFunds: {
 			title: 'Accumulated funds',
 			description:
-				'Indicate your savings, this could be your savings, deposits, etc.'
+				'Indicate your savings, this could be your savings, deposits, etc.',
+			stepName: 'Accumulated',
+			removeTitle: 'Remove accumulated fund'
+		},
+		accumulationFunds: {
+			stepName: 'Accumulation'
+		},
+		monthlyExpense: {
+			stepName: 'Expenses'
 		}
 	},
 	settings: {
