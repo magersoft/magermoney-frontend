@@ -43,7 +43,7 @@ export function useIncomeSourceForm() {
 
 		resetValidationForm();
 
-		setStep(WelcomeStepsType.ACCUMULATED_FUNDS);
+		setStep(WelcomeStepsType.SAVED_FUNDS);
 	};
 
 	const addSubmitHandler = async () => {

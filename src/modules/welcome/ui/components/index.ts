@@ -1,4 +1,4 @@
 export * from './WelcomeSteps';
 export * from './WelcomeIncomeSourceStep';
-export * from './WelcomeAccumulatedFundsStep';
+export * from './WelcomeSavedFundsStep';
 export * from './WelcomeAccumulationFundsStep';

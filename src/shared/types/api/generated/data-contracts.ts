@@ -91,13 +91,13 @@ export interface CurrencyEntity {
 	code: string;
 }
 
-export interface CreateAccumulatedFundDto {
+export interface CreateSavedFundDto {
 	source: string;
 	amount: number;
 	currency: string;
 }
 
-export interface AccumulatedFundEntity {
+export interface SavedFundEntity {
 	id: number;
 	/** @format date-time */
 	createdAt: string;
@@ -109,8 +109,22 @@ export interface AccumulatedFundEntity {
 	userId?: number | null;
 }
 
-export interface UpdateAccumulatedFundDto {
+export interface UpdateSavedFundDto {
 	source?: string;
 	amount?: number;
 	currency?: string;
+}
+
+export interface CreateAccumulationFundDto {
+	percent: number;
+}
+
+export interface AccumulationFundEntity {
+	id: number;
+	percent: number;
+	userId?: number | null;
+}
+
+export interface UpdateAccumulationFundDto {
+	percent?: number;
 }

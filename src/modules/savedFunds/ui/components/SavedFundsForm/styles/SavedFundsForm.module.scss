@@ -1,0 +1,14 @@
+.saved-funds-form {
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--van-padding-lg);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  &__navigations {
+    display: flex;
+    gap: 1rem;
+  }
+}

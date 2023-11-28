@@ -40,12 +40,21 @@ export default {
 				'You can edit or delete income sources by swiping',
 			removeTitle: 'Remove income source'
 		},
-		accumulatedFunds: {
-			title: 'Accumulated funds',
+		savedFunds: {
+			title: 'Saved funds',
 			description:
 				'Indicate your savings, this could be your savings, deposits, etc.',
-			stepName: 'Accumulated',
-			removeTitle: 'Remove accumulated fund'
+			stepName: 'Saved',
+			source: 'Storage',
+			selectSaved: 'Select storage of fund',
+			name: 'Name',
+			enterSaved: 'Enter name of fund',
+			other: 'Other',
+			amount: 'Amount',
+			enterAmount: 'Enter amount',
+			sourceOfSaved: 'Storage of fund',
+			sourceOfSavedDescription: 'You can delete storage of funds by swiping',
+			removeTitle: 'Remove saved fund'
 		},
 		accumulationFunds: {
 			stepName: 'Accumulation'

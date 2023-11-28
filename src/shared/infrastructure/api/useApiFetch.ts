@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { appConfig } from '@/app/config';
 import { AppRoutes } from '@/app/router/constants';
 import { useAuthStore } from '@/modules/auth/infrastructure/stores';
-import { ResponseStatuses } from '@/shared/types/api';
+import { useCatchErrors } from '@/shared/features/useCatchErrors.ts';
 
 export const useApiFetch = () => {
 	const router = useRouter();
@@ -23,18 +23,29 @@ export const useApiFetch = () => {
 			},
 			async onFetchError(ctx) {
 				const { resetAuthState } = useAuthStore();
+				const {
+					catchInternalServerError,
+					catchNotFoundError,
+					catchUnauthorizedError
+				} = useCatchErrors();
 
-				if (
-					ctx.response?.status === ResponseStatuses.InternalServerError ||
-					ctx.error.message === 'Failed to fetch'
-				) {
-					router.push({ name: AppRoutes.InternalServerError });
-				}
+				catchInternalServerError(
+					ctx.response?.status,
+					ctx.error.message,
+					() => {
+						router.push({ name: AppRoutes.InternalServerError });
+					}
+				);
 
-				if (ctx.response?.status === ResponseStatuses.Unauthorized) {
+				catchNotFoundError(ctx.response?.status, ctx.data?.message, () => {
+					resetAuthState();
+					router.push({ name: AppRoutes.NotFound });
+				});
+
+				catchUnauthorizedError(ctx.response?.status, ctx.data?.message, () => {
 					resetAuthState();
 					router.push({ name: AppRoutes.Login });
-				}
+				});
 
 				return {
 					...ctx,

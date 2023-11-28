@@ -39,25 +39,24 @@ export default {
 			sourceOfIncomeDescription: 'Вы можете удалять источники дохода свайпом',
 			removeTitle: 'Удалить источник дохода'
 		},
-		accumulatedFunds: {
+		savedFunds: {
 			title: 'Накопленные средства',
 			description:
 				'Укажите ваши накопления, это могут быть ваши сбережения, вклады и т.д.',
 			stepName: 'Накопления',
 			source: 'Место',
-			selectAccumulated: 'Выберите место хранения',
+			selectSaved: 'Выберите место хранения',
 			name: 'Название',
-			enterAccumulated: 'Введите название',
+			enterSaved: 'Введите название',
 			other: 'Другое',
 			amount: 'Сумма',
 			enterAmount: 'Введите сумму',
-			sourceOfAccumulated: 'Места хранения',
-			sourceOfAccumulatedDescription:
-				'Вы можете удалять места хранения свайпом',
+			sourceOfSaved: 'Места хранения',
+			sourceOfSavedDescription: 'Вы можете удалять места хранения свайпом',
 			removeTitle: 'Удалить накопление'
 		},
 		accumulationFunds: {
-			stepName: 'Накопления'
+			stepName: 'Сохранение'
 		},
 		monthlyExpense: {
 			stepName: 'Расходы'
