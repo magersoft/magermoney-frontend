@@ -4,10 +4,10 @@ import { useApiFetch } from '@/shared/infrastructure/api';
 export const useSavedFundsModel = (): NSavedFunds.IModel => {
 	const { fetch } = useApiFetch();
 
-	const findAll = () =>
+	const fetchAll = () =>
 		fetch<NSavedFunds.ISavedFund[]>(`/${NSavedFunds.API_NAMESPACE}`).get();
 
-	const findOne = (id: number) =>
+	const fetchOne = (id: number) =>
 		fetch<NSavedFunds.ISavedFund>(`/${NSavedFunds.API_NAMESPACE}/${id}`).get();
 
 	const create = (payload: NSavedFunds.ICreateSavedFund) =>
@@ -26,8 +26,8 @@ export const useSavedFundsModel = (): NSavedFunds.IModel => {
 		).delete();
 
 	return {
-		findAll,
-		findOne,
+		fetchAll,
+		fetchOne,
 		create,
 		update,
 		remove

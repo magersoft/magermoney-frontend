@@ -6,13 +6,26 @@ import {
 	useIncomeSourceForm,
 	useInitIncomeSourcesForm
 } from '@/modules/incomeSources/ui/components/IncomeSourceForm/features';
-import { AppAmountInput, AppCombobox } from '@/shared/ui/components';
+import {
+	AppAmountInput,
+	AppCombobox,
+	AppFormNavigation
+} from '@/shared/ui/components';
 
 interface IncomeSourceFormProps {
-	continueButton?: boolean;
+	readonly hasSubmitButton?: boolean;
+	readonly hasBackButton?: boolean;
+	readonly hasAddButton?: boolean;
+	readonly hideFormNavigation?: boolean;
+}
+
+interface IncomeSourceFormEvents {
+	(event: 'click:add'): void;
+	(event: 'click:submit'): void;
 }
 
 defineProps<IncomeSourceFormProps>();
+const emit = defineEmits<IncomeSourceFormEvents>();
 
 const { t } = useI18n();
 const {
@@ -25,8 +38,11 @@ const {
 	isLoading,
 	isLoadingCurrencies,
 	addSubmitHandler,
-	continueHandler
-} = useIncomeSourceForm();
+	submitHandler
+} = useIncomeSourceForm({
+	onAdd: () => emit('click:add'),
+	onContinue: () => emit('click:submit')
+});
 
 useInitIncomeSourcesForm();
 </script>
@@ -35,7 +51,7 @@ useInitIncomeSourcesForm();
 	<van-form
 		ref="formRef"
 		:class="$style['income-source-form']"
-		@submit="addSubmitHandler"
+		@submit="submitHandler"
 	>
 		<h2 class="cell-title">{{ t('welcome.incomeSource.title') }}</h2>
 		<p class="cell-description">
@@ -74,25 +90,17 @@ useInitIncomeSourcesForm();
 			/>
 		</van-cell-group>
 
-		<van-cell-group inset :class="$style['income-source-form__actions']">
-			<van-button
-				size="small"
-				icon="plus"
-				:disabled="isLoading"
-				native-type="submit"
-			>
-				{{ t('add') }}
-			</van-button>
-			<van-button
-				v-if="continueButton && hasIncomeSources"
-				size="small"
-				:disabled="isLoading"
-				type="primary"
-				@click="continueHandler"
-			>
-				{{ t('continue') }}
-			</van-button>
-		</van-cell-group>
+		<app-form-navigation
+			v-if="!hideFormNavigation"
+			:has-add-button="hasAddButton"
+			:has-submit-button="hasSubmitButton && hasIncomeSources"
+			:submit-text="t('continue')"
+			:is-loading="isLoading"
+			@click:add="addSubmitHandler"
+			@click:submit="submitHandler"
+		/>
+
+		<slot />
 	</van-form>
 </template>
 

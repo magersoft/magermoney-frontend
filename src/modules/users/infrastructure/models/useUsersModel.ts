@@ -4,9 +4,10 @@ import { useApiFetch } from '@/shared/infrastructure/api';
 export const useUsersModel = (): NUsers.IModel => {
 	const { fetch } = useApiFetch();
 
-	const findAll = () => fetch<NUsers.IUser[]>(`/${NUsers.API_NAMESPACE}`).get();
+	const fetchAll = () =>
+		fetch<NUsers.IUser[]>(`/${NUsers.API_NAMESPACE}`).get();
 
-	const findOne = (id: number) =>
+	const fetchOne = (id: number) =>
 		fetch<NUsers.IUser>(`/${NUsers.API_NAMESPACE}/${id}`).get();
 
 	const create = (payload: NUsers.ICreateUser) =>
@@ -19,8 +20,8 @@ export const useUsersModel = (): NUsers.IModel => {
 		fetch<NUsers.IUser>(`/${NUsers.API_NAMESPACE}/${id}`).delete();
 
 	return {
-		findAll,
-		findOne,
+		fetchAll,
+		fetchOne,
 		create,
 		update,
 		remove

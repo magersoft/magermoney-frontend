@@ -12,7 +12,7 @@ export namespace NCurrencies {
 	}
 
 	export interface IModel {
-		findAll: () => RequestReturnValue<ICurrency[]>;
+		fetchAll: () => RequestReturnValue<ICurrency[]>;
 	}
 
 	export interface IError extends RequestReturnError {}

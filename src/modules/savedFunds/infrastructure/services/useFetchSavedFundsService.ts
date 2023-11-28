@@ -11,10 +11,10 @@ export function useFetchSavedFundsService() {
 		setIsLoading,
 		setError
 	} = useSavedFundsStore();
-	const { findAll } = useSavedFundsModel();
+	const { fetchAll } = useSavedFundsModel();
 
 	const { fetchBaseList: fetchSavedFunds } = useBaseFetchList({
-		fetchData: findAll,
+		fetchData: fetchAll,
 		setData: setSavedFunds,
 		dataList: savedFunds,
 		setIsLoading,

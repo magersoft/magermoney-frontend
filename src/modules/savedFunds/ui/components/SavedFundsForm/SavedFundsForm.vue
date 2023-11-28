@@ -6,15 +6,27 @@ import {
 	useInitSavedFundsForm,
 	useSavedFundsForm
 } from '@/modules/savedFunds/ui/components/SavedFundsForm/features';
-import { useWelcomeSteps } from '@/modules/welcome';
-import { WelcomeStepsType } from '@/modules/welcome/constants';
-import { AppAmountInput, AppCombobox } from '@/shared/ui/components';
+import {
+	AppAmountInput,
+	AppCombobox,
+	AppFormNavigation
+} from '@/shared/ui/components';
 
 interface SavedFundsFormProps {
-	continueButton?: boolean;
+	readonly hasSubmitButton?: boolean;
+	readonly hasBackButton?: boolean;
+	readonly hasAddButton?: boolean;
+	readonly hideFormNavigation?: boolean;
+}
+
+interface SavedFundsFormEvents {
+	(event: 'click:add'): void;
+	(event: 'click:submit'): void;
+	(event: 'click:back'): void;
 }
 
 defineProps<SavedFundsFormProps>();
+const emit = defineEmits<SavedFundsFormEvents>();
 
 const { t } = useI18n();
 
@@ -28,9 +40,13 @@ const {
 	isLoading,
 	isLoadingCurrencies,
 	addSubmitHandler,
-	continueHandler
-} = useSavedFundsForm();
-const { setStep } = useWelcomeSteps();
+	submitHandler,
+	backHandler
+} = useSavedFundsForm({
+	onAdd: () => emit('click:add'),
+	onSubmit: () => emit('click:submit'),
+	onBack: () => emit('click:back')
+});
 
 useInitSavedFundsForm();
 </script>
@@ -39,7 +55,7 @@ useInitSavedFundsForm();
 	<van-form
 		ref="formRef"
 		:class="$style['saved-funds-form']"
-		@submit="addSubmitHandler"
+		@submit="submitHandler"
 	>
 		<h2 class="cell-title">{{ t('welcome.savedFunds.title') }}</h2>
 		<p class="cell-description">
@@ -78,34 +94,19 @@ useInitSavedFundsForm();
 			/>
 		</van-cell-group>
 
-		<van-cell-group inset :class="$style['saved-funds-form__actions']">
-			<van-button
-				size="small"
-				icon="plus"
-				:disabled="isLoading"
-				native-type="submit"
-			>
-				{{ t('add') }}
-			</van-button>
-			<div :class="$style['saved-funds-form__navigations']">
-				<van-button
-					size="small"
-					icon="arrow-left"
-					@click="setStep(WelcomeStepsType.INCOME_SOURCES)"
-				>
-					{{ t('back') }}
-				</van-button>
-				<van-button
-					v-if="continueButton && hasSavedFunds"
-					:disabled="isLoading"
-					size="small"
-					type="primary"
-					@click="continueHandler"
-				>
-					{{ t('continue') }}
-				</van-button>
-			</div>
-		</van-cell-group>
+		<app-form-navigation
+			v-if="!hideFormNavigation"
+			:has-add-button="hasAddButton"
+			:has-back-button="hasBackButton"
+			:has-submit-button="hasSubmitButton && hasSavedFunds"
+			:submit-text="t('continue')"
+			:is-loading="isLoading"
+			@click:add="addSubmitHandler"
+			@click:submit="submitHandler"
+			@click:back="backHandler"
+		/>
+
+		<slot />
 	</van-form>
 </template>
 

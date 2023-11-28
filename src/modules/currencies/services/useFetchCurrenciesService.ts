@@ -3,7 +3,7 @@ import { useCurrenciesStore } from '@/modules/currencies/infrastructure/stores';
 import { useBaseFetchList } from '@/shared/infrastructure/services';
 
 export function useFetchCurrenciesService() {
-	const { findAll } = useCurrenciesModel();
+	const { fetchAll } = useCurrenciesModel();
 	const {
 		currencies,
 		currenciesItems,
@@ -14,7 +14,7 @@ export function useFetchCurrenciesService() {
 	} = useCurrenciesStore();
 
 	const { fetchBaseList: fetchCurrencies } = useBaseFetchList({
-		fetchData: findAll,
+		fetchData: fetchAll,
 		setData: setCurrencies,
 		dataList: currencies,
 		setIsLoading,

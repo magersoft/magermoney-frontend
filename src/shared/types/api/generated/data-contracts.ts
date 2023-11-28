@@ -86,6 +86,7 @@ export interface UpdateIncomeSourceDto {
 }
 
 export interface CurrencyEntity {
+	id: number;
 	symbol: string;
 	name: string;
 	code: string;
@@ -127,4 +128,14 @@ export interface AccumulationFundEntity {
 
 export interface UpdateAccumulationFundDto {
 	percent?: number;
+}
+
+export interface CalculationsControllerGetPercentByAmountParams {
+	value: string;
+	currency: string;
+}
+
+export interface CalculationsControllerGetAmountByPercentParams {
+	value: string;
+	currency: string;
 }

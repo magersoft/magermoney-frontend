@@ -4,10 +4,10 @@ import { useApiFetch } from '@/shared/infrastructure/api';
 export const useCurrenciesModel = (): NCurrencies.IModel => {
 	const { fetch } = useApiFetch();
 
-	const findAll = () =>
+	const fetchAll = () =>
 		fetch<NCurrencies.ICurrency[]>(`/${NCurrencies.API_NAMESPACE}`).get();
 
 	return {
-		findAll
+		fetchAll
 	};
 };

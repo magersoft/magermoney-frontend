@@ -6,6 +6,7 @@ export default {
 	add: 'Добавить',
 	delete: 'Удалить',
 	edit: 'Редактировать',
+	save: 'Сохранить',
 	removing: 'Удаление',
 	cancel: 'Отмена',
 	removedSuccessfully: 'Удалено успешно',

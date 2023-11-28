@@ -9,12 +9,20 @@ import {
 } from '@/modules/savedFunds/infrastructure/services';
 import { useSavedFundsStore } from '@/modules/savedFunds/infrastructure/stores';
 import { mappingSavedFundsFormData } from '@/modules/savedFunds/ui/components/SavedFundsForm/utils';
-import { useWelcomeSteps } from '@/modules/welcome';
-import { WelcomeStepsType } from '@/modules/welcome/constants';
 import { useForm } from '@/shared/features';
 import { cloneDeep } from '@/shared/utils';
 
-export function useSavedFundsForm() {
+interface UseSavedFundsFormParams {
+	onAdd?: () => void;
+	onSubmit?: () => void;
+	onBack?: () => void;
+}
+
+export function useSavedFundsForm({
+	onAdd,
+	onSubmit,
+	onBack
+}: UseSavedFundsFormParams = {}) {
 	const savedFundsFormData = ref<TInitialSavedFundsFormData>(
 		cloneDeep(initialSavedFundsFormControls)
 	);
@@ -30,9 +38,8 @@ export function useSavedFundsForm() {
 		validateForm,
 		resetValidationForm
 	} = useForm(error);
-	const { setStep } = useWelcomeSteps();
 
-	const continueHandler = async () => {
+	const submitHandler = async () => {
 		if (!unref(hasSavedFunds)) return;
 
 		if (await validateForm()) {
@@ -41,7 +48,7 @@ export function useSavedFundsForm() {
 
 		resetValidationForm();
 
-		setStep(WelcomeStepsType.ACCUMULATION_FUNDS);
+		onSubmit?.();
 	};
 
 	const addSubmitHandler = async () => {
@@ -58,7 +65,15 @@ export function useSavedFundsForm() {
 			};
 
 			await fetchSavedFunds({ force: true, quite: true });
+
+			onAdd?.();
 		}
+	};
+
+	const backHandler = () => {
+		resetValidationForm();
+
+		onBack?.();
 	};
 
 	return {
@@ -71,6 +86,7 @@ export function useSavedFundsForm() {
 		isLoading,
 		isLoadingCurrencies,
 		addSubmitHandler,
-		continueHandler
+		submitHandler,
+		backHandler
 	};
 }

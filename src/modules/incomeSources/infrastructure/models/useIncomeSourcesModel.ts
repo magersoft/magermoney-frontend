@@ -4,12 +4,12 @@ import { useApiFetch } from '@/shared/infrastructure/api';
 export const useIncomeSourcesModel = (): NIncomeSources.IModel => {
 	const { fetch } = useApiFetch();
 
-	const findAll = () =>
+	const fetchAll = () =>
 		fetch<NIncomeSources.IIncomeSource[]>(
 			`/${NIncomeSources.API_NAMESPACE}`
 		).get();
 
-	const findOne = (id: number) =>
+	const fetchOne = (id: number) =>
 		fetch<NIncomeSources.IIncomeSource>(
 			`/${NIncomeSources.API_NAMESPACE}/${id}`
 		).get();
@@ -30,8 +30,8 @@ export const useIncomeSourcesModel = (): NIncomeSources.IModel => {
 		).delete();
 
 	return {
-		findAll,
-		findOne,
+		fetchAll,
+		fetchOne,
 		create,
 		update,
 		remove

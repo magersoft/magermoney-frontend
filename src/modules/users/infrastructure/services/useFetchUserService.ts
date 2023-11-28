@@ -4,10 +4,10 @@ import { useBaseFetch } from '@/shared/infrastructure/services';
 
 export function useFetchUserService() {
 	const { setUser, setIsLoading, setError } = useUsersStore();
-	const { findOne } = useUsersModel();
+	const { fetchOne } = useUsersModel();
 
 	const { fetchBase: fetchUser } = useBaseFetch({
-		fetchData: findOne,
+		fetchData: fetchOne,
 		setData: setUser,
 		setIsLoading,
 		setError

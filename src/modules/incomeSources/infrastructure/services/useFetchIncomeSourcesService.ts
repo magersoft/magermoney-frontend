@@ -11,10 +11,10 @@ export function useFetchIncomeSourcesService() {
 		setIsLoading,
 		setError
 	} = useIncomeSourcesStore();
-	const { findAll } = useIncomeSourcesModel();
+	const { fetchAll } = useIncomeSourcesModel();
 
 	const { fetchBaseList: fetchIncomeSources } = useBaseFetchList({
-		fetchData: findAll,
+		fetchData: fetchAll,
 		setData: setIncomeSources,
 		dataList: incomeSources,
 		setIsLoading,

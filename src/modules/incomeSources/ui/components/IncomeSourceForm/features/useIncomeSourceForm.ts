@@ -1,6 +1,4 @@
 import { useCurrencies } from '@/modules/currencies';
-import { useWelcomeSteps } from '@/modules/welcome';
-import { WelcomeStepsType } from '@/modules/welcome/constants';
 import { useForm } from '@/shared/features';
 import { cloneDeep } from '@/shared/utils';
 
@@ -15,7 +13,15 @@ import {
 import { useIncomeSourcesStore } from '../../../../infrastructure/stores';
 import { mappingIncomeSourceFormData } from '../utils';
 
-export function useIncomeSourceForm() {
+interface UseIncomeSourceFormParams {
+	onAdd?: () => void;
+	onContinue?: () => void;
+}
+
+export function useIncomeSourceForm({
+	onAdd,
+	onContinue
+}: UseIncomeSourceFormParams = {}) {
 	const incomeSourceFormData = ref<TInitialIncomeSourceFormData>(
 		cloneDeep(initialIncomeSourceFormControls)
 	);
@@ -32,9 +38,8 @@ export function useIncomeSourceForm() {
 		hasServerError,
 		errorMessages
 	} = useForm(error);
-	const { setStep } = useWelcomeSteps();
 
-	const continueHandler = async () => {
+	const submitHandler = async () => {
 		if (!unref(hasIncomeSources)) return;
 
 		if (await validateForm()) {
@@ -43,7 +48,7 @@ export function useIncomeSourceForm() {
 
 		resetValidationForm();
 
-		setStep(WelcomeStepsType.SAVED_FUNDS);
+		onContinue?.();
 	};
 
 	const addSubmitHandler = async () => {
@@ -58,6 +63,8 @@ export function useIncomeSourceForm() {
 			incomeSourceFormData.value = { ...initialIncomeSourceFormControls };
 
 			await fetchIncomeSources({ force: true, quite: true });
+
+			onAdd?.();
 		}
 	};
 
@@ -71,6 +78,6 @@ export function useIncomeSourceForm() {
 		isLoading,
 		isLoadingCurrencies,
 		addSubmitHandler,
-		continueHandler
+		submitHandler
 	};
 }
