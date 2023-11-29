@@ -1,10 +1,11 @@
 import { TInitialSavedFundsFormData } from '@/modules/savedFunds/domain';
+import { trimString } from '@/shared/utils';
 
 export function mappingSavedFundsFormData(
 	formData: TInitialSavedFundsFormData
 ): TInitialSavedFundsFormData {
 	return {
 		...formData,
-		amount: formData.amount.replaceAll(' ', '')
+		amount: trimString(formData.amount)
 	};
 }

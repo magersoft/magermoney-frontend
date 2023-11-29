@@ -9,17 +9,13 @@ import {
 import {
 	AppAmountInput,
 	AppCombobox,
-	AppFormNavigation
+	AppFormActionButtons
 } from '@/shared/ui/components';
+import { AppFormEvents, AppFormProps } from '@/shared/ui/composables';
 
-interface IncomeSourceFormProps {
-	readonly hasSubmitButton?: boolean;
-	readonly hasBackButton?: boolean;
-	readonly hasAddButton?: boolean;
-	readonly hideFormNavigation?: boolean;
-}
+interface IncomeSourceFormProps extends AppFormProps {}
 
-interface IncomeSourceFormEvents {
+interface IncomeSourceFormEvents extends AppFormEvents {
 	(event: 'click:add'): void;
 	(event: 'click:submit'): void;
 }
@@ -27,7 +23,10 @@ interface IncomeSourceFormEvents {
 defineProps<IncomeSourceFormProps>();
 const emit = defineEmits<IncomeSourceFormEvents>();
 
+useInitIncomeSourcesForm();
+
 const { t } = useI18n();
+
 const {
 	formRef,
 	incomeSourceFormData,
@@ -41,10 +40,8 @@ const {
 	submitHandler
 } = useIncomeSourceForm({
 	onAdd: () => emit('click:add'),
-	onContinue: () => emit('click:submit')
+	onSubmit: () => emit('click:submit')
 });
-
-useInitIncomeSourcesForm();
 </script>
 
 <template>
@@ -53,19 +50,19 @@ useInitIncomeSourcesForm();
 		:class="$style['income-source-form']"
 		@submit="submitHandler"
 	>
-		<h2 class="cell-title">{{ t('welcome.incomeSource.title') }}</h2>
+		<h2 class="cell-title">{{ t('incomeSource.title') }}</h2>
 		<p class="cell-description">
-			{{ t('welcome.incomeSource.description') }}
+			{{ t('incomeSource.description') }}
 		</p>
 		<van-cell-group inset>
 			<app-combobox
 				v-model="incomeSourceFormData.title"
 				name="title"
-				:label="t('welcome.incomeSource.source')"
-				:placeholder="t('welcome.incomeSource.selectIncome')"
-				:enter-label="t('welcome.incomeSource.name')"
-				:enter-placeholder="t('welcome.incomeSource.enterIncome')"
-				:custom-title="t('welcome.incomeSource.other')"
+				:label="t('incomeSource.source')"
+				:placeholder="t('incomeSource.selectIncome')"
+				:enter-label="t('incomeSource.name')"
+				:enter-placeholder="t('incomeSource.enterIncome')"
+				:custom-title="t('incomeSource.other')"
 				:error="hasServerError"
 				:error-message="errorMessages"
 				:rules="[{ required: true, message: t('validation.required') }]"
@@ -76,13 +73,13 @@ useInitIncomeSourcesForm();
 				v-model="incomeSourceFormData.amount"
 				v-model:currency="incomeSourceFormData.currency"
 				name="amount"
-				:label="t('welcome.incomeSource.amount')"
-				:placeholder="t('welcome.incomeSource.enterAmount')"
+				:label="t('incomeSource.amount')"
+				:placeholder="t('incomeSource.enterAmount')"
 				:currencies="currenciesItems"
 				:error="hasServerError"
 				:error-message="errorMessages"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:disabled="isLoading"
+				:readonly="isLoading"
 				:loading="isLoadingCurrencies"
 				show-currencies
 				enable-keyboard
@@ -90,12 +87,12 @@ useInitIncomeSourcesForm();
 			/>
 		</van-cell-group>
 
-		<app-form-navigation
-			v-if="!hideFormNavigation"
+		<app-form-action-buttons
+			v-if="!hideFormActionButtons"
 			:has-add-button="hasAddButton"
 			:has-submit-button="hasSubmitButton && hasIncomeSources"
 			:submit-text="t('continue')"
-			:is-loading="isLoading"
+			:loading="isLoading"
 			@click:add="addSubmitHandler"
 			@click:submit="submitHandler"
 		/>

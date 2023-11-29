@@ -15,9 +15,9 @@ const {
 
 <template>
 	<van-list v-if="hasIncomeSources">
-		<h2 class="cell-title">{{ t('welcome.incomeSource.sourceOfIncome') }}</h2>
+		<h2 class="cell-title">{{ t('incomeSource.sourceOfIncome') }}</h2>
 		<p class="cell-description">
-			{{ t('welcome.incomeSource.sourceOfIncomeDescription') }}
+			{{ t('incomeSource.sourceOfIncomeDescription') }}
 		</p>
 		<van-swipe-cell
 			v-for="incomeSource of incomeSources"

@@ -15,6 +15,7 @@ interface AppComboboxProps {
 	readonly items?: PickerColumn;
 	readonly rules?: FieldRule[];
 	readonly disabled?: boolean;
+	readonly readonly?: boolean;
 }
 
 interface AppComboboxEvents {
@@ -78,6 +79,7 @@ const onChangeCustomValue = () => {
 		:label="enterLabel"
 		:placeholder="enterPlaceholder"
 		:disabled="disabled"
+		:readonly="readonly"
 		:rules="rules"
 		@blur="onChangeCustomValue"
 	/>

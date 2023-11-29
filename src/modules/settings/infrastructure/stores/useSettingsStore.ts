@@ -10,7 +10,8 @@ const settingsStore = defineStore('settings', {
 	persist: true,
 	state: (): NSettings.IState => ({
 		theme: appConfig.defaultTheme as ConfigProviderTheme,
-		lang: appConfig.defaultLanguage
+		lang: appConfig.defaultLanguage,
+		currency: appConfig.defaultCurrency
 	}),
 	actions: {
 		setTheme(theme: ConfigProviderTheme) {
@@ -18,6 +19,9 @@ const settingsStore = defineStore('settings', {
 		},
 		setLang(lang: string) {
 			this.lang = lang;
+		},
+		setCurrency(currency: string) {
+			this.currency = currency;
 		}
 	}
 });

@@ -9,6 +9,7 @@ export default {
 	save: 'Save',
 	removing: 'Removing',
 	cancel: 'Cancel',
+	done: 'Done',
 	removedSuccessfully: 'Removed successfully',
 	removedFailed: 'Removed failed',
 	confirmRemoveContent: 'Are you sure you want to delete {entityName}?',
@@ -23,46 +24,55 @@ export default {
 		authCodeFromEmail: 'email',
 		logout: 'Logout'
 	},
-	welcome: {
-		incomeSource: {
-			title: 'Sources of monthly income',
-			description:
-				'Indicate your monthly income, this could be your salary, pension, deposits, etc.',
-			stepName: 'Income',
-			source: 'Source',
-			selectIncome: 'Select source of income',
-			name: 'Name',
-			enterIncome: 'Enter name of income',
-			other: 'Other',
-			amount: 'Amount',
-			enterAmount: 'Enter amount',
-			sourceOfIncome: 'Source of income',
-			sourceOfIncomeDescription:
-				'You can edit or delete income sources by swiping',
-			removeTitle: 'Remove income source'
-		},
-		savedFunds: {
-			title: 'Saved funds',
-			description:
-				'Indicate your savings, this could be your savings, deposits, etc.',
-			stepName: 'Saved',
-			source: 'Storage',
-			selectSaved: 'Select storage of fund',
-			name: 'Name',
-			enterSaved: 'Enter name of fund',
-			other: 'Other',
-			amount: 'Amount',
-			enterAmount: 'Enter amount',
-			sourceOfSaved: 'Storage of fund',
-			sourceOfSavedDescription: 'You can delete storage of funds by swiping',
-			removeTitle: 'Remove saved fund'
-		},
-		accumulationFunds: {
-			stepName: 'Accumulation'
-		},
-		monthlyExpense: {
-			stepName: 'Expenses'
-		}
+	incomeSource: {
+		title: 'Sources of monthly income',
+		description:
+			'Indicate your monthly income, this could be your salary, pension, deposits, etc.',
+		stepName: 'Income',
+		source: 'Source',
+		selectIncome: 'Select source of income',
+		name: 'Name',
+		enterIncome: 'Enter name of income',
+		other: 'Other',
+		amount: 'Amount',
+		enterAmount: 'Enter amount',
+		sourceOfIncome: 'Source of income',
+		sourceOfIncomeDescription:
+			'You can edit or delete income sources by swiping',
+		removeTitle: 'Remove income source'
+	},
+	savedFunds: {
+		title: 'Saved funds',
+		description:
+			'Indicate your savings, this could be your savings, deposits, etc.',
+		stepName: 'Saved',
+		source: 'Storage',
+		selectSaved: 'Select storage of fund',
+		name: 'Name',
+		enterSaved: 'Enter name of fund',
+		other: 'Other',
+		amount: 'Amount',
+		enterAmount: 'Enter amount',
+		sourceOfSaved: 'Storage of fund',
+		sourceOfSavedDescription: 'You can delete storage of funds by swiping',
+		removeTitle: 'Remove saved fund'
+	},
+	accumulationFunds: {
+		title: 'Accumulation funds',
+		description:
+			'Specify the percentage or amount that you want to save each month',
+		percent: 'Percent',
+		percentPlaceholder: 'Percent of income',
+		amount: 'Amount',
+		amountPlaceholder: 'Amount of income',
+		stepName: 'Accumulation',
+		percentOfMonthlyIncome: 'Percent of monthly income',
+		balanceInMonth: 'Balance',
+		balanceAccumulationInMonth: 'Balance accumulation',
+		removeTitle: 'Remove accumulation fund'
+	},
+	monthlyExpense: {
+		stepName: 'Expenses'
 	},
 	settings: {
 		app: 'Application settings',

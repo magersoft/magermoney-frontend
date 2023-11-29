@@ -1,24 +1,32 @@
 <script setup lang="ts">
-import { MaskOptions, vMaska } from 'maska';
+import { MaskInputOptions, vMaska } from 'maska';
 import { FieldRule, PickerColumn } from 'vant';
 import { PickerConfirmEventParams } from 'vant/es/picker/types';
 import { Numeric } from 'vant/lib/utils';
 import { useI18n } from 'vue-i18n';
 
+import {
+	maskAmount,
+	maskPercent
+} from '@/shared/ui/components/AppAmountInput/constants';
+
 interface AppAmountInputProps {
 	readonly label?: string;
 	readonly name?: string;
 	readonly placeholder?: string;
-	readonly currency: string;
+	readonly currency?: string;
 	readonly modelValue: string;
 	readonly currencies?: PickerColumn;
 	readonly error?: boolean;
 	readonly errorMessage?: string;
 	readonly disabled?: boolean;
+	readonly readonly?: boolean;
 	readonly loading?: boolean;
 	readonly showCurrencies?: boolean;
 	readonly enableKeyboard?: boolean;
+	readonly isPercent?: boolean;
 	readonly rules?: FieldRule[];
+	readonly confirmKeyboardButtonText?: string;
 }
 
 interface AppAmountInputEvents {
@@ -48,6 +56,8 @@ const internalCurrency = computed({
 		return props.currency;
 	},
 	set(value) {
+		if (!value) return;
+
 		emit('update:currency', value);
 	}
 });
@@ -75,16 +85,9 @@ const onCloseKeyboard = () => {
 	emit('add');
 };
 
-const amountMask: MaskOptions = reactive({
-	mask: '9 99#',
-	tokens: {
-		'9': {
-			pattern: /[0-9]/,
-			repeated: true
-		}
-	},
-	reversed: true
-});
+const amountMask: MaskInputOptions = reactive(
+	props.isPercent ? maskPercent : maskAmount
+);
 </script>
 
 <template>
@@ -99,11 +102,14 @@ const amountMask: MaskOptions = reactive({
 		:error-message="errorMessage"
 		:rules="rules"
 		:disabled="disabled"
+		:readonly="readonly"
 		:class="$style['app-amount-input']"
 		@focus="showKeyboard = true"
 	>
-		<template v-if="showCurrencies" #button>
+		<template #button>
+			<slot name="append" />
 			<div
+				v-if="showCurrencies"
 				:class="$style['app-amount-input__currency']"
 				@click="showPicker = true"
 			>
@@ -120,7 +126,7 @@ const amountMask: MaskOptions = reactive({
 				v-model="internalValue"
 				:show="showKeyboard"
 				theme="custom"
-				:close-button-text="t('add')"
+				:close-button-text="confirmKeyboardButtonText || t('add')"
 				@blur="showKeyboard = false"
 				@close="onCloseKeyboard"
 			/>

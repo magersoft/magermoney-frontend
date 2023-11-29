@@ -10,13 +10,10 @@ import {
 import { useSavedFundsStore } from '@/modules/savedFunds/infrastructure/stores';
 import { mappingSavedFundsFormData } from '@/modules/savedFunds/ui/components/SavedFundsForm/utils';
 import { useForm } from '@/shared/features';
+import { ActionButtonsEventListeners } from '@/shared/ui/components';
 import { cloneDeep } from '@/shared/utils';
 
-interface UseSavedFundsFormParams {
-	onAdd?: () => void;
-	onSubmit?: () => void;
-	onBack?: () => void;
-}
+interface UseSavedFundsFormParams extends ActionButtonsEventListeners {}
 
 export function useSavedFundsForm({
 	onAdd,

@@ -60,7 +60,16 @@ export const useApiFetch = () => {
 		}
 	});
 
+	const getUrlWithQueryParams = (
+		url: string,
+		params: Record<string, string>
+	) => {
+		const urlSearchParams = new URLSearchParams(params);
+		return `${url}?${urlSearchParams.toString()}`;
+	};
+
 	return {
-		fetch
+		fetch,
+		getUrlWithQueryParams
 	};
 };

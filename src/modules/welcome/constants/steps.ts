@@ -1,23 +1,24 @@
 export enum WelcomeStepsType {
 	INCOME_SOURCES,
 	SAVED_FUNDS,
-	ACCUMULATION_FUNDS
+	ACCUMULATION_FUNDS,
+	MONTHLY_EXPENSES
 }
 
 export const welcomeSteps = [
 	{
-		title: 'welcome.incomeSource.stepName',
+		title: 'incomeSource.stepName',
 		type: WelcomeStepsType.INCOME_SOURCES
 	},
 	{
-		title: 'welcome.savedFunds.stepName',
+		title: 'savedFunds.stepName',
 		type: WelcomeStepsType.SAVED_FUNDS
 	},
 	{
-		title: 'welcome.accumulationFunds.stepName',
+		title: 'accumulationFunds.stepName',
 		type: WelcomeStepsType.ACCUMULATION_FUNDS
 	},
-	{ title: 'welcome.monthlyExpense.stepName', type: 3 }
+	{ title: 'monthlyExpense.stepName', type: WelcomeStepsType.MONTHLY_EXPENSES }
 ];
 
 export const stepsComponents: Record<WelcomeStepsType, any> = {
@@ -37,6 +38,12 @@ export const stepsComponents: Record<WelcomeStepsType, any> = {
 		() =>
 			import(
 				'@/modules/welcome/ui/components/WelcomeAccumulationFundsStep/WelcomeAccumulationFundsStep.vue'
+			)
+	),
+	[WelcomeStepsType.MONTHLY_EXPENSES]: defineAsyncComponent(
+		() =>
+			import(
+				'@/modules/welcome/ui/components/WelcomeMonthlyExpensesStep/WelcomeMonthlyExpensesStep.vue'
 			)
 	)
 };

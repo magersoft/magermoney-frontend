@@ -130,6 +130,20 @@ export interface UpdateAccumulationFundDto {
 	percent?: number;
 }
 
+export interface PercentByAmountDto {
+	percent: number;
+	currency: string;
+	balance: number;
+	amount: number;
+}
+
+export interface AmountByPercentDto {
+	amount: number;
+	currency: string;
+	balance: number;
+	percent: number;
+}
+
 export interface CalculationsControllerGetPercentByAmountParams {
 	value: string;
 	currency: string;

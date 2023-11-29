@@ -5,4 +5,4 @@ export * from './AppHeader';
 export * from './AppLoading';
 export * from './AppCombobox';
 export * from './AppAmountInput';
-export * from './AppFormNavigation';
+export * from './AppFormActionButtons';

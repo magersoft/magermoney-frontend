@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import AccumulationFundsForm from '@/modules/accumulationFunds/ui/components/AccumulationFundsForm/AccumulationFundsForm.vue';
+import {
+	AccumulationFundsBalance,
+	AccumulationFundsCircle,
+	AccumulationFundsForm
+} from '@/modules/accumulationFunds/ui/components';
 import { useWelcomeSteps } from '@/modules/welcome';
 import { WelcomeStepsType } from '@/modules/welcome/constants';
+import { useWelcomeAccumulationFundsStep } from '@/modules/welcome/ui/components/WelcomeAccumulationFundsStep/features';
 
+const { isLoading, onRefresh } = useWelcomeAccumulationFundsStep();
 const { setStep } = useWelcomeSteps();
 </script>
 
 <template>
-	<van-pull-refresh>
+	<van-pull-refresh :model-value="isLoading" @refresh="onRefresh">
 		<accumulation-funds-form
-			has-add-button
 			has-submit-button
 			has-back-button
 			@click:back="setStep(WelcomeStepsType.SAVED_FUNDS)"
 		/>
+		<accumulation-funds-circle />
+		<accumulation-funds-balance />
 	</van-pull-refresh>
 </template>

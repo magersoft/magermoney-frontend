@@ -9,17 +9,13 @@ import {
 import {
 	AppAmountInput,
 	AppCombobox,
-	AppFormNavigation
+	AppFormActionButtons
 } from '@/shared/ui/components';
+import { AppFormEvents, AppFormProps } from '@/shared/ui/composables';
 
-interface SavedFundsFormProps {
-	readonly hasSubmitButton?: boolean;
-	readonly hasBackButton?: boolean;
-	readonly hasAddButton?: boolean;
-	readonly hideFormNavigation?: boolean;
-}
+interface SavedFundsFormProps extends AppFormProps {}
 
-interface SavedFundsFormEvents {
+interface SavedFundsFormEvents extends AppFormEvents {
 	(event: 'click:add'): void;
 	(event: 'click:submit'): void;
 	(event: 'click:back'): void;
@@ -27,6 +23,8 @@ interface SavedFundsFormEvents {
 
 defineProps<SavedFundsFormProps>();
 const emit = defineEmits<SavedFundsFormEvents>();
+
+useInitSavedFundsForm();
 
 const { t } = useI18n();
 
@@ -47,8 +45,6 @@ const {
 	onSubmit: () => emit('click:submit'),
 	onBack: () => emit('click:back')
 });
-
-useInitSavedFundsForm();
 </script>
 
 <template>
@@ -57,19 +53,19 @@ useInitSavedFundsForm();
 		:class="$style['saved-funds-form']"
 		@submit="submitHandler"
 	>
-		<h2 class="cell-title">{{ t('welcome.savedFunds.title') }}</h2>
+		<h2 class="cell-title">{{ t('savedFunds.title') }}</h2>
 		<p class="cell-description">
-			{{ t('welcome.savedFunds.description') }}
+			{{ t('savedFunds.description') }}
 		</p>
 		<van-cell-group inset>
 			<app-combobox
 				v-model="savedFundsFormData.source"
 				name="source"
-				:label="t('welcome.savedFunds.source')"
-				:placeholder="t('welcome.savedFunds.selectSaved')"
-				:enter-label="t('welcome.savedFunds.name')"
-				:enter-placeholder="t('welcome.savedFunds.enterSaved')"
-				:custom-title="t('welcome.savedFunds.other')"
+				:label="t('savedFunds.source')"
+				:placeholder="t('savedFunds.selectSaved')"
+				:enter-label="t('savedFunds.name')"
+				:enter-placeholder="t('savedFunds.enterSaved')"
+				:custom-title="t('savedFunds.other')"
 				:error="hasServerError"
 				:error-message="errorMessages"
 				:rules="[{ required: true, message: t('validation.required') }]"
@@ -80,13 +76,13 @@ useInitSavedFundsForm();
 				v-model="savedFundsFormData.amount"
 				v-model:currency="savedFundsFormData.currency"
 				name="amount"
-				:label="t('welcome.savedFunds.amount')"
-				:placeholder="t('welcome.savedFunds.enterAmount')"
+				:label="t('savedFunds.amount')"
+				:placeholder="t('savedFunds.enterAmount')"
 				:currencies="currenciesItems"
 				:error="hasServerError"
 				:error-message="errorMessages"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:disabled="isLoading"
+				:readonly="isLoading"
 				:loading="isLoadingCurrencies"
 				show-currencies
 				enable-keyboard
@@ -94,13 +90,13 @@ useInitSavedFundsForm();
 			/>
 		</van-cell-group>
 
-		<app-form-navigation
-			v-if="!hideFormNavigation"
+		<app-form-action-buttons
+			v-if="!hideFormActionButtons"
 			:has-add-button="hasAddButton"
 			:has-back-button="hasBackButton"
 			:has-submit-button="hasSubmitButton && hasSavedFunds"
 			:submit-text="t('continue')"
-			:is-loading="isLoading"
+			:loading="isLoading"
 			@click:add="addSubmitHandler"
 			@click:submit="submitHandler"
 			@click:back="backHandler"

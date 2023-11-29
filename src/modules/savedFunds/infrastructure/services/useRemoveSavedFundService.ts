@@ -6,7 +6,7 @@ export function useRemoveSavedFundService() {
 
 	const { confirmRemove: removeSavedFund } = useBaseRemove({
 		handleRemove: remove,
-		title: 'welcome.savedFunds.removeTitle',
+		title: 'savedFunds.removeTitle',
 		entityTitle: (entityName) => `«${entityName}»`
 	});
 

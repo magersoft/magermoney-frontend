@@ -1,5 +1,6 @@
 import { useCurrencies } from '@/modules/currencies';
 import { useForm } from '@/shared/features';
+import { ActionButtonsEventListeners } from '@/shared/ui/components';
 import { cloneDeep } from '@/shared/utils';
 
 import {
@@ -13,14 +14,11 @@ import {
 import { useIncomeSourcesStore } from '../../../../infrastructure/stores';
 import { mappingIncomeSourceFormData } from '../utils';
 
-interface UseIncomeSourceFormParams {
-	onAdd?: () => void;
-	onContinue?: () => void;
-}
+interface UseIncomeSourceFormParams extends ActionButtonsEventListeners {}
 
 export function useIncomeSourceForm({
 	onAdd,
-	onContinue
+	onSubmit
 }: UseIncomeSourceFormParams = {}) {
 	const incomeSourceFormData = ref<TInitialIncomeSourceFormData>(
 		cloneDeep(initialIncomeSourceFormControls)
@@ -48,7 +46,7 @@ export function useIncomeSourceForm({
 
 		resetValidationForm();
 
-		onContinue?.();
+		onSubmit?.();
 	};
 
 	const addSubmitHandler = async () => {

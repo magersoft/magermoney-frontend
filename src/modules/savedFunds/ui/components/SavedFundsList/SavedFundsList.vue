@@ -12,10 +12,10 @@ const { savedFunds, hasSavedFunds, formatAmountWithCurrency, handleRemove } =
 <template>
 	<van-list v-if="hasSavedFunds">
 		<h2 class="cell-title">
-			{{ t('welcome.savedFunds.sourceOfSaved') }}
+			{{ t('savedFunds.sourceOfSaved') }}
 		</h2>
 		<p class="cell-description">
-			{{ t('welcome.savedFunds.sourceOfSavedDescription') }}
+			{{ t('savedFunds.sourceOfSavedDescription') }}
 		</p>
 		<van-swipe-cell v-for="savedFund of savedFunds" :key="savedFund.id">
 			<van-cell

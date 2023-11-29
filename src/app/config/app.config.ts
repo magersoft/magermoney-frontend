@@ -5,6 +5,7 @@ export default {
 	fallbackLanguage: 'en-US',
 	defaultCurrency: 'RUB',
 	defaultTheme: 'dark',
+	debounceDelay: 1000,
 	availableLanguages: [
 		{
 			name: 'Русский',

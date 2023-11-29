@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
-interface AppFormNavigationProps {
+interface AppFormActionButtonsProps {
 	readonly hasAddButton?: boolean;
 	readonly hasBackButton?: boolean;
 	readonly hasSubmitButton?: boolean;
 	readonly addText?: string;
 	readonly backText?: string;
 	readonly submitText?: string;
-	readonly isLoading?: boolean;
+	readonly loading?: boolean;
+	readonly disabled?: boolean;
 }
 
-interface AppFormNavigationEvents {
+interface AppFormActionButtonsEvents {
 	(event: 'click:add'): void;
 	(event: 'click:submit'): void;
 	(event: 'click:back'): void;
 }
 
-withDefaults(defineProps<AppFormNavigationProps>(), {
+withDefaults(defineProps<AppFormActionButtonsProps>(), {
 	hasSubmitButton: true,
 	hasBackButton: false,
 	hasAddButton: false,
@@ -25,26 +26,29 @@ withDefaults(defineProps<AppFormNavigationProps>(), {
 	backText: '',
 	submitText: ''
 });
-const emit = defineEmits<AppFormNavigationEvents>();
+const emit = defineEmits<AppFormActionButtonsEvents>();
 
 const { t } = useI18n();
 </script>
 
 <template>
-	<van-cell-group inset :class="$style['app-form-navigation']">
+	<van-cell-group inset :class="$style['app-form-action-buttons']">
+		<slot name="prepend" />
+
 		<van-button
 			v-if="hasAddButton"
-			:disabled="isLoading"
+			:disabled="loading || disabled"
 			size="small"
 			icon="plus"
 			@click="() => emit('click:add')"
 		>
 			{{ addText || t('add') }}
 		</van-button>
-		<div :class="$style['app-form-navigation__actions']">
+
+		<div :class="$style['app-form-action-buttons__actions']">
 			<van-button
 				v-if="hasBackButton"
-				:disabled="isLoading"
+				:disabled="loading || disabled"
 				size="small"
 				icon="arrow-left"
 				@click="() => emit('click:back')"
@@ -53,7 +57,7 @@ const { t } = useI18n();
 			</van-button>
 			<van-button
 				v-if="hasSubmitButton"
-				:disabled="isLoading"
+				:disabled="loading || disabled"
 				size="small"
 				type="primary"
 				@click="() => emit('click:submit')"
@@ -61,9 +65,11 @@ const { t } = useI18n();
 				{{ submitText || t('save') }}
 			</van-button>
 		</div>
+
+		<slot name="append" />
 	</van-cell-group>
 </template>
 
 <style module lang="scss">
-@import './styles/AppFormNavigation.module';
+@import './styles/AppFormActionButtons.module';
 </style>

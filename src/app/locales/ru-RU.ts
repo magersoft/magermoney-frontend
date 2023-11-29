@@ -9,6 +9,7 @@ export default {
 	save: 'Сохранить',
 	removing: 'Удаление',
 	cancel: 'Отмена',
+	done: 'OK',
 	removedSuccessfully: 'Удалено успешно',
 	removedFailed: 'Не удалось удалить',
 	confirmRemoveContent: 'Вы уверены, что хотите удалить {entityName}?',
@@ -23,45 +24,54 @@ export default {
 		authCodeFromEmail: 'почты',
 		logout: 'Выйти'
 	},
-	welcome: {
-		incomeSource: {
-			title: 'Источники ежемесячного дохода',
-			description:
-				'Укажите ваши ежемесячные доходы, это может быть ваша зарплата, пенсия, вклады и т.д.',
-			stepName: 'Доходы',
-			source: 'Источник',
-			selectIncome: 'Выберите источник дохода',
-			name: 'Название',
-			enterIncome: 'Введите название дохода',
-			other: 'Другое',
-			amount: 'Сумма',
-			enterAmount: 'Введите сумму',
-			sourceOfIncome: 'Источники дохода',
-			sourceOfIncomeDescription: 'Вы можете удалять источники дохода свайпом',
-			removeTitle: 'Удалить источник дохода'
-		},
-		savedFunds: {
-			title: 'Накопленные средства',
-			description:
-				'Укажите ваши накопления, это могут быть ваши сбережения, вклады и т.д.',
-			stepName: 'Накопления',
-			source: 'Место',
-			selectSaved: 'Выберите место хранения',
-			name: 'Название',
-			enterSaved: 'Введите название',
-			other: 'Другое',
-			amount: 'Сумма',
-			enterAmount: 'Введите сумму',
-			sourceOfSaved: 'Места хранения',
-			sourceOfSavedDescription: 'Вы можете удалять места хранения свайпом',
-			removeTitle: 'Удалить накопление'
-		},
-		accumulationFunds: {
-			stepName: 'Сохранение'
-		},
-		monthlyExpense: {
-			stepName: 'Расходы'
-		}
+	incomeSource: {
+		title: 'Источники ежемесячного дохода',
+		description:
+			'Укажите ваши ежемесячные доходы, это может быть ваша зарплата, пенсия, вклады и т.д.',
+		stepName: 'Доходы',
+		source: 'Источник',
+		selectIncome: 'Выберите источник дохода',
+		name: 'Название',
+		enterIncome: 'Введите название дохода',
+		other: 'Другое',
+		amount: 'Сумма',
+		enterAmount: 'Введите сумму',
+		sourceOfIncome: 'Источники дохода',
+		sourceOfIncomeDescription: 'Вы можете удалять источники дохода свайпом',
+		removeTitle: 'Удалить источник дохода'
+	},
+	savedFunds: {
+		title: 'Накопленные средства',
+		description:
+			'Укажите ваши накопления, это могут быть ваши сбережения, вклады и т.д.',
+		stepName: 'Накопления',
+		source: 'Место',
+		selectSaved: 'Выберите место хранения',
+		name: 'Название',
+		enterSaved: 'Введите название',
+		other: 'Другое',
+		amount: 'Сумма',
+		enterAmount: 'Введите сумму',
+		sourceOfSaved: 'Места хранения',
+		sourceOfSavedDescription: 'Вы можете удалять места хранения свайпом',
+		removeTitle: 'Удалить накопление'
+	},
+	accumulationFunds: {
+		title: 'Сохранение',
+		description:
+			'Укажите процент или сумму, которую вы хотите откладывать каждый месяц',
+		percent: 'Процент',
+		percentPlaceholder: 'Процент от дохода',
+		amount: 'Сумма',
+		amountPlaceholder: 'Сумма от дохода',
+		stepName: 'Сохранение',
+		percentOfMonthlyIncome: 'Процент от ежемесячного дохода',
+		balanceInMonth: 'Остаток средств',
+		balanceAccumulationInMonth: 'Остаток накоплений',
+		removeTitle: 'Удалить сохранение'
+	},
+	monthlyExpense: {
+		stepName: 'Расходы'
 	},
 	settings: {
 		app: 'Настойки приложения',

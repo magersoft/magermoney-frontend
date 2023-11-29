@@ -10,6 +10,15 @@ const accumulationFundStore = defineStore('accumulationFund', {
 		accumulationFunds: [],
 		accumulationFund: null
 	}),
+	getters: {
+		accumulationFundsPercent: (state) => {
+			if (!state.accumulationFunds.length) return 0;
+			const [accumulationFund] = state.accumulationFunds;
+
+			return accumulationFund.percent;
+		},
+		hasAccumulationFunds: (state) => !!state.accumulationFunds.length
+	},
 	actions: {
 		setAccumulationFunds(
 			accumulationFunds: NAccumulationFunds.IAccumulationFund[]
