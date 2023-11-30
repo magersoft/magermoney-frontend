@@ -26,7 +26,10 @@ const {
 			<van-cell
 				:title="incomeSource.title"
 				:value="
-					formatAmountWithCurrency(incomeSource.amount, incomeSource.currency)
+					formatAmountWithCurrency(
+						incomeSource.amount,
+						incomeSource.currency.code
+					)
 				"
 			/>
 			<template #right>

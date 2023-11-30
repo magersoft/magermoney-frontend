@@ -65,6 +65,13 @@ export interface CreateIncomeSourceDto {
 	currency: string;
 }
 
+export interface CurrencyEntity {
+	id: number;
+	symbol: string;
+	name: string;
+	code: string;
+}
+
 export interface IncomeSourceEntity {
 	id: number;
 	/** @format date-time */
@@ -74,8 +81,9 @@ export interface IncomeSourceEntity {
 	title: string;
 	description?: string | null;
 	amount: number;
-	currency: string;
-	userId?: number | null;
+	currency: CurrencyEntity;
+	currencyId: string;
+	userId: number;
 }
 
 export interface UpdateIncomeSourceDto {
@@ -83,13 +91,6 @@ export interface UpdateIncomeSourceDto {
 	description?: string | null;
 	amount?: number;
 	currency?: string;
-}
-
-export interface CurrencyEntity {
-	id: number;
-	symbol: string;
-	name: string;
-	code: string;
 }
 
 export interface CreateSavedFundDto {
@@ -106,8 +107,9 @@ export interface SavedFundEntity {
 	updatedAt: string;
 	source: string;
 	amount: number;
-	currency: string;
-	userId?: number | null;
+	currency: CurrencyEntity;
+	currencyId: string;
+	userId: number;
 }
 
 export interface UpdateSavedFundDto {

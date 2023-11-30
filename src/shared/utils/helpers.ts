@@ -21,16 +21,3 @@ export function isDate(value: any) {
 export function isWindow(obj: any) {
 	return obj !== null && obj !== undefined && obj === obj.window;
 }
-
-/**
- * Debounce function
- * @param fn
- * @param delay
- */
-export function debounce(fn: (...args: any[]) => any, delay: number) {
-	let timeoutId = 0 as any;
-	return (...args: any[]) => {
-		clearTimeout(timeoutId);
-		timeoutId = setTimeout(() => fn(...args), delay);
-	};
-}

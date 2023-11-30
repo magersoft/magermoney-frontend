@@ -20,7 +20,9 @@ const { savedFunds, hasSavedFunds, formatAmountWithCurrency, handleRemove } =
 		<van-swipe-cell v-for="savedFund of savedFunds" :key="savedFund.id">
 			<van-cell
 				:title="savedFund.source"
-				:value="formatAmountWithCurrency(savedFund.amount, savedFund.currency)"
+				:value="
+					formatAmountWithCurrency(savedFund.amount, savedFund.currency.code)
+				"
 			/>
 			<template #right>
 				<van-button
