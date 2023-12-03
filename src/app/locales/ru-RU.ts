@@ -70,7 +70,19 @@ export default {
 		balanceAccumulationInMonth: 'Остаток накоплений',
 		removeTitle: 'Удалить сохранение'
 	},
-	monthlyExpense: {
+	monthlyExpenses: {
+		title: 'Ежемесячные расходы',
+		description:
+			'Укажите ваши ежемесячные расходы, это может быть аренда, коммунальные платежи, питание и т.д.',
+		expense: 'Расход',
+		name: 'Название',
+		enterName: 'Введите название расхода',
+		amount: 'Сумма',
+		enterAmount: 'Введите сумму',
+		other: 'Другое',
+		selectTitle: 'Выберите категорию расходов',
+		titleOfExpenses: 'Категории расходов',
+		titleOfExpensesDescription: 'Вы можете удалять категории расходов свайпом',
 		stepName: 'Расходы'
 	},
 	settings: {

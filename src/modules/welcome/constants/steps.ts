@@ -18,7 +18,7 @@ export const welcomeSteps = [
 		title: 'accumulationFunds.stepName',
 		type: WelcomeStepsType.ACCUMULATION_FUNDS
 	},
-	{ title: 'monthlyExpense.stepName', type: WelcomeStepsType.MONTHLY_EXPENSES }
+	{ title: 'monthlyExpenses.stepName', type: WelcomeStepsType.MONTHLY_EXPENSES }
 ];
 
 export const stepsComponents: Record<WelcomeStepsType, any> = {

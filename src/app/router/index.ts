@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import { registerRouterLoader } from '@/app/router/routerLoader.ts';
-import { registerRouterMiddleware } from '@/app/router/routerMiddleware.ts';
+import { registerRouterLoader } from '@/app/router/routerLoader';
+import { registerRouterMiddleware } from '@/app/router/routerMiddleware';
 
-import routes from './routes.ts';
+import routes from './routes';
 
 const router = createRouter({
 	history: createWebHistory(),

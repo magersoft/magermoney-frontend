@@ -1,6 +1,7 @@
 import { FieldValidationStatus } from 'vant';
 import type { Ref } from 'vue';
 
+import { useResponseError } from '@/shared/features/useResponseError';
 import { RequestReturnError } from '@/shared/types/api';
 
 export interface ValidatableForm {
@@ -14,6 +15,7 @@ export function useForm<E extends RequestReturnError = RequestReturnError>(
 ) {
 	const formRef = ref<ValidatableForm>();
 	const isValidForm = ref(true);
+	const { showErrorNotify } = useResponseError();
 
 	const hasServerError = computed(
 		() => !!unref(serverError) && unref(serverError)!.message.length > 0
@@ -23,6 +25,10 @@ export function useForm<E extends RequestReturnError = RequestReturnError>(
 
 		const messages = unref(serverError)!.message;
 		return Array.isArray(messages) ? messages.join(', ') : messages;
+	});
+
+	watch(hasServerError, () => {
+		showErrorNotify(unref(errorMessages));
 	});
 
 	const validateForm = async () => {

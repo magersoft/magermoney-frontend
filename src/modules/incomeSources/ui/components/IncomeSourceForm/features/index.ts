@@ -1,2 +1,2 @@
-export * from './useInitIncomeSourcesForm.ts';
-export * from './useIncomeSourceForm.ts';
+export * from './useInitIncomeSourcesForm';
+export * from './useIncomeSourceForm';

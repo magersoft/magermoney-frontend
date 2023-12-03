@@ -1,2 +1,2 @@
-export * from './useAccumulationFundsForm.ts';
-export * from './useInitAccumulationFundsForm.ts';
+export * from './useAccumulationFundsForm';
+export * from './useInitAccumulationFundsForm';

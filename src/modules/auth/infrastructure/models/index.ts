@@ -1,1 +1,1 @@
-export * from './useAuthModel.ts';
+export * from './useAuthModel';

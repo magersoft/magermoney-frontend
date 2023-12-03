@@ -1,4 +1,4 @@
-import appConfig from '@/app/config/app.config.ts';
+import appConfig from '@/app/config/app.config';
 import {
 	initialAccumulationFundsFormControls,
 	TInitialAccumulationFundsFormData
@@ -44,13 +44,8 @@ export function useAccumulationFundsForm({
 		restoreCalculationsStore
 	} = useCalculations();
 
-	const {
-		formRef,
-		hasServerError,
-		errorMessages,
-		validateForm,
-		resetValidationForm
-	} = useForm(error);
+	const { formRef, hasServerError, validateForm, resetValidationForm } =
+		useForm(error);
 
 	const handleSubmit = async () => {
 		if (unref(hasAccumulationFunds)) {
@@ -146,7 +141,6 @@ export function useAccumulationFundsForm({
 		formRef,
 		accumulationFundsFormData,
 		hasServerError,
-		errorMessages,
 		currenciesItems,
 		isLoading,
 		isLoadingCurrencies,

@@ -1,2 +1,2 @@
 export * from './useInitSavedFundsForm';
-export * from './useSavedFundsForm.ts';
+export * from './useSavedFundsForm';

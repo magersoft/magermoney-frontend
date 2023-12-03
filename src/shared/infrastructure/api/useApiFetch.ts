@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { appConfig } from '@/app/config';
 import { AppRoutes } from '@/app/router/constants';
 import { useAuthStore } from '@/modules/auth/infrastructure/stores';
-import { useCatchErrors } from '@/shared/features/useCatchErrors.ts';
+import { useCatchErrors } from '@/shared/features/useCatchErrors';
 
 export const useApiFetch = () => {
 	const router = useRouter();

@@ -1,3 +1,3 @@
-export * from './useResponseError.ts';
-export * from './useForm.ts';
-export * from './useCurrencyFormat.ts';
+export * from './useResponseError';
+export * from './useForm';
+export * from './useCurrencyFormat';

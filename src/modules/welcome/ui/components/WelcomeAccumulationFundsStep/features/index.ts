@@ -1,1 +1,1 @@
-export * from './useWelcomeAccumulationFundsStep.ts';
+export * from './useWelcomeAccumulationFundsStep';

@@ -1,2 +1,2 @@
-export * from './useFetchPercentByAmountService.ts';
-export * from './useFetchAmountByPercentService.ts';
+export * from './useFetchPercentByAmountService';
+export * from './useFetchAmountByPercentService';

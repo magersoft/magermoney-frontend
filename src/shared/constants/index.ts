@@ -1,3 +1,3 @@
-export * from './navigations.ts';
-export * from './messages.ts';
-export * from './serverMessagesError.ts';
+export * from './navigations';
+export * from './messages';
+export * from './serverMessagesError';

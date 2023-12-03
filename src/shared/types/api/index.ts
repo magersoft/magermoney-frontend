@@ -1,2 +1,2 @@
-export * from './ApiFetch.ts';
-export * from './ResponseStatuses.ts';
+export * from './ApiFetch';
+export * from './ResponseStatuses';

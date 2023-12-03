@@ -30,7 +30,6 @@ const {
 	isLoadingCurrencies,
 	isLoadingCalculations,
 	hasServerError,
-	errorMessages,
 	hasAccumulationFunds,
 	handlePercentChange,
 	handleAmountChange,
@@ -62,7 +61,6 @@ const {
 				:label="t('accumulationFunds.percent')"
 				:placeholder="t('accumulationFunds.percentPlaceholder')"
 				:error="hasServerError"
-				:error-message="errorMessages"
 				:readonly="isLoading || isLoadingCalculations"
 				:loading="isLoadingCurrencies"
 				:disabled="hasAccumulationFunds"
@@ -85,7 +83,6 @@ const {
 				:placeholder="t('accumulationFunds.amountPlaceholder')"
 				:currencies="currenciesItems"
 				:error="hasServerError"
-				:error-message="errorMessages"
 				:readonly="isLoading || isLoadingCalculations"
 				:disabled="hasAccumulationFunds"
 				:loading="isLoading || isLoadingCurrencies"

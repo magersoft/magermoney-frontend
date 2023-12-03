@@ -1,1 +1,1 @@
-export * from './useRouterStore.ts';
+export * from './useRouterStore';

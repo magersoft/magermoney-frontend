@@ -1,3 +1,3 @@
-export * from './isEmail.ts';
-export * from './isPhoneNumber.ts';
-export * from './trimString.ts';
+export * from './isEmail';
+export * from './isPhoneNumber';
+export * from './trimString';

@@ -1,1 +1,1 @@
-export * from './useFetchCurrenciesService.ts';
+export * from './useFetchCurrenciesService';

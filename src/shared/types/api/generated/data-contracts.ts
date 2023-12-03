@@ -146,6 +146,31 @@ export interface AmountByPercentDto {
 	percent: number;
 }
 
+export interface CreateMonthlyExpenseDto {
+	title: string;
+	amount: number;
+	currency: string;
+}
+
+export interface MonthlyExpenseEntity {
+	id: number;
+	/** @format date-time */
+	createdAt: string;
+	/** @format date-time */
+	updatedAt: string;
+	title: string;
+	amount: number;
+	currency: CurrencyEntity;
+	currencyId: number;
+	userId: number;
+}
+
+export interface UpdateMonthlyExpenseDto {
+	title?: string;
+	amount?: number;
+	currency?: string;
+}
+
 export interface CalculationsControllerGetPercentByAmountParams {
 	value: string;
 	currency: string;

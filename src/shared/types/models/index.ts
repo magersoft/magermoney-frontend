@@ -1,1 +1,1 @@
-export * from './CRUDModel.ts';
+export * from './CRUDModel';

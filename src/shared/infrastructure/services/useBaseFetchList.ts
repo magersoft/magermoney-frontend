@@ -4,7 +4,7 @@ import {
 } from '@/shared/types/services';
 
 import { RequestReturnError } from '../../types/api';
-import { useBaseFetch } from './useBaseFetch.ts';
+import { useBaseFetch } from './useBaseFetch';
 
 export function useBaseFetchList<T, P extends any[], E = RequestReturnError>({
 	fetchData,

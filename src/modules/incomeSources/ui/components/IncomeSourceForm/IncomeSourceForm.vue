@@ -31,13 +31,12 @@ const {
 	formRef,
 	incomeSourceFormData,
 	hasServerError,
-	errorMessages,
 	hasIncomeSources,
 	currenciesItems,
 	isLoading,
 	isLoadingCurrencies,
-	addSubmitHandler,
-	submitHandler
+	handleAddSubmit,
+	handleSubmit
 } = useIncomeSourceForm({
 	onAdd: () => emit('click:add'),
 	onSubmit: () => emit('click:submit')
@@ -48,7 +47,7 @@ const {
 	<van-form
 		ref="formRef"
 		:class="$style['income-source-form']"
-		@submit="submitHandler"
+		@submit="handleSubmit"
 	>
 		<h2 class="cell-title">{{ t('incomeSource.title') }}</h2>
 		<p class="cell-description">
@@ -64,7 +63,6 @@ const {
 				:enter-placeholder="t('incomeSource.enterIncome')"
 				:custom-title="t('incomeSource.other')"
 				:error="hasServerError"
-				:error-message="errorMessages"
 				:rules="[{ required: true, message: t('validation.required') }]"
 				:disabled="isLoading"
 				:items="incomeSourcesTypes"
@@ -77,13 +75,12 @@ const {
 				:placeholder="t('incomeSource.enterAmount')"
 				:currencies="currenciesItems"
 				:error="hasServerError"
-				:error-message="errorMessages"
 				:rules="[{ required: true, message: t('validation.required') }]"
 				:readonly="isLoading"
 				:loading="isLoadingCurrencies"
 				show-currencies
 				enable-keyboard
-				@add="addSubmitHandler"
+				@add="handleAddSubmit"
 			/>
 		</van-cell-group>
 
@@ -93,8 +90,8 @@ const {
 			:has-submit-button="hasSubmitButton && hasIncomeSources"
 			:submit-text="t('continue')"
 			:loading="isLoading"
-			@click:add="addSubmitHandler"
-			@click:submit="submitHandler"
+			@click:add="handleAddSubmit"
+			@click:submit="handleSubmit"
 		/>
 
 		<slot />

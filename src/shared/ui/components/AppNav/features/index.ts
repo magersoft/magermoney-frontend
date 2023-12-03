@@ -1,1 +1,1 @@
-export * from './useAppNav.ts';
+export * from './useAppNav';

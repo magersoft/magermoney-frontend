@@ -1,1 +1,1 @@
-export * from './useSettingsStore.ts';
+export * from './useSettingsStore';

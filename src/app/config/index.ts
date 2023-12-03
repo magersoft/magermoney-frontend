@@ -1,1 +1,1 @@
-export { default as appConfig } from './app.config.ts';
+export { default as appConfig } from './app.config';

@@ -1,1 +1,1 @@
-export * from './useCurrencies.ts';
+export * from './useCurrencies';

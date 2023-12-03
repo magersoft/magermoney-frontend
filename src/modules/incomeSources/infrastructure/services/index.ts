@@ -1,3 +1,3 @@
-export * from './useFetchIncomeSourcesService.ts';
-export * from './useCreateIncomeSourceService.ts';
-export * from './useRemoveIncomeSourceService.ts';
+export * from './useFetchIncomeSourcesService';
+export * from './useCreateIncomeSourceService';
+export * from './useRemoveIncomeSourceService';

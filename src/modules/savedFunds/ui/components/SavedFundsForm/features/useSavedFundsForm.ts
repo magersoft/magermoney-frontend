@@ -28,19 +28,14 @@ export function useSavedFundsForm({
 	const { isLoading, error } = useSavedFundsStore();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 
-	const {
-		formRef,
-		hasServerError,
-		errorMessages,
-		validateForm,
-		resetValidationForm
-	} = useForm(error);
+	const { formRef, hasServerError, validateForm, resetValidationForm } =
+		useForm(error);
 
-	const submitHandler = async () => {
+	const handleSubmit = async () => {
 		if (!unref(hasSavedFunds)) return;
 
 		if (await validateForm()) {
-			await addSubmitHandler();
+			await handleAddSubmit();
 		}
 
 		resetValidationForm();
@@ -48,7 +43,7 @@ export function useSavedFundsForm({
 		onSubmit?.();
 	};
 
-	const addSubmitHandler = async () => {
+	const handleAddSubmit = async () => {
 		if (!(await validateForm())) return;
 
 		const response = await createSavedFund(
@@ -67,7 +62,7 @@ export function useSavedFundsForm({
 		}
 	};
 
-	const backHandler = () => {
+	const handleBack = () => {
 		resetValidationForm();
 
 		onBack?.();
@@ -77,13 +72,12 @@ export function useSavedFundsForm({
 		formRef,
 		savedFundsFormData,
 		hasServerError,
-		errorMessages,
 		hasSavedFunds,
 		currenciesItems,
 		isLoading,
 		isLoadingCurrencies,
-		addSubmitHandler,
-		submitHandler,
-		backHandler
+		handleAddSubmit,
+		handleSubmit,
+		handleBack
 	};
 }

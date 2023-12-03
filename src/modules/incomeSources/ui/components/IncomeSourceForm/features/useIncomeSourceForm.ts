@@ -29,19 +29,14 @@ export function useIncomeSourceForm({
 	const { isLoading, error } = useIncomeSourcesStore();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 
-	const {
-		formRef,
-		validateForm,
-		resetValidationForm,
-		hasServerError,
-		errorMessages
-	} = useForm(error);
+	const { formRef, hasServerError, validateForm, resetValidationForm } =
+		useForm(error);
 
-	const submitHandler = async () => {
+	const handleSubmit = async () => {
 		if (!unref(hasIncomeSources)) return;
 
 		if (await validateForm()) {
-			await addSubmitHandler();
+			await handleSubmit();
 		}
 
 		resetValidationForm();
@@ -49,7 +44,7 @@ export function useIncomeSourceForm({
 		onSubmit?.();
 	};
 
-	const addSubmitHandler = async () => {
+	const handleAddSubmit = async () => {
 		if (!(await validateForm())) return;
 
 		const response = await createIncomeSource(
@@ -70,12 +65,11 @@ export function useIncomeSourceForm({
 		formRef,
 		incomeSourceFormData,
 		hasServerError,
-		errorMessages,
 		hasIncomeSources,
 		currenciesItems,
 		isLoading,
 		isLoadingCurrencies,
-		addSubmitHandler,
-		submitHandler
+		handleAddSubmit,
+		handleSubmit
 	};
 }

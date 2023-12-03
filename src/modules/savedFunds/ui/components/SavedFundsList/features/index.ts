@@ -1,1 +1,1 @@
-export * from './useSavedFundsList.ts';
+export * from './useSavedFundsList';

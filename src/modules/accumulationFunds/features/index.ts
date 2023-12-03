@@ -1,1 +1,1 @@
-export * from './useInitAccumulationFunds.ts';
+export * from './useInitAccumulationFunds';

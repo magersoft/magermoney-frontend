@@ -1,1 +1,1 @@
-export * from './useCalculationsModel.ts';
+export * from './useCalculationsModel';

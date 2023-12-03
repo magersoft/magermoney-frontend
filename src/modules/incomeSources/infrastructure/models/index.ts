@@ -1,1 +1,1 @@
-export * from './useIncomeSourcesModel.ts';
+export * from './useIncomeSourcesModel';

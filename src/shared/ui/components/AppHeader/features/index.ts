@@ -1,1 +1,1 @@
-export * from './useAppHeader.ts';
+export * from './useAppHeader';

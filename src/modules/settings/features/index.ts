@@ -1,2 +1,2 @@
-export * from './useTheme.ts';
-export * from './useLanguage.ts';
+export * from './useTheme';
+export * from './useLanguage';

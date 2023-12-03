@@ -3,7 +3,7 @@ import { MaybeRef } from 'vue';
 import {
 	BaseFetchMethod,
 	BaseFetchParams
-} from '@/shared/types/services/BaseFetch.ts';
+} from '@/shared/types/services/BaseFetch';
 
 export interface BaseFetchListParams<T, P extends any[], E = unknown>
 	extends BaseFetchParams<T[], P, E> {

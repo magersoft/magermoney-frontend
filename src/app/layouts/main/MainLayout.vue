@@ -8,7 +8,7 @@ export default {
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 
-import { useInitLayout } from '@/app/layouts/main/features/useInitLayout.ts';
+import { useInitLayout } from '@/app/layouts/main/features/useInitLayout';
 import { AppRoutes } from '@/app/router/constants';
 import { mainNavigations } from '@/shared/constants';
 import { AppHeader, AppNav } from '@/shared/ui/components';

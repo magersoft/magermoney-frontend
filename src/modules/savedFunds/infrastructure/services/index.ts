@@ -1,3 +1,3 @@
-export * from './useFetchSavedFundsService.ts';
-export * from './useCreateSavedFundService.ts';
-export * from './useRemoveSavedFundService.ts';
+export * from './useFetchSavedFundsService';
+export * from './useCreateSavedFundService';
+export * from './useRemoveSavedFundService';

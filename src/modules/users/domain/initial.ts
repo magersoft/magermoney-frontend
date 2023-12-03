@@ -1,6 +1,6 @@
 import { fetchStateInitialState } from '@/shared/domain';
 
-import { NUsers } from './Domain.ts';
+import { NUsers } from './Domain';
 
 export const userInitialState: NUsers.IState = {
 	...fetchStateInitialState,

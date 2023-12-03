@@ -1,1 +1,1 @@
-export * from './mappingCurrenciesForPicker.ts';
+export * from './mappingCurrenciesForPicker';

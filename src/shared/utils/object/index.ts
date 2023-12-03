@@ -1,1 +1,1 @@
-export * from './cloneDeep.ts';
+export * from './cloneDeep';

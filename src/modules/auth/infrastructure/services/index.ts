@@ -1,2 +1,2 @@
-export * from './useDetectUserService.ts';
-export * from './useVerifyUserService.ts';
+export * from './useDetectUserService';
+export * from './useVerifyUserService';

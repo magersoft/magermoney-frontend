@@ -1,1 +1,1 @@
-export * from './debounce.ts';
+export * from './debounce';

@@ -71,7 +71,19 @@ export default {
 		balanceAccumulationInMonth: 'Balance accumulation',
 		removeTitle: 'Remove accumulation fund'
 	},
-	monthlyExpense: {
+	monthlyExpenses: {
+		title: 'Monthly expenses',
+		description:
+			'Specify your monthly expenses, it can be rent, utilities, food, etc.',
+		expense: 'Expense',
+		selectTitle: 'Select expense',
+		name: 'Name',
+		enterName: 'Enter name of expense',
+		amount: 'Amount',
+		enterAmount: 'Enter amount',
+		other: 'Other',
+		titleOfExpenses: 'Expenses',
+		titleOfExpensesDescription: 'You can delete expenses by swiping',
 		stepName: 'Expenses'
 	},
 	settings: {

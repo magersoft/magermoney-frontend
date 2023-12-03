@@ -1,5 +1,5 @@
 // @todo move to useSavedFundsForm and get from backend
-export const savedFundsTypes = ref([
+export const savedFundsTypesItems = ref([
 	{
 		text: 'Наличные',
 		value: 'cash'
@@ -7,5 +7,9 @@ export const savedFundsTypes = ref([
 	{
 		text: 'Вклад в банке',
 		value: 'deposit'
+	},
+	{
+		text: 'Другое',
+		value: 'other'
 	}
 ]);

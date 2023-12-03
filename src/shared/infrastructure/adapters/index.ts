@@ -1,3 +1,3 @@
-export * from './useStoreAdapter.ts';
-export * from './useNotifyAdapter.ts';
-export * from './useDialogAdapter.ts';
+export * from './useStoreAdapter';
+export * from './useNotifyAdapter';
+export * from './useDialogAdapter';

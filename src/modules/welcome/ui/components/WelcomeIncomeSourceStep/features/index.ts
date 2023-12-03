@@ -1,1 +1,1 @@
-export * from './useWelcomeIncomeSourceStep.ts';
+export * from './useWelcomeIncomeSourceStep';

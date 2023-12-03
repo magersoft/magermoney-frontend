@@ -5,7 +5,7 @@ import {
 	DialogActionType,
 	useDialogAdapter
 } from '@/shared/infrastructure/adapters';
-import { useSettleResponse } from '@/shared/infrastructure/services/useSettleResponse.ts';
+import { useSettleResponse } from '@/shared/infrastructure/services/useSettleResponse';
 import { BaseRemoveParams } from '@/shared/types/services';
 
 export function useBaseRemove<T extends any[], EntityName = string>({

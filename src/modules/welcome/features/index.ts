@@ -1,1 +1,1 @@
-export * from './useWelcomeSteps.ts';
+export * from './useWelcomeSteps';

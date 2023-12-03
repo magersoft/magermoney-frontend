@@ -1,1 +1,1 @@
-export * from './masks.ts';
+export * from './masks';

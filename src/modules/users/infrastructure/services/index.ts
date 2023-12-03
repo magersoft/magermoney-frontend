@@ -1,1 +1,1 @@
-export * from './useFetchUserService.ts';
+export * from './useFetchUserService';

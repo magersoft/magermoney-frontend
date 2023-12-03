@@ -1,1 +1,1 @@
-export * from './ActionButtonsEventListeners.ts';
+export * from './ActionButtonsEventListeners';

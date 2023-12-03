@@ -1,1 +1,1 @@
-export * from './Domain.ts';
+export * from './Domain';

@@ -1,3 +1,3 @@
-export * from './useFetchAccumulationFundsService.ts';
-export * from './useCreateAccumulationFundService.ts';
-export * from './useRemoveAccumultionFundService.ts';
+export * from './useFetchAccumulationFundsService';
+export * from './useCreateAccumulationFundService';
+export * from './useRemoveAccumultionFundService';

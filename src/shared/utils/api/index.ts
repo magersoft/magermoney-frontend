@@ -1,1 +1,1 @@
-export * from './checkActionSuccess.ts';
+export * from './checkActionSuccess';

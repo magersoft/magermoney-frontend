@@ -1,1 +1,1 @@
-export * from './savedFundsTypes.ts';
+export * from './savedFundsTypesItems';

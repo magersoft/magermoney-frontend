@@ -1,1 +1,1 @@
-export * from './mappingIncomeSourceFormData.ts';
+export * from './mappingIncomeSourceFormData';

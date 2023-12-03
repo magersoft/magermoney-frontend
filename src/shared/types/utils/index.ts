@@ -1,3 +1,3 @@
-export * from './Modify.ts';
-export * from './FieldRule.ts';
-export * from './SystemMessages.ts';
+export * from './Modify';
+export * from './FieldRule';
+export * from './SystemMessages';
