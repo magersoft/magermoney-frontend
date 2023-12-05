@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 
 import { LogoutButton, useAuth } from '@/modules/auth';
+import { AppCellTitle } from '@/shared/ui/components';
 
 import { LangSwitcher, ThemeSwitcher } from '../../components';
 
@@ -11,7 +12,10 @@ const { isAuthorization } = useAuth();
 
 <template>
 	<div :class="$style['settings-view']">
-		<h2 class="cell-title">{{ t('settings.app') }}</h2>
+		<app-cell-title
+			:text="t('settings.app')"
+			class="settings-view__cell-title"
+		/>
 		<van-cell-group>
 			<theme-switcher />
 			<lang-switcher />

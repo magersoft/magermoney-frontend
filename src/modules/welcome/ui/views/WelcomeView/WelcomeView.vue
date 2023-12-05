@@ -14,12 +14,12 @@ setNav({
 	isHidden: true
 });
 
-const { activeStep } = useWelcomeSteps();
+const { activeStep, showStepper } = useWelcomeSteps();
 </script>
 
 <template>
 	<div :class="$style['welcome-view']">
-		<welcome-steps />
+		<welcome-steps v-if="showStepper" />
 		<transition name="van-fade" mode="out-in">
 			<keep-alive>
 				<component :is="stepsComponents[activeStep]" />

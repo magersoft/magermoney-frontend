@@ -27,6 +27,7 @@ export function useIncomeSourceForm({
 	const { hasIncomeSources, fetchIncomeSources } =
 		useFetchIncomeSourcesService();
 	const { isLoading, error } = useIncomeSourcesStore();
+
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 
 	const { formRef, hasServerError, validateForm, resetValidationForm } =

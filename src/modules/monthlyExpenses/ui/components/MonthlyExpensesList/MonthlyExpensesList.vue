@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 
 import { useMonthlyExpensesList } from '@/modules/monthlyExpenses/ui/components/MonthlyExpensesList/features';
+import { AppCellDescription, AppCellTitle } from '@/shared/ui/components';
 
 const { t } = useI18n();
 
@@ -15,12 +16,11 @@ const {
 
 <template>
 	<van-list v-if="hasMonthlyExpenses">
-		<h2 class="cell-title">
-			{{ t('monthlyExpenses.titleOfExpenses') }}
-		</h2>
-		<p class="cell-description">
-			{{ t('monthlyExpenses.titleOfExpensesDescription') }}
-		</p>
+		<app-cell-title :text="t('monthlyExpenses.titleOfExpenses')" />
+		<app-cell-description
+			:text="t('monthlyExpenses.titleOfExpensesDescription')"
+		/>
+
 		<van-swipe-cell
 			v-for="monthlyExpense of monthlyExpenses"
 			:key="monthlyExpense.id"

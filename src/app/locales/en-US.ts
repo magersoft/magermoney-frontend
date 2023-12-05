@@ -84,7 +84,8 @@ export default {
 		other: 'Other',
 		titleOfExpenses: 'Expenses',
 		titleOfExpensesDescription: 'You can delete expenses by swiping',
-		stepName: 'Expenses'
+		stepName: 'Expenses',
+		removeTitle: 'Remove expense'
 	},
 	settings: {
 		app: 'Application settings',

@@ -83,7 +83,8 @@ export default {
 		selectTitle: 'Выберите категорию расходов',
 		titleOfExpenses: 'Категории расходов',
 		titleOfExpensesDescription: 'Вы можете удалять категории расходов свайпом',
-		stepName: 'Расходы'
+		stepName: 'Расходы',
+		removeTitle: 'Удалить расход'
 	},
 	settings: {
 		app: 'Настойки приложения',

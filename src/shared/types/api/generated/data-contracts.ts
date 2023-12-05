@@ -21,6 +21,8 @@ export interface DetectUserDto {
 export interface VerifyAuthDto {
 	authCode: string;
 	userId: number;
+	darkMode?: boolean;
+	language?: string;
 }
 
 export interface VerifyUserDto {
@@ -56,6 +58,7 @@ export interface UpdateUserDto {
 	darkMode?: boolean;
 	language?: string;
 	authCode?: string | null;
+	isFirstTime?: boolean | null;
 }
 
 export interface CreateIncomeSourceDto {

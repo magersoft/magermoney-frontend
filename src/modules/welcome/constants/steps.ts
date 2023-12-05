@@ -2,7 +2,8 @@ export enum WelcomeStepsType {
 	INCOME_SOURCES,
 	SAVED_FUNDS,
 	ACCUMULATION_FUNDS,
-	MONTHLY_EXPENSES
+	MONTHLY_EXPENSES,
+	FINISHED
 }
 
 export const welcomeSteps = [
@@ -44,6 +45,12 @@ export const stepsComponents: Record<WelcomeStepsType, any> = {
 		() =>
 			import(
 				'@/modules/welcome/ui/components/WelcomeMonthlyExpensesStep/WelcomeMonthlyExpensesStep.vue'
+			)
+	),
+	[WelcomeStepsType.FINISHED]: defineAsyncComponent(
+		() =>
+			import(
+				'@/modules/welcome/ui/components/WelcomeFinishedStep/WelcomeFinishedStep.vue'
 			)
 	)
 };

@@ -14,7 +14,7 @@ export const useUsersModel = (): NUsers.IModel => {
 		fetch<NUsers.IUser>(`/${NUsers.API_NAMESPACE}`).post(payload);
 
 	const update = (id: number, payload: NUsers.IUpdateUser) =>
-		fetch<NUsers.IUser>(`/${NUsers.API_NAMESPACE}/${id}`).put(payload);
+		fetch<NUsers.IUser>(`/${NUsers.API_NAMESPACE}/${id}`).patch(payload);
 
 	const remove = (id: number) =>
 		fetch<NUsers.IUser>(`/${NUsers.API_NAMESPACE}/${id}`).delete();

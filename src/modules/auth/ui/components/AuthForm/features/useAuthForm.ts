@@ -13,6 +13,7 @@ import {
 	useVerifyUserService
 } from '@/modules/auth/infrastructure/services';
 import { useAuthStore } from '@/modules/auth/infrastructure/stores';
+import { useLanguage, useTheme } from '@/modules/settings';
 import { useForm } from '@/shared/features';
 import { FieldRule } from '@/shared/types/utils';
 import { useAppHeader } from '@/shared/ui/components';
@@ -29,6 +30,8 @@ export function useAuthForm() {
 		useForm(error);
 	const { setHeader, resetHeader } = useAppHeader();
 	const router = useRouter();
+	const { lang } = useLanguage();
+	const { isDark } = useTheme();
 
 	const passwordInputRef = ref<InstanceType<typeof PasswordInput> | null>(null);
 
@@ -89,7 +92,15 @@ export function useAuthForm() {
 
 	watch(authCode, (value) => {
 		if (value.length === AUTH_CODE_LENGTH) {
-			verifyAuthCode({}, { userId: unref(user)!.id, authCode: value })
+			verifyAuthCode(
+				{},
+				{
+					userId: unref(user)!.id,
+					authCode: value,
+					darkMode: unref(isDark),
+					language: unref(lang)
+				}
+			)
 				.then((response) => {
 					if (response) {
 						if (unref(response.data)!.accessToken) {

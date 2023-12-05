@@ -18,6 +18,7 @@ const { setStep } = useWelcomeSteps();
 			has-back-button
 			has-submit-button
 			@click:back="setStep(WelcomeStepsType.ACCUMULATION_FUNDS)"
+			@click:submit="setStep(WelcomeStepsType.FINISHED)"
 		/>
 		<monthly-expenses-list />
 	</van-pull-refresh>

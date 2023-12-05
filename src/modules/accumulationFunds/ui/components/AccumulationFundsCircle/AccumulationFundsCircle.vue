@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 
 import { useCalculations } from '@/modules/calculations';
+import { AppCellTitle } from '@/shared/ui/components';
 
 const { t } = useI18n();
 
@@ -14,9 +15,8 @@ const percent = computed(() =>
 
 <template>
 	<div :class="$style['accumulation-funds-circle']">
-		<h2 class="cell-title">
-			{{ t('accumulationFunds.percentOfMonthlyIncome') }}
-		</h2>
+		<app-cell-title :text="t('accumulationFunds.percentOfMonthlyIncome')" />
+
 		<div :class="$style['accumulation-funds-circle__circle']">
 			<van-circle
 				:current-rate="percent"

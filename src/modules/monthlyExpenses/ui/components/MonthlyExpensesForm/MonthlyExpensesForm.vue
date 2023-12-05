@@ -8,6 +8,8 @@ import {
 } from '@/modules/monthlyExpenses/ui/components/MonthlyExpensesForm/features';
 import {
 	AppAmountInput,
+	AppCellDescription,
+	AppCellTitle,
 	AppCombobox,
 	AppFormActionButtons
 } from '@/shared/ui/components';
@@ -52,10 +54,8 @@ const {
 		:class="$style['monthly-expenses-form']"
 		@submit="handleSubmit"
 	>
-		<h2 class="cell-title">{{ t('monthlyExpenses.title') }}</h2>
-		<p class="cell-description">
-			{{ t('monthlyExpenses.description') }}
-		</p>
+		<app-cell-title :text="t('monthlyExpenses.title')" />
+		<app-cell-description :text="t('monthlyExpenses.description')" />
 
 		<van-cell-group inset>
 			<app-combobox

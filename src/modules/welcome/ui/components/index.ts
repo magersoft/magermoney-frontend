@@ -3,3 +3,4 @@ export * from './WelcomeIncomeSourceStep';
 export * from './WelcomeSavedFundsStep';
 export * from './WelcomeAccumulationFundsStep';
 export * from './WelcomeMonthlyExpensesStep';
+export * from './WelcomeFinishedStep';

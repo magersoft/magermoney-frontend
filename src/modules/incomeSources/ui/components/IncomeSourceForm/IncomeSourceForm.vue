@@ -8,6 +8,8 @@ import {
 } from '@/modules/incomeSources/ui/components/IncomeSourceForm/features';
 import {
 	AppAmountInput,
+	AppCellDescription,
+	AppCellTitle,
 	AppCombobox,
 	AppFormActionButtons
 } from '@/shared/ui/components';
@@ -49,10 +51,9 @@ const {
 		:class="$style['income-source-form']"
 		@submit="handleSubmit"
 	>
-		<h2 class="cell-title">{{ t('incomeSource.title') }}</h2>
-		<p class="cell-description">
-			{{ t('incomeSource.description') }}
-		</p>
+		<app-cell-title :text="t('incomeSource.title')" />
+		<app-cell-description :text="t('incomeSource.description')" />
+
 		<van-cell-group inset>
 			<app-combobox
 				v-model="incomeSourceFormData.title"

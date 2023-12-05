@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n';
 
 import { AUTH_CODE_LENGTH } from '@/modules/auth/constants';
 import { WelcomeInfo } from '@/modules/auth/ui/components/WelcomeInfo';
+import { AppCellTitle } from '@/shared/ui/components';
 
 import { useAuthForm } from './features';
 
@@ -59,7 +60,7 @@ const showKeyboard = ref(true);
 		</template>
 		<transition name="van-fade">
 			<div v-if="isSendAuthCode">
-				<h2 class="cell-title">{{ authCodeTitle }}</h2>
+				<app-cell-title :text="authCodeTitle" />
 				<van-password-input
 					ref="passwordInputRef"
 					:value="authCode"

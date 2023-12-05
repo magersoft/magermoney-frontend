@@ -8,6 +8,8 @@ import {
 } from '@/modules/savedFunds/ui/components/SavedFundsForm/features';
 import {
 	AppAmountInput,
+	AppCellDescription,
+	AppCellTitle,
 	AppCombobox,
 	AppFormActionButtons
 } from '@/shared/ui/components';
@@ -52,10 +54,9 @@ const {
 		:class="$style['saved-funds-form']"
 		@submit="handleSubmit"
 	>
-		<h2 class="cell-title">{{ t('savedFunds.title') }}</h2>
-		<p class="cell-description">
-			{{ t('savedFunds.description') }}
-		</p>
+		<app-cell-title :text="t('savedFunds.title')" />
+		<app-cell-description :text="t('savedFunds.description')" />
+
 		<van-cell-group inset>
 			<app-combobox
 				v-model="savedFundsFormData.source"

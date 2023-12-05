@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { useAuth } from '@/modules/auth';
 import { useAppHeader } from '@/shared/ui/components';
 
-const { logout } = useAuth();
 const { setHeader } = useAppHeader();
 
 setHeader({
@@ -12,7 +10,6 @@ setHeader({
 
 <template>
 	<div>Dashboard view</div>
-	<van-button @click="logout">Logout</van-button>
 </template>
 
 <style module lang="scss">

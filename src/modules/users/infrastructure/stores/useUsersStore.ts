@@ -16,6 +16,9 @@ const usersStore = defineStore('users', {
 		},
 		setError(error: NUsers.IError | null) {
 			this.error = error;
+		},
+		resetUser() {
+			this.user = null;
 		}
 	}
 });

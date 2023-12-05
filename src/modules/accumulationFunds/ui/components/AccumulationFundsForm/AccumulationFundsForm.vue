@@ -5,7 +5,12 @@ import {
 	useAccumulationFundsForm,
 	useInitAccumulationFundsForm
 } from '@/modules/accumulationFunds/ui/components/AccumulationFundsForm/features';
-import { AppAmountInput, AppFormActionButtons } from '@/shared/ui/components';
+import {
+	AppAmountInput,
+	AppCellDescription,
+	AppCellTitle,
+	AppFormActionButtons
+} from '@/shared/ui/components';
 import { AppFormEvents, AppFormProps } from '@/shared/ui/composables';
 
 interface AccumulationFundsFormProps extends AppFormProps {}
@@ -50,10 +55,9 @@ const {
 		:class="$style['accumulation-funds-form']"
 		@submit="handleSubmit"
 	>
-		<h2 class="cell-title">{{ t('accumulationFunds.title') }}</h2>
-		<p class="cell-description">
-			{{ t('accumulationFunds.description') }}
-		</p>
+		<app-cell-title :text="t('accumulationFunds.title')" />
+		<app-cell-description :text="t('accumulationFunds.description')" />
+
 		<van-cell-group inset>
 			<app-amount-input
 				v-model="accumulationFundsFormData.percent"

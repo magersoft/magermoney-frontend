@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { appConfig } from '@/app/config';
 import { AppRoutes } from '@/app/router/constants';
 import { useAuthStore } from '@/modules/auth/infrastructure/stores';
+import { useUsersStore } from '@/modules/users/infrastructure/stores';
 import { useCatchErrors } from '@/shared/features/useCatchErrors';
 
 export const useApiFetch = () => {
@@ -23,6 +24,7 @@ export const useApiFetch = () => {
 			},
 			async onFetchError(ctx) {
 				const { resetAuthState } = useAuthStore();
+				const { resetUser } = useUsersStore();
 				const {
 					catchInternalServerError,
 					catchNotFoundError,
@@ -38,12 +40,12 @@ export const useApiFetch = () => {
 				);
 
 				catchNotFoundError(ctx.response?.status, ctx.data?.message, () => {
-					resetAuthState();
 					router.push({ name: AppRoutes.NotFound });
 				});
 
 				catchUnauthorizedError(ctx.response?.status, ctx.data?.message, () => {
 					resetAuthState();
+					resetUser();
 					router.push({ name: AppRoutes.Login });
 				});
 

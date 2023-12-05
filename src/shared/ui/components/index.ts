@@ -6,3 +6,5 @@ export * from './AppLoading';
 export * from './AppCombobox';
 export * from './AppAmountInput';
 export * from './AppFormActionButtons';
+export * from './AppCellTitle';
+export * from './AppCellDescription';

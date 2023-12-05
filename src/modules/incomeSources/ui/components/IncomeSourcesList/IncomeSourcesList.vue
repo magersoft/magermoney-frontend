@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 
 import { useIncomeSourcesList } from '@/modules/incomeSources/ui/components/IncomeSourcesList/features';
+import { AppCellDescription, AppCellTitle } from '@/shared/ui/components';
 
 const { t } = useI18n();
 
@@ -15,10 +16,9 @@ const {
 
 <template>
 	<van-list v-if="hasIncomeSources">
-		<h2 class="cell-title">{{ t('incomeSource.sourceOfIncome') }}</h2>
-		<p class="cell-description">
-			{{ t('incomeSource.sourceOfIncomeDescription') }}
-		</p>
+		<app-cell-title :text="t('incomeSource.sourceOfIncome')" />
+		<app-cell-description :text="t('incomeSource.sourceOfIncomeDescription')" />
+
 		<van-swipe-cell
 			v-for="incomeSource of incomeSources"
 			:key="incomeSource.id"

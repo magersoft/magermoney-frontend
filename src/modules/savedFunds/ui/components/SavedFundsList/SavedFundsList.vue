@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 
 import { useSavedFundsList } from '@/modules/savedFunds/ui/components/SavedFundsList/features';
+import { AppCellDescription, AppCellTitle } from '@/shared/ui/components';
 
 const { t } = useI18n();
 
@@ -11,12 +12,9 @@ const { savedFunds, hasSavedFunds, formatAmountWithCurrency, handleRemove } =
 
 <template>
 	<van-list v-if="hasSavedFunds">
-		<h2 class="cell-title">
-			{{ t('savedFunds.sourceOfSaved') }}
-		</h2>
-		<p class="cell-description">
-			{{ t('savedFunds.sourceOfSavedDescription') }}
-		</p>
+		<app-cell-title :text="t('savedFunds.sourceOfSaved')" />
+		<app-cell-description :text="t('savedFunds.sourceOfSavedDescription')" />
+
 		<van-swipe-cell v-for="savedFund of savedFunds" :key="savedFund.id">
 			<van-cell
 				:title="savedFund.source"

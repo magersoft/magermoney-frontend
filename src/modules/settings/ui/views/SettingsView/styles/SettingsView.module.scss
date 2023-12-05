@@ -1,5 +1,5 @@
 .settings-view {
-  :global(.cell-title:first-child) {
+  &__cell-title:first-child {
     padding-top: 20px;
   }
 
