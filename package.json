@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "generate:api": "npx swagger-typescript-api -p $(grep VITE_APP_API_URL .env | cut -d '=' -f2)/docs-json -o ./src/shared/types/api/generated --no-client --modular --responses --extract-request-params --extract-request-body --disableStrictSSL"

@@ -135,6 +135,11 @@ export interface UpdateAccumulationFundDto {
 	percent?: number;
 }
 
+export interface TotalBalanceDto {
+	balance: number;
+	currency: string;
+}
+
 export interface PercentByAmountDto {
 	percent: number;
 	currency: string;
@@ -172,6 +177,10 @@ export interface UpdateMonthlyExpenseDto {
 	title?: string;
 	amount?: number;
 	currency?: string;
+}
+
+export interface CalculationsControllerGetTotalBalanceParams {
+	currency: string;
 }
 
 export interface CalculationsControllerGetPercentByAmountParams {

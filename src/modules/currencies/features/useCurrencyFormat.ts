@@ -13,7 +13,20 @@ export function useCurrencyFormat() {
 		}).format(value);
 	};
 
+	const getCurrencySymbol = (currency: string): string => {
+		return (0)
+			.toLocaleString(unref(locale), {
+				style: 'currency',
+				currency,
+				minimumFractionDigits: 0,
+				maximumFractionDigits: 0
+			})
+			.replace(/\d/g, '')
+			.trim();
+	};
+
 	return {
-		formatAmountWithCurrency
+		formatAmountWithCurrency,
+		getCurrencySymbol
 	};
 }

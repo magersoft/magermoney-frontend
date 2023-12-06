@@ -4,6 +4,13 @@ import { useApiFetch } from '@/shared/infrastructure/api';
 export const useCalculationsModel = (): NCalculations.IModel => {
 	const { fetch, getUrlWithQueryParams } = useApiFetch();
 
+	const fetchTotalBalance = (currency: string) =>
+		fetch<NCalculations.ITotalBalance>(
+			getUrlWithQueryParams(`/${NCalculations.API_NAMESPACE}/total-balance`, {
+				currency
+			})
+		).get();
+
 	const fetchPercentByAmount = (amount: string, currency: string) =>
 		fetch<NCalculations.IPercentByAmount>(
 			getUrlWithQueryParams(
@@ -27,6 +34,7 @@ export const useCalculationsModel = (): NCalculations.IModel => {
 		).get();
 
 	return {
+		fetchTotalBalance,
 		fetchPercentByAmount,
 		fetchAmountByPercent
 	};

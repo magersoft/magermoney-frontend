@@ -5,7 +5,7 @@ import { appConfig } from '@/app/config';
 import { AppRoutes } from '@/app/router/constants';
 import { useAuthStore } from '@/modules/auth/infrastructure/stores';
 import { useUsersStore } from '@/modules/users/infrastructure/stores';
-import { useCatchErrors } from '@/shared/features/useCatchErrors';
+import { useCatchErrors } from '@/shared/features';
 
 export const useApiFetch = () => {
 	const router = useRouter();

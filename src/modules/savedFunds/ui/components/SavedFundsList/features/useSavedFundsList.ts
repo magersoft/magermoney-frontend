@@ -1,9 +1,9 @@
+import { useCurrencyFormat } from '@/modules/currencies';
 import { NSavedFunds } from '@/modules/savedFunds/domain';
 import {
 	useFetchSavedFundsService,
 	useRemoveSavedFundService
 } from '@/modules/savedFunds/infrastructure/services';
-import { useCurrencyFormat } from '@/shared/features';
 
 export function useSavedFundsList() {
 	const { savedFunds, hasSavedFunds, fetchSavedFunds } =

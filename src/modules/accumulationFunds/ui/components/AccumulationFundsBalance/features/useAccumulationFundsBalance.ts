@@ -1,6 +1,6 @@
 import { useAccumulationFundStore } from '@/modules/accumulationFunds/infrastructure/stores';
 import { useCalculations } from '@/modules/calculations';
-import { useCurrencyFormat } from '@/shared/features';
+import { useCurrencyFormat } from '@/modules/currencies';
 
 export function useAccumulationFundsBalance() {
 	const {

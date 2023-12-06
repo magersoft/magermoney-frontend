@@ -8,6 +8,7 @@ import { useStoreAdapter } from '@/shared/infrastructure/adapters';
 const calculationsStore = defineStore('calculations', {
 	state: (): NCalculations.IState => ({
 		...fetchStateInitialState,
+		totalBalance: null,
 		percentByAmount: null,
 		amountByPercent: null
 	}),
@@ -30,6 +31,9 @@ const calculationsStore = defineStore('calculations', {
 			appConfig.defaultCurrency
 	},
 	actions: {
+		setTotalBalance(value: NCalculations.ITotalBalance) {
+			this.totalBalance = value;
+		},
 		setPercentByAmount(value: NCalculations.IPercentByAmount) {
 			this.percentByAmount = value;
 		},

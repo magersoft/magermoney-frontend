@@ -1,9 +1,9 @@
+import { useCurrencyFormat } from '@/modules/currencies';
 import { NMonthlyExpenses } from '@/modules/monthlyExpenses/domain';
 import {
 	useFetchMonthlyExpensesService,
 	useRemoveMonthlyExpenseService
 } from '@/modules/monthlyExpenses/infrastructure/services';
-import { useCurrencyFormat } from '@/shared/features';
 
 export function useMonthlyExpensesList() {
 	const { monthlyExpenses, hasMonthlyExpenses, fetchMonthlyExpenses } =

@@ -1,5 +1,6 @@
 import 'vant/es/toast/style';
 import 'vant/es/dialog/style';
+import 'vant/es/dropdown-menu/style';
 
 import { useStorage } from '@vueuse/core/index';
 import { ConfigProvider as vant, Locale } from 'vant';

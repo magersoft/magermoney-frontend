@@ -14,6 +14,9 @@ export default {
 	removedFailed: 'Removed failed',
 	confirmRemoveContent: 'Are you sure you want to delete {entityName}?',
 	currency: 'Currency',
+	noData: 'No data',
+	totalBalance: 'Total balance',
+	viewAll: 'View all',
 	auth: {
 		phone: 'Phone',
 		email: 'Email',
@@ -91,7 +94,9 @@ export default {
 		app: 'Application settings',
 		darkMode: 'Dark mode',
 		language: 'Language',
-		changeLanguage: 'Change language'
+		currency: 'Currency',
+		changeLanguage: 'Change language',
+		changeCurrency: 'Change currency'
 	},
 	routes: {
 		Dashboard: 'Dashboard',

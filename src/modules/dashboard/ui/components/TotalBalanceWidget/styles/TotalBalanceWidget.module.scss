@@ -1,0 +1,43 @@
+.total-balance-widget {
+  background: transparent;
+
+  &__title {
+    font-size: var(--van-font-size-md);
+    color: var(--van-text-color-2);
+    font-weight: 400;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: var(--van-padding-xs) 0;
+  }
+
+  &__balance {
+    font-size: calc(var(--van-font-size-lg) * 2);
+    font-weight: var(--van-font-bold);
+  }
+
+  &__skeleton {
+    width: 100%;
+    padding: 0;
+
+    :global(.van-skeleton-title) {
+      height: calc(var(--van-skeleton-paragraph-height) * 2.5);
+    }
+  }
+
+  &__view-all {
+    font-size: var(--van-font-size-sm);
+    color: var(--van-text-color-2);
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: underline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+    text-align: right;
+  }
+}

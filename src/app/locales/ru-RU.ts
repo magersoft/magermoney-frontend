@@ -14,6 +14,9 @@ export default {
 	removedFailed: 'Не удалось удалить',
 	confirmRemoveContent: 'Вы уверены, что хотите удалить {entityName}?',
 	currency: 'Валюта',
+	noData: 'Нет данных',
+	totalBalance: 'Общий баланс',
+	viewAll: 'Показать все',
 	auth: {
 		phone: 'Телефон',
 		email: 'Почта',
@@ -90,7 +93,9 @@ export default {
 		app: 'Настойки приложения',
 		darkMode: 'Темная тема',
 		language: 'Язык',
-		changeLanguage: 'Сменить язык'
+		currency: 'Валюта',
+		changeLanguage: 'Сменить язык',
+		changeCurrency: 'Сменить валюту'
 	},
 	routes: {
 		Dashboard: 'Главная',

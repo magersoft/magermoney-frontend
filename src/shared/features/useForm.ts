@@ -1,7 +1,7 @@
 import { FieldValidationStatus } from 'vant';
 import type { Ref } from 'vue';
 
-import { useResponseError } from '@/shared/features/useResponseError';
+import { useResponseError } from '@/shared/features';
 import { RequestReturnError } from '@/shared/types/api';
 
 export interface ValidatableForm {

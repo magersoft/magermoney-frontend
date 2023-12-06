@@ -1,9 +1,9 @@
+import { useCurrencyFormat } from '@/modules/currencies';
 import { NIncomeSources } from '@/modules/incomeSources/domain';
 import {
 	useFetchIncomeSourcesService,
 	useRemoveIncomeSourceService
 } from '@/modules/incomeSources/infrastructure/services';
-import { useCurrencyFormat } from '@/shared/features';
 
 export function useIncomeSourcesList() {
 	const { incomeSources, hasIncomeSources, fetchIncomeSources } =

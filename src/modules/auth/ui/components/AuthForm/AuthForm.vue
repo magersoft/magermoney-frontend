@@ -39,11 +39,13 @@ const showKeyboard = ref(true);
 					v-model="loginFormData.login"
 					name="EmailOrPhone"
 					clearable
+					type="email"
 					:disabled="isLoading"
 					:placeholder="t('auth.emailOrPhone')"
 					:rules="validationRules"
 					:error="hasServerError"
 					:error-message="errorMessages"
+					autocomplete="on"
 				/>
 			</van-cell-group>
 			<van-cell-group inset :class="$style['auth-form__actions']">
