@@ -8,12 +8,7 @@ const { fetchDashboard } = useInitDashboard();
 <template>
 	<header :class="$style['dashboard-header']">
 		<div :class="$style['dashboard-header__panel']">
-			<van-image
-				round
-				width="3rem"
-				height="3rem"
-				src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
-			/>
+			<van-image round width="3rem" height="3rem" />
 
 			<div>Magermoney</div>
 

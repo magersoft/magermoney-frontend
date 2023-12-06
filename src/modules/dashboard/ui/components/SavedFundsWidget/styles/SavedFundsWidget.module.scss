@@ -1,0 +1,48 @@
+.saved-funds-widget {
+  background: transparent;
+  border-radius: 0;
+  padding: var(--van-padding-xs) 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: var(--van-padding-sm);
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 3rem;
+    background-color: #1c1c1e;
+    border-radius: var(--van-radius-lg);
+    padding: var(--van-padding-base);
+    color: var(--van-gray-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:last-child {
+      background-color: transparent;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed var(--van-gray-5);
+      color: var(--van-text-color);
+    }
+  }
+
+  &__title {
+    display: flex;
+    font-size: var(--van-font-size-xs);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__value {
+    font-size: var(--van-font-size-xs);
+  }
+
+  :global(.van-skeleton) {
+    padding: 0;
+  }
+}

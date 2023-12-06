@@ -1,0 +1,55 @@
+.expenses-widget {
+  display: flex;
+  position: relative;
+  padding: var(--van-padding-sm);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: var(--van-font-size-sm);
+    color: var(--van-text-color-2);
+    font-weight: 400;
+    margin-bottom: var(--van-padding-xs);
+  }
+
+  &__value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__balance {
+    font-size: calc(var(--van-font-size-md) * 1.5);
+    font-weight: var(--van-font-bold);
+    color: var(--van-text-color);
+  }
+
+  &__arrow {
+    :global(.van-icon) {
+      color: var(--van-text-color-2);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--van-danger-color);
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    top: var(--van-padding-sm);
+    left: var(--van-padding-sm);
+
+    :global(.van-icon) {
+      transform: rotate(220deg);
+      color: var(--van-white);
+    }
+  }
+}

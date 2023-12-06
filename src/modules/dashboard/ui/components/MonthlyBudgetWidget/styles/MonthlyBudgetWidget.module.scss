@@ -1,0 +1,48 @@
+.monthly-budget-widget {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--van-padding-sm);
+
+  &__circle {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &__rest {
+    font-size: var(--van-font-size-xs);
+    margin-bottom: var(--van-padding-base);
+  }
+
+  &__title {
+    font-size: var(--van-font-size-sm);
+    color: var(--van-text-color-2);
+    font-weight: 400;
+    margin-bottom: var(--van-padding-xs);
+  }
+
+  &__value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__balance {
+    font-size: calc(var(--van-font-size-md) * 1.5);
+    font-weight: var(--van-font-bold);
+    color: var(--van-text-color);
+  }
+
+  &__arrow {
+    :global(.van-icon) {
+      color: var(--van-text-color-2);
+    }
+  }
+}
