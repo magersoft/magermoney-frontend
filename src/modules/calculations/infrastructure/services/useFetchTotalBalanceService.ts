@@ -3,8 +3,7 @@ import { useCalculationsStore } from '@/modules/calculations/infrastructure/stor
 import { useBaseFetch } from '@/shared/infrastructure/services';
 
 export function useFetchTotalBalanceService() {
-	const { totalBalance, setTotalBalance, setIsLoading, setError } =
-		useCalculationsStore();
+	const { setTotalBalance, setIsLoading, setError } = useCalculationsStore();
 	const { fetchTotalBalance: fetchBalance } = useCalculationsModel();
 
 	const { fetchBase: fetchTotalBalance } = useBaseFetch({
@@ -15,7 +14,6 @@ export function useFetchTotalBalanceService() {
 	});
 
 	return {
-		totalBalance,
 		fetchTotalBalance
 	};
 }

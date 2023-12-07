@@ -23,6 +23,7 @@ const {
 		:left-text="textLeft"
 		:left-arrow="isLeftArrow"
 		fixed
+		:class="$style['app-header']"
 		@click-left="onClickLeft"
 	/>
 </template>

@@ -1,10 +1,13 @@
-import { TInitialIncomeSourceFormData } from '@/modules/incomeSources/domain';
+import {
+	NIncomeSources,
+	TInitialIncomeSourceFormData
+} from '@/modules/incomeSources/domain';
 
 export function mappingIncomeSourceFormData(
 	formData: TInitialIncomeSourceFormData
-): TInitialIncomeSourceFormData {
+): NIncomeSources.ICreateIncomeSource {
 	return {
 		...formData,
-		amount: formData.amount.replaceAll(' ', '')
+		amount: Number(formData.amount.replaceAll(' ', ''))
 	};
 }

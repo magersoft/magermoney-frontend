@@ -1,12 +1,21 @@
 import {
 	useFetchAmountByPercentService,
 	useFetchPercentByAmountService,
-	useFetchTotalBalanceService
+	useFetchTotalBalanceService,
+	useFetchTotalExpensesService,
+	useFetchTotalIncomesService
 } from '@/modules/calculations/infrastructure/services';
 import { useCalculationsStore } from '@/modules/calculations/infrastructure/stores';
 
 export function useCalculations() {
 	const {
+		totalBalance,
+		totalIncomes,
+		totalExpenses,
+		amountByPercent,
+		roundedAmountByPercent,
+		percentByAmount,
+		roundedPercentByAmount,
 		isLoading,
 		balanceAccumulationAmount,
 		balanceMinusAccumulationPercent,
@@ -14,14 +23,16 @@ export function useCalculations() {
 		restoreStore: restoreCalculationsStore
 	} = useCalculationsStore();
 
-	const { totalBalance, fetchTotalBalance } = useFetchTotalBalanceService();
-	const { percentByAmount, roundedPercentByAmount, fetchPercentByAmount } =
-		useFetchPercentByAmountService();
-	const { amountByPercent, roundedAmountByPercent, fetchAmountByPercent } =
-		useFetchAmountByPercentService();
+	const { fetchTotalBalance } = useFetchTotalBalanceService();
+	const { fetchTotalIncomes } = useFetchTotalIncomesService();
+	const { fetchTotalExpenses } = useFetchTotalExpensesService();
+	const { fetchPercentByAmount } = useFetchPercentByAmountService();
+	const { fetchAmountByPercent } = useFetchAmountByPercentService();
 
 	return {
 		totalBalance,
+		totalIncomes,
+		totalExpenses,
 
 		percentByAmount,
 		roundedPercentByAmount,
@@ -33,9 +44,11 @@ export function useCalculations() {
 		balanceMinusAccumulationPercent,
 		balanceAccumulationCurrency,
 
+		fetchTotalBalance,
+		fetchTotalIncomes,
+		fetchTotalExpenses,
 		fetchPercentByAmount,
 		fetchAmountByPercent,
-		fetchTotalBalance,
 
 		isLoading,
 		restoreCalculationsStore

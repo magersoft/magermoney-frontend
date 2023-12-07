@@ -4,10 +4,11 @@ import {
 	useFetchMonthlyExpensesService,
 	useRemoveMonthlyExpenseService
 } from '@/modules/monthlyExpenses/infrastructure/services';
+import { useMonthlyExpensesStore } from '@/modules/monthlyExpenses/infrastructure/stores';
 
 export function useMonthlyExpensesList() {
-	const { monthlyExpenses, hasMonthlyExpenses, fetchMonthlyExpenses } =
-		useFetchMonthlyExpensesService();
+	const { monthlyExpenses, hasMonthlyExpenses } = useMonthlyExpensesStore();
+	const { fetchMonthlyExpenses } = useFetchMonthlyExpensesService();
 	const { removeMonthlyExpense } = useRemoveMonthlyExpenseService();
 	const { formatAmountWithCurrency } = useCurrencyFormat();
 

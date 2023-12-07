@@ -1,11 +1,14 @@
-import { TInitialMonthlyExpensesFormData } from '@/modules/monthlyExpenses/domain';
+import {
+	NMonthlyExpenses,
+	TInitialMonthlyExpensesFormData
+} from '@/modules/monthlyExpenses/domain';
 import { trimString } from '@/shared/utils';
 
 export function mappingMonthlyExpensesFormData(
 	formData: TInitialMonthlyExpensesFormData
-): TInitialMonthlyExpensesFormData {
+): NMonthlyExpenses.ICreateMonthlyExpense {
 	return {
 		...formData,
-		amount: trimString(formData.amount)
+		amount: Number(trimString(formData.amount))
 	};
 }

@@ -1,9 +1,9 @@
 .app-main {
-  margin: auto;
-  max-width: 100vw;
-  height: -webkit-fill-available;
-  background-color: var(--van-background);
-  color: var(--van-text-color);
   position: relative;
+  max-width: 100vw;
+  height: fill-available;
+  margin: auto;
   overflow: hidden;
+  color: var(--van-text-color);
+  background-color: var(--van-background);
 }

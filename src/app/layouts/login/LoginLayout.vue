@@ -29,7 +29,3 @@ const pageNavigation = computed(() =>
 	<slot />
 	<app-nav :items="pageNavigation" />
 </template>
-
-<style module lang="scss">
-@import './styles/LoginLayout.module';
-</style>

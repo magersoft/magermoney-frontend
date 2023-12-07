@@ -58,7 +58,7 @@ export function useAccumulationFundsForm({
 		const response = await createAccumulationFund(
 			{},
 			{
-				percent: unref(accumulationFundsFormData).percent
+				percent: Number(unref(accumulationFundsFormData).percent)
 			}
 		);
 

@@ -4,10 +4,11 @@ import {
 	useFetchIncomeSourcesService,
 	useRemoveIncomeSourceService
 } from '@/modules/incomeSources/infrastructure/services';
+import { useIncomeSourcesStore } from '@/modules/incomeSources/infrastructure/stores';
 
 export function useIncomeSourcesList() {
-	const { incomeSources, hasIncomeSources, fetchIncomeSources } =
-		useFetchIncomeSourcesService();
+	const { incomeSources, hasIncomeSources } = useIncomeSourcesStore();
+	const { fetchIncomeSources } = useFetchIncomeSourcesService();
 	const { removeIncomeSource } = useRemoveIncomeSourceService();
 	const { formatAmountWithCurrency } = useCurrencyFormat();
 

@@ -24,8 +24,8 @@ export function useSavedFundsForm({
 		cloneDeep(initialSavedFundsFormControls)
 	);
 	const { createSavedFund } = useCreateSavedFundService();
-	const { hasSavedFunds, fetchSavedFunds } = useFetchSavedFundsService();
-	const { isLoading, error } = useSavedFundsStore();
+	const { fetchSavedFunds } = useFetchSavedFundsService();
+	const { hasSavedFunds, isLoading, error } = useSavedFundsStore();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 
 	const { formRef, hasServerError, validateForm, resetValidationForm } =

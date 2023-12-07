@@ -3,13 +3,7 @@ import { useCalculationsStore } from '@/modules/calculations/infrastructure/stor
 import { useBaseFetch } from '@/shared/infrastructure/services';
 
 export function useFetchPercentByAmountService() {
-	const {
-		percentByAmount,
-		roundedPercentByAmount,
-		setPercentByAmount,
-		setIsLoading,
-		setError
-	} = useCalculationsStore();
+	const { setPercentByAmount, setIsLoading, setError } = useCalculationsStore();
 	const { fetchPercentByAmount: fetchPercent } = useCalculationsModel();
 
 	const { fetchBase: fetchPercentByAmount } = useBaseFetch({
@@ -20,8 +14,6 @@ export function useFetchPercentByAmountService() {
 	});
 
 	return {
-		percentByAmount,
-		roundedPercentByAmount,
 		fetchPercentByAmount
 	};
 }

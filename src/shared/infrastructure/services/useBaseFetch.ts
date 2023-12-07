@@ -19,7 +19,7 @@ export function useBaseFetch<T, P extends any[], E = RequestReturnError>({
 
 	const fetchBase: BaseFetchMethod<T, P> = async (
 		{ force, quite, showError }: BaseFetchMethodParams = {},
-		...args: (P[number] | undefined)[]
+		...args: P
 	) => {
 		if (!force && skipFetch && skipFetch()) return;
 

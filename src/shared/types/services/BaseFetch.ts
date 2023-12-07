@@ -1,7 +1,7 @@
 import { RequestReturnValue } from '@/shared/types/api';
 
 export interface BaseFetchParams<T, P extends any[], E = unknown> {
-	fetchData: (...args: (P[number] | undefined)[]) => RequestReturnValue<T>;
+	fetchData: (...args: P) => RequestReturnValue<T>;
 	setIsLoading: (value: boolean) => void;
 	setData: (data: T) => void;
 	setError: (error: E | null) => void;
@@ -17,7 +17,7 @@ export type BaseFetchMethodParams = {
 
 export type BaseFetchMethod<T, P extends any[]> = (
 	params?: BaseFetchMethodParams,
-	...args: (P[number] | undefined)[]
+	...args: P
 ) => Promise<RequestReturnValue<T> | void>;
 
 export interface BaseFetchResult<T, P extends any[]> {

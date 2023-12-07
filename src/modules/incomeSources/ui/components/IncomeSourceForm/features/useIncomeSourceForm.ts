@@ -24,9 +24,8 @@ export function useIncomeSourceForm({
 		cloneDeep(initialIncomeSourceFormControls)
 	);
 	const { createIncomeSource } = useCreateIncomeSourceService();
-	const { hasIncomeSources, fetchIncomeSources } =
-		useFetchIncomeSourcesService();
-	const { isLoading, error } = useIncomeSourcesStore();
+	const { fetchIncomeSources } = useFetchIncomeSourcesService();
+	const { hasIncomeSources, isLoading, error } = useIncomeSourcesStore();
 
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 

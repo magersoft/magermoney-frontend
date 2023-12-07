@@ -17,21 +17,21 @@
   }
 
   &__rest {
-    font-size: var(--van-font-size-xs);
     margin-bottom: var(--van-padding-base);
+    font-size: var(--van-font-size-xs);
   }
 
   &__title {
-    font-size: var(--van-font-size-sm);
-    color: var(--van-text-color-2);
-    font-weight: 400;
     margin-bottom: var(--van-padding-xs);
+    font-size: var(--van-font-size-sm);
+    font-weight: 400;
+    color: var(--van-text-color-2);
   }
 
   &__value {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__balance {

@@ -1,11 +1,14 @@
-import { TInitialSavedFundsFormData } from '@/modules/savedFunds/domain';
+import {
+	NSavedFunds,
+	TInitialSavedFundsFormData
+} from '@/modules/savedFunds/domain';
 import { trimString } from '@/shared/utils';
 
 export function mappingSavedFundsFormData(
 	formData: TInitialSavedFundsFormData
-): TInitialSavedFundsFormData {
+): NSavedFunds.ICreateSavedFund {
 	return {
 		...formData,
-		amount: trimString(formData.amount)
+		amount: Number(trimString(formData.amount))
 	};
 }

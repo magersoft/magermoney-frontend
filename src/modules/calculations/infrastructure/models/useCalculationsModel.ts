@@ -11,6 +11,20 @@ export const useCalculationsModel = (): NCalculations.IModel => {
 			})
 		).get();
 
+	const fetchTotalIncomes = (currency: string) =>
+		fetch<NCalculations.ITotalIncomes>(
+			getUrlWithQueryParams(`/${NCalculations.API_NAMESPACE}/total-incomes`, {
+				currency
+			})
+		).get();
+
+	const fetchTotalExpenses = (currency: string) =>
+		fetch<NCalculations.ITotalExpenses>(
+			getUrlWithQueryParams(`/${NCalculations.API_NAMESPACE}/total-expenses`, {
+				currency
+			})
+		).get();
+
 	const fetchPercentByAmount = (amount: string, currency: string) =>
 		fetch<NCalculations.IPercentByAmount>(
 			getUrlWithQueryParams(
@@ -35,6 +49,8 @@ export const useCalculationsModel = (): NCalculations.IModel => {
 
 	return {
 		fetchTotalBalance,
+		fetchTotalIncomes,
+		fetchTotalExpenses,
 		fetchPercentByAmount,
 		fetchAmountByPercent
 	};

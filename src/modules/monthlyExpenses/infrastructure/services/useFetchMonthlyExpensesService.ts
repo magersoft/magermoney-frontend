@@ -3,14 +3,8 @@ import { useMonthlyExpensesStore } from '@/modules/monthlyExpenses/infrastructur
 import { useBaseFetchList } from '@/shared/infrastructure/services';
 
 export function useFetchMonthlyExpensesService() {
-	const {
-		monthlyExpenses,
-		hasMonthlyExpenses,
-		isLoading,
-		setMonthlyExpenses,
-		setIsLoading,
-		setError
-	} = useMonthlyExpensesStore();
+	const { monthlyExpenses, setMonthlyExpenses, setIsLoading, setError } =
+		useMonthlyExpensesStore();
 	const { fetchAll } = useMonthlyExpensesModel();
 
 	const { fetchBaseList: fetchMonthlyExpenses } = useBaseFetchList({
@@ -22,9 +16,6 @@ export function useFetchMonthlyExpensesService() {
 	});
 
 	return {
-		monthlyExpenses,
-		hasMonthlyExpenses,
-		isLoading,
 		fetchMonthlyExpenses
 	};
 }

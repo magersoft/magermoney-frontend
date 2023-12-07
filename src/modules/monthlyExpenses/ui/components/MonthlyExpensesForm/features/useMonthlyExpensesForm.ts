@@ -24,9 +24,8 @@ export function useMonthlyExpensesForm({
 		cloneDeep(initialMonthlyExpensesFormControls)
 	);
 	const { createMonthlyExpense } = useCreateMonthlyExpenseService();
-	const { hasMonthlyExpenses, fetchMonthlyExpenses } =
-		useFetchMonthlyExpensesService();
-	const { isLoading, error } = useMonthlyExpensesStore();
+	const { fetchMonthlyExpenses } = useFetchMonthlyExpensesService();
+	const { hasMonthlyExpenses, isLoading, error } = useMonthlyExpensesStore();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 
 	const {

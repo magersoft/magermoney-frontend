@@ -12,10 +12,10 @@ const accumulationFundStore = defineStore('accumulationFund', {
 	}),
 	getters: {
 		accumulationFundsPercent: (state) => {
-			if (!state.accumulationFunds.length) return 0;
+			if (!state.accumulationFunds.length) return '0';
 			const [accumulationFund] = state.accumulationFunds;
 
-			return accumulationFund.percent;
+			return String(accumulationFund.percent);
 		},
 		hasAccumulationFunds: (state) => !!state.accumulationFunds.length
 	},

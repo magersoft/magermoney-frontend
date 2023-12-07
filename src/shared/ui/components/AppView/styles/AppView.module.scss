@@ -5,8 +5,8 @@
   overflow: auto;
 
   &--hidden-header {
-    margin-top: 0;
     height: calc(100vh - var(--footer-tabbar-height));
+    margin-top: 0;
   }
 
   &--hidden-nav {

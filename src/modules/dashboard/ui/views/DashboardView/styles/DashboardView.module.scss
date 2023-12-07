@@ -1,15 +1,14 @@
 .dashboard-view {
-  padding-top: 100px;
   height: 100%;
+  padding-top: 100px;
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 8px;
-    grid-row-gap: 8px;
-    margin-top: var(--van-padding-md);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 8px;
     padding: var(--van-padding-md);
+    margin-top: var(--van-padding-md);
   }
 
   &__col {

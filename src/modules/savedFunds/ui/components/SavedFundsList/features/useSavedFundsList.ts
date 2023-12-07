@@ -4,10 +4,11 @@ import {
 	useFetchSavedFundsService,
 	useRemoveSavedFundService
 } from '@/modules/savedFunds/infrastructure/services';
+import { useSavedFundsStore } from '@/modules/savedFunds/infrastructure/stores';
 
 export function useSavedFundsList() {
-	const { savedFunds, hasSavedFunds, fetchSavedFunds } =
-		useFetchSavedFundsService();
+	const { savedFunds, hasSavedFunds } = useSavedFundsStore();
+	const { fetchSavedFunds } = useFetchSavedFundsService();
 	const { removeSavedFund } = useRemoveSavedFundService();
 	const { formatAmountWithCurrency } = useCurrencyFormat();
 

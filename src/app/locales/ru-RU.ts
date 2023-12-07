@@ -17,6 +17,8 @@ export default {
 	noData: 'Нет данных',
 	totalBalance: 'Общий баланс',
 	viewAll: 'Показать все',
+	incomes: 'Доходы',
+	expenses: 'Расходы',
 	auth: {
 		phone: 'Телефон',
 		email: 'Почта',

@@ -1,19 +1,19 @@
 .dashboard-header {
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
-  width: 100%;
+  left: 0;
   z-index: var(--van-sticky-z-index);
+  width: 100%;
 
   &__panel {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--van-background-2);
-    margin: var(--van-padding-md);
-    padding: var(--van-padding-base);
     height: 55px;
+    padding: var(--van-padding-base);
+    margin: var(--van-padding-md);
+    background: var(--van-background-2);
     border-radius: 100px;
     box-shadow: var(--dropdown-shadow);
   }

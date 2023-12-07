@@ -3,14 +3,8 @@ import { useAccumulationFundStore } from '@/modules/accumulationFunds/infrastruc
 import { useBaseFetchList } from '@/shared/infrastructure/services';
 
 export function useFetchAccumulationFundsService() {
-	const {
-		accumulationFunds,
-		isLoading,
-		accumulationFundsPercent,
-		setIsLoading,
-		setAccumulationFunds,
-		setError
-	} = useAccumulationFundStore();
+	const { accumulationFunds, setIsLoading, setAccumulationFunds, setError } =
+		useAccumulationFundStore();
 	const { fetchAll } = useAccumulationFundsModel();
 
 	const { fetchBaseList: fetchAccumulationFunds } = useBaseFetchList({
@@ -22,9 +16,6 @@ export function useFetchAccumulationFundsService() {
 	});
 
 	return {
-		accumulationFunds,
-		accumulationFundsPercent,
-		isLoading,
 		fetchAccumulationFunds
 	};
 }

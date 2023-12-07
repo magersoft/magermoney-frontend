@@ -17,6 +17,8 @@ export default {
 	noData: 'No data',
 	totalBalance: 'Total balance',
 	viewAll: 'View all',
+	incomes: 'Incomes',
+	expenses: 'Expenses',
 	auth: {
 		phone: 'Phone',
 		email: 'Email',

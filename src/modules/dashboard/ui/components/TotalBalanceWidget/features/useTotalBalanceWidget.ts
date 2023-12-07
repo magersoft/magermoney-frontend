@@ -6,6 +6,7 @@ import { useCurrencyFormat } from '@/modules/currencies';
 export function useTotalBalanceWidget() {
 	const { totalBalance, isLoading } = useCalculations();
 	const { formatAmountWithCurrency } = useCurrencyFormat();
+
 	const { t } = useI18n();
 
 	const totalBalanceFormatted = computed(() => {
@@ -14,7 +15,7 @@ export function useTotalBalanceWidget() {
 		}
 
 		return formatAmountWithCurrency(
-			unref(totalBalance)!.balance,
+			unref(totalBalance)!.amount,
 			unref(totalBalance)!.currency
 		);
 	});

@@ -1,6 +1,6 @@
 .incomes-widget {
-  display: flex;
   position: relative;
+  display: flex;
   padding: var(--van-padding-sm);
 
   &__container {
@@ -11,19 +11,20 @@
   }
 
   &__title {
-    font-size: var(--van-font-size-sm);
-    color: var(--van-text-color-2);
-    font-weight: 400;
     margin-bottom: var(--van-padding-xs);
+    font-size: var(--van-font-size-sm);
+    font-weight: 400;
+    color: var(--van-text-color-2);
   }
 
   &__value {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__balance {
+    width: 100%;
     font-size: calc(var(--van-font-size-md) * 1.5);
     font-weight: var(--van-font-bold);
     color: var(--van-text-color);
@@ -37,19 +38,19 @@
 
   &__icon {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--van-success-color);
-    width: 16px;
-    height: 16px;
-    border-radius: 5px;
     top: var(--van-padding-sm);
     left: var(--van-padding-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background: var(--van-success-color);
+    border-radius: 5px;
 
     :global(.van-icon) {
-      transform: rotate(-45deg);
       color: var(--van-white);
+      transform: rotate(-45deg);
     }
   }
 }

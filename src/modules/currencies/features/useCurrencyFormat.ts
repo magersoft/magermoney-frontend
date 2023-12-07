@@ -13,6 +13,18 @@ export function useCurrencyFormat() {
 		}).format(value);
 	};
 
+	const formatAmountWithCurrencyNoFraction = (
+		value: number,
+		currency: string
+	): string => {
+		return new Intl.NumberFormat(unref(locale), {
+			style: 'currency',
+			currency,
+			minimumFractionDigits: 0,
+			maximumFractionDigits: 0
+		}).format(value);
+	};
+
 	const getCurrencySymbol = (currency: string): string => {
 		return (0)
 			.toLocaleString(unref(locale), {
@@ -27,6 +39,7 @@ export function useCurrencyFormat() {
 
 	return {
 		formatAmountWithCurrency,
+		formatAmountWithCurrencyNoFraction,
 		getCurrencySymbol
 	};
 }

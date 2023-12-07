@@ -1,39 +1,38 @@
 .saved-funds-widget {
-  background: transparent;
-  border-radius: 0;
-  padding: var(--van-padding-xs) 0;
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: var(--van-padding-sm);
+  grid-gap: var(--van-padding-xs);
+  padding: var(--van-padding-xs) 0;
+  background: transparent;
+  border-radius: 0;
 
   &__item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 3rem;
-    background-color: #1c1c1e;
-    border-radius: var(--van-radius-lg);
     padding: var(--van-padding-base);
-    color: var(--van-gray-2);
     overflow: hidden;
+    color: var(--van-gray-2);
     text-overflow: ellipsis;
     white-space: nowrap;
+    background-color: #1c1c1e;
+    border-radius: var(--van-radius-lg);
 
     &:last-child {
-      background-color: transparent;
-      justify-content: center;
       align-items: center;
-      border: 1px dashed var(--van-gray-5);
+      justify-content: center;
       color: var(--van-text-color);
+      background-color: transparent;
+      border: 1px dashed var(--van-gray-5);
     }
   }
 
   &__title {
     display: flex;
-    font-size: var(--van-font-size-xs);
     width: 100%;
     overflow: hidden;
+    font-size: var(--van-font-size-xs);
     text-overflow: ellipsis;
     white-space: nowrap;
   }

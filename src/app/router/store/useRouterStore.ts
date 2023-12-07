@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-import { RouterState } from '@/router/types';
+import { RouterState } from '@/app/router/types';
 import { useStoreAdapter } from '@/shared/infrastructure/adapters';
 
 const routerStore = defineStore('router', {

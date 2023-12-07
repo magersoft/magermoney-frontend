@@ -136,7 +136,17 @@ export interface UpdateAccumulationFundDto {
 }
 
 export interface TotalBalanceDto {
-	balance: number;
+	amount: number;
+	currency: string;
+}
+
+export interface TotalIncomesDto {
+	amount: number;
+	currency: string;
+}
+
+export interface TotalExpensesDto {
+	amount: number;
 	currency: string;
 }
 
@@ -180,6 +190,14 @@ export interface UpdateMonthlyExpenseDto {
 }
 
 export interface CalculationsControllerGetTotalBalanceParams {
+	currency: string;
+}
+
+export interface CalculationsControllerGetTotalIncomesParams {
+	currency: string;
+}
+
+export interface CalculationsControllerGetTotalExpensesParams {
 	currency: string;
 }
 
