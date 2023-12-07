@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSavedFundsWidget } from '@/modules/dashboard/ui/components/SavedFundsWidget/features';
 
-const { onlyThreeFunds } = useSavedFundsWidget();
+const { onlyThreeFunds, isLoading } = useSavedFundsWidget();
 
 // [
 //   { id: 1, title: 'Наличные', color: '#191919' },
@@ -17,7 +17,7 @@ const { onlyThreeFunds } = useSavedFundsWidget();
 </script>
 
 <template>
-	<van-skeleton :loading="false">
+	<van-skeleton :loading="isLoading">
 		<van-cell-group inset :class="$style['saved-funds-widget']">
 			<div
 				v-for="fund in onlyThreeFunds"
@@ -37,7 +37,9 @@ const { onlyThreeFunds } = useSavedFundsWidget();
 		</van-cell-group>
 
 		<template #template>
-			<van-skeleton-paragraph :style="{ height: '3rem' }" />
+			<van-skeleton-paragraph
+				:style="{ height: 'calc(4rem - 8px)', marginTop: '8px' }"
+			/>
 		</template>
 	</van-skeleton>
 </template>

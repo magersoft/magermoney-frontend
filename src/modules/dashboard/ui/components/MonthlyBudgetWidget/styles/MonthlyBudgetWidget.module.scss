@@ -17,11 +17,13 @@
   }
 
   &__rest {
+    width: 100%;
     margin-bottom: var(--van-padding-base);
     font-size: var(--van-font-size-xs);
   }
 
   &__title {
+    width: 100%;
     margin-bottom: var(--van-padding-xs);
     font-size: var(--van-font-size-sm);
     font-weight: 400;
@@ -35,6 +37,7 @@
   }
 
   &__balance {
+    width: 100%;
     font-size: calc(var(--van-font-size-md) * 1.5);
     font-weight: var(--van-font-bold);
     color: var(--van-text-color);

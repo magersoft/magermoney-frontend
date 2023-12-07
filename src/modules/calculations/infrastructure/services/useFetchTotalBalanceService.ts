@@ -4,10 +4,10 @@ import { useBaseFetch } from '@/shared/infrastructure/services';
 
 export function useFetchTotalBalanceService() {
 	const { setTotalBalance, setIsLoading, setError } = useCalculationsStore();
-	const { fetchTotalBalance: fetchBalance } = useCalculationsModel();
+	const { fetchTotalBalance: fetchData } = useCalculationsModel();
 
 	const { fetchBase: fetchTotalBalance } = useBaseFetch({
-		fetchData: fetchBalance,
+		fetchData,
 		setData: setTotalBalance,
 		setIsLoading,
 		setError

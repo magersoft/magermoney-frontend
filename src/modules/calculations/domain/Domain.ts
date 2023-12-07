@@ -2,6 +2,7 @@ import { IFetchState } from '@/shared/domain';
 import { RequestReturnError, RequestReturnValue } from '@/shared/types/api';
 import {
 	AmountByPercentDto,
+	MonthlyBudgetDto,
 	PercentByAmountDto,
 	TotalBalanceDto,
 	TotalExpensesDto,
@@ -14,6 +15,7 @@ export namespace NCalculations {
 	export interface ITotalBalance extends TotalBalanceDto {}
 	export interface ITotalIncomes extends TotalIncomesDto {}
 	export interface ITotalExpenses extends TotalExpensesDto {}
+	export interface IMonthlyBudget extends MonthlyBudgetDto {}
 	export interface IPercentByAmount extends PercentByAmountDto {}
 	export interface IAmountByPercent extends AmountByPercentDto {}
 
@@ -21,6 +23,7 @@ export namespace NCalculations {
 		totalBalance: ITotalBalance | null;
 		totalIncomes: ITotalIncomes | null;
 		totalExpenses: ITotalExpenses | null;
+		monthlyBudget: IMonthlyBudget | null;
 		percentByAmount: IPercentByAmount | null;
 		amountByPercent: IAmountByPercent | null;
 	}
@@ -31,6 +34,9 @@ export namespace NCalculations {
 		fetchTotalExpenses: (
 			currency: string
 		) => RequestReturnValue<ITotalExpenses>;
+		fetchMonthlyBudget: (
+			currency: string
+		) => RequestReturnValue<IMonthlyBudget>;
 		fetchPercentByAmount: (
 			amount: string,
 			currency: string

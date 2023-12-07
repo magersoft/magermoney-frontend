@@ -4,8 +4,12 @@ import { useSettingsStore } from '@/modules/settings/infrastructure/stores';
 
 export const useInitDashboard = () => {
 	const { currency } = useSettingsStore();
-	const { fetchTotalBalance, fetchTotalIncomes, fetchTotalExpenses } =
-		useCalculations();
+	const {
+		fetchTotalBalance,
+		fetchTotalIncomes,
+		fetchTotalExpenses,
+		fetchMonthlyBudget
+	} = useCalculations();
 	const { fetchSavedFunds } = useSavedFunds();
 
 	const isLoading = ref(false);
@@ -17,6 +21,7 @@ export const useInitDashboard = () => {
 			fetchTotalBalance({ force: true }, unref(currency)),
 			fetchTotalIncomes({ force: true }, unref(currency)),
 			fetchTotalExpenses({ force: true }, unref(currency)),
+			fetchMonthlyBudget({ force: true }, unref(currency)),
 			fetchSavedFunds({ force: true })
 		]);
 

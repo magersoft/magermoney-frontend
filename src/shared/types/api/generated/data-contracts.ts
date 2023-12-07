@@ -150,6 +150,14 @@ export interface TotalExpensesDto {
 	currency: string;
 }
 
+export interface MonthlyBudgetDto {
+	budget: number;
+	spent: number;
+	restAmount: number;
+	restAmountPercentage: number;
+	currency: string;
+}
+
 export interface PercentByAmountDto {
 	percent: number;
 	currency: string;
@@ -198,6 +206,10 @@ export interface CalculationsControllerGetTotalIncomesParams {
 }
 
 export interface CalculationsControllerGetTotalExpensesParams {
+	currency: string;
+}
+
+export interface CalculationsControllerGetMonthlyBudgetParams {
 	currency: string;
 }
 

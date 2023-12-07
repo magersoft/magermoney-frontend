@@ -19,6 +19,8 @@ export default {
 	viewAll: 'View all',
 	incomes: 'Incomes',
 	expenses: 'Expenses',
+	monthlyBudget: 'Monthly budget',
+	restMonthlyBudget: '{restAmountFormatted} spent of {monthlyBudgetFormatted}',
 	auth: {
 		phone: 'Phone',
 		email: 'Email',

@@ -4,10 +4,10 @@ import { useBaseFetch } from '@/shared/infrastructure/services';
 
 export function useFetchTotalIncomesService() {
 	const { setTotalIncomes, setIsLoading, setError } = useCalculationsStore();
-	const { fetchTotalIncomes: fetchIncomes } = useCalculationsModel();
+	const { fetchTotalIncomes: fetchData } = useCalculationsModel();
 
 	const { fetchBase: fetchTotalIncomes } = useBaseFetch({
-		fetchData: fetchIncomes,
+		fetchData,
 		setData: setTotalIncomes,
 		setIsLoading,
 		setError

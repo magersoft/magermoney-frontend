@@ -28,7 +28,10 @@ const { totalBalanceFormatted, isLoading } = useTotalBalanceWidget();
 			<div :style="{ display: 'flex', width: '100%' }">
 				<div :style="{ flex: 1 }">
 					<van-skeleton-paragraph row-width="40%" />
-					<van-skeleton-paragraph :style="{ height: '42.5px' }" />
+					<van-skeleton-paragraph
+						row-width="80%"
+						:style="{ height: '42.5px' }"
+					/>
 				</div>
 			</div>
 		</template>

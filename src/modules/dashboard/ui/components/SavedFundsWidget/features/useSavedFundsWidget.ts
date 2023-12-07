@@ -2,7 +2,7 @@ import { useCurrencyFormat } from '@/modules/currencies';
 import { useSavedFunds } from '@/modules/savedFunds';
 
 export function useSavedFundsWidget() {
-	const { savedFunds } = useSavedFunds();
+	const { savedFunds, isLoading } = useSavedFunds();
 	const { formatAmountWithCurrencyNoFraction } = useCurrencyFormat();
 
 	const onlyThreeFunds = computed(() =>
@@ -16,6 +16,7 @@ export function useSavedFundsWidget() {
 	);
 
 	return {
+		isLoading,
 		savedFunds,
 		onlyThreeFunds
 	};

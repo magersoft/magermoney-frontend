@@ -19,6 +19,9 @@ export default {
 	viewAll: 'Показать все',
 	incomes: 'Доходы',
 	expenses: 'Расходы',
+	monthlyBudget: 'Ежемесячный бюджет',
+	restMonthlyBudget:
+		'осталось {restAmountFormatted} из {monthlyBudgetFormatted}',
 	auth: {
 		phone: 'Телефон',
 		email: 'Почта',

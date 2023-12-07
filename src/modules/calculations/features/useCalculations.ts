@@ -1,5 +1,6 @@
 import {
 	useFetchAmountByPercentService,
+	useFetchMonthlyBudgetService,
 	useFetchPercentByAmountService,
 	useFetchTotalBalanceService,
 	useFetchTotalExpensesService,
@@ -12,6 +13,7 @@ export function useCalculations() {
 		totalBalance,
 		totalIncomes,
 		totalExpenses,
+		monthlyBudget,
 		amountByPercent,
 		roundedAmountByPercent,
 		percentByAmount,
@@ -26,6 +28,7 @@ export function useCalculations() {
 	const { fetchTotalBalance } = useFetchTotalBalanceService();
 	const { fetchTotalIncomes } = useFetchTotalIncomesService();
 	const { fetchTotalExpenses } = useFetchTotalExpensesService();
+	const { fetchMonthlyBudget } = useFetchMonthlyBudgetService();
 	const { fetchPercentByAmount } = useFetchPercentByAmountService();
 	const { fetchAmountByPercent } = useFetchAmountByPercentService();
 
@@ -33,6 +36,7 @@ export function useCalculations() {
 		totalBalance,
 		totalIncomes,
 		totalExpenses,
+		monthlyBudget,
 
 		percentByAmount,
 		roundedPercentByAmount,
@@ -47,6 +51,7 @@ export function useCalculations() {
 		fetchTotalBalance,
 		fetchTotalIncomes,
 		fetchTotalExpenses,
+		fetchMonthlyBudget,
 		fetchPercentByAmount,
 		fetchAmountByPercent,
 

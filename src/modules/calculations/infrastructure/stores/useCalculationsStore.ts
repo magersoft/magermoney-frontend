@@ -11,6 +11,7 @@ const calculationsStore = defineStore('calculations', {
 		totalBalance: null,
 		totalIncomes: null,
 		totalExpenses: null,
+		monthlyBudget: null,
 		percentByAmount: null,
 		amountByPercent: null
 	}),
@@ -41,6 +42,9 @@ const calculationsStore = defineStore('calculations', {
 		},
 		setTotalExpenses(value: NCalculations.ITotalExpenses) {
 			this.totalExpenses = value;
+		},
+		setMonthlyBudget(value: NCalculations.IMonthlyBudget) {
+			this.monthlyBudget = value;
 		},
 		setPercentByAmount(value: NCalculations.IPercentByAmount) {
 			this.percentByAmount = value;

@@ -2,11 +2,12 @@ import { useFetchSavedFundsService } from '@/modules/savedFunds/infrastructure/s
 import { useSavedFundsStore } from '@/modules/savedFunds/infrastructure/stores';
 
 export function useSavedFunds() {
-	const { savedFunds } = useSavedFundsStore();
+	const { savedFunds, isLoading } = useSavedFundsStore();
 	const { fetchSavedFunds } = useFetchSavedFundsService();
 
 	return {
 		fetchSavedFunds,
-		savedFunds
+		savedFunds,
+		isLoading
 	};
 }

@@ -4,10 +4,10 @@ import { useBaseFetch } from '@/shared/infrastructure/services';
 
 export function useFetchAmountByPercentService() {
 	const { setAmountByPercent, setIsLoading, setError } = useCalculationsStore();
-	const { fetchAmountByPercent: fetchAmount } = useCalculationsModel();
+	const { fetchAmountByPercent: fetchData } = useCalculationsModel();
 
 	const { fetchBase: fetchAmountByPercent } = useBaseFetch({
-		fetchData: fetchAmount,
+		fetchData,
 		setData: setAmountByPercent,
 		setIsLoading,
 		setError
