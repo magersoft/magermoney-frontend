@@ -106,7 +106,12 @@ export function useAuthForm() {
 						if (unref(response.data)!.accessToken) {
 							loginFormData.value = initialLoginFormControls;
 							resetError();
-							router.push({ name: AppRoutes.Dashboard });
+
+							if (unref(response.data)!.isFirstTime) {
+								router.push({ name: AppRoutes.Welcome });
+							} else {
+								router.push({ name: AppRoutes.Dashboard });
+							}
 						}
 					}
 				})

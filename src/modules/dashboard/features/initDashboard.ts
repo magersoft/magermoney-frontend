@@ -17,13 +17,11 @@ export const useInitDashboard = () => {
 	const fetchDashboard = async () => {
 		isLoading.value = true;
 
-		await Promise.all([
-			fetchTotalBalance({ force: true }, unref(currency)),
-			fetchTotalIncomes({ force: true }, unref(currency)),
-			fetchTotalExpenses({ force: true }, unref(currency)),
-			fetchMonthlyBudget({ force: true }, unref(currency)),
-			fetchSavedFunds({ force: true })
-		]);
+		await fetchTotalBalance({ force: true, showError: true }, unref(currency));
+		await fetchTotalIncomes({ force: true, showError: true }, unref(currency));
+		await fetchTotalExpenses({ force: true, showError: true }, unref(currency));
+		await fetchMonthlyBudget({ force: true, showError: true }, unref(currency));
+		await fetchSavedFunds({ force: true, showError: true });
 
 		isLoading.value = false;
 	};

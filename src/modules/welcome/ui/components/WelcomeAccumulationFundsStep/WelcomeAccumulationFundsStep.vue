@@ -18,7 +18,7 @@ const { setStep } = useWelcomeSteps();
 			has-submit-button
 			has-back-button
 			@click:back="setStep(WelcomeStepsType.SAVED_FUNDS)"
-			@click:submit="setStep(WelcomeStepsType.MONTHLY_EXPENSES)"
+			@click:submit="setStep(WelcomeStepsType.EXPENSE_SOURCES)"
 		/>
 		<accumulation-funds-circle />
 		<accumulation-funds-balance />

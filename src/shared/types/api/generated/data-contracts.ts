@@ -29,6 +29,7 @@ export interface VerifyUserDto {
 	accessToken: string | null;
 	email: string;
 	phone: string;
+	isFirstTime: boolean;
 }
 
 export interface CreateUserDto {
@@ -172,13 +173,13 @@ export interface AmountByPercentDto {
 	percent: number;
 }
 
-export interface CreateMonthlyExpenseDto {
+export interface CreateExpenseSourceDto {
 	title: string;
 	amount: number;
 	currency: string;
 }
 
-export interface MonthlyExpenseEntity {
+export interface ExpenseSourceEntity {
 	id: number;
 	/** @format date-time */
 	createdAt: string;
@@ -191,7 +192,7 @@ export interface MonthlyExpenseEntity {
 	userId: number;
 }
 
-export interface UpdateMonthlyExpenseDto {
+export interface UpdateExpenseSourceDto {
 	title?: string;
 	amount?: number;
 	currency?: string;

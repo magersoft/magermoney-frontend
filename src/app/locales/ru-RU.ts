@@ -78,7 +78,7 @@ export default {
 		balanceAccumulationInMonth: 'Остаток накоплений',
 		removeTitle: 'Удалить сохранение'
 	},
-	monthlyExpenses: {
+	expenseSources: {
 		title: 'Ежемесячные расходы',
 		description:
 			'Укажите ваши ежемесячные расходы, это может быть аренда, коммунальные платежи, питание и т.д.',

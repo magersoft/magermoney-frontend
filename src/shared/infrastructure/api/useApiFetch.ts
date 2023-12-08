@@ -40,6 +40,8 @@ export const useApiFetch = () => {
 				);
 
 				catchNotFoundError(ctx.response?.status, ctx.data?.message, () => {
+					resetAuthState();
+					resetUser();
 					router.push({ name: AppRoutes.NotFound });
 				});
 

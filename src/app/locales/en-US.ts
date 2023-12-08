@@ -78,7 +78,7 @@ export default {
 		balanceAccumulationInMonth: 'Balance accumulation',
 		removeTitle: 'Remove accumulation fund'
 	},
-	monthlyExpenses: {
+	expenseSources: {
 		title: 'Monthly expenses',
 		description:
 			'Specify your monthly expenses, it can be rent, utilities, food, etc.',
