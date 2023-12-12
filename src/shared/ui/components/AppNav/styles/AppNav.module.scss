@@ -1,0 +1,14 @@
+.app-nav {
+  color: red;
+
+  :global(.van-popover__wrapper) {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--van-tabbar-item-font-size);
+    line-height: var(--van-tabbar-item-line-height);
+    cursor: pointer;
+  }
+}

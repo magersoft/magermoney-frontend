@@ -2,15 +2,17 @@
 import { useRoute } from 'vue-router';
 
 import { appConfig } from '@/app/config';
+import { useAuth } from '@/modules/auth';
 import { AppView } from '@/shared/ui/components';
 
 const route = useRoute();
+const { isAuthorization } = useAuth();
 
 const layout = computed(() => {
 	const layout = route.meta.layout || appConfig.defaultLayout;
 
 	if (layout) {
-		return `${layout}Layout`;
+		return unref(isAuthorization) ? `${layout}Layout` : `LoginLayout`;
 	}
 
 	return 'div';

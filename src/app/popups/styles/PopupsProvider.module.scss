@@ -1,0 +1,17 @@
+.popup {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--van-floating-panel-header-height);
+    cursor: grab;
+    user-select: none;
+  }
+
+  &__header-bar {
+    width: var(--van-floating-panel-bar-width);
+    height: var(--van-floating-panel-bar-height);
+    background: var(--van-floating-panel-bar-color);
+    border-radius: var(--van-radius-md);
+  }
+}

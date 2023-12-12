@@ -1,1 +1,1 @@
-export * from './initDashboard.ts';
+export * from './useInitDashboard';

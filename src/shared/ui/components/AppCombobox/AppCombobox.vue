@@ -69,6 +69,7 @@ const onChangeCustomValue = () => {
 		:rules="!isCustom ? rules : []"
 		:disabled="disabled"
 		:class="$style['app-combobox']"
+		v-bind="$attrs"
 		@click="showPicker = true"
 	/>
 
@@ -81,6 +82,7 @@ const onChangeCustomValue = () => {
 		:disabled="disabled"
 		:readonly="readonly"
 		:rules="rules"
+		v-bind="$attrs"
 		@blur="onChangeCustomValue"
 	/>
 

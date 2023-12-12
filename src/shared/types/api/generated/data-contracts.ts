@@ -51,6 +51,7 @@ export interface UserEntity {
 	darkMode: boolean;
 	isFirstTime: boolean;
 	language: string;
+	currency: string;
 }
 
 export interface UpdateUserDto {
@@ -196,6 +197,35 @@ export interface UpdateExpenseSourceDto {
 	title?: string;
 	amount?: number;
 	currency?: string;
+}
+
+export interface CreateIncomeDto {
+	title?: string;
+	amount?: number;
+	currency?: string;
+	/** @format date-time */
+	dateOfIssue: string;
+	distributed?: boolean;
+	incomeSourceId: number;
+}
+
+export interface IncomeEntity {
+	id: number;
+	/** @format date-time */
+	createdAt: string;
+	/** @format date-time */
+	updatedAt: string;
+	title: string;
+	amount: number;
+	distributed: boolean;
+	/** @format date-time */
+	dateOfIssue: string;
+	currencyId: number;
+	userId: number;
+}
+
+export interface UpdateIncomeDto {
+	distributed?: boolean;
 }
 
 export interface CalculationsControllerGetTotalBalanceParams {

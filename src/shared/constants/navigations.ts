@@ -1,7 +1,14 @@
+import { AppPopups } from '@/app/popups';
+
 export interface Navigation {
 	title: string;
 	icon: string;
-	path: string;
+	path?: string;
+	children?: NavigationChildren[];
+}
+
+export interface NavigationChildren extends Navigation {
+	popup?: AppPopups;
 }
 
 export const loginNavigations: Navigation[] = [
@@ -22,6 +29,22 @@ export const mainNavigations: Navigation[] = [
 		title: 'Dashboard',
 		icon: 'home-o',
 		path: '/'
+	},
+	{
+		title: 'Add',
+		icon: 'plus',
+		children: [
+			{
+				title: 'Income',
+				icon: 'pending-payment',
+				popup: AppPopups.AddIncome
+			},
+			{
+				title: 'Expense',
+				icon: 'paid',
+				popup: AppPopups.AddExpense
+			}
+		]
 	},
 	{
 		title: 'Settings',

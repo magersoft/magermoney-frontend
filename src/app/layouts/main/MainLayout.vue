@@ -23,7 +23,13 @@ const pageTitle = computed(() =>
 const pageNavigation = computed(() =>
 	mainNavigations.map((item) => ({
 		...item,
-		title: t(`nav.${item.title}`)
+		title: t(`nav.${item.title}`),
+		children:
+			item.children &&
+			item.children?.map((child) => ({
+				...child,
+				title: t(`nav.${child.title}`)
+			}))
 	}))
 );
 

@@ -107,11 +107,15 @@ export default {
 		Login: 'Вход и регистрация',
 		Settings: 'Настройки',
 		Welcome: 'Добро пожаловать',
+		AddIncome: 'Добавить доход',
 		InternalServerError: 'Внутренняя ошибка сервера'
 	},
 	nav: {
 		Dashboard: 'Главная',
-		Settings: 'Настройки'
+		Settings: 'Настройки',
+		Add: 'Добавить',
+		Income: 'Доход',
+		Expense: 'Расход'
 	},
 	validation: {
 		required: 'Поле обязательно для заполнения',

@@ -107,11 +107,15 @@ export default {
 		Login: 'Sign in/Sign up',
 		Settings: 'Settings',
 		Welcome: 'Welcome',
+		AddIncome: 'Add income',
 		InternalServerError: 'Internal server error'
 	},
 	nav: {
 		Dashboard: 'Home',
-		Settings: 'Settings'
+		Settings: 'Settings',
+		Add: 'Add',
+		Income: 'Income',
+		Expense: 'Expense'
 	},
 	validation: {
 		required: 'Field is required',
