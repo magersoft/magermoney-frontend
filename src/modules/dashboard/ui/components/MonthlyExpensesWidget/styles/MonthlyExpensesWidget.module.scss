@@ -1,4 +1,4 @@
-.incomes-widget {
+.monthly-expenses-widget {
   position: relative;
   display: flex;
   padding: var(--van-padding-sm);
@@ -45,12 +45,12 @@
     justify-content: center;
     width: 16px;
     height: 16px;
-    background: var(--van-success-color);
+    background: var(--van-danger-color);
     border-radius: 5px;
 
     :global(.van-icon) {
       color: var(--van-white);
-      transform: rotate(-45deg);
+      transform: rotate(220deg);
     }
   }
 }

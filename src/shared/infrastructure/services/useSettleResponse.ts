@@ -22,7 +22,10 @@ export function useSettleResponse<T, E extends SettleResponseError>() {
 	) => {
 		if (checkActionSuccess(unref(statusCode)) || !unref(error)) {
 			isNotifySuccess &&
-				notify.success(messages.success, { closeOnClick: true });
+				notify.success(messages.success, {
+					closeOnClick: true,
+					wordBreak: 'break-word'
+				});
 			onSuccess && onSuccess();
 			return true;
 		}

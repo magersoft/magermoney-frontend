@@ -10,9 +10,5 @@ export const expenseSourcesTypesItems = ref([
 	{
 		text: 'Еда',
 		value: 'food'
-	},
-	{
-		text: 'Другое',
-		value: 'other'
 	}
 ]);

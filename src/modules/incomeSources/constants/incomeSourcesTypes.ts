@@ -27,9 +27,5 @@ export const incomeSourcesTypes = ref([
 	{
 		text: 'Пенсия',
 		value: 'pension'
-	},
-	{
-		text: 'Другое',
-		value: 'other'
 	}
 ]);

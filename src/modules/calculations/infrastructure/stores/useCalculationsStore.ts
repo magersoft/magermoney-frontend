@@ -9,8 +9,8 @@ const calculationsStore = defineStore('calculations', {
 	state: (): NCalculations.IState => ({
 		...fetchStateInitialState,
 		totalBalance: null,
-		totalIncomes: null,
-		totalExpenses: null,
+		totalMonthlyIncomes: null,
+		totalMonthlyExpenses: null,
 		monthlyBudget: null,
 		percentByAmount: null,
 		amountByPercent: null
@@ -37,11 +37,11 @@ const calculationsStore = defineStore('calculations', {
 		setTotalBalance(value: NCalculations.ITotalBalance) {
 			this.totalBalance = value;
 		},
-		setTotalIncomes(value: NCalculations.ITotalIncomes) {
-			this.totalIncomes = value;
+		setTotalMonthlyIncomes(value: NCalculations.ITotalMonthlyIncomes) {
+			this.totalMonthlyIncomes = value;
 		},
-		setTotalExpenses(value: NCalculations.ITotalExpenses) {
-			this.totalExpenses = value;
+		setTotalMonthlyExpenses(value: NCalculations.ITotalMonthlyExpenses) {
+			this.totalMonthlyExpenses = value;
 		},
 		setMonthlyBudget(value: NCalculations.IMonthlyBudget) {
 			this.monthlyBudget = value;

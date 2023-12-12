@@ -142,12 +142,12 @@ export interface TotalBalanceDto {
 	currency: string;
 }
 
-export interface TotalIncomesDto {
+export interface TotalMonthlyIncomesDto {
 	amount: number;
 	currency: string;
 }
 
-export interface TotalExpensesDto {
+export interface TotalMonthlyExpensesDto {
 	amount: number;
 	currency: string;
 }
@@ -206,7 +206,7 @@ export interface CreateIncomeDto {
 	/** @format date-time */
 	dateOfIssue: string;
 	distributed?: boolean;
-	incomeSourceId: number;
+	incomeSourceId?: number;
 }
 
 export interface IncomeEntity {
@@ -232,11 +232,11 @@ export interface CalculationsControllerGetTotalBalanceParams {
 	currency: string;
 }
 
-export interface CalculationsControllerGetTotalIncomesParams {
+export interface CalculationsControllerGetTotalMonthlyIncomesParams {
 	currency: string;
 }
 
-export interface CalculationsControllerGetTotalExpensesParams {
+export interface CalculationsControllerGetTotalMonthlyExpensesParams {
 	currency: string;
 }
 

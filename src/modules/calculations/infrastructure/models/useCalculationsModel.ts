@@ -11,18 +11,24 @@ export const useCalculationsModel = (): NCalculations.IModel => {
 			})
 		).get();
 
-	const fetchTotalIncomes = (currency: string) =>
-		fetch<NCalculations.ITotalIncomes>(
-			getUrlWithQueryParams(`/${NCalculations.API_NAMESPACE}/total-incomes`, {
-				currency
-			})
+	const fetchTotalMonthlyIncomes = (currency: string) =>
+		fetch<NCalculations.ITotalMonthlyIncomes>(
+			getUrlWithQueryParams(
+				`/${NCalculations.API_NAMESPACE}/total-monthly-incomes`,
+				{
+					currency
+				}
+			)
 		).get();
 
-	const fetchTotalExpenses = (currency: string) =>
-		fetch<NCalculations.ITotalExpenses>(
-			getUrlWithQueryParams(`/${NCalculations.API_NAMESPACE}/total-expenses`, {
-				currency
-			})
+	const fetchTotalMonthlyExpenses = (currency: string) =>
+		fetch<NCalculations.ITotalMonthlyExpenses>(
+			getUrlWithQueryParams(
+				`/${NCalculations.API_NAMESPACE}/total-monthly-expenses`,
+				{
+					currency
+				}
+			)
 		).get();
 
 	const fetchMonthlyBudget = (currency: string) =>
@@ -56,8 +62,8 @@ export const useCalculationsModel = (): NCalculations.IModel => {
 
 	return {
 		fetchTotalBalance,
-		fetchTotalIncomes,
-		fetchTotalExpenses,
+		fetchTotalMonthlyIncomes,
+		fetchTotalMonthlyExpenses,
 		fetchMonthlyBudget,
 		fetchPercentByAmount,
 		fetchAmountByPercent

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {
 	DashboardHeader,
-	ExpensesWidget,
-	IncomesWidget,
 	MonthlyBudgetWidget,
+	MonthlyExpensesWidget,
+	MonthlyIncomesWidget,
 	SavedFundsWidget,
 	TotalBalanceWidget
 } from '@/modules/dashboard/ui/components';
@@ -27,8 +27,8 @@ const { fetchDashboard, isLoading } = useInitDashboardView();
 			<saved-funds-widget />
 
 			<div :class="$style['dashboard-view__grid']">
-				<incomes-widget :class="$style['dashboard-view__col']" />
-				<expenses-widget :class="$style['dashboard-view__col']" />
+				<monthly-incomes-widget :class="$style['dashboard-view__col']" />
+				<monthly-expenses-widget :class="$style['dashboard-view__col']" />
 				<monthly-budget-widget :class="$style['dashboard-view__col']" />
 			</div>
 		</van-pull-refresh>

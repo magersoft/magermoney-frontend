@@ -7,9 +7,5 @@ export const savedFundsTypesItems = ref([
 	{
 		text: 'Вклад в банке',
 		value: 'deposit'
-	},
-	{
-		text: 'Другое',
-		value: 'other'
 	}
 ]);

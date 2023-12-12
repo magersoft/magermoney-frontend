@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { FieldRule, PickerColumn } from 'vant';
 import { PickerConfirmEventParams } from 'vant/es/picker/types';
+import { useI18n } from 'vue-i18n';
 
 interface AppComboboxProps {
 	readonly label?: string;
@@ -26,10 +27,25 @@ interface AppComboboxEvents {
 const props = defineProps<AppComboboxProps>();
 const emit = defineEmits<AppComboboxEvents>();
 
+const { t } = useI18n();
+
 const showPicker = ref(false);
 const customInternalValue = ref('');
+const internalItems = computed(() => {
+	const items = props.items || [];
 
-const isCustom = computed(() => props.modelValue === props.customTitle);
+	return [
+		...items,
+		{
+			text: t('Other'),
+			value: 'other'
+		}
+	];
+});
+
+const isCustom = computed(
+	() => props.modelValue === (props.customTitle || t('Other'))
+);
 const internalValue = computed({
 	get() {
 		return props.modelValue;
@@ -88,7 +104,7 @@ const onChangeCustomValue = () => {
 
 	<van-popup v-model:show="showPicker" position="bottom">
 		<van-picker
-			:columns="items"
+			:columns="internalItems"
 			@confirm="onConfirm"
 			@cancel="showPicker = false"
 		/>

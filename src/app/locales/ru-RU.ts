@@ -10,6 +10,7 @@ export default {
 	removing: 'Удаление',
 	cancel: 'Отмена',
 	done: 'OK',
+	Other: 'Другое',
 	removedSuccessfully: 'Удалено успешно',
 	removedFailed: 'Не удалось удалить',
 	confirmRemoveContent: 'Вы уверены, что хотите удалить {entityName}?',
@@ -93,6 +94,28 @@ export default {
 		titleOfExpensesDescription: 'Вы можете удалять категории расходов свайпом',
 		stepName: 'Расходы',
 		removeTitle: 'Удалить расход'
+	},
+	incomesForm: {
+		title: 'Заявить о доходе',
+		description:
+			'Вы можете заявить о доходе из ваших ежемесячных источников дохода или заявить о разовом доходе',
+		income: 'Доход',
+		selectIncome: 'Выберите дохода',
+		singleIncome: 'Разовый доход',
+		singleIncomeDescription: 'Выберите категорию дохода и введите сумму',
+		category: 'Категория',
+		selectCategory: 'Выберите категорию',
+		name: 'Название',
+		enterIncome: 'Введите название дохода',
+		amount: 'Сумма',
+		enterAmount: 'Введите сумму',
+		dateOfIssue: 'Дата получения',
+		declare: 'Заявить',
+		removeTitle: 'Удалить доход',
+		systemMessages: {
+			success: 'Доход успешно заявлен',
+			fail: 'Не удалось заявить доход'
+		}
 	},
 	settings: {
 		app: 'Настойки приложения',

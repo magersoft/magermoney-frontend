@@ -10,6 +10,7 @@ export default {
 	removing: 'Removing',
 	cancel: 'Cancel',
 	done: 'Done',
+	Other: 'Other',
 	removedSuccessfully: 'Removed successfully',
 	removedFailed: 'Removed failed',
 	confirmRemoveContent: 'Are you sure you want to delete {entityName}?',
@@ -93,6 +94,28 @@ export default {
 		titleOfExpensesDescription: 'You can delete expenses by swiping',
 		stepName: 'Expenses',
 		removeTitle: 'Remove expense'
+	},
+	incomesForm: {
+		title: 'Declare income',
+		description:
+			'You can declare income from your monthly income sources or declare a one-time income',
+		income: 'Income',
+		selectIncome: 'Select income',
+		singleIncome: 'One-time income',
+		singleIncomeDescription: 'Select income category and enter amount',
+		category: 'Category',
+		selectCategory: 'Select category',
+		name: 'Name',
+		enterIncome: 'Enter name of income',
+		amount: 'Amount',
+		enterAmount: 'Enter amount',
+		dateOfIssue: 'Date of issue',
+		declare: 'Declare',
+		removeTitle: 'Remove income',
+		systemMessages: {
+			success: 'Income declared successfully',
+			fail: 'Income declaration failed'
+		}
 	},
 	settings: {
 		app: 'Application settings',

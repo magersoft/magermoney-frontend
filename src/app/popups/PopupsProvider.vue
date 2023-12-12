@@ -13,7 +13,7 @@ const { popupComponent, isShowed, handleClose, handleClosed } = usePopups();
 	>
 		<template #header>
 			<div :class="$style['popup__header']" @click="handleClose">
-				<div :class="$style['popup__header-bar']"></div>
+				<div :class="$style['popup__header-bar']" />
 			</div>
 		</template>
 	</component>

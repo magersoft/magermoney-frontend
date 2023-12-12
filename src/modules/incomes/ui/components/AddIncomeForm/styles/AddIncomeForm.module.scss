@@ -1,6 +1,16 @@
 .add-income-form {
   &__field {
     background: var(--van-background-3);
+
+    &::after {
+       border-color: var(--van-background-2);
+    }
+
+    &--currencies {
+      :global(.van-button) {
+        background: var(--van-background-3);
+      }
+    }
   }
 
   &__actions {
@@ -15,6 +25,10 @@
   .add-income-form {
     &__field {
       background: var(--van-background);
+
+      &::after {
+        border-color: var(--van-cell-border-color);
+      }
     }
   }
 }
