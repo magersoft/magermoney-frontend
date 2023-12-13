@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { FieldRule, PickerColumn } from 'vant';
 import { PickerConfirmEventParams } from 'vant/es/picker/types';
-import { useI18n } from 'vue-i18n';
 
 interface AppComboboxProps {
 	readonly label?: string;
@@ -12,7 +11,7 @@ interface AppComboboxProps {
 	readonly customTitle?: string;
 	readonly error?: boolean;
 	readonly errorMessage?: string;
-	readonly modelValue: string;
+	readonly modelValue: string | number | undefined;
 	readonly items?: PickerColumn;
 	readonly rules?: FieldRule[];
 	readonly disabled?: boolean;
@@ -20,31 +19,33 @@ interface AppComboboxProps {
 }
 
 interface AppComboboxEvents {
-	(event: 'confirm', value: boolean): void;
-	(event: 'update:modelValue', value: string): void;
+	(event: 'confirm', value: PickerConfirmEventParams): void;
+	(event: 'update:modelValue', value: string | number | undefined): void;
 }
 
 const props = defineProps<AppComboboxProps>();
 const emit = defineEmits<AppComboboxEvents>();
-
-const { t } = useI18n();
 
 const showPicker = ref(false);
 const customInternalValue = ref('');
 const internalItems = computed(() => {
 	const items = props.items || [];
 
+	if (!props.customTitle) {
+		return items;
+	}
+
 	return [
 		...items,
 		{
-			text: t('Other'),
+			text: props.customTitle,
 			value: 'other'
 		}
 	];
 });
 
 const isCustom = computed(
-	() => props.modelValue === (props.customTitle || t('Other'))
+	() => props.customTitle && props.modelValue === props.customTitle
 );
 const internalValue = computed({
 	get() {
@@ -56,11 +57,11 @@ const internalValue = computed({
 	}
 });
 
-const onConfirm = ({ selectedOptions }: PickerConfirmEventParams) => {
-	const [options] = selectedOptions;
+const onConfirm = (pickerConfirmEventParams: PickerConfirmEventParams) => {
+	const [options] = pickerConfirmEventParams.selectedOptions;
 	internalValue.value = options?.text as string;
 
-	emit('confirm', unref(showPicker));
+	emit('confirm', pickerConfirmEventParams);
 
 	showPicker.value = false;
 };

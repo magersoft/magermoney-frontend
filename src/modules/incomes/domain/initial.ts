@@ -8,6 +8,7 @@ export type TInitialIncomeFormData = {
 	currency: string;
 	dateOfIssue: string;
 	incomeSourceId?: number;
+	savedFundId?: number;
 };
 
 const appSettings = useStorage('settings', {
@@ -20,5 +21,6 @@ export const initialIncomeFormData: TInitialIncomeFormData = {
 	amount: '',
 	currency: unref(appSettings).currency,
 	incomeSourceId: undefined,
-	dateOfIssue: new Date().toLocaleDateString(unref(appSettings).lang)
+	savedFundId: undefined,
+	dateOfIssue: new Date().toISOString()
 };

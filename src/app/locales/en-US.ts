@@ -102,7 +102,8 @@ export default {
 		income: 'Income',
 		selectIncome: 'Select income',
 		singleIncome: 'One-time income',
-		singleIncomeDescription: 'Select income category and enter amount',
+		savedFund: 'Saved fund',
+		selectSavedFund: 'Select saved fund',
 		category: 'Category',
 		selectCategory: 'Select category',
 		name: 'Name',
@@ -138,7 +139,9 @@ export default {
 		Settings: 'Settings',
 		Add: 'Add',
 		Income: 'Income',
-		Expense: 'Expense'
+		Expense: 'Expense',
+		History: 'History',
+		Transfer: 'Transfer'
 	},
 	validation: {
 		required: 'Field is required',

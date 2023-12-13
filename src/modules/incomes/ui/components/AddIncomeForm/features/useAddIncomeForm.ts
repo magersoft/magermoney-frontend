@@ -13,6 +13,7 @@ import { useCreateIncomeService } from '@/modules/incomes/infrastructure/service
 import { useIncomesStore } from '@/modules/incomes/infrastructure/stores';
 import { mappingIncomeFormData } from '@/modules/incomes/ui/components/AddIncomeForm/utils';
 import { useIncomeSources } from '@/modules/incomeSources/features';
+import { useSavedFunds } from '@/modules/savedFunds';
 import { useForm, useTranslateSystemMessages } from '@/shared/features';
 import { useSettleResponse } from '@/shared/infrastructure/services/useSettleResponse.ts';
 import { cloneDeep } from '@/shared/utils';
@@ -25,6 +26,7 @@ export function useAddIncomeForm() {
 	const { isLoading, error } = useIncomesStore();
 
 	const { incomeSources } = useIncomeSources();
+	const { savedFunds } = useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 	const { fetchDashboard } = useInitDashboard();
 	const { formatAmountWithCurrencyNoFraction, getCurrencySymbol } =
@@ -38,10 +40,11 @@ export function useAddIncomeForm() {
 		useForm(error);
 	const { handleClose } = usePopups();
 
-	const showedPicker = ref(false);
+	const showedIncomeSourcesPicker = ref(false);
 	const showedDatePicker = ref(false);
 	const isSingleIncome = ref(false);
 	const formattedDate = ref(new Date().toLocaleDateString(unref(locale)));
+	const savedFundTitle = ref('');
 
 	const incomeSourcesItems = computed(() =>
 		unref(incomeSources).map((incomeSource) => ({
@@ -54,16 +57,24 @@ export function useAddIncomeForm() {
 		}))
 	);
 
+	const savedFundsItems = computed(() =>
+		unref(savedFunds).map((savedFund) => ({
+			...savedFund,
+			text: savedFund.source,
+			value: savedFund.id
+		}))
+	);
+
 	watch(isSingleIncome, () => {
 		resetValidationForm();
 	});
 
-	const handleShowPicker = () => {
+	const handleShowIncomeSourcesPicker = () => {
 		if (unref(isSingleIncome)) return;
-		showedPicker.value = true;
+		showedIncomeSourcesPicker.value = true;
 	};
 
-	const handleConfirmPicker = ({
+	const handleConfirmIncomeSourcesPicker = ({
 		selectedOptions
 	}: PickerConfirmEventParams) => {
 		const [option] = selectedOptions;
@@ -77,7 +88,22 @@ export function useAddIncomeForm() {
 				incomeSourceId: option.id
 			};
 
-			showedPicker.value = false;
+			showedIncomeSourcesPicker.value = false;
+		}
+	};
+
+	const handleConfirmSavedFundsPicker = ({
+		selectedOptions
+	}: PickerConfirmEventParams) => {
+		const [option] = selectedOptions;
+
+		if (option) {
+			incomeFormData.value = {
+				...unref(incomeFormData),
+				savedFundId: option.value as number
+			};
+
+			savedFundTitle.value = option.text as string;
 		}
 	};
 
@@ -120,16 +146,19 @@ export function useAddIncomeForm() {
 		hasServerError,
 		incomeFormData,
 		incomeSourcesItems,
-		showedPicker,
+		savedFundsItems,
+		currenciesItems,
+		showedIncomeSourcesPicker,
 		showedDatePicker,
 		isLoading,
 		isLoadingCurrencies,
 		isSingleIncome,
-		currenciesItems,
 		formattedDate,
+		savedFundTitle,
 		getCurrencySymbol,
-		handleShowPicker,
-		handleConfirmPicker,
+		handleShowIncomeSourcesPicker,
+		handleConfirmIncomeSourcesPicker,
+		handleConfirmSavedFundsPicker,
 		handleConfirmDatePicker,
 		handleSubmit
 	};

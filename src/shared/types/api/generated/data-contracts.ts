@@ -205,8 +205,8 @@ export interface CreateIncomeDto {
 	currency?: string;
 	/** @format date-time */
 	dateOfIssue: string;
-	distributed?: boolean;
 	incomeSourceId?: number;
+	savedFundId?: number;
 }
 
 export interface IncomeEntity {
@@ -217,15 +217,18 @@ export interface IncomeEntity {
 	updatedAt: string;
 	title: string;
 	amount: number;
-	distributed: boolean;
 	/** @format date-time */
 	dateOfIssue: string;
 	currencyId: number;
+	savedFundId: number;
+	incomeSourceId?: number;
 	userId: number;
 }
 
 export interface UpdateIncomeDto {
-	distributed?: boolean;
+	title?: string;
+	/** @format date-time */
+	dateOfIssue: string;
 }
 
 export interface CalculationsControllerGetTotalBalanceParams {

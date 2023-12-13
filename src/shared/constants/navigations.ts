@@ -31,6 +31,11 @@ export const mainNavigations: Navigation[] = [
 		path: '/'
 	},
 	{
+		title: 'History',
+		icon: 'balance-list-o',
+		path: '/history'
+	},
+	{
 		title: 'Add',
 		icon: 'plus',
 		children: [
@@ -45,6 +50,11 @@ export const mainNavigations: Navigation[] = [
 				popup: AppPopups.AddExpense
 			}
 		]
+	},
+	{
+		title: 'Transfer',
+		icon: 'exchange',
+		path: '/transfer'
 	},
 	{
 		title: 'Settings',

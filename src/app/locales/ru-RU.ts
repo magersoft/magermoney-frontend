@@ -102,7 +102,8 @@ export default {
 		income: 'Доход',
 		selectIncome: 'Выберите дохода',
 		singleIncome: 'Разовый доход',
-		singleIncomeDescription: 'Выберите категорию дохода и введите сумму',
+		savedFund: 'Сохранение',
+		selectSavedFund: 'Выберите место хранения',
 		category: 'Категория',
 		selectCategory: 'Выберите категорию',
 		name: 'Название',
@@ -138,7 +139,9 @@ export default {
 		Settings: 'Настройки',
 		Add: 'Добавить',
 		Income: 'Доход',
-		Expense: 'Расход'
+		Expense: 'Расход',
+		History: 'История',
+		Transfer: 'Перевод'
 	},
 	validation: {
 		required: 'Поле обязательно для заполнения',
