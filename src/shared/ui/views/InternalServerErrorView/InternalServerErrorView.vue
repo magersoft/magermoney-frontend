@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
 import { useAppHeader, useAppNav } from '@/shared/ui/components';
 
 const { setHeader } = useAppHeader();
@@ -11,12 +13,17 @@ setNav({
 	isHidden: true
 });
 
+const { t } = useI18n();
+
 const onReload = () => {
 	window.location.href = '/';
 };
 </script>
 
 <template>
-	<div>500 Internal Server Error</div>
-	<van-button @click="onReload">Reload</van-button>
+	<van-empty image="network" :description="t('internalServerError')">
+		<van-button round type="primary" class="bottom-button" @click="onReload">
+			{{ t('reload') }}
+		</van-button>
+	</van-empty>
 </template>

@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 
 import { NCurrencies } from '@/modules/currencies/domain';
-import { mappingCurrenciesForPicker } from '@/modules/currencies/utils';
 import { fetchStateInitialState } from '@/shared/domain';
 import { useStoreAdapter } from '@/shared/infrastructure/adapters';
 
@@ -10,9 +9,6 @@ const currenciesStore = defineStore('currencies', {
 		...fetchStateInitialState,
 		currencies: []
 	}),
-	getters: {
-		currenciesItems: (state) => mappingCurrenciesForPicker(state.currencies)
-	},
 	actions: {
 		setCurrencies(currencies: NCurrencies.ICurrency[]) {
 			this.currencies = currencies;

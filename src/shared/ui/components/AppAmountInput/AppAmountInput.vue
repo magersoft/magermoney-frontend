@@ -88,6 +88,11 @@ const onCloseKeyboard = () => {
 const amountMask: MaskInputOptions = reactive(
 	props.isPercent ? maskPercent : maskAmount
 );
+
+const handleShowPicker = () => {
+	if (props.disabled) return;
+	showPicker.value = true;
+};
 </script>
 
 <template>
@@ -111,10 +116,10 @@ const amountMask: MaskInputOptions = reactive(
 			<div
 				v-if="showCurrencies"
 				:class="$style['app-amount-input__currency']"
-				@click="showPicker = true"
+				@click="handleShowPicker"
 			>
 				<span>{{ t('currency') }}</span>
-				<van-button size="small" :loading="loading" @click="showPicker = true">
+				<van-button size="small" :loading="loading" @click="handleShowPicker">
 					{{ displayCurrencySymbol }}
 				</van-button>
 			</div>

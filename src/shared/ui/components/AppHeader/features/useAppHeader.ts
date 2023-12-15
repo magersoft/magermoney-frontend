@@ -6,6 +6,7 @@ export function useAppHeader() {
 	const isHidden = computed(() => unref(header).isHidden);
 	const title = computed(() => unref(header).title);
 	const textLeft = computed(() => unref(header).textLeft);
+	const textRight = computed(() => unref(header).textRight);
 	const isLeftArrow = computed(() => unref(header).isLeftArrow);
 	const onClickLeft = computed(() => unref(header).onClickLeft);
 
@@ -13,6 +14,7 @@ export function useAppHeader() {
 		isHidden,
 		title,
 		textLeft,
+		textRight,
 		isLeftArrow,
 		onClickLeft,
 		setHeader,

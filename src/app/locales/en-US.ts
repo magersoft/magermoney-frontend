@@ -21,6 +21,13 @@ export default {
 	incomes: 'Incomes',
 	expenses: 'Expenses',
 	monthlyBudget: 'Monthly budget',
+	currentBalance: 'Current balance',
+	sort: 'Sort',
+	apply: 'Apply',
+	notFoundView:
+		'Oops... You got somewhere wrong. The section does not exist or has been deleted.',
+	internalServerError: 'Internal server error',
+	reload: 'Reload',
 	restMonthlyBudget: '{restAmountFormatted} spent of {monthlyBudgetFormatted}',
 	auth: {
 		phone: 'Phone',
@@ -95,7 +102,7 @@ export default {
 		stepName: 'Expenses',
 		removeTitle: 'Remove expense'
 	},
-	incomesForm: {
+	addIncomeForm: {
 		title: 'Declare income',
 		description:
 			'You can declare income from your monthly income sources or declare a one-time income',
@@ -118,21 +125,56 @@ export default {
 			fail: 'Income declaration failed'
 		}
 	},
+	addExpenseForm: {
+		title: 'Declare expense',
+		description:
+			'You can declare expenses from your monthly expenses sources or declare a one-time expense',
+		expense: 'Expense',
+		selectExpense: 'Select expense',
+		singleExpense: 'One-time expense',
+		savedFund: 'Debit',
+		selectSavedFund: 'Select debit',
+		category: 'Category',
+		selectCategory: 'Select category',
+		name: 'Name',
+		enterExpense: 'Enter name of expense',
+		amount: 'Amount',
+		enterAmount: 'Enter amount',
+		dateOfIssue: 'Date of issue',
+		declare: 'Declare',
+		removeTitle: 'Remove expense',
+		systemMessages: {
+			success: 'Expense declared successfully',
+			fail: 'Expense declaration failed'
+		}
+	},
+	wallets: {
+		countOfWallets: 'You have {count} {declination}',
+		wallet1: 'wallet',
+		wallet2: 'wallets',
+		wallet5: 'wallets',
+		empty: 'You have no wallets. Add them to see the list here.'
+	},
 	settings: {
 		app: 'Application settings',
 		darkMode: 'Dark mode',
 		language: 'Language',
 		currency: 'Currency',
 		changeLanguage: 'Change language',
-		changeCurrency: 'Change currency'
+		changeCurrency: 'Change currency',
+		editProfile: 'Edit profile'
 	},
 	routes: {
 		Dashboard: 'Dashboard',
 		Login: 'Sign in/Sign up',
 		Settings: 'Settings',
 		Welcome: 'Welcome',
-		AddIncome: 'Add income',
-		InternalServerError: 'Internal server error'
+		Wallets: 'Wallets',
+		IncomeSources: 'Income sources',
+		ExpenseSources: 'Expense sources',
+		SavedFunds: 'Saved funds',
+		AccumulationFunds: 'Percent of accumulation',
+		NotFound: 'Not found'
 	},
 	nav: {
 		Dashboard: 'Home',

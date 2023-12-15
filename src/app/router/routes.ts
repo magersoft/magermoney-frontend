@@ -28,10 +28,61 @@ const routes: RouteRecordRaw[] = [
 			import('@/modules/welcome/ui/views/WelcomeView/WelcomeView.vue')
 	},
 	{
+		path: '/wallets',
+		name: AppRoutes.Wallets,
+		meta: { middleware: [authMiddleware] },
+		component: () =>
+			import('@/modules/wallets/ui/views/WalletsView/WalletsView.vue')
+	},
+	{
+		path: '/incomes',
+		name: AppRoutes.Incomes,
+		meta: { middleware: [authMiddleware] },
+		component: () =>
+			import('@/modules/incomes/ui/views/IncomesView/IncomesView.vue')
+	},
+	{
+		path: '/expenses',
+		name: AppRoutes.Expenses,
+		meta: { middleware: [authMiddleware] },
+		component: () =>
+			import('@/modules/expenses/ui/views/ExpensesView/ExpensesView.vue')
+	},
+	{
 		path: '/settings',
 		name: AppRoutes.Settings,
 		component: () =>
 			import('@/modules/settings/ui/views/SettingsView/SettingsView.vue')
+	},
+	{
+		path: '/settings/income-sources',
+		name: AppRoutes.IncomeSources,
+		component: () =>
+			import(
+				'@/modules/incomeSources/ui/views/IncomeSourcesView/IncomeSourcesView.vue'
+			)
+	},
+	{
+		path: '/settings/expense-sources',
+		name: AppRoutes.ExpenseSources,
+		component: () =>
+			import(
+				'@/modules/expenseSources/ui/views/ExpenseSourcesView/ExpenseSourcesView.vue'
+			)
+	},
+	{
+		path: '/settings/saved-funds',
+		name: AppRoutes.SavedFunds,
+		component: () =>
+			import('@/modules/savedFunds/ui/views/SavedFundsView/SavedFundsView.vue')
+	},
+	{
+		path: '/settings/accumulation-funds',
+		name: AppRoutes.AccumulationFunds,
+		component: () =>
+			import(
+				'@/modules/accumulationFunds/ui/views/AccumulationFundsView/AccumulationFundsView.vue'
+			)
 	},
 	{
 		path: '/internal-server-error',

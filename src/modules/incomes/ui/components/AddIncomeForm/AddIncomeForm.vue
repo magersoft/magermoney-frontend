@@ -29,9 +29,9 @@ const {
 	isSingleIncome,
 	isLoading,
 	isLoadingCurrencies,
-	hasServerError,
 	formattedDate,
 	handleSubmit,
+	handleShowDatePicker,
 	handleShowIncomeSourcesPicker,
 	handleConfirmIncomeSourcesPicker,
 	handleConfirmSavedFundsPicker,
@@ -46,8 +46,8 @@ const {
 		:class="$style['add-income-form']"
 		@submit="handleSubmit"
 	>
-		<app-cell-title :text="t('incomesForm.title')" />
-		<app-cell-description :text="t('incomesForm.description')" />
+		<app-cell-title :text="t('addIncomeForm.title')" />
+		<app-cell-description :text="t('addIncomeForm.description')" />
 
 		<van-cell-group inset>
 			<app-amount-input
@@ -55,12 +55,12 @@ const {
 				v-model="incomeFormData.amount"
 				name="amount"
 				readonly
+				:loading="isLoading"
 				:disabled="isLoading"
-				:label="t('incomesForm.income')"
-				:placeholder="t('incomesForm.selectIncome')"
-				:class="$style['add-income-form__field']"
-				:error="hasServerError"
+				:label="t('addIncomeForm.income')"
+				:placeholder="t('addIncomeForm.selectIncome')"
 				:rules="[{ required: true, message: t('validation.required') }]"
+				:class="$style['add-income-form__field']"
 				@click="handleShowIncomeSourcesPicker"
 			>
 				<template v-if="incomeFormData.amount" #append>
@@ -72,25 +72,24 @@ const {
 				v-if="isSingleIncome"
 				v-model="incomeFormData.title"
 				name="title"
-				:label="t('incomesForm.category')"
-				:placeholder="t('incomesForm.selectCategory')"
-				:enter-label="t('incomesForm.name')"
-				:enter-placeholder="t('incomesForm.enterIncome')"
+				:label="t('addIncomeForm.category')"
+				:placeholder="t('addIncomeForm.selectCategory')"
+				:enter-label="t('addIncomeForm.name')"
+				:enter-placeholder="t('addIncomeForm.enterIncome')"
 				:custom-title="t('Other')"
-				:error="hasServerError"
 				:disabled="isLoading"
 				:rules="[{ required: true, message: t('validation.required') }]"
 				:class="$style['add-income-form__field']"
 			/>
+
 			<app-amount-input
 				v-if="isSingleIncome"
 				v-model="incomeFormData.amount"
 				v-model:currency="incomeFormData.currency"
 				name="amount"
-				:label="t('incomesForm.amount')"
-				:placeholder="t('incomesForm.enterAmount')"
+				:label="t('addIncomeForm.amount')"
+				:placeholder="t('addIncomeForm.enterAmount')"
 				:currencies="currenciesItems"
-				:error="hasServerError"
 				:readonly="isLoading"
 				:loading="isLoadingCurrencies"
 				:rules="[{ required: true, message: t('validation.required') }]"
@@ -101,30 +100,33 @@ const {
 					$style['add-income-form__field--currencies']
 				]"
 			/>
+
 			<app-combobox
 				v-model="savedFundTitle"
 				name="savedFundId"
-				:label="t('incomesForm.savedFund')"
-				:placeholder="t('incomesForm.selectSavedFund')"
+				:label="t('addIncomeForm.savedFund')"
+				:placeholder="t('addIncomeForm.selectSavedFund')"
 				:disabled="isLoading"
 				:items="savedFundsItems"
 				:rules="[{ required: true, message: t('validation.required') }]"
 				:class="$style['add-income-form__field']"
 				@confirm="handleConfirmSavedFundsPicker"
 			/>
+
 			<van-cell
-				:title="t('incomesForm.dateOfIssue')"
+				:title="t('addIncomeForm.dateOfIssue')"
 				:value="formattedDate"
 				:class="$style['add-income-form__field']"
-				@click="showedDatePicker = true"
+				@click="handleShowDatePicker"
 			/>
+
 			<van-cell
 				center
-				:title="t('incomesForm.singleIncome')"
+				:title="t('addIncomeForm.singleIncome')"
 				:class="$style['add-income-form__field']"
 			>
 				<template #right-icon>
-					<van-switch v-model="isSingleIncome" />
+					<van-switch v-model="isSingleIncome" :loading="isLoading" />
 				</template>
 			</van-cell>
 		</van-cell-group>
@@ -137,7 +139,7 @@ const {
 				native-type="submit"
 				:loading="isLoading"
 			>
-				{{ t('incomesForm.declare') }}
+				{{ t('addIncomeForm.declare') }}
 			</van-button>
 		</div>
 	</van-form>

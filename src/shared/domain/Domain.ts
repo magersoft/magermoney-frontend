@@ -8,6 +8,7 @@ export interface IFetchState<E = RequestReturnError> {
 export interface AppHeaderState {
 	title?: string;
 	textLeft?: string;
+	textRight?: string;
 	isLeftArrow?: boolean;
 	isHidden?: boolean;
 	onClickLeft?: () => void;

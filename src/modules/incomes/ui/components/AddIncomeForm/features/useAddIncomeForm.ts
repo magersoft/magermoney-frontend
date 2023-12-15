@@ -12,7 +12,7 @@ import {
 import { useCreateIncomeService } from '@/modules/incomes/infrastructure/services';
 import { useIncomesStore } from '@/modules/incomes/infrastructure/stores';
 import { mappingIncomeFormData } from '@/modules/incomes/ui/components/AddIncomeForm/utils';
-import { useIncomeSources } from '@/modules/incomeSources/features';
+import { useIncomeSources } from '@/modules/incomeSources';
 import { useSavedFunds } from '@/modules/savedFunds';
 import { useForm, useTranslateSystemMessages } from '@/shared/features';
 import { useSettleResponse } from '@/shared/infrastructure/services/useSettleResponse.ts';
@@ -25,12 +25,11 @@ export function useAddIncomeForm() {
 	const { createIncome } = useCreateIncomeService();
 	const { isLoading, error } = useIncomesStore();
 
-	const { incomeSources } = useIncomeSources();
-	const { savedFunds } = useSavedFunds();
+	const { incomeSourcesItems } = useIncomeSources();
+	const { savedFundsItems } = useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 	const { fetchDashboard } = useInitDashboard();
-	const { formatAmountWithCurrencyNoFraction, getCurrencySymbol } =
-		useCurrencyFormat();
+	const { getCurrencySymbol } = useCurrencyFormat();
 	const { settleResponse } = useSettleResponse();
 	const { translateSystemMessages } = useTranslateSystemMessages();
 
@@ -46,32 +45,22 @@ export function useAddIncomeForm() {
 	const formattedDate = ref(new Date().toLocaleDateString(unref(locale)));
 	const savedFundTitle = ref('');
 
-	const incomeSourcesItems = computed(() =>
-		unref(incomeSources).map((incomeSource) => ({
-			...incomeSource,
-			text: `${formatAmountWithCurrencyNoFraction(
-				incomeSource.amount,
-				incomeSource.currency.code
-			)} - ${incomeSource.title}`,
-			value: incomeSource.amount
-		}))
-	);
-
-	const savedFundsItems = computed(() =>
-		unref(savedFunds).map((savedFund) => ({
-			...savedFund,
-			text: savedFund.source,
-			value: savedFund.id
-		}))
-	);
-
 	watch(isSingleIncome, () => {
 		resetValidationForm();
+
+		incomeFormData.value = {
+			...unref(initialIncomeFormData)
+		};
 	});
 
 	const handleShowIncomeSourcesPicker = () => {
-		if (unref(isSingleIncome)) return;
+		if (unref(isLoading)) return;
 		showedIncomeSourcesPicker.value = true;
+	};
+
+	const handleShowDatePicker = () => {
+		if (unref(isLoading)) return;
+		showedDatePicker.value = true;
 	};
 
 	const handleConfirmIncomeSourcesPicker = ({
@@ -110,7 +99,7 @@ export function useAddIncomeForm() {
 	const handleConfirmDatePicker = (date: Date) => {
 		incomeFormData.value = {
 			...unref(incomeFormData),
-			dateOfIssue: new Date(date).toISOString()
+			dateOfIssue: date.toISOString()
 		};
 
 		formattedDate.value = date.toLocaleDateString(unref(locale));
@@ -156,6 +145,7 @@ export function useAddIncomeForm() {
 		formattedDate,
 		savedFundTitle,
 		getCurrencySymbol,
+		handleShowDatePicker,
 		handleShowIncomeSourcesPicker,
 		handleConfirmIncomeSourcesPicker,
 		handleConfirmSavedFundsPicker,

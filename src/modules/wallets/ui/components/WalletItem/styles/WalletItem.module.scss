@@ -1,0 +1,66 @@
+.wallet-item {
+  @extend %wallet-item;
+
+  &--sortable {
+    cursor: move;
+    border-color: var(--van-primary-color);
+  }
+
+  &:global(.sortable-ghost) {
+    background: var(--van-background-2);
+    border-color: var(--van-success-color);
+  }
+
+  &__header {
+    @extend %wallet-header;
+  }
+
+  &__body {
+    @extend %wallet-body;
+  }
+
+  &__title {
+    margin-bottom: var(--van-padding-sm);
+    font-size: var(--van-font-size-md);
+    color: var(--van-text-color-2);
+  }
+
+  &__balance {
+    font-size: calc(var(--van-font-size-sm) * 2);
+    font-weight: calc(var(--van-font-bold));
+    color: var(--van-text-color);
+  }
+
+  &__footer {
+    @extend %wallet-footer;
+  }
+}
+
+%wallet-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 25vh;
+  padding: var(--van-padding-md);
+  background-color: var(--van-background);
+  border: 1px solid var(--van-border-color);
+  border-radius: 16px;
+  box-shadow: var(--dropdown-shadow);
+  transition: var(--van-duration-base);
+}
+
+%wallet-header {
+  width: 100%;
+}
+
+%wallet-body {
+  width: 100%;
+}
+
+%wallet-footer {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  font-size: var(--van-font-size-md);
+  color: var(--van-text-color-2);
+}

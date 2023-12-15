@@ -1,19 +1,19 @@
 .app-view {
   width: 100%;
-  height: calc(100vh - var(--header-nav-bar-height) - var(--footer-tabbar-height));
+  height: calc(100dvh - var(--header-nav-bar-height) - var(--footer-tabbar-height));
   margin-top: var(--header-nav-bar-height);
   overflow: auto;
 
   &--hidden-header {
-    height: calc(100vh - var(--footer-tabbar-height));
+    height: calc(100dvh - var(--footer-tabbar-height));
     margin-top: 0;
   }
 
   &--hidden-nav {
-    height: calc(100vh - var(--header-nav-bar-height));
+    height: calc(100dvh - var(--header-nav-bar-height));
   }
 
   &.app-view--hidden-header.app-view--hidden-nav {
-    height: 100vh;
+    height: 100dvh;
   }
 }

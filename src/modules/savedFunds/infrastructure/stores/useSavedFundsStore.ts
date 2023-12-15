@@ -11,13 +11,14 @@ const savedFundsStore = defineStore('savedFunds', {
 		savedFund: null
 	}),
 	getters: {
-		hasSavedFunds: (state) => !!state.savedFunds.length
+		hasSavedFunds: (state) => !!state.savedFunds.length,
+		countSavedFunds: (state) => state.savedFunds.length
 	},
 	actions: {
 		setSavedFunds(savedFunds: NSavedFunds.ISavedFund[]) {
 			this.savedFunds = savedFunds;
 		},
-		setSavedFund(savedFund: NSavedFunds.ISavedFund) {
+		setSavedFund(savedFund: NSavedFunds.ISavedFund | null) {
 			this.savedFund = savedFund;
 		},
 		setIsLoading(value: boolean) {

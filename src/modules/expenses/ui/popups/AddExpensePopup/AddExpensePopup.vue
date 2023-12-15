@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePopups } from '@/app/popups';
+import { AddExpenseForm } from '@/modules/expenses/ui/components';
 
 const { handleShow } = usePopups();
 
@@ -9,7 +10,9 @@ onMounted(() => {
 </script>
 
 <template>
-	<van-popup round position="bottom" :style="{ height: '80%' }">
-		ExpensePopup
+	<van-popup round position="bottom" :style="{ height: '90%' }">
+		<slot name="header" />
+
+		<add-expense-form />
 	</van-popup>
 </template>

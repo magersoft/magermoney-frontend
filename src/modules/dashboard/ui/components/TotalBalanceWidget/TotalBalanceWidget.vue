@@ -3,9 +3,16 @@ import { useI18n } from 'vue-i18n';
 
 import { useTotalBalanceWidget } from '@/modules/dashboard/ui/components/TotalBalanceWidget/features';
 
+interface TotalBalanceWidgetProps {
+	hideViewAll?: boolean;
+}
+
+defineProps<TotalBalanceWidgetProps>();
+
 const { t } = useI18n();
 
-const { totalBalanceFormatted, isLoading } = useTotalBalanceWidget();
+const { totalBalanceFormatted, isLoading, handleNavigateToWallets } =
+	useTotalBalanceWidget();
 </script>
 
 <template>
@@ -18,7 +25,11 @@ const { totalBalanceFormatted, isLoading } = useTotalBalanceWidget();
 				<div :class="$style['total-balance-widget__balance']">
 					{{ totalBalanceFormatted }}
 				</div>
-				<div :class="$style['total-balance-widget__view-all']">
+				<div
+					v-if="!hideViewAll"
+					:class="$style['total-balance-widget__view-all']"
+					@click="handleNavigateToWallets"
+				>
 					{{ t('viewAll') }}
 				</div>
 			</div>

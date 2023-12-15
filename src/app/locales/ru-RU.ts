@@ -21,6 +21,13 @@ export default {
 	incomes: 'Доходы',
 	expenses: 'Расходы',
 	monthlyBudget: 'Ежемесячный бюджет',
+	currentBalance: 'Текущий баланс',
+	sort: 'Сортировка',
+	apply: 'Применить',
+	notFoundView:
+		'Ууупс... Вы попали куда-то не туда. Раздел не существует или был удален.',
+	internalServerError: 'Внутренняя ошибка сервера',
+	reload: 'Перезагрузить',
 	restMonthlyBudget:
 		'осталось {restAmountFormatted} из {monthlyBudgetFormatted}',
 	auth: {
@@ -95,7 +102,7 @@ export default {
 		stepName: 'Расходы',
 		removeTitle: 'Удалить расход'
 	},
-	incomesForm: {
+	addIncomeForm: {
 		title: 'Заявить о доходе',
 		description:
 			'Вы можете заявить о доходе из ваших ежемесячных источников дохода или заявить о разовом доходе',
@@ -118,20 +125,56 @@ export default {
 			fail: 'Не удалось заявить доход'
 		}
 	},
+	addExpenseForm: {
+		title: 'Заявить о расходе',
+		description:
+			'Вы можете заявить о расходе из ваших ежемесячных источников расхода или заявить о разовом расходе',
+		expense: 'Расход',
+		selectExpense: 'Выберите расход',
+		singleExpense: 'Разовый расход',
+		savedFund: 'Списание',
+		selectSavedFund: 'Выберите место списание',
+		category: 'Категория',
+		selectCategory: 'Выберите категорию',
+		name: 'Название',
+		enterExpense: 'Введите название расхода',
+		amount: 'Сумма',
+		enterAmount: 'Введите сумму',
+		dateOfIssue: 'Дата списания',
+		declare: 'Заявить',
+		removeTitle: 'Удалить расход',
+		systemMessages: {
+			success: 'Расход успешно заявлен',
+			fail: 'Не удалось заявить расход'
+		}
+	},
+	wallets: {
+		countOfWallets: 'У вас {count} {declination}',
+		wallet1: 'кошелек',
+		wallet2: 'кошелька',
+		wallet5: 'кошельков',
+		empty: 'У вас нет кошельков. Добавьте их, чтобы увидеть здесь список.'
+	},
 	settings: {
 		app: 'Настойки приложения',
 		darkMode: 'Темная тема',
 		language: 'Язык',
 		currency: 'Валюта',
 		changeLanguage: 'Сменить язык',
-		changeCurrency: 'Сменить валюту'
+		changeCurrency: 'Сменить валюту',
+		editProfile: 'Редактирование профиля'
 	},
 	routes: {
 		Dashboard: 'Главная',
 		Login: 'Вход и регистрация',
 		Settings: 'Настройки',
 		Welcome: 'Добро пожаловать',
-		AddIncome: 'Добавить доход',
+		Wallets: 'Кошельки',
+		IncomeSources: 'Источники дохода',
+		ExpenseSources: 'Источники расхода',
+		SavedFunds: 'Накопленные средства',
+		AccumulationFunds: 'Процент накопления',
+		NotFound: 'Поворот не туда',
 		InternalServerError: 'Внутренняя ошибка сервера'
 	},
 	nav: {

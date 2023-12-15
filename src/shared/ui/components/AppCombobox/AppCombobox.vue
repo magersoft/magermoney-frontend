@@ -71,6 +71,12 @@ const onChangeCustomValue = () => {
 		internalValue.value = unref(customInternalValue);
 	}
 };
+
+const handleShowPicker = () => {
+	if (props.disabled) return;
+
+	showPicker.value = true;
+};
 </script>
 
 <template>
@@ -87,7 +93,7 @@ const onChangeCustomValue = () => {
 		:disabled="disabled"
 		:class="$style['app-combobox']"
 		v-bind="$attrs"
-		@click="showPicker = true"
+		@click="handleShowPicker"
 	/>
 
 	<van-field

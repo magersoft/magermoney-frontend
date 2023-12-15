@@ -5,11 +5,15 @@ import { useMonthlyIncomesWidget } from '@/modules/dashboard/ui/components/Month
 
 const { t } = useI18n();
 
-const { totalMonthlyIncomesFormatted, isLoading } = useMonthlyIncomesWidget();
+const { totalMonthlyIncomesFormatted, isLoading, handleNavigateToIncomes } =
+	useMonthlyIncomesWidget();
 </script>
 
 <template>
-	<div :class="$style['monthly-incomes-widget']">
+	<div
+		:class="$style['monthly-incomes-widget']"
+		@click="handleNavigateToIncomes"
+	>
 		<div :class="$style['monthly-incomes-widget__icon']">
 			<van-icon name="down" size="12" />
 		</div>

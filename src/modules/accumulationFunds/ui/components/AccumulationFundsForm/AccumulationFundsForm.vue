@@ -106,6 +106,7 @@ const {
 			:has-back-button="hasBackButton"
 			:submit-text="hasAccumulationFunds ? t('continue') : t('add')"
 			:loading="isLoading"
+			@click:add="handleSubmit"
 			@click:back="handleBack"
 			@click:submit="handleSubmit"
 		>

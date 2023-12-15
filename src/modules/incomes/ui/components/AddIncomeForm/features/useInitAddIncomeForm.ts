@@ -1,5 +1,5 @@
 import { useCurrencies } from '@/modules/currencies';
-import { useIncomeSources } from '@/modules/incomeSources/features';
+import { useIncomeSources } from '@/modules/incomeSources';
 import { useSavedFunds } from '@/modules/savedFunds';
 
 export function useInitAddIncomeForm() {

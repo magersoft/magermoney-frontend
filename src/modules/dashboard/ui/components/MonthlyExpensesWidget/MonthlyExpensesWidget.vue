@@ -5,11 +5,15 @@ import { useMonthlyExpensesWidget } from '@/modules/dashboard/ui/components/Mont
 
 const { t } = useI18n();
 
-const { totalMonthlyExpensesFormatted, isLoading } = useMonthlyExpensesWidget();
+const { totalMonthlyExpensesFormatted, isLoading, handleNavigateToExpenses } =
+	useMonthlyExpensesWidget();
 </script>
 
 <template>
-	<div :class="$style['monthly-expenses-widget']">
+	<div
+		:class="$style['monthly-expenses-widget']"
+		@click="handleNavigateToExpenses"
+	>
 		<div :class="$style['monthly-expenses-widget__icon']">
 			<van-icon name="down" size="12" />
 		</div>

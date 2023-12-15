@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
+import { AppRoutes } from '@/app/router/constants';
 import { LogoutButton, useAuth } from '@/modules/auth';
 import { AppCellTitle } from '@/shared/ui/components';
 
@@ -12,6 +14,7 @@ import {
 
 const { t } = useI18n();
 const { isAuthorization } = useAuth();
+const router = useRouter();
 </script>
 
 <template>
@@ -25,7 +28,31 @@ const { isAuthorization } = useAuth();
 			<lang-switcher />
 			<currency-switcher v-if="isAuthorization" />
 		</van-cell-group>
+
 		<template v-if="isAuthorization">
+			<app-cell-title :text="t('settings.editProfile')" />
+			<van-cell-group>
+				<van-cell
+					is-link
+					:title="t('routes.IncomeSources')"
+					@click="router.push({ name: AppRoutes.IncomeSources })"
+				/>
+				<van-cell
+					is-link
+					:title="t('routes.ExpenseSources')"
+					@click="router.push({ name: AppRoutes.ExpenseSources })"
+				/>
+				<van-cell
+					is-link
+					:title="t('routes.SavedFunds')"
+					@click="router.push({ name: AppRoutes.SavedFunds })"
+				/>
+				<van-cell
+					is-link
+					:title="t('routes.AccumulationFunds')"
+					@click="router.push({ name: AppRoutes.AccumulationFunds })"
+				/>
+			</van-cell-group>
 			<logout-button :class="$style['settings-view__logout']" />
 		</template>
 	</div>

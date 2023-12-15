@@ -1,5 +1,7 @@
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
+import { AppRoutes } from '@/app/router/constants';
 import { useCalculations } from '@/modules/calculations';
 import { useCurrencyFormat } from '@/modules/currencies';
 
@@ -20,8 +22,14 @@ export function useTotalBalanceWidget() {
 		);
 	});
 
+	const router = useRouter();
+	const handleNavigateToWallets = () => {
+		router.push({ name: AppRoutes.Wallets });
+	};
+
 	return {
 		totalBalanceFormatted,
-		isLoading
+		isLoading,
+		handleNavigateToWallets
 	};
 }

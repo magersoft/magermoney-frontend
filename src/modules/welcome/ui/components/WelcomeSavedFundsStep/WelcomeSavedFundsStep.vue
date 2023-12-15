@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import {
 	SavedFundsForm,
-	SavedFundsList
-} from '@/modules/savedFunds/ui/components';
+	SavedFundsList,
+	useSavedFunds
+} from '@/modules/savedFunds';
 import { useWelcomeSteps } from '@/modules/welcome';
 import { WelcomeStepsType } from '@/modules/welcome/constants';
-import { useWelcomeSavedFundsStep } from '@/modules/welcome/ui/components/WelcomeSavedFundsStep/features';
 
-const { isLoading, onRefresh } = useWelcomeSavedFundsStep();
+const { isLoading, fetchSavedFunds } = useSavedFunds();
 const { setStep } = useWelcomeSteps();
 </script>
 
 <template>
-	<van-pull-refresh :model-value="isLoading" @refresh="onRefresh">
+	<van-pull-refresh
+		:model-value="isLoading"
+		@refresh="fetchSavedFunds({ force: true })"
+	>
 		<saved-funds-form
 			has-add-button
 			has-submit-button

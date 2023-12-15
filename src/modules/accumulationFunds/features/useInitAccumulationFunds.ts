@@ -9,23 +9,29 @@ export function useInitAccumulationFunds() {
 	const { fetchAmountByPercent, fetchPercentByAmount, roundedAmountByPercent } =
 		useCalculations();
 	const { currency } = useSettingsStore();
+	const isLoading = ref(false);
 
 	const fetchInitAccumulationFunds = async () => {
-		await fetchAccumulationFunds({ force: true, quite: true });
+		isLoading.value = true;
+
+		await fetchAccumulationFunds({ force: true });
 		await fetchAmountByPercent(
-			{ force: true, quite: true },
+			{ force: true },
 			unref(accumulationFundsPercent),
 			unref(currency)
 		);
 
 		await fetchPercentByAmount(
-			{ force: true, quite: true },
+			{ force: true },
 			unref(roundedAmountByPercent),
 			unref(currency)
 		);
+
+		isLoading.value = false;
 	};
 
 	return {
-		fetchInitAccumulationFunds
+		fetchInitAccumulationFunds,
+		isLoading
 	};
 }

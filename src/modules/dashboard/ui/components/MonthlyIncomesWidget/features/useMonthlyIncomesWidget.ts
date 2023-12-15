@@ -1,5 +1,7 @@
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
+import { AppRoutes } from '@/app/router/constants';
 import { useCalculations } from '@/modules/calculations';
 import { useCurrencyFormat } from '@/modules/currencies';
 
@@ -20,8 +22,15 @@ export function useMonthlyIncomesWidget() {
 		);
 	});
 
+	const router = useRouter();
+
+	const handleNavigateToIncomes = () => {
+		router.push({ name: AppRoutes.Incomes });
+	};
+
 	return {
 		totalMonthlyIncomesFormatted,
-		isLoading
+		isLoading,
+		handleNavigateToIncomes
 	};
 }

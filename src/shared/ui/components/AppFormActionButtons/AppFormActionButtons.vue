@@ -45,7 +45,10 @@ const { t } = useI18n();
 			{{ addText || t('add') }}
 		</van-button>
 
-		<div :class="$style['app-form-action-buttons__actions']">
+		<div
+			v-if="hasSubmitButton || hasBackButton"
+			:class="$style['app-form-action-buttons__actions']"
+		>
 			<van-button
 				v-if="hasBackButton"
 				:disabled="loading || disabled"

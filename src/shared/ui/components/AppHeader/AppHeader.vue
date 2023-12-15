@@ -10,6 +10,7 @@ defineProps<AppHeaderProps>();
 const {
 	title: customTitle,
 	textLeft,
+	textRight,
 	isLeftArrow,
 	isHidden,
 	onClickLeft
@@ -22,6 +23,7 @@ const {
 		:title="customTitle || title"
 		:left-text="textLeft"
 		:left-arrow="isLeftArrow"
+		:right-text="textRight"
 		fixed
 		:class="$style['app-header']"
 		@click-left="onClickLeft"

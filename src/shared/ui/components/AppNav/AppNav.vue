@@ -49,7 +49,7 @@ const onSelectChildren = (item: NavigationChildren) => {
 				</template>
 			</van-popover>
 
-			<van-tabbar-item v-else :to="item.path" :icon="item.icon" replace>
+			<van-tabbar-item v-else :to="item.path" :icon="item.icon">
 				{{ item.title }}
 			</van-tabbar-item>
 		</template>

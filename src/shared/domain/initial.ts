@@ -9,6 +9,7 @@ export const appInitialState: AppState = {
 	header: {
 		title: '',
 		textLeft: '',
+		textRight: '',
 		isHidden: false,
 		isLeftArrow: false,
 		onClickLeft: () => {}

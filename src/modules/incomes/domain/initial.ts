@@ -12,7 +12,6 @@ export type TInitialIncomeFormData = {
 };
 
 const appSettings = useStorage('settings', {
-	lang: appConfig.defaultLanguage,
 	currency: appConfig.defaultCurrency
 });
 

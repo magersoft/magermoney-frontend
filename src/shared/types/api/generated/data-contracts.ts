@@ -102,6 +102,7 @@ export interface CreateSavedFundDto {
 	source: string;
 	amount: number;
 	currency: string;
+	order?: number;
 }
 
 export interface SavedFundEntity {
@@ -115,12 +116,17 @@ export interface SavedFundEntity {
 	currency: CurrencyEntity;
 	currencyId: string;
 	userId: number;
+	order: number;
 }
 
 export interface UpdateSavedFundDto {
 	source?: string;
 	amount?: number;
-	currency?: string;
+	order?: number;
+}
+
+export interface UpdateOrdersSavedFundsDto {
+	ids: string[];
 }
 
 export interface CreateAccumulationFundDto {
@@ -226,6 +232,38 @@ export interface IncomeEntity {
 }
 
 export interface UpdateIncomeDto {
+	title?: string;
+	/** @format date-time */
+	dateOfIssue: string;
+}
+
+export interface CreateExpenseDto {
+	title?: string;
+	amount?: number;
+	currency?: string;
+	/** @format date-time */
+	dateOfIssue: string;
+	expenseSourceId?: number;
+	savedFundId?: number;
+}
+
+export interface ExpenseEntity {
+	id: number;
+	/** @format date-time */
+	createdAt: string;
+	/** @format date-time */
+	updatedAt: string;
+	title: string;
+	amount: number;
+	/** @format date-time */
+	dateOfIssue: string;
+	currencyId: number;
+	savedFundId: number;
+	expenseSourceId: number;
+	userId: number;
+}
+
+export interface UpdateExpenseDto {
 	title?: string;
 	/** @format date-time */
 	dateOfIssue: string;

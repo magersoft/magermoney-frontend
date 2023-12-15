@@ -2,18 +2,21 @@
 import {
 	AccumulationFundsBalance,
 	AccumulationFundsCircle,
-	AccumulationFundsForm
-} from '@/modules/accumulationFunds/ui/components';
+	AccumulationFundsForm,
+	useInitAccumulationFunds
+} from '@/modules/accumulationFunds';
 import { useWelcomeSteps } from '@/modules/welcome';
 import { WelcomeStepsType } from '@/modules/welcome/constants';
-import { useWelcomeAccumulationFundsStep } from '@/modules/welcome/ui/components/WelcomeAccumulationFundsStep/features';
 
-const { isLoading, onRefresh } = useWelcomeAccumulationFundsStep();
+const { isLoading, fetchInitAccumulationFunds } = useInitAccumulationFunds();
 const { setStep } = useWelcomeSteps();
 </script>
 
 <template>
-	<van-pull-refresh :model-value="isLoading" @refresh="onRefresh">
+	<van-pull-refresh
+		:model-value="isLoading"
+		@refresh="fetchInitAccumulationFunds"
+	>
 		<accumulation-funds-form
 			has-submit-button
 			has-back-button

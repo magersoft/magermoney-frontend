@@ -1,0 +1,63 @@
+.wallets-list {
+  padding: var(--van-padding-md);
+  padding-bottom: 0;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--van-padding-md);
+    margin: 0 calc(var(--van-padding-md) * -1);
+    background-color: var(--van-background);
+
+    &-item {
+      font-size: var(--van-font-size-md);
+      color: var(--van-text-color-2);
+
+      > span {
+        margin: 0 var(--van-padding-base);
+      }
+    }
+
+    &-sort {
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: var(--van-duration-base);
+
+      &--active {
+        color: var(--van-primary-color);
+      }
+    }
+  }
+
+  &__container {
+    @extend %wallets-list-container;
+  }
+
+  &__item {
+    margin-top: calc(var(--van-padding-md) * -1);
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &--sortable {
+      margin-top: 0;
+    }
+  }
+
+  :global(.van-sticky--fixed) {
+    .wallets-list__header {
+      box-shadow: var(--dropdown-shadow);
+    }
+  }
+}
+
+%wallets-list-container {
+  padding: var(--van-padding-md);
+  margin: 0 calc(var(--van-padding-md) * -1);
+  background-color: var(--van-background-2);
+  border-radius: var(--van-popup-round-radius) var(--van-popup-round-radius) 0 0;
+}

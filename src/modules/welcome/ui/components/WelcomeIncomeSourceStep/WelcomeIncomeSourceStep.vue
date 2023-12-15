@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import { IncomeSourceForm, IncomeSourcesList } from '@/modules/incomeSources';
+import {
+	IncomeSourceForm,
+	IncomeSourcesList,
+	useIncomeSources
+} from '@/modules/incomeSources';
 import { useWelcomeSteps } from '@/modules/welcome';
 import { WelcomeStepsType } from '@/modules/welcome/constants';
-import { useWelcomeIncomeSourceStep } from '@/modules/welcome/ui/components/WelcomeIncomeSourceStep/features';
 
-const { isLoading, onRefresh } = useWelcomeIncomeSourceStep();
+const { isLoading, fetchIncomeSources } = useIncomeSources();
 const { setStep } = useWelcomeSteps();
 </script>
 
 <template>
-	<van-pull-refresh :model-value="isLoading" @refresh="onRefresh">
+	<van-pull-refresh
+		:model-value="isLoading"
+		@refresh="fetchIncomeSources({ force: true })"
+	>
 		<income-source-form
 			has-add-button
 			has-submit-button

@@ -25,11 +25,18 @@ export const useSavedFundsModel = (): NSavedFunds.IModel => {
 			`/${NSavedFunds.API_NAMESPACE}/${id}`
 		).delete();
 
+	const updateOrders = (payload: NSavedFunds.IUpdateOrdersSavedFundsDto) =>
+		fetch<NSavedFunds.ISavedFund[]>(
+			`/${NSavedFunds.API_NAMESPACE}/orders`
+		).patch(payload);
+
 	return {
 		fetchAll,
 		fetchOne,
 		create,
 		update,
-		remove
+		remove,
+
+		updateOrders
 	};
 };

@@ -1,0 +1,32 @@
+@import './WalletsList.module';
+@import '../../WalletItem/styles/WalletItem.module';
+
+.wallets-list-skeleton {
+  &__container {
+    @extend %wallets-list-container;
+  }
+
+  &__item {
+    @extend %wallet-item;
+
+    margin-top: calc(var(--van-padding-md) * -1);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.wallet-item-skeleton {
+  &__header {
+    @extend %wallet-header;
+  }
+
+  &__body {
+    @extend %wallet-body;
+  }
+
+  &__footer {
+    @extend %wallet-footer;
+  }
+}

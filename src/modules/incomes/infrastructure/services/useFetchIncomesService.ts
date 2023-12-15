@@ -2,7 +2,7 @@ import { useIncomesModel } from '@/modules/incomes/infrastructure/models';
 import { useIncomesStore } from '@/modules/incomes/infrastructure/stores';
 import { useBaseFetch } from '@/shared/infrastructure/services';
 
-export function useFetchIncomeService() {
+export function useFetchIncomesService() {
 	const { setIncomes, setIsLoading, setError } = useIncomesStore();
 	const { fetchAll } = useIncomesModel();
 

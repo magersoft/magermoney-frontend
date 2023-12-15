@@ -1,8 +1,9 @@
 import { IFetchState } from '@/shared/domain';
-import { RequestReturnError } from '@/shared/types/api';
+import { RequestReturnError, RequestReturnValue } from '@/shared/types/api';
 import {
 	CreateSavedFundDto,
 	SavedFundEntity,
+	UpdateOrdersSavedFundsDto,
 	UpdateSavedFundDto
 } from '@/shared/types/api/generated';
 import { CRUDModel } from '@/shared/types/models';
@@ -13,6 +14,8 @@ export namespace NSavedFunds {
 	export interface ISavedFund extends SavedFundEntity {}
 	export interface ICreateSavedFund extends CreateSavedFundDto {}
 	export interface IUpdateSavedFund extends UpdateSavedFundDto {}
+	export interface IUpdateOrdersSavedFundsDto
+		extends UpdateOrdersSavedFundsDto {}
 
 	export interface IState extends IFetchState {
 		savedFunds: ISavedFund[];
@@ -20,7 +23,11 @@ export namespace NSavedFunds {
 	}
 
 	export interface IModel
-		extends CRUDModel<ISavedFund, ICreateSavedFund, IUpdateSavedFund> {}
+		extends CRUDModel<ISavedFund, ICreateSavedFund, IUpdateSavedFund> {
+		updateOrders: (
+			payload: IUpdateOrdersSavedFundsDto
+		) => RequestReturnValue<ISavedFund[]>;
+	}
 
 	export interface IError extends RequestReturnError {}
 }
