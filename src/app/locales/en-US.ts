@@ -170,6 +170,7 @@ export default {
 		Settings: 'Settings',
 		Welcome: 'Welcome',
 		Wallets: 'Wallets',
+		Wallet: 'Wallet',
 		IncomeSources: 'Income sources',
 		ExpenseSources: 'Expense sources',
 		SavedFunds: 'Saved funds',

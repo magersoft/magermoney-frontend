@@ -7,26 +7,10 @@
   }
 
   &__item {
-    @extend %wallet-item;
-
     margin-top: calc(var(--van-padding-md) * -1);
 
     &:first-child {
       margin-top: 0;
     }
-  }
-}
-
-.wallet-item-skeleton {
-  &__header {
-    @extend %wallet-header;
-  }
-
-  &__body {
-    @extend %wallet-body;
-  }
-
-  &__footer {
-    @extend %wallet-footer;
   }
 }

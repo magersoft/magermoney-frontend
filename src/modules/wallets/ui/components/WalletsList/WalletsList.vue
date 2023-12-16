@@ -20,7 +20,9 @@ const {
 	savedFunds,
 	hasSavedFunds,
 	sortable,
-	handleToggleSortable
+	isChangedSortOrder,
+	handleToggleSortable,
+	handleClickByWallet
 } = useWalletsList({
 	onSort: (value: boolean) => emit('click:sort', value)
 });
@@ -55,7 +57,12 @@ const {
 		</template>
 		<template v-else>
 			<div v-if="hasSavedFunds" :class="$style['wallets-list__container']">
-				<draggable :disabled="!sortable" :list="savedFunds" item-key="id">
+				<draggable
+					:disabled="!sortable"
+					:list="savedFunds"
+					item-key="id"
+					@end="isChangedSortOrder = true"
+				>
 					<template #item="{ element }">
 						<wallet-item
 							:item="element"
@@ -65,6 +72,7 @@ const {
 									[$style['wallets-list__item--sortable']]: sortable
 								})
 							"
+							@click="handleClickByWallet(element.id)"
 						/>
 					</template>
 				</draggable>

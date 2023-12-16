@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
+import { AppPopups, usePopups } from '@/app/popups';
 import { AppRoutes } from '@/app/router/constants';
 import { TotalBalanceWidget } from '@/modules/dashboard';
 import { WalletsList } from '@/modules/wallets/ui/components';
@@ -11,6 +12,7 @@ import { useAppHeader } from '@/shared/ui/components';
 const { t } = useI18n();
 const { setHeader } = useAppHeader();
 const router = useRouter();
+const { setPopup } = usePopups();
 
 setHeader({
 	textLeft: t('back'),
@@ -18,12 +20,15 @@ setHeader({
 	isLeftArrow: true,
 	onClickLeft: () => {
 		router.push({ name: AppRoutes.Dashboard });
+	},
+	onClickRight: () => {
+		setPopup(AppPopups.SaveWallet);
 	}
 });
 
-const { isLoading, fetchWallets } = useInitWallets();
+const { isLoading, fetchInitWallets } = useInitWallets();
 
-fetchWallets();
+fetchInitWallets();
 
 const sortable = ref(false);
 </script>
@@ -34,7 +39,7 @@ const sortable = ref(false);
 		:class="$style['wallets-view']"
 		:pull-distance="20"
 		:disabled="sortable"
-		@refresh="fetchWallets"
+		@refresh="fetchInitWallets"
 	>
 		<total-balance-widget hide-view-all />
 		<wallets-list

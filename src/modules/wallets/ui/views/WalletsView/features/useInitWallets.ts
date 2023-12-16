@@ -9,7 +9,7 @@ export function useInitWallets() {
 
 	const isLoading = ref(false);
 
-	const fetchWallets = async () => {
+	const fetchInitWallets = async () => {
 		isLoading.value = true;
 
 		await Promise.all([
@@ -22,6 +22,6 @@ export function useInitWallets() {
 
 	return {
 		isLoading,
-		fetchWallets
+		fetchInitWallets
 	};
 }

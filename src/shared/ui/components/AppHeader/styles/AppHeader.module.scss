@@ -1,1 +1,7 @@
-.app-header {}
+.app-header {
+  &__action-btn {
+    margin-right: calc(var(--van-padding-md) * -1);
+    border: none;
+    transform: rotate(90deg);
+  }
+}

@@ -1,0 +1,17 @@
+@import './WalletItem.module';
+
+.wallet-item-skeleton {
+  @extend %wallet-item;
+
+  &__header {
+    @extend %wallet-header;
+  }
+
+  &__body {
+    @extend %wallet-body;
+  }
+
+  &__footer {
+    @extend %wallet-footer;
+  }
+}

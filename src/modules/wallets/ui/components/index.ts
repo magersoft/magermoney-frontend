@@ -1,2 +1,2 @@
 export { WalletsList } from './WalletsList';
-export { WalletItem } from './WalletItem';
+export { WalletItem, WalletItemSkeleton } from './WalletItem';

@@ -12,7 +12,10 @@ export const appInitialState: AppState = {
 		textRight: '',
 		isHidden: false,
 		isLeftArrow: false,
-		onClickLeft: () => {}
+		actions: null,
+		onSelectAction: () => {},
+		onClickLeft: () => {},
+		onClickRight: () => {}
 	},
 	nav: {
 		isHidden: false

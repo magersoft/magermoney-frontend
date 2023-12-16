@@ -3,6 +3,7 @@ export enum AppRoutes {
 	Login = 'Login',
 	Welcome = 'Welcome',
 	Wallets = 'Wallets',
+	Wallet = 'Wallet',
 	Incomes = 'Incomes',
 	Expenses = 'Expenses',
 	Settings = 'Settings',

@@ -7,7 +7,7 @@ import ISavedFund = NSavedFunds.ISavedFund;
 import { classNames } from '@/shared/utils';
 
 interface WalletItemProps {
-	readonly item: ISavedFund;
+	readonly item: ISavedFund | null;
 	readonly sortable?: boolean;
 }
 
@@ -19,6 +19,7 @@ const { formatAmountWithCurrency } = useCurrencyFormat();
 
 <template>
 	<div
+		v-if="item"
 		:class="
 			classNames($style['wallet-item'], {
 				[$style['wallet-item--sortable']]: sortable

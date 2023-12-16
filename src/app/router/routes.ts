@@ -35,6 +35,13 @@ const routes: RouteRecordRaw[] = [
 			import('@/modules/wallets/ui/views/WalletsView/WalletsView.vue')
 	},
 	{
+		path: '/wallets/:id',
+		name: AppRoutes.Wallet,
+		meta: { middleware: [authMiddleware] },
+		component: () =>
+			import('@/modules/wallets/ui/views/WalletView/WalletView.vue')
+	},
+	{
 		path: '/incomes',
 		name: AppRoutes.Incomes,
 		meta: { middleware: [authMiddleware] },
@@ -93,7 +100,7 @@ const routes: RouteRecordRaw[] = [
 			)
 	},
 	{
-		path: '/:catchAll(.*)',
+		path: '/:catchAll(.*)*',
 		name: AppRoutes.NotFound,
 		component: () => import('@/shared/ui/views/NotFoundView/NotFoundView.vue')
 	}

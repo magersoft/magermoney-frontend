@@ -1,6 +1,12 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+import { AppPopups, usePopups } from '@/app/popups';
+import { AppRoutes } from '@/app/router/constants';
 import { useSavedFundsWidget } from '@/modules/dashboard/ui/components/SavedFundsWidget/features';
 
+const router = useRouter();
+const { setPopup } = usePopups();
 const { onlyThreeFunds, isLoading } = useSavedFundsWidget();
 
 // [
@@ -23,6 +29,9 @@ const { onlyThreeFunds, isLoading } = useSavedFundsWidget();
 				v-for="fund in onlyThreeFunds"
 				:key="fund.id"
 				:class="$style['saved-funds-widget__item']"
+				@click="
+					router.push({ name: AppRoutes.Wallet, params: { id: fund.id } })
+				"
 			>
 				<div :class="$style['saved-funds-widget__title']">
 					{{ fund.source }}
@@ -31,7 +40,10 @@ const { onlyThreeFunds, isLoading } = useSavedFundsWidget();
 					{{ fund.amount }}
 				</div>
 			</div>
-			<div :class="$style['saved-funds-widget__item']">
+			<div
+				:class="$style['saved-funds-widget__item']"
+				@click="setPopup(AppPopups.SaveWallet)"
+			>
 				<van-icon name="plus" />
 			</div>
 		</van-cell-group>

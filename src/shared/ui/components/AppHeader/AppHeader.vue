@@ -13,8 +13,13 @@ const {
 	textRight,
 	isLeftArrow,
 	isHidden,
-	onClickLeft
+	actions,
+	onClickLeft,
+	onClickRight,
+	onSelectAction
 } = useAppHeader();
+
+const showActionMenu = ref(false);
 </script>
 
 <template>
@@ -27,7 +32,24 @@ const {
 		fixed
 		:class="$style['app-header']"
 		@click-left="onClickLeft"
-	/>
+		@click-right="onClickRight"
+	>
+		<template v-if="actions" #right>
+			<van-popover
+				v-model:show="showActionMenu"
+				placement="bottom-end"
+				:actions="actions"
+				@select="onSelectAction"
+			>
+				<template #reference>
+					<van-button
+						icon="ellipsis"
+						:class="$style['app-header__action-btn']"
+					/>
+				</template>
+			</van-popover>
+		</template>
+	</van-nav-bar>
 </template>
 
 <style module lang="scss">

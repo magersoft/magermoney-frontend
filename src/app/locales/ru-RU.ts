@@ -170,6 +170,7 @@ export default {
 		Settings: 'Настройки',
 		Welcome: 'Добро пожаловать',
 		Wallets: 'Кошельки',
+		Wallet: 'Кошелек',
 		IncomeSources: 'Источники дохода',
 		ExpenseSources: 'Источники расхода',
 		SavedFunds: 'Накопленные средства',

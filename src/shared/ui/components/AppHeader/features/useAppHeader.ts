@@ -8,7 +8,10 @@ export function useAppHeader() {
 	const textLeft = computed(() => unref(header).textLeft);
 	const textRight = computed(() => unref(header).textRight);
 	const isLeftArrow = computed(() => unref(header).isLeftArrow);
+	const actions = computed(() => unref(header).actions);
 	const onClickLeft = computed(() => unref(header).onClickLeft);
+	const onClickRight = computed(() => unref(header).onClickRight);
+	const onSelectAction = computed(() => unref(header).onSelectAction);
 
 	return {
 		isHidden,
@@ -17,6 +20,9 @@ export function useAppHeader() {
 		textRight,
 		isLeftArrow,
 		onClickLeft,
+		onClickRight,
+		onSelectAction,
+		actions,
 		setHeader,
 		resetHeader
 	};

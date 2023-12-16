@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 
 import { AppRoutes } from '@/app/router/constants';
 import { LogoutButton, useAuth } from '@/modules/auth';
-import { AppCellTitle } from '@/shared/ui/components';
+import { AppCellTitle, useAppHeader } from '@/shared/ui/components';
 
 import {
 	CurrencySwitcher,
@@ -14,7 +14,16 @@ import {
 
 const { t } = useI18n();
 const { isAuthorization } = useAuth();
+const { setHeader } = useAppHeader();
 const router = useRouter();
+
+setHeader({
+	textLeft: t('back'),
+	isLeftArrow: true,
+	onClickLeft: () => {
+		router.back();
+	}
+});
 </script>
 
 <template>
