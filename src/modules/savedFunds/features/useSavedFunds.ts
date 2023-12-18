@@ -1,4 +1,5 @@
 import {
+	useCreateSavedFundService,
 	useFetchSavedFundService,
 	useFetchSavedFundsService,
 	useRemoveSavedFundService,
@@ -9,10 +10,17 @@ import { useSavedFundsStore } from '@/modules/savedFunds/infrastructure/stores';
 import { mappingSavedFundsForPicker } from '@/modules/savedFunds/utils';
 
 export function useSavedFunds() {
-	const { savedFund, savedFunds, countSavedFunds, hasSavedFunds, isLoading } =
-		useSavedFundsStore();
+	const {
+		savedFund,
+		savedFunds,
+		countSavedFunds,
+		hasSavedFunds,
+		isLoading,
+		setSavedFund
+	} = useSavedFundsStore();
 	const { fetchSavedFunds } = useFetchSavedFundsService();
 	const { fetchSavedFund } = useFetchSavedFundService();
+	const { createSavedFund } = useCreateSavedFundService();
 	const { updateSavedFund } = useUpdateSavedFundService();
 	const { updateSavedFundsOrders } = useUpdateSavedFundsOrdersService();
 	const { removeSavedFund } = useRemoveSavedFundService();
@@ -21,9 +29,14 @@ export function useSavedFunds() {
 		mappingSavedFundsForPicker(unref(savedFunds))
 	);
 
+	const resetSavedFund = () => {
+		setSavedFund(null);
+	};
+
 	return {
 		fetchSavedFunds,
 		fetchSavedFund,
+		createSavedFund,
 		updateSavedFund,
 		updateSavedFundsOrders,
 		removeSavedFund,
@@ -32,6 +45,7 @@ export function useSavedFunds() {
 		savedFundsItems,
 		countSavedFunds,
 		savedFund,
-		isLoading
+		isLoading,
+		resetSavedFund
 	};
 }

@@ -1,9 +1,11 @@
+import { AppPopups, usePopups } from '@/app/popups';
 import { useCurrencyFormat } from '@/modules/currencies';
 import { useSavedFunds } from '@/modules/savedFunds';
 
 export function useSavedFundsWidget() {
-	const { savedFunds, isLoading } = useSavedFunds();
+	const { savedFunds, isLoading, resetSavedFund } = useSavedFunds();
 	const { formatAmountWithCurrencyNoFraction } = useCurrencyFormat();
+	const { setPopup } = usePopups();
 
 	const onlyThreeFunds = computed(() =>
 		savedFunds.value.slice(0, 3).map((fund) => ({
@@ -15,9 +17,15 @@ export function useSavedFundsWidget() {
 		}))
 	);
 
+	const handleAddSavedFund = () => {
+		resetSavedFund();
+		setPopup(AppPopups.SaveWallet);
+	};
+
 	return {
 		isLoading,
 		savedFunds,
-		onlyThreeFunds
+		onlyThreeFunds,
+		handleAddSavedFund
 	};
 }

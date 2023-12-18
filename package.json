@@ -12,6 +12,7 @@
   "dependencies": {
     "@vant/touch-emulator": "^1.4.0",
     "@vueuse/core": "^10.6.0",
+    "invert-color": "^2.0.0",
     "maska": "^2.1.10",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.0",

@@ -11,7 +11,7 @@ export interface ValidatableForm {
 }
 
 export function useForm<E extends RequestReturnError = RequestReturnError>(
-	serverError: Ref<E | null>
+	serverError?: Ref<E | null>
 ) {
 	const formRef = ref<ValidatableForm>();
 	const isValidForm = ref(true);

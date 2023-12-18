@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n';
 import { useCurrencyFormat } from '@/modules/currencies';
 import { NSavedFunds } from '@/modules/savedFunds/domain';
 import ISavedFund = NSavedFunds.ISavedFund;
-import { classNames } from '@/shared/utils';
+import { classNames, invertColor } from '@/shared/utils';
 
 interface WalletItemProps {
 	readonly item: ISavedFund | null;
@@ -20,6 +20,10 @@ const { formatAmountWithCurrency } = useCurrencyFormat();
 <template>
 	<div
 		v-if="item"
+		:style="{
+			backgroundColor: item.color,
+			color: invertColor(item.color, true)
+		}"
 		:class="
 			classNames($style['wallet-item'], {
 				[$style['wallet-item--sortable']]: sortable

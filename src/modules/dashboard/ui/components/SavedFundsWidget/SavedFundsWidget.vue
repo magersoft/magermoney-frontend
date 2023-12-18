@@ -1,25 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 
-import { AppPopups, usePopups } from '@/app/popups';
 import { AppRoutes } from '@/app/router/constants';
 import { useSavedFundsWidget } from '@/modules/dashboard/ui/components/SavedFundsWidget/features';
+import { invertColor } from '@/shared/utils';
 
 const router = useRouter();
-const { setPopup } = usePopups();
-const { onlyThreeFunds, isLoading } = useSavedFundsWidget();
-
-// [
-//   { id: 1, title: 'Наличные', color: '#191919' },
-//   { id: 2, title: 'Ledger', color: '#4934B1' },
-//   {
-//     id: 3,
-//     title: 'Капитал Банк',
-//     color: '#98750C'
-//   }
-//   // { id: 4, title: 'Wise', color: '#106800' }
-//   // { id: 5, title: 'Альфа Банк', color: '#B13434' }
-// ]
+const { onlyThreeFunds, isLoading, handleAddSavedFund } = useSavedFundsWidget();
 </script>
 
 <template>
@@ -29,6 +16,10 @@ const { onlyThreeFunds, isLoading } = useSavedFundsWidget();
 				v-for="fund in onlyThreeFunds"
 				:key="fund.id"
 				:class="$style['saved-funds-widget__item']"
+				:style="{
+					backgroundColor: fund.color,
+					color: invertColor(fund.color, true)
+				}"
 				@click="
 					router.push({ name: AppRoutes.Wallet, params: { id: fund.id } })
 				"
@@ -42,7 +33,7 @@ const { onlyThreeFunds, isLoading } = useSavedFundsWidget();
 			</div>
 			<div
 				:class="$style['saved-funds-widget__item']"
-				@click="setPopup(AppPopups.SaveWallet)"
+				@click="handleAddSavedFund"
 			>
 				<van-icon name="plus" />
 			</div>

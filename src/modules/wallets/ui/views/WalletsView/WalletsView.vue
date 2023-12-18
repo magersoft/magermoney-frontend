@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router';
 import { AppPopups, usePopups } from '@/app/popups';
 import { AppRoutes } from '@/app/router/constants';
 import { TotalBalanceWidget } from '@/modules/dashboard';
+import { useSavedFunds } from '@/modules/savedFunds';
 import { WalletsList } from '@/modules/wallets/ui/components';
 import { useInitWallets } from '@/modules/wallets/ui/views/WalletsView/features';
 import { useAppHeader } from '@/shared/ui/components';
@@ -13,6 +14,7 @@ const { t } = useI18n();
 const { setHeader } = useAppHeader();
 const router = useRouter();
 const { setPopup } = usePopups();
+const { resetSavedFund } = useSavedFunds();
 
 setHeader({
 	textLeft: t('back'),
@@ -22,6 +24,7 @@ setHeader({
 		router.push({ name: AppRoutes.Dashboard });
 	},
 	onClickRight: () => {
+		resetSavedFund();
 		setPopup(AppPopups.SaveWallet);
 	}
 });

@@ -1,7 +1,7 @@
 import { MaskInputOptions } from 'maska';
 
 export const maskAmount: MaskInputOptions = {
-	mask: '9 99#',
+	mask: '9 99#.##',
 	tokens: {
 		'9': {
 			pattern: /[0-9]/,

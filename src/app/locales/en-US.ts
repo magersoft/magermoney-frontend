@@ -7,6 +7,7 @@ export default {
 	delete: 'Delete',
 	edit: 'Edit',
 	save: 'Save',
+	confirm: 'Confirm',
 	removing: 'Removing',
 	cancel: 'Cancel',
 	done: 'Done',
@@ -153,7 +154,18 @@ export default {
 		wallet1: 'wallet',
 		wallet2: 'wallets',
 		wallet5: 'wallets',
-		empty: 'You have no wallets. Add them to see the list here.'
+		edit: 'Edit wallet',
+		add: 'Add wallet',
+		appearance: 'Appearance',
+		description: 'Setup title, amount, currency and appearance of your wallet',
+		titleEdit: 'Edit amount',
+		confirmEdit:
+			'Are you sure you want to change the amount of the wallet? This will affect the accounting of your income and expenses',
+		empty: 'You have no wallets. Add them to see the list here.',
+		systemMessages: {
+			success: 'Wallet saved successfully',
+			fail: 'Failed to save wallet'
+		}
 	},
 	settings: {
 		app: 'Application settings',
@@ -171,6 +183,7 @@ export default {
 		Welcome: 'Welcome',
 		Wallets: 'Wallets',
 		Wallet: 'Wallet',
+		History: 'History',
 		IncomeSources: 'Income sources',
 		ExpenseSources: 'Expense sources',
 		SavedFunds: 'Saved funds',

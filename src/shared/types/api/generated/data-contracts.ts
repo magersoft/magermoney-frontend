@@ -102,6 +102,7 @@ export interface CreateSavedFundDto {
 	source: string;
 	amount: number;
 	currency: string;
+	color?: string;
 	order?: number;
 }
 
@@ -116,17 +117,19 @@ export interface SavedFundEntity {
 	currency: CurrencyEntity;
 	currencyId: string;
 	userId: number;
+	color: string;
 	order: number;
+}
+
+export interface UpdateOrdersSavedFundsDto {
+	ids: string[];
 }
 
 export interface UpdateSavedFundDto {
 	source?: string;
 	amount?: number;
+	color?: string;
 	order?: number;
-}
-
-export interface UpdateOrdersSavedFundsDto {
-	ids: string[];
 }
 
 export interface CreateAccumulationFundDto {

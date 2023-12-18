@@ -3,7 +3,6 @@ import { useRoute, useRouter } from 'vue-router';
 import { AppPopups, usePopups } from '@/app/popups';
 import { AppRoutes } from '@/app/router/constants';
 import { useSavedFunds } from '@/modules/savedFunds';
-import { useSavedFundsStore } from '@/modules/savedFunds/infrastructure/stores';
 import { WalletActions } from '@/modules/wallets/ui/views/WalletView/constants';
 import { useAppHeader } from '@/shared/ui/components';
 import { checkActionSuccess } from '@/shared/utils';
@@ -14,8 +13,13 @@ export function useWalletView() {
 	const { setHeader } = useAppHeader();
 	const { setPopup } = usePopups();
 
-	const { savedFund, isLoading } = useSavedFundsStore();
-	const { fetchSavedFund, removeSavedFund } = useSavedFunds();
+	const {
+		savedFund,
+		isLoading,
+		fetchSavedFund,
+		removeSavedFund,
+		resetSavedFund
+	} = useSavedFunds();
 
 	const handleEditWallet = () => {
 		setPopup(AppPopups.SaveWallet);
@@ -64,6 +68,10 @@ export function useWalletView() {
 	};
 
 	fetchInitWallet();
+
+	onUnmounted(() => {
+		resetSavedFund();
+	});
 
 	return {
 		isLoading,
