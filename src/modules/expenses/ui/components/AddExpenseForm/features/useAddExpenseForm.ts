@@ -16,7 +16,7 @@ import { useExpenseSources } from '@/modules/expenseSources';
 import { useSavedFunds } from '@/modules/savedFunds';
 import { useForm, useTranslateSystemMessages } from '@/shared/features';
 import { useSettleResponse } from '@/shared/infrastructure/services/useSettleResponse.ts';
-import { cloneDeep } from '@/shared/utils';
+import { cloneDeep, roundWithDecimals } from '@/shared/utils';
 
 export function useAddExpenseForm() {
 	const expenseFormData = ref<TInitialExpenseFormData>(
@@ -37,7 +37,7 @@ export function useAddExpenseForm() {
 
 	const { formRef, hasServerError, validateForm, resetValidationForm } =
 		useForm(error);
-	const { handleClose } = usePopups();
+	const { handleClose, options: popupOptions } = usePopups();
 
 	const showedExpenseSourcesPicker = ref(false);
 	const showedDatePicker = ref(false);
@@ -72,7 +72,7 @@ export function useAddExpenseForm() {
 			expenseFormData.value = {
 				...unref(expenseFormData),
 				title: option.title,
-				amount: option.amount,
+				amount: roundWithDecimals(option.amount),
 				currency: option.currency.code,
 				expenseSourceId: option.id
 			};
@@ -120,13 +120,16 @@ export function useAddExpenseForm() {
 					onSuccess: async () => {
 						expenseFormData.value = { ...initialExpenseFormData };
 
+						await unref(popupOptions)?.onSuccess?.();
+
 						resetValidationForm();
 						handleClose();
-
 						await fetchDashboard();
 					}
 				});
 			}
+
+			await unref(popupOptions)?.onError?.();
 		}
 	};
 

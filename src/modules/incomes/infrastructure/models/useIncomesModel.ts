@@ -2,10 +2,12 @@ import { NIncomes } from '@/modules/incomes/domain';
 import { useApiFetch } from '@/shared/infrastructure/api';
 
 export const useIncomesModel = (): NIncomes.IModel => {
-	const { fetch } = useApiFetch();
+	const { fetch, getUrlWithQueryParams } = useApiFetch();
 
-	const fetchAll = () =>
-		fetch<NIncomes.IIncome[]>(`/${NIncomes.API_NAMESPACE}`).get();
+	const fetchAll = (query?: NIncomes.IQueryIncomes) =>
+		fetch<NIncomes.IIncome[]>(
+			getUrlWithQueryParams(`/${NIncomes.API_NAMESPACE}`, query)
+		).get();
 
 	const fetchOne = (id: number) =>
 		fetch<NIncomes.IIncome>(`/${NIncomes.API_NAMESPACE}/${id}`).get();

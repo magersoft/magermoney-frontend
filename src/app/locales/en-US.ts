@@ -7,6 +7,7 @@ export default {
 	delete: 'Delete',
 	edit: 'Edit',
 	save: 'Save',
+	change: 'Edit',
 	confirm: 'Confirm',
 	removing: 'Removing',
 	cancel: 'Cancel',
@@ -110,8 +111,8 @@ export default {
 		income: 'Income',
 		selectIncome: 'Select income',
 		singleIncome: 'One-time income',
-		savedFund: 'Saved fund',
-		selectSavedFund: 'Select saved fund',
+		savedFund: 'Wallet',
+		selectSavedFund: 'Select wallet',
 		category: 'Category',
 		selectCategory: 'Select category',
 		name: 'Name',
@@ -133,7 +134,7 @@ export default {
 		expense: 'Expense',
 		selectExpense: 'Select expense',
 		singleExpense: 'One-time expense',
-		savedFund: 'Debit',
+		savedFund: 'Wallet',
 		selectSavedFund: 'Select debit',
 		category: 'Category',
 		selectCategory: 'Select category',
@@ -148,6 +149,10 @@ export default {
 			success: 'Expense declared successfully',
 			fail: 'Expense declaration failed'
 		}
+	},
+	expensesView: {
+		expense: 'Расход',
+		removeTitle: 'Remove expense'
 	},
 	wallets: {
 		countOfWallets: 'You have {count} {declination}',
@@ -184,6 +189,8 @@ export default {
 		Wallets: 'Wallets',
 		Wallet: 'Wallet',
 		History: 'History',
+		Incomes: 'Incomes',
+		Expenses: 'Expenses',
 		IncomeSources: 'Income sources',
 		ExpenseSources: 'Expense sources',
 		SavedFunds: 'Saved funds',

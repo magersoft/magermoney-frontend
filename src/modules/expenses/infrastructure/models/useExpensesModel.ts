@@ -2,10 +2,12 @@ import { NExpenses } from '@/modules/expenses/domain';
 import { useApiFetch } from '@/shared/infrastructure/api';
 
 export const useExpensesModel = (): NExpenses.IModel => {
-	const { fetch } = useApiFetch();
+	const { fetch, getUrlWithQueryParams } = useApiFetch();
 
-	const fetchAll = () =>
-		fetch<NExpenses.IExpense[]>(`/${NExpenses.API_NAMESPACE}`).get();
+	const fetchAll = (query?: NExpenses.IQueryExpenses) =>
+		fetch<NExpenses.IExpense[]>(
+			getUrlWithQueryParams(`/${NExpenses.API_NAMESPACE}`, query)
+		).get();
 
 	const fetchOne = (id: number) =>
 		fetch<NExpenses.IExpense>(`/${NExpenses.API_NAMESPACE}/${id}`).get();

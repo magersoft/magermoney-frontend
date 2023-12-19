@@ -1,5 +1,6 @@
 import { PopoverAction } from 'vant';
 
+import { PopupOptions } from '@/app/popups/types';
 import { RequestReturnError } from '@/shared/types/api';
 
 export interface IFetchState<E = RequestReturnError> {
@@ -21,6 +22,7 @@ export interface AppHeaderState {
 
 export interface AppNavState {
 	isHidden?: boolean;
+	popupOptions?: PopupOptions;
 }
 
 export interface AppState {

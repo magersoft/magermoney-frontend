@@ -228,6 +228,7 @@ export interface IncomeEntity {
 	amount: number;
 	/** @format date-time */
 	dateOfIssue: string;
+	currency: CurrencyEntity;
 	currencyId: number;
 	savedFundId: number;
 	incomeSourceId?: number;
@@ -260,6 +261,7 @@ export interface ExpenseEntity {
 	amount: number;
 	/** @format date-time */
 	dateOfIssue: string;
+	currency: CurrencyEntity;
 	currencyId: number;
 	savedFundId: number;
 	expenseSourceId: number;
@@ -296,4 +298,22 @@ export interface CalculationsControllerGetPercentByAmountParams {
 export interface CalculationsControllerGetAmountByPercentParams {
 	value: string;
 	currency: string;
+}
+
+export interface IncomesControllerFindAllParams {
+	page?: number;
+	perPage?: number;
+	/** @format date-time */
+	startDate?: string;
+	/** @format date-time */
+	endDate?: string;
+}
+
+export interface ExpensesControllerFindAllParams {
+	page?: number;
+	perPage?: number;
+	/** @format date-time */
+	startDate?: string;
+	/** @format date-time */
+	endDate?: string;
 }

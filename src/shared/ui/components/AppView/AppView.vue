@@ -2,16 +2,16 @@
 import { useAppHeader, useAppNav } from '@/shared/ui/components';
 import { classNames } from '@/shared/utils';
 
-const { isHidden: isHiddenHeader } = useAppHeader();
-const { isHidden: isHiddenNav } = useAppNav();
+const { header } = useAppHeader();
+const { nav } = useAppNav();
 </script>
 
 <template>
 	<div
 		:class="
 			classNames($style['app-view'], {
-				[$style['app-view--hidden-header']]: isHiddenHeader,
-				[$style['app-view--hidden-nav']]: isHiddenNav
+				[$style['app-view--hidden-header']]: header.isHidden,
+				[$style['app-view--hidden-nav']]: nav.isHidden
 			})
 		"
 	>

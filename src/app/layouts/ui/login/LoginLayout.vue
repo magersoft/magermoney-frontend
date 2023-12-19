@@ -8,7 +8,7 @@ export default {
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 
-import { loginNavigations } from '@/shared/constants';
+import { loginNavigations } from '@/app/layouts/ui/login/constants';
 import { AppHeader, AppNav } from '@/shared/ui/components';
 
 const route = useRoute();

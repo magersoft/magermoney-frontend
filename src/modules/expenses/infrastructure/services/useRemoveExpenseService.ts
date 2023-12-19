@@ -6,8 +6,8 @@ export function useRemoveExpenseService() {
 
 	const { confirmRemove: removeExpense } = useBaseRemove({
 		handleRemove: remove,
-		title: 'expenses.removeTitle',
-		entityTitle: (entityName) => `«${entityName}»`
+		title: 'expensesView.removeTitle',
+		entityTitle: (entityName) => `${entityName}`
 	});
 
 	return {

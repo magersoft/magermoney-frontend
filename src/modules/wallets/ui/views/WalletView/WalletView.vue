@@ -26,12 +26,12 @@ setHeader({
 	onSelectAction: ({ action }) => handleSelectAction(action),
 	actions: [
 		{
-			text: 'Изменить',
+			text: t('change'),
 			icon: 'edit',
 			action: WalletActions.Edit
 		},
 		{
-			text: 'Удалить',
+			text: t('delete'),
 			icon: 'delete',
 			action: WalletActions.Delete
 		}

@@ -6,6 +6,7 @@ export default {
 	add: 'Добавить',
 	delete: 'Удалить',
 	edit: 'Редактировать',
+	change: 'Изменить',
 	save: 'Сохранить',
 	removing: 'Удаление',
 	cancel: 'Отмена',
@@ -110,7 +111,7 @@ export default {
 		income: 'Доход',
 		selectIncome: 'Выберите дохода',
 		singleIncome: 'Разовый доход',
-		savedFund: 'Сохранение',
+		savedFund: 'Кошелек',
 		selectSavedFund: 'Выберите место хранения',
 		category: 'Категория',
 		selectCategory: 'Выберите категорию',
@@ -133,7 +134,7 @@ export default {
 		expense: 'Расход',
 		selectExpense: 'Выберите расход',
 		singleExpense: 'Разовый расход',
-		savedFund: 'Списание',
+		savedFund: 'Кошелек',
 		selectSavedFund: 'Выберите место списание',
 		category: 'Категория',
 		selectCategory: 'Выберите категорию',
@@ -148,6 +149,10 @@ export default {
 			success: 'Расход успешно заявлен',
 			fail: 'Не удалось заявить расход'
 		}
+	},
+	expensesView: {
+		expense: 'Расход',
+		removeTitle: 'Удалить расход'
 	},
 	wallets: {
 		countOfWallets: 'У вас {count} {declination}',
@@ -184,6 +189,8 @@ export default {
 		Wallets: 'Кошельки',
 		Wallet: 'Кошелек',
 		History: 'История',
+		Incomes: 'Доходы',
+		Expenses: 'Расходы',
 		IncomeSources: 'Источники дохода',
 		ExpenseSources: 'Источники расхода',
 		SavedFunds: 'Накопленные средства',

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 
+import type { Navigation, NavigationChildren } from '@/app/layouts/types';
 import { usePopups } from '@/app/popups';
-import type { Navigation, NavigationChildren } from '@/shared/constants';
 
 import { useAppNav } from './features';
 
@@ -12,9 +12,9 @@ interface AppNavProps {
 
 defineProps<AppNavProps>();
 
-const { isHidden } = useAppNav();
-const router = useRouter();
+const { nav } = useAppNav();
 const { setPopup } = usePopups();
+const router = useRouter();
 
 const childrenItems = (items: Navigation[]) =>
 	items.map((item) => ({
@@ -28,13 +28,13 @@ const onSelectChildren = (item: NavigationChildren) => {
 	}
 
 	if (item.popup) {
-		setPopup(item.popup);
+		setPopup(item.popup, unref(nav).popupOptions);
 	}
 };
 </script>
 
 <template>
-	<van-tabbar v-if="!isHidden" route :class="$style['app-nav']">
+	<van-tabbar v-if="!nav.isHidden" route :class="$style['app-nav']">
 		<template v-for="item in items" :key="item.title">
 			<van-popover
 				v-if="!!item.children"

@@ -16,7 +16,7 @@ import { useIncomeSources } from '@/modules/incomeSources';
 import { useSavedFunds } from '@/modules/savedFunds';
 import { useForm, useTranslateSystemMessages } from '@/shared/features';
 import { useSettleResponse } from '@/shared/infrastructure/services/useSettleResponse.ts';
-import { cloneDeep } from '@/shared/utils';
+import { cloneDeep, roundWithDecimals } from '@/shared/utils';
 
 export function useAddIncomeForm() {
 	const incomeFormData = ref<TInitialIncomeFormData>(
@@ -72,7 +72,7 @@ export function useAddIncomeForm() {
 			incomeFormData.value = {
 				...unref(incomeFormData),
 				title: option.title,
-				amount: option.amount,
+				amount: roundWithDecimals(option.amount),
 				currency: option.currency.code,
 				incomeSourceId: option.id
 			};

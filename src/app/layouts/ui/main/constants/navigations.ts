@@ -1,28 +1,5 @@
+import { Navigation } from '@/app/layouts/types';
 import { AppPopups } from '@/app/popups';
-
-export interface Navigation {
-	title: string;
-	icon: string;
-	path?: string;
-	children?: NavigationChildren[];
-}
-
-export interface NavigationChildren extends Navigation {
-	popup?: AppPopups;
-}
-
-export const loginNavigations: Navigation[] = [
-	{
-		title: 'Dashboard',
-		icon: 'home-o',
-		path: '/login'
-	},
-	{
-		title: 'Settings',
-		icon: 'setting-o',
-		path: '/settings'
-	}
-];
 
 export const mainNavigations: Navigation[] = [
 	{
