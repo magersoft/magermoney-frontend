@@ -16,6 +16,7 @@ const { setHeader } = useAppHeader();
 const { setNav } = useAppNav();
 const router = useRouter();
 const { setPopup } = usePopups();
+
 const { handleRefresh } = useExpensesList();
 
 setHeader({
@@ -40,7 +41,7 @@ setNav({
 
 <template>
 	<div :class="$style['expenses-view']">
-		<expenses-filters />
+		<expenses-filters v-if="false" />
 		<expenses-list />
 	</div>
 </template>

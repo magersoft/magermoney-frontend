@@ -1,19 +1,31 @@
 import { useIncomesModel } from '@/modules/incomes/infrastructure/models';
 import { useIncomesStore } from '@/modules/incomes/infrastructure/stores';
-import { useBaseFetch } from '@/shared/infrastructure/services';
+import { useBaseFetchPaginated } from '@/shared/infrastructure/services';
+import { BaseFetchPaginatedParams } from '@/shared/types/services';
 
-export function useFetchIncomesService() {
-	const { setIncomes, setIsLoading, setError } = useIncomesStore();
+export function useFetchIncomesService(
+	pagination: Pick<
+		BaseFetchPaginatedParams<any, any>,
+		'page' | 'pageSize' | 'firstPage' | 'setPage'
+	>
+) {
+	const { incomes, setIncomes, setIsLoading, setError } = useIncomesStore();
 	const { fetchAll } = useIncomesModel();
 
-	const { fetchBase: fetchIncomes } = useBaseFetch({
+	const {
+		fetchBaseList: fetchIncomes,
+		fetchBasePaginated: fetchIncomesPaginated
+	} = useBaseFetchPaginated({
 		fetchData: fetchAll,
 		setData: setIncomes,
+		dataList: incomes,
 		setIsLoading,
-		setError
+		setError,
+		...pagination
 	});
 
 	return {
-		fetchIncomes
+		fetchIncomes,
+		fetchIncomesPaginated
 	};
 }

@@ -124,12 +124,14 @@ export function useAddExpenseForm() {
 
 						resetValidationForm();
 						handleClose();
+
 						await fetchDashboard();
+					},
+					onError: async () => {
+						await unref(popupOptions)?.onError?.();
 					}
 				});
 			}
-
-			await unref(popupOptions)?.onError?.();
 		}
 	};
 

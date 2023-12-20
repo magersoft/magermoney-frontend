@@ -150,8 +150,12 @@ export default {
 			fail: 'Expense declaration failed'
 		}
 	},
+	incomesView: {
+		income: 'Income',
+		removeTitle: 'Remove income'
+	},
 	expensesView: {
-		expense: 'Расход',
+		expense: 'Expense',
 		removeTitle: 'Remove expense'
 	},
 	wallets: {

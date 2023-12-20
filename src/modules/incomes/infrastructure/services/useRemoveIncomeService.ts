@@ -6,8 +6,8 @@ export function useRemoveIncomeService() {
 
 	const { confirmRemove: removeIncome } = useBaseRemove({
 		handleRemove: remove,
-		title: 'incomes.removeTitle',
-		entityTitle: (entityName) => `«${entityName}»`
+		title: 'incomesView.removeTitle',
+		entityTitle: (entityName) => `${entityName}`
 	});
 
 	return {

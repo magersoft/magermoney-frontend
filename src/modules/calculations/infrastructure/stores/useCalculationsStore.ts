@@ -4,6 +4,7 @@ import { appConfig } from '@/app/config';
 import { NCalculations } from '@/modules/calculations/domain';
 import { fetchStateInitialState } from '@/shared/domain';
 import { useStoreAdapter } from '@/shared/infrastructure/adapters';
+import { roundWithDecimals } from '@/shared/utils';
 
 const calculationsStore = defineStore('calculations', {
 	state: (): NCalculations.IState => ({
@@ -18,7 +19,7 @@ const calculationsStore = defineStore('calculations', {
 	getters: {
 		roundedAmountByPercent: (state) =>
 			state.amountByPercent
-				? String(Math.round(Number(state.amountByPercent.amount)))
+				? String(roundWithDecimals(state.amountByPercent.amount))
 				: String(0),
 		roundedPercentByAmount: (state) =>
 			state.percentByAmount

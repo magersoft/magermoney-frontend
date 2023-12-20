@@ -150,6 +150,10 @@ export default {
 			fail: 'Не удалось заявить расход'
 		}
 	},
+	incomesView: {
+		income: 'Доход',
+		removeTitle: 'Удалить доход'
+	},
 	expensesView: {
 		expense: 'Расход',
 		removeTitle: 'Удалить расход'

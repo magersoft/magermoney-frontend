@@ -52,7 +52,6 @@ export function useExpensesList() {
 
 		if (!response) {
 			isFinished.value = true;
-
 			return;
 		}
 

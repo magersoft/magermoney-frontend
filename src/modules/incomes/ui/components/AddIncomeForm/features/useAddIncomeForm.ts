@@ -37,7 +37,7 @@ export function useAddIncomeForm() {
 
 	const { formRef, hasServerError, validateForm, resetValidationForm } =
 		useForm(error);
-	const { handleClose } = usePopups();
+	const { handleClose, options: popupOptions } = usePopups();
 
 	const showedIncomeSourcesPicker = ref(false);
 	const showedDatePicker = ref(false);
@@ -120,10 +120,15 @@ export function useAddIncomeForm() {
 					onSuccess: async () => {
 						incomeFormData.value = { ...initialIncomeFormData };
 
+						await unref(popupOptions)?.onSuccess?.();
+
 						resetValidationForm();
 						handleClose();
 
 						await fetchDashboard();
+					},
+					onError: async () => {
+						await unref(popupOptions)?.onError?.();
 					}
 				});
 			}
