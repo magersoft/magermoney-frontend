@@ -4,7 +4,8 @@
   right: 0;
   left: 0;
   z-index: var(--van-sticky-z-index);
-  width: 100%;
+  max-width: var(--app-width);
+  margin: 0 auto;
 
   &__panel {
     display: flex;

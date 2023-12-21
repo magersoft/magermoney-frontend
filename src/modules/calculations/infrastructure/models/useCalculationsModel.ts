@@ -60,12 +60,21 @@ export const useCalculationsModel = (): NCalculations.IModel => {
 			)
 		).get();
 
+	const fetchTransferDetails = (query: NCalculations.IQueryTransferDetails) =>
+		fetch<NCalculations.ITransferDetails>(
+			getUrlWithQueryParams(
+				`/${NCalculations.API_NAMESPACE}/get-transfer-details`,
+				query
+			)
+		).get();
+
 	return {
 		fetchTotalBalance,
 		fetchTotalMonthlyIncomes,
 		fetchTotalMonthlyExpenses,
 		fetchMonthlyBudget,
 		fetchPercentByAmount,
-		fetchAmountByPercent
+		fetchAmountByPercent,
+		fetchTransferDetails
 	};
 };

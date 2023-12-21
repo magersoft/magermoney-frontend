@@ -29,9 +29,9 @@ export const mainNavigations: Navigation[] = [
 		]
 	},
 	{
-		title: 'Transfer',
+		title: 'Transfers',
 		icon: 'exchange',
-		path: '/transfer'
+		path: '/transfers'
 	},
 	{
 		title: 'Settings',

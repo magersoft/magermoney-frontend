@@ -7,6 +7,7 @@ export enum AppRoutes {
 	Incomes = 'Incomes',
 	Expenses = 'Expenses',
 	History = 'History',
+	Transfers = 'Transfers',
 	Settings = 'Settings',
 	IncomeSources = 'IncomeSources',
 	ExpenseSources = 'ExpenseSources',

@@ -63,6 +63,13 @@ const routes: RouteRecordRaw[] = [
 			import('@/modules/history/ui/views/HistoryView/HistoryView.vue')
 	},
 	{
+		path: '/transfers',
+		name: AppRoutes.Transfers,
+		meta: { middleware: [authMiddleware] },
+		component: () =>
+			import('@/modules/transfers/ui/views/TransferView/TransferView.vue')
+	},
+	{
 		path: '/settings',
 		name: AppRoutes.Settings,
 		component: () =>

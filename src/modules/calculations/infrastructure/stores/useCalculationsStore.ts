@@ -14,7 +14,8 @@ const calculationsStore = defineStore('calculations', {
 		totalMonthlyExpenses: null,
 		monthlyBudget: null,
 		percentByAmount: null,
-		amountByPercent: null
+		amountByPercent: null,
+		transferDetails: null
 	}),
 	getters: {
 		roundedAmountByPercent: (state) =>
@@ -52,6 +53,9 @@ const calculationsStore = defineStore('calculations', {
 		},
 		setAmountByPercent(value: NCalculations.IAmountByPercent) {
 			this.amountByPercent = value;
+		},
+		setTransferDetails(value: NCalculations.ITransferDetails) {
+			this.transferDetails = value;
 		},
 		setIsLoading(value: boolean) {
 			this.isLoading = value;

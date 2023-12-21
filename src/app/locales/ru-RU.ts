@@ -152,11 +152,13 @@ export default {
 	},
 	incomesView: {
 		income: 'Доход',
-		removeTitle: 'Удалить доход'
+		removeTitle: 'Удалить доход',
+		empty: 'У вас нет доходов. Добавьте их, чтобы увидеть здесь список.'
 	},
 	expensesView: {
 		expense: 'Расход',
-		removeTitle: 'Удалить расход'
+		removeTitle: 'Удалить расход',
+		empty: 'У вас нет расходов. Добавьте их, чтобы увидеть здесь список.'
 	},
 	wallets: {
 		countOfWallets: 'У вас {count} {declination}',
@@ -174,6 +176,24 @@ export default {
 		systemMessages: {
 			success: 'Кошелек успешно сохранен',
 			fail: 'Не удалось сохранить кошелек'
+		}
+	},
+	transfers: {
+		title: 'Перевод денежный средств',
+		description: 'Вы можете перевести средства с одного кошелька на другой',
+		from: 'Откуда',
+		to: 'Куда',
+		selectFrom: 'Выберите кошелек списания',
+		selectTo: 'Выберите кошелек зачисления',
+		amount: 'Сумма',
+		enterAmount: 'Введите сумму',
+		outcome: 'Списание',
+		income: 'Зачисление',
+		rate: 'Курс обмена',
+		submit: 'Перевести',
+		systemMessages: {
+			success: 'Перевод успешно выполнен',
+			fail: 'Не удалось выполнить перевод'
 		}
 	},
 	settings: {
@@ -198,6 +218,7 @@ export default {
 		IncomeSources: 'Источники дохода',
 		ExpenseSources: 'Источники расхода',
 		SavedFunds: 'Накопленные средства',
+		Transfers: 'Переводы',
 		AccumulationFunds: 'Процент накопления',
 		NotFound: 'Поворот не туда',
 		InternalServerError: 'Внутренняя ошибка сервера'
@@ -209,7 +230,7 @@ export default {
 		Income: 'Доход',
 		Expense: 'Расход',
 		History: 'История',
-		Transfer: 'Перевод'
+		Transfers: 'Переводы'
 	},
 	validation: {
 		required: 'Поле обязательно для заполнения',

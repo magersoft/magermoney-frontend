@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { classNames } from '@/shared/utils';
+
 import { useAppHeader } from './features';
 
 interface AppHeaderProps {
@@ -20,7 +22,11 @@ const showActionMenu = ref(false);
 		:left-arrow="header.isLeftArrow"
 		:right-text="header.textRight"
 		fixed
-		:class="$style['app-header']"
+		:class="
+			classNames($style['app-header'], {
+				[$style['app-header--invisible']]: !header.isVisible
+			})
+		"
 		@click-left="header.onClickLeft"
 		@click-right="header.onClickRight"
 	>

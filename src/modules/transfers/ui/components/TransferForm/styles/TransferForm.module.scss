@@ -1,0 +1,56 @@
+.transfer-form {
+  &__group {
+    position: relative;
+  }
+
+  &__field {
+    padding-left: calc(var(--van-padding-lg) * 2);
+
+    &:first-child {
+      &::after {
+        border: none;
+      }
+    }
+  }
+
+  &__switch {
+    position: absolute;
+    top: 27px;
+    left: var(--van-padding-xs);
+    z-index: 1;
+    border: none;
+    transform: rotate(-90deg);
+  }
+
+  &__details {
+    :global(.van-cell__value) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: var(--van-padding-md);
+  }
+}
+
+.detail-income {
+  color: var(--van-success-color);
+
+  &::before {
+    content: '+ ';
+  }
+}
+
+.detail-outcome {
+  color: var(--van-danger-color);
+
+  &::before {
+    content: '- ';
+  }
+}

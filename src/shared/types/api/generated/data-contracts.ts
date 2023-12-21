@@ -14,7 +14,7 @@ export interface LoginAuthDto {
 	phone?: string | null;
 }
 
-export interface DetectUserDto {
+export interface DetectUserEntity {
 	id: number;
 }
 
@@ -25,7 +25,7 @@ export interface VerifyAuthDto {
 	language?: string;
 }
 
-export interface VerifyUserDto {
+export interface VerifyUserEntity {
 	accessToken: string | null;
 	email: string;
 	phone: string;
@@ -146,22 +146,22 @@ export interface UpdateAccumulationFundDto {
 	percent?: number;
 }
 
-export interface TotalBalanceDto {
+export interface TotalBalanceEntity {
 	amount: number;
 	currency: string;
 }
 
-export interface TotalMonthlyIncomesDto {
+export interface TotalMonthlyIncomesEntity {
 	amount: number;
 	currency: string;
 }
 
-export interface TotalMonthlyExpensesDto {
+export interface TotalMonthlyExpensesEntity {
 	amount: number;
 	currency: string;
 }
 
-export interface MonthlyBudgetDto {
+export interface MonthlyBudgetEntity {
 	budget: number;
 	spent: number;
 	restAmount: number;
@@ -169,18 +169,24 @@ export interface MonthlyBudgetDto {
 	currency: string;
 }
 
-export interface PercentByAmountDto {
+export interface PercentByAmountEntity {
 	percent: number;
 	currency: string;
 	balance: number;
 	amount: number;
 }
 
-export interface AmountByPercentDto {
+export interface AmountByPercentEntity {
 	amount: number;
 	currency: string;
 	balance: number;
 	percent: number;
+}
+
+export interface TransferDetailsEntity {
+	outcome: TotalBalanceEntity;
+	income: TotalBalanceEntity;
+	rate: TotalBalanceEntity;
 }
 
 export interface CreateExpenseSourceDto {
@@ -209,9 +215,9 @@ export interface UpdateExpenseSourceDto {
 }
 
 export interface CreateIncomeDto {
-	title?: string;
-	amount?: number;
-	currency?: string;
+	title: string;
+	amount: number;
+	currency: string;
 	/** @format date-time */
 	dateOfIssue: string;
 	incomeSourceId?: number;
@@ -236,15 +242,15 @@ export interface IncomeEntity {
 }
 
 export interface UpdateIncomeDto {
-	title?: string;
+	title: string;
 	/** @format date-time */
 	dateOfIssue: string;
 }
 
 export interface CreateExpenseDto {
-	title?: string;
-	amount?: number;
-	currency?: string;
+	title: string;
+	amount: number;
+	currency: string;
 	/** @format date-time */
 	dateOfIssue: string;
 	expenseSourceId?: number;
@@ -269,10 +275,32 @@ export interface ExpenseEntity {
 }
 
 export interface UpdateExpenseDto {
-	title?: string;
+	title: string;
 	/** @format date-time */
 	dateOfIssue: string;
 }
+
+export interface CreateTransferDto {
+	amount: number;
+	currency: string;
+	toId: number;
+	fromId: number;
+}
+
+export interface TransferEntity {
+	id: number;
+	/** @format date-time */
+	createdAt: string;
+	/** @format date-time */
+	updatedAt: string;
+	amount: number;
+	toId: number;
+	fromId: number;
+	currencyId: number;
+	userId: number;
+}
+
+export type UpdateTransferDto = object;
 
 export interface CalculationsControllerGetTotalBalanceParams {
 	currency: string;
@@ -297,6 +325,13 @@ export interface CalculationsControllerGetPercentByAmountParams {
 
 export interface CalculationsControllerGetAmountByPercentParams {
 	value: string;
+	currency: string;
+}
+
+export interface CalculationsControllerGetTransferDetailsParams {
+	fromId: number;
+	toId: number;
+	amount: number;
 	currency: string;
 }
 

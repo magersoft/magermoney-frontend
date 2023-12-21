@@ -1,4 +1,9 @@
 .app-nav {
+  right: 0;
+  left: 0;
+  max-width: var(--app-width);
+  margin: 0 auto;
+
   :global(.van-popover__wrapper) {
     display: flex;
     flex: 1;

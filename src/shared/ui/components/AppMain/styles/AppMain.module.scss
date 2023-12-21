@@ -1,6 +1,6 @@
 .app-main {
   position: relative;
-  max-width: 100vw;
+  max-width: var(--app-width);
   min-height: fill-available;
   margin: auto;
   overflow: hidden;

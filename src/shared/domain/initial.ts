@@ -11,6 +11,7 @@ export const appInitialState: AppState = {
 		textLeft: '',
 		textRight: '',
 		isHidden: false,
+		isVisible: true,
 		isLeftArrow: false,
 		actions: null,
 		onSelectAction: () => {},

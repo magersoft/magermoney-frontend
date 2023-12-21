@@ -1,4 +1,14 @@
 .app-header {
+  right: 0;
+  left: 0;
+  max-width: var(--app-width);
+  margin: 0 auto;
+
+  &--invisible {
+    visibility: hidden;
+    opacity: 0;
+  }
+
   &__action-btn {
     margin-right: calc(var(--van-padding-md) * -1);
     border: none;

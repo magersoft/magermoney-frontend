@@ -13,7 +13,7 @@ import { useAppHeader } from '@/shared/ui/components';
 const { setHeader } = useAppHeader();
 
 setHeader({
-	isHidden: true
+	isVisible: false
 });
 
 const { fetchDashboard, isLoading } = useInitDashboardView();

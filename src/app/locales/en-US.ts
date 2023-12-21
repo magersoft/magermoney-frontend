@@ -152,11 +152,13 @@ export default {
 	},
 	incomesView: {
 		income: 'Income',
-		removeTitle: 'Remove income'
+		removeTitle: 'Remove income',
+		empty: 'You have no incomes. Add them to see the list here.'
 	},
 	expensesView: {
 		expense: 'Expense',
-		removeTitle: 'Remove expense'
+		removeTitle: 'Remove expense',
+		empty: 'You have no expenses. Add them to see the list here.'
 	},
 	wallets: {
 		countOfWallets: 'You have {count} {declination}',
@@ -175,6 +177,20 @@ export default {
 			success: 'Wallet saved successfully',
 			fail: 'Failed to save wallet'
 		}
+	},
+	transfers: {
+		title: 'Transfer money',
+		description: 'You can transfer money between your wallets',
+		from: 'From',
+		to: 'To',
+		selectFrom: 'Select debit wallet',
+		selectTo: 'Select deposit wallet',
+		amount: 'Amount',
+		enterAmount: 'Enter amount',
+		outcome: 'Outcome',
+		income: 'Income',
+		rate: 'Rate',
+		submit: 'Transfer'
 	},
 	settings: {
 		app: 'Application settings',
@@ -195,6 +211,7 @@ export default {
 		History: 'History',
 		Incomes: 'Incomes',
 		Expenses: 'Expenses',
+		Transfers: 'Transfers',
 		IncomeSources: 'Income sources',
 		ExpenseSources: 'Expense sources',
 		SavedFunds: 'Saved funds',
@@ -208,7 +225,7 @@ export default {
 		Income: 'Income',
 		Expense: 'Expense',
 		History: 'History',
-		Transfer: 'Transfer'
+		Transfers: 'Transfers'
 	},
 	validation: {
 		required: 'Field is required',

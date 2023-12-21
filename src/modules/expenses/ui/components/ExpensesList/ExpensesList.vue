@@ -54,6 +54,11 @@ initialFetchData();
 					</template>
 				</van-swipe-cell>
 			</div>
+			<van-empty
+				v-if="!isLoading && !groupedExpenses.length"
+				image="search"
+				:description="t('expensesView.empty')"
+			/>
 		</van-list>
 	</van-pull-refresh>
 </template>

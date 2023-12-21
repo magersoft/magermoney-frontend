@@ -3,6 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: var(--van-padding-xs);
   padding: var(--van-padding-xs) 0;
+  user-select: none;
   background: transparent;
   border-radius: 0;
 

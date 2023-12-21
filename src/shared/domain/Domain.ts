@@ -14,6 +14,7 @@ export interface AppHeaderState {
 	textRight?: string;
 	isLeftArrow?: boolean;
 	isHidden?: boolean;
+	isVisible?: boolean;
 	actions?: PopoverAction[] | null;
 	onSelectAction?: (action: PopoverAction) => void;
 	onClickLeft?: () => void;

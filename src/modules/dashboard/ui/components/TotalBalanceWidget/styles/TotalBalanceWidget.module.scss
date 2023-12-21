@@ -30,5 +30,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
+    user-select: none;
   }
 }

@@ -29,6 +29,10 @@ export function useSavedFunds() {
 		mappingSavedFundsForPicker(unref(savedFunds))
 	);
 
+	const savedFundsItemsWithAmount = computed(() =>
+		mappingSavedFundsForPicker(unref(savedFunds), true)
+	);
+
 	const resetSavedFund = () => {
 		setSavedFund(null);
 	};
@@ -43,6 +47,7 @@ export function useSavedFunds() {
 		hasSavedFunds,
 		savedFunds,
 		savedFundsItems,
+		savedFundsItemsWithAmount,
 		countSavedFunds,
 		savedFund,
 		isLoading,
