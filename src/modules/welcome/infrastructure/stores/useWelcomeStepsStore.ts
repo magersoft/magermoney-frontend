@@ -10,7 +10,7 @@ interface WelcomeStepsState {
 const welcomeStepsStore = defineStore('welcomeSteps', {
 	persist: true,
 	state: (): WelcomeStepsState => ({
-		activeStep: WelcomeStepsType.INCOME_SOURCES
+		activeStep: WelcomeStepsType.CURRENCIES
 	}),
 	actions: {
 		setStep(step: WelcomeStepsType) {

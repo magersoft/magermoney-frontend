@@ -31,6 +31,7 @@ export default {
 	internalServerError: 'Internal server error',
 	reload: 'Reload',
 	restMonthlyBudget: '{restAmountFormatted} spent of {monthlyBudgetFormatted}',
+	currencies: 'Currencies',
 	auth: {
 		phone: 'Phone',
 		email: 'Email',
@@ -82,7 +83,7 @@ export default {
 		percentPlaceholder: 'Percent of income',
 		amount: 'Amount',
 		amountPlaceholder: 'Amount of income',
-		stepName: 'Accumulation',
+		stepName: 'Percent',
 		percentOfMonthlyIncome: 'Percent of monthly income',
 		balanceInMonth: 'Balance',
 		balanceAccumulationInMonth: 'Balance accumulation',
@@ -160,6 +161,15 @@ export default {
 		removeTitle: 'Remove expense',
 		empty: 'You have no expenses. Add them to see the list here.'
 	},
+	currenciesView: {
+		stepName: 'Currency',
+		title: 'Select currencies',
+		description: 'Select currencies that you want to use in your accounting',
+		systemMessages: {
+			success: 'Currencies saved successfully',
+			fail: 'Failed to save currencies'
+		}
+	},
 	wallets: {
 		countOfWallets: 'You have {count} {declination}',
 		wallet1: 'wallet',
@@ -216,7 +226,9 @@ export default {
 		ExpenseSources: 'Expense sources',
 		SavedFunds: 'Saved funds',
 		AccumulationFunds: 'Percent of accumulation',
-		NotFound: 'Not found'
+		Currencies: 'Currencies',
+		NotFound: 'Not found',
+		InternalServerError: 'Internal Server Error'
 	},
 	nav: {
 		Dashboard: 'Home',

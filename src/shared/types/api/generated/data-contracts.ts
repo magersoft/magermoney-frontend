@@ -52,6 +52,7 @@ export interface UserEntity {
 	isFirstTime: boolean;
 	language: string;
 	currency: string;
+	role: 'USER' | 'ADMIN';
 }
 
 export interface UpdateUserDto {
@@ -96,6 +97,10 @@ export interface UpdateIncomeSourceDto {
 	description?: string | null;
 	amount?: number;
 	currency?: string;
+}
+
+export interface CreateAllByUserDto {
+	currenciesIds: number[];
 }
 
 export interface CreateSavedFundDto {

@@ -76,6 +76,12 @@ const routes: RouteRecordRaw[] = [
 			import('@/modules/settings/ui/views/SettingsView/SettingsView.vue')
 	},
 	{
+		path: '/settings/currencies',
+		name: AppRoutes.Currencies,
+		component: () =>
+			import('@/modules/currencies/ui/views/CurrenciesView/CurrenciesView.vue')
+	},
+	{
 		path: '/settings/income-sources',
 		name: AppRoutes.IncomeSources,
 		component: () =>

@@ -18,7 +18,8 @@ interface UseIncomeSourceFormParams extends ActionButtonsEventListeners {}
 
 export function useIncomeSourceForm({
 	onAdd,
-	onSubmit
+	onSubmit,
+	onBack
 }: UseIncomeSourceFormParams = {}) {
 	const incomeSourceFormData = ref<TInitialIncomeSourceFormData>(
 		cloneDeep(initialIncomeSourceFormControls)
@@ -61,6 +62,12 @@ export function useIncomeSourceForm({
 		}
 	};
 
+	const handleBack = () => {
+		resetValidationForm();
+
+		onBack?.();
+	};
+
 	return {
 		formRef,
 		incomeSourceFormData,
@@ -70,6 +77,7 @@ export function useIncomeSourceForm({
 		isLoading,
 		isLoadingCurrencies,
 		handleAddSubmit,
-		handleSubmit
+		handleSubmit,
+		handleBack
 	};
 }

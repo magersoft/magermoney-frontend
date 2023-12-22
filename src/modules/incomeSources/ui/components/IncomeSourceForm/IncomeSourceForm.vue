@@ -20,6 +20,7 @@ interface IncomeSourceFormProps extends AppFormProps {}
 interface IncomeSourceFormEvents extends AppFormEvents {
 	(event: 'click:add'): void;
 	(event: 'click:submit'): void;
+	(event: 'click:back'): void;
 }
 
 defineProps<IncomeSourceFormProps>();
@@ -38,10 +39,12 @@ const {
 	isLoading,
 	isLoadingCurrencies,
 	handleAddSubmit,
-	handleSubmit
+	handleSubmit,
+	handleBack
 } = useIncomeSourceForm({
 	onAdd: () => emit('click:add'),
-	onSubmit: () => emit('click:submit')
+	onSubmit: () => emit('click:submit'),
+	onBack: () => emit('click:back')
 });
 </script>
 
@@ -89,10 +92,12 @@ const {
 			v-if="!hideFormActionButtons"
 			:has-add-button="hasAddButton"
 			:has-submit-button="hasSubmitButton && hasIncomeSources"
+			:has-back-button="hasBackButton"
 			:submit-text="t('continue')"
 			:loading="isLoading"
 			@click:add="handleAddSubmit"
 			@click:submit="handleSubmit"
+			@click:back="handleBack"
 		/>
 
 		<slot />

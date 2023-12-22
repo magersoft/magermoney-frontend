@@ -6,7 +6,11 @@ import { WelcomeStepsType } from '@/modules/welcome/constants';
 import { useWelcomeStepsStore } from '@/modules/welcome/infrastructure/stores';
 
 export function useWelcomeSteps() {
-	const { activeStep, setStep, restoreStore } = useWelcomeStepsStore();
+	const {
+		activeStep,
+		setStep,
+		restoreStore: restoreWelcomeStepsStore
+	} = useWelcomeStepsStore();
 	const { updateUser } = useUser();
 	const router = useRouter();
 
@@ -21,7 +25,7 @@ export function useWelcomeSteps() {
 		);
 
 		if (unref(response?.data)) {
-			restoreStore();
+			restoreWelcomeStepsStore();
 
 			router.push({ name: AppRoutes.Dashboard });
 		}
@@ -31,6 +35,7 @@ export function useWelcomeSteps() {
 		activeStep,
 		setStep,
 		showStepper,
+		restoreWelcomeStepsStore,
 		handleFinished
 	};
 }

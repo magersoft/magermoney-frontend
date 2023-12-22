@@ -19,7 +19,9 @@ const { setStep } = useWelcomeSteps();
 		<income-source-form
 			has-add-button
 			has-submit-button
+			has-back-button
 			@click:submit="setStep(WelcomeStepsType.SAVED_FUNDS)"
+			@click:back="setStep(WelcomeStepsType.CURRENCIES)"
 		/>
 		<income-sources-list />
 	</van-pull-refresh>

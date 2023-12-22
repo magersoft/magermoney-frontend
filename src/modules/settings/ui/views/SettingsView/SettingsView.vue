@@ -4,26 +4,13 @@ import { useRouter } from 'vue-router';
 
 import { AppRoutes } from '@/app/router/constants';
 import { LogoutButton, useAuth } from '@/modules/auth';
-import { AppCellTitle, useAppHeader } from '@/shared/ui/components';
+import { AppCellTitle } from '@/shared/ui/components';
 
-import {
-	CurrencySwitcher,
-	LangSwitcher,
-	ThemeSwitcher
-} from '../../components';
+import { LangSwitcher, ThemeSwitcher } from '../../components';
 
 const { t } = useI18n();
 const { isAuthorization } = useAuth();
-const { setHeader } = useAppHeader();
 const router = useRouter();
-
-setHeader({
-	textLeft: t('back'),
-	isLeftArrow: true,
-	onClickLeft: () => {
-		router.back();
-	}
-});
 </script>
 
 <template>
@@ -35,7 +22,12 @@ setHeader({
 		<van-cell-group>
 			<theme-switcher />
 			<lang-switcher />
-			<currency-switcher v-if="isAuthorization" />
+			<van-cell
+				v-if="isAuthorization"
+				is-link
+				:title="t('currencies')"
+				@click="router.push({ name: AppRoutes.Currencies })"
+			/>
 		</van-cell-group>
 
 		<template v-if="isAuthorization">

@@ -7,11 +7,20 @@ import { useStoreAdapter } from '@/shared/infrastructure/adapters';
 const currenciesStore = defineStore('currencies', {
 	state: (): NCurrencies.IState => ({
 		...fetchStateInitialState,
-		currencies: []
+		currencies: [],
+		currenciesList: [],
+		currenciesIds: []
 	}),
 	actions: {
 		setCurrencies(currencies: NCurrencies.ICurrency[]) {
 			this.currencies = currencies;
+			this.currenciesIds = currencies.map((currency) => currency.id);
+		},
+		setCurrenciesList(currenciesList: NCurrencies.ICurrency[]) {
+			this.currenciesList = currenciesList;
+		},
+		setCurrenciesIds(currenciesIds: number[]) {
+			this.currenciesIds = currenciesIds;
 		},
 		setIsLoading(isLoading: boolean) {
 			this.isLoading = isLoading;

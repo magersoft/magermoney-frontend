@@ -32,6 +32,7 @@ export default {
 	reload: 'Перезагрузить',
 	restMonthlyBudget:
 		'осталось {restAmountFormatted} из {monthlyBudgetFormatted}',
+	currencies: 'Валюты',
 	auth: {
 		phone: 'Телефон',
 		email: 'Почта',
@@ -82,7 +83,7 @@ export default {
 		percentPlaceholder: 'Процент от дохода',
 		amount: 'Сумма',
 		amountPlaceholder: 'Сумма от дохода',
-		stepName: 'Сохранение',
+		stepName: 'Процент',
 		percentOfMonthlyIncome: 'Процент от ежемесячного дохода',
 		balanceInMonth: 'Остаток средств',
 		balanceAccumulationInMonth: 'Остаток накоплений',
@@ -160,6 +161,15 @@ export default {
 		removeTitle: 'Удалить расход',
 		empty: 'У вас нет расходов. Добавьте их, чтобы увидеть здесь список.'
 	},
+	currenciesView: {
+		stepName: 'Валюта',
+		title: 'Выберите валюты',
+		description: 'Выберите валюты, которые вы хотите видеть в приложении',
+		systemMessages: {
+			success: 'Валюты успешно сохранены',
+			fail: 'Не удалось сохранить валюты'
+		}
+	},
 	wallets: {
 		countOfWallets: 'У вас {count} {declination}',
 		wallet1: 'кошелек',
@@ -220,6 +230,7 @@ export default {
 		SavedFunds: 'Накопленные средства',
 		Transfers: 'Переводы',
 		AccumulationFunds: 'Процент накопления',
+		Currencies: 'Валюты',
 		NotFound: 'Поворот не туда',
 		InternalServerError: 'Внутренняя ошибка сервера'
 	},

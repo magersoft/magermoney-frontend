@@ -14,6 +14,7 @@ import {
 } from '@/modules/auth/infrastructure/services';
 import { useAuthStore } from '@/modules/auth/infrastructure/stores';
 import { useLanguage, useTheme } from '@/modules/settings';
+import { useWelcomeSteps } from '@/modules/welcome';
 import { useForm } from '@/shared/features';
 import { FieldRule } from '@/shared/types/utils';
 import { useAppHeader } from '@/shared/ui/components';
@@ -29,6 +30,7 @@ export function useAuthForm() {
 	const { formRef, validateForm, hasServerError, errorMessages } =
 		useForm(error);
 	const { setHeader, resetHeader } = useAppHeader();
+	const { restoreWelcomeStepsStore } = useWelcomeSteps();
 	const router = useRouter();
 	const { lang } = useLanguage();
 	const { isDark } = useTheme();
@@ -49,6 +51,7 @@ export function useAuthForm() {
 
 		if (unref(response?.data)) {
 			unref(passwordInputRef)?.$el.focus();
+			restoreWelcomeStepsStore();
 		}
 	};
 

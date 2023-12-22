@@ -27,6 +27,8 @@ const showActionMenu = ref(false);
 				[$style['app-header--invisible']]: !header.isVisible
 			})
 		"
+		:left-disabled="header.isLeftDisabled"
+		:right-disabled="header.isRightDisabled"
 		@click-left="header.onClickLeft"
 		@click-right="header.onClickRight"
 	>
