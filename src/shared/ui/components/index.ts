@@ -8,3 +8,4 @@ export * from './AppAmountInput';
 export * from './AppFormActionButtons';
 export * from './AppCellTitle';
 export * from './AppCellDescription';
+export * from './AppCellSkeleton';

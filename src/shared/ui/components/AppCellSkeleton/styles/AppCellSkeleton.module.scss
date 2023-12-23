@@ -1,0 +1,9 @@
+.app-cell-skeleton {
+  align-items: center;
+  min-height: 44px;
+
+  :global(.van-skeleton) {
+    justify-content: flex-end;
+    padding: 0;
+  }
+}

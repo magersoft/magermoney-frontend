@@ -37,6 +37,7 @@ export interface CreateUserDto {
 	phone?: string | null;
 	darkMode?: boolean;
 	language?: string;
+	currency?: string;
 }
 
 export interface UserEntity {
@@ -60,6 +61,7 @@ export interface UpdateUserDto {
 	phone?: string | null;
 	darkMode?: boolean;
 	language?: string;
+	currency?: string;
 	authCode?: string | null;
 	isFirstTime?: boolean | null;
 }
@@ -101,6 +103,12 @@ export interface UpdateIncomeSourceDto {
 
 export interface CreateAllByUserDto {
 	currenciesIds: number[];
+}
+
+export interface CurrencyRateEntity {
+	from: string;
+	to: string;
+	price: number;
 }
 
 export interface CreateSavedFundDto {
@@ -307,6 +315,15 @@ export interface TransferEntity {
 
 export type UpdateTransferDto = object;
 
+export interface HistoryEntity {
+	type: 'income' | 'expense' | 'transfer';
+	title: string;
+	amount: number;
+	currency: CurrencyEntity;
+	/** @format date-time */
+	dateOfIssue: string;
+}
+
 export interface CalculationsControllerGetTotalBalanceParams {
 	currency: string;
 }
@@ -356,4 +373,9 @@ export interface ExpensesControllerFindAllParams {
 	startDate?: string;
 	/** @format date-time */
 	endDate?: string;
+}
+
+export interface HistoryControllerFindAllParams {
+	page?: number;
+	perPage?: number;
 }

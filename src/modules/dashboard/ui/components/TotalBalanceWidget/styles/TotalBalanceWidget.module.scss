@@ -15,8 +15,11 @@
   }
 
   &__balance {
+    overflow: hidden;
     font-size: calc(var(--van-font-size-lg) * 2);
     font-weight: var(--van-font-bold);
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__view-all {

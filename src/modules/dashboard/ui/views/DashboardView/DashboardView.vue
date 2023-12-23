@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
 	DashboardHeader,
+	ExchangeRatesWidget,
 	MonthlyBudgetWidget,
 	MonthlyExpensesWidget,
 	MonthlyIncomesWidget,
@@ -31,6 +32,8 @@ const { fetchDashboard, isLoading } = useInitDashboardView();
 				<monthly-expenses-widget :class="$style['dashboard-view__col']" />
 				<monthly-budget-widget :class="$style['dashboard-view__col']" />
 			</div>
+
+			<exchange-rates-widget :class="$style['dashboard-view__wrapper']" />
 		</van-pull-refresh>
 	</div>
 </template>

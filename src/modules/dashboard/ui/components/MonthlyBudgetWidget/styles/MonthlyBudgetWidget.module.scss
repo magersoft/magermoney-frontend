@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: var(--van-padding-sm);
+  overflow: hidden;
 
   &__circle {
     display: flex;
@@ -38,9 +39,15 @@
 
   &__balance {
     width: 100%;
+    overflow: hidden;
     font-size: calc(var(--van-font-size-md) * 1.5);
     font-weight: var(--van-font-bold);
     color: var(--van-text-color);
+    white-space: nowrap;
+
+    > span {
+      text-overflow: ellipsis;
+    }
   }
 
   &__arrow {

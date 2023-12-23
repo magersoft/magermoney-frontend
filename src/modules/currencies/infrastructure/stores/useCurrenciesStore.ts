@@ -9,7 +9,8 @@ const currenciesStore = defineStore('currencies', {
 		...fetchStateInitialState,
 		currencies: [],
 		currenciesList: [],
-		currenciesIds: []
+		currenciesIds: [],
+		currenciesRates: []
 	}),
 	actions: {
 		setCurrencies(currencies: NCurrencies.ICurrency[]) {
@@ -18,6 +19,9 @@ const currenciesStore = defineStore('currencies', {
 		},
 		setCurrenciesList(currenciesList: NCurrencies.ICurrency[]) {
 			this.currenciesList = currenciesList;
+		},
+		setCurrenciesRates(currenciesRates: NCurrencies.ICurrencyRate[]) {
+			this.currenciesRates = currenciesRates;
 		},
 		setCurrenciesIds(currenciesIds: number[]) {
 			this.currenciesIds = currenciesIds;

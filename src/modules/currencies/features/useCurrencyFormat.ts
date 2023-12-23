@@ -5,11 +5,14 @@ export function useCurrencyFormat() {
 
 	const formatAmountWithCurrency = (
 		value: number,
-		currency: string
+		currency: string,
+		digits: number = 2
 	): string => {
 		return new Intl.NumberFormat(unref(locale), {
 			style: 'currency',
-			currency
+			currency,
+			minimumFractionDigits: digits,
+			maximumFractionDigits: digits
 		}).format(value);
 	};
 

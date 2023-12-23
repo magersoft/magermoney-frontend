@@ -30,4 +30,9 @@
       grid-area: 1 / 2 / 3 / 3;
     }
   }
+
+  &__wrapper {
+    margin-top: var(--van-padding-md);
+    margin-bottom: var(--van-padding-md);
+  }
 }

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { HistoryList } from '@/modules/history/ui/components';
+</script>
+
 <template>
-	<div>History</div>
+	<history-list />
 </template>

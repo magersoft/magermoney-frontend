@@ -10,6 +10,11 @@ export const useCurrenciesModel = (): NCurrencies.IModel => {
 	const fetchAll = () =>
 		fetch<NCurrencies.ICurrency[]>(`/${NCurrencies.API_NAMESPACE}`).get();
 
+	const fetchRates = () =>
+		fetch<NCurrencies.ICurrencyRate[]>(
+			`/${NCurrencies.API_NAMESPACE}/rates`
+		).get();
+
 	const createAll = (payload: NCurrencies.ICreateAll) =>
 		fetch<NCurrencies.ICurrency[]>(`/${NCurrencies.API_NAMESPACE}`).post(
 			payload
@@ -18,6 +23,7 @@ export const useCurrenciesModel = (): NCurrencies.IModel => {
 	return {
 		fetchAll,
 		fetchList,
+		fetchRates,
 		createAll
 	};
 };

@@ -18,3 +18,8 @@ export interface BaseFetchPaginatedResult<T, P extends any[]>
 	extends BaseFetchListResult<T, P> {
 	fetchBasePaginated: (...args: P) => Promise<RequestReturnValue<T[]> | void>;
 }
+
+export type BaseFetchPaginatedServiceParams = Pick<
+	BaseFetchPaginatedParams<any, any>,
+	'page' | 'pageSize' | 'firstPage' | 'setPage'
+>;

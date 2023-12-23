@@ -5,12 +5,21 @@ import {
 	useCurrenciesSelector,
 	useInitCurrenciesSelector
 } from '@/modules/currencies/ui/components/CurrenciesSelector/features';
-import { AppCellDescription, AppCellTitle } from '@/shared/ui/components';
+import {
+	AppCellDescription,
+	AppCellSkeleton,
+	AppCellTitle
+} from '@/shared/ui/components';
 
 const { t } = useI18n();
 
-const { currenciesListItems, checkedCurrencies, checkboxRefs, handleChecked } =
-	useCurrenciesSelector();
+const {
+	currenciesListItems,
+	checkedCurrencies,
+	checkboxRefs,
+	isLoading,
+	handleChecked
+} = useCurrenciesSelector();
 
 useInitCurrenciesSelector();
 </script>
@@ -22,6 +31,10 @@ useInitCurrenciesSelector();
 
 		<van-checkbox-group v-model="checkedCurrencies">
 			<van-cell-group inset>
+				<app-cell-skeleton
+					v-if="!currenciesListItems.length && isLoading"
+					row="10"
+				/>
 				<van-cell
 					v-for="(currency, index) in currenciesListItems"
 					:key="currency.id"
