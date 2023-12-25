@@ -39,7 +39,7 @@ const showKeyboard = ref(true);
 					v-model="loginFormData.login"
 					name="EmailOrPhone"
 					clearable
-					type="email"
+					type="text"
 					:disabled="isLoading"
 					:placeholder="t('auth.emailOrPhone')"
 					:rules="validationRules"

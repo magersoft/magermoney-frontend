@@ -1,0 +1,39 @@
+.history-list {
+  padding: var(--van-padding-md) 0;
+
+  &__item {
+    &--income {
+      :global(.van-cell__value) {
+        color: var(--van-success-color);
+
+        &::before {
+          content: "+ ";
+        }
+      }
+
+      :global(.van-icon) {
+        transform: rotate(-45deg);
+      }
+    }
+
+    &--expense {
+      :global(.van-cell__value) {
+        color: var(--van-danger-color);
+
+        &::before {
+          content: "- ";
+        }
+      }
+
+      :global(.van-icon) {
+        transform: rotate(220deg);
+      }
+    }
+
+    &--transfer {
+      :global(.van-cell__value) {
+        color: var(--van-warning-color);
+      }
+    }
+  }
+}
