@@ -1,12 +1,18 @@
 import { useExpensesModel } from '@/modules/expenses/infrastructure/models';
 import { useExpensesStore } from '@/modules/expenses/infrastructure/stores';
 import { useBaseFetchPaginated } from '@/shared/infrastructure/services';
-import { BaseFetchPaginatedServiceParams } from '@/shared/types/services';
 
-export function useFetchExpensesService(
-	pagination: BaseFetchPaginatedServiceParams
-) {
-	const { expenses, setExpenses, setIsLoading, setError } = useExpensesStore();
+export function useFetchExpensesService() {
+	const {
+		expenses,
+		setExpenses,
+		setIsLoading,
+		setIsFinished,
+		setPage,
+		page,
+		pageSize,
+		setError
+	} = useExpensesStore();
 	const { fetchAll } = useExpensesModel();
 
 	const {
@@ -17,8 +23,11 @@ export function useFetchExpensesService(
 		setData: setExpenses,
 		dataList: expenses,
 		setIsLoading,
+		setIsFinished,
 		setError,
-		...pagination
+		setPage,
+		page,
+		pageSize
 	});
 
 	return {

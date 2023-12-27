@@ -1,12 +1,18 @@
 import { useHistoryModel } from '@/modules/history/infrastructure/models';
 import { useHistoryStore } from '@/modules/history/infrastructure/stores';
 import { useBaseFetchPaginated } from '@/shared/infrastructure/services';
-import { BaseFetchPaginatedServiceParams } from '@/shared/types/services';
 
-export function useFetchHistoryService(
-	pagination: BaseFetchPaginatedServiceParams
-) {
-	const { history, setHistory, setIsLoading, setError } = useHistoryStore();
+export function useFetchHistoryService() {
+	const {
+		history,
+		page,
+		pageSize,
+		setHistory,
+		setIsLoading,
+		setIsFinished,
+		setPage,
+		setError
+	} = useHistoryStore();
 	const { findAll } = useHistoryModel();
 
 	const {
@@ -17,8 +23,11 @@ export function useFetchHistoryService(
 		setData: setHistory,
 		dataList: history,
 		setIsLoading,
+		setIsFinished,
 		setError,
-		...pagination
+		setPage,
+		page,
+		pageSize
 	});
 
 	return {

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { AppFilters } from '@/shared/ui/components';
+</script>
+
 <template>
-	<div>Expenses filters</div>
+	<app-filters />
 </template>

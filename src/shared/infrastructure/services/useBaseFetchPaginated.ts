@@ -14,16 +14,18 @@ export function useBaseFetchPaginated<
 	fetchData,
 	setData,
 	setIsLoading,
+	setIsFinished,
 	setError,
 	onError,
 	dataList,
 	page,
 	setPage,
 	pageSize = appConfig.defaultPaginationPageSize,
-	firstPage = 1
+	firstPage = appConfig.defaultPaginationFirstPage
 }: BaseFetchPaginatedParams<T, P, E>): BaseFetchPaginatedResult<T, P> {
 	const { fetchBaseList } = useBaseFetchList<T, P, E>({
 		fetchData: (...args: P) => {
+			unref(setIsFinished)(false);
 			unref(setPage)(firstPage);
 			unref(setData)([]);
 
@@ -37,15 +39,23 @@ export function useBaseFetchPaginated<
 	});
 
 	const fetchBasePaginated = async (...args: P) => {
-		if (unref(dataList).length === 0 || unref(dataList).length % pageSize !== 0)
+		if (
+			unref(dataList).length === 0 ||
+			unref(dataList).length % unref(pageSize) !== 0
+		) {
+			unref(setIsFinished)(true);
 			return;
+		}
 
 		unref(setPage)(unref(page) + 1);
-		unref(setIsLoading)(unref(dataList).length >= pageSize);
+		unref(setIsLoading)(unref(dataList).length >= unref(pageSize));
 
 		const response = await fetchData(...args).json();
 
 		unref(setIsLoading)(false);
+		unref(setIsFinished)(
+			!unref(response.data) || unref(response.data)!.length === 0
+		);
 
 		if (unref(response.data) && Array.isArray(unref(response.data))) {
 			const appendedDataList = [

@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia';
 
 import { NIncomes } from '@/modules/incomes/domain';
-import { fetchStateInitialState } from '@/shared/domain';
+import { fetchPaginatedStateInitialState } from '@/shared/domain';
 import { useStoreAdapter } from '@/shared/infrastructure/adapters';
 
 const incomesStore = defineStore('incomes', {
 	state: (): NIncomes.IState => ({
-		...fetchStateInitialState,
+		...fetchPaginatedStateInitialState,
 		incomes: [],
 		income: null
 	}),
@@ -19,6 +19,15 @@ const incomesStore = defineStore('incomes', {
 		},
 		setIsLoading(value: boolean) {
 			this.isLoading = value;
+		},
+		setIsFinished(value: boolean) {
+			this.isFinished = value;
+		},
+		setPage(value: number) {
+			this.page = value;
+		},
+		setPageSize(value: number) {
+			this.pageSize = value;
 		},
 		setError(error: NIncomes.IError | null) {
 			this.error = error;

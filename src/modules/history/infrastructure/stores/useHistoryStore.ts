@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia';
 
 import { NHistory } from '@/modules/history/domain';
-import { fetchStateInitialState } from '@/shared/domain';
+import { fetchPaginatedStateInitialState } from '@/shared/domain';
 import { useStoreAdapter } from '@/shared/infrastructure/adapters';
 
 const historyStore = defineStore('history', {
 	state: (): NHistory.IState => ({
-		...fetchStateInitialState,
+		...fetchPaginatedStateInitialState,
 		history: []
 	}),
 	actions: {
@@ -15,6 +15,15 @@ const historyStore = defineStore('history', {
 		},
 		setIsLoading(value: boolean) {
 			this.isLoading = value;
+		},
+		setIsFinished(value: boolean) {
+			this.isFinished = value;
+		},
+		setPage(value: number) {
+			this.page = value;
+		},
+		setPageSize(value: number) {
+			this.pageSize = value;
 		},
 		setError(error: NHistory.IError | null) {
 			this.error = error;

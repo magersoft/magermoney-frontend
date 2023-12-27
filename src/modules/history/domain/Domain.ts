@@ -1,4 +1,4 @@
-import { IFetchState } from '@/shared/domain';
+import { IFetchPaginatedState } from '@/shared/domain';
 import { RequestReturnError, RequestReturnValue } from '@/shared/types/api';
 import {
 	HistoryControllerFindAllParams,
@@ -12,7 +12,7 @@ export namespace NHistory {
 
 	export interface IQueryHistory extends HistoryControllerFindAllParams {}
 
-	export interface IState extends IFetchState {
+	export interface IState extends IFetchPaginatedState {
 		history: IHistory[];
 	}
 

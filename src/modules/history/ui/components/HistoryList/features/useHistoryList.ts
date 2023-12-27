@@ -2,22 +2,14 @@ import { useI18n } from 'vue-i18n';
 
 import { useFetchHistoryService } from '@/modules/history/infrastructure/services';
 import { useHistoryStore } from '@/modules/history/infrastructure/stores';
-import { usePagination } from '@/shared/features';
 import { groupArrayByMonthYear } from '@/shared/utils';
 
 export function useHistoryList() {
-	const { page, pageSize, setPage } = usePagination();
-	const { fetchHistory, fetchHistoryPaginated } = useFetchHistoryService({
-		firstPage: 2,
-		page,
-		setPage
-	});
-
-	const { history, isLoading } = useHistoryStore();
+	const { history, page, pageSize, isLoading, isFinished } = useHistoryStore();
+	const { fetchHistory, fetchHistoryPaginated } = useFetchHistoryService();
 
 	const { locale } = useI18n();
 
-	const isFinished = ref(false);
 	const isRefreshLoading = ref(false);
 
 	const groupedHistory = computed(() =>
@@ -43,22 +35,13 @@ export function useHistoryList() {
 		);
 
 		isRefreshLoading.value = false;
-		isFinished.value = false;
 	};
 
 	const handleLoadMore = async () => {
-		const response = await fetchHistoryPaginated({
+		await fetchHistoryPaginated({
 			page: unref(page),
 			perPage: unref(pageSize)
 		});
-
-		if (!response) {
-			isFinished.value = true;
-			return;
-		}
-
-		isFinished.value =
-			!unref(response.data) || unref(response.data)!.length === 0;
 	};
 
 	return {

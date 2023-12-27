@@ -1,4 +1,4 @@
-import { IFetchState } from '@/shared/domain';
+import { IFetchPaginatedState } from '@/shared/domain';
 import { RequestReturnError } from '@/shared/types/api';
 import {
 	CreateIncomeDto,
@@ -17,7 +17,7 @@ export namespace NIncomes {
 
 	export interface IQueryIncomes extends IncomesControllerFindAllParams {}
 
-	export interface IState extends IFetchState {
+	export interface IState extends IFetchPaginatedState {
 		incomes: IIncome[];
 		income: IIncome | null;
 	}

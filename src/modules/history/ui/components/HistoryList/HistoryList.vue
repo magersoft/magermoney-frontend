@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n';
 
 import { useCurrencyFormat } from '@/modules/currencies';
 import { useHistoryList } from '@/modules/history/ui/components/HistoryList/features';
-import { AppCellTitle } from '@/shared/ui/components';
+import { AppCellSkeleton, AppCellTitle } from '@/shared/ui/components';
 
 const {
 	groupedHistory,
@@ -25,12 +25,14 @@ initialFetchData();
 <template>
 	<van-pull-refresh
 		:model-value="isRefreshLoading"
+		:disabled="isLoading"
 		:class="$style['history-list']"
 		@refresh="handleRefresh"
 	>
 		<van-list
 			:loading="isLoading"
 			:finished="isFinished"
+			:disabled="isRefreshLoading"
 			@load="handleLoadMore"
 		>
 			<div v-for="(item, idx) in groupedHistory" :key="idx + item.group">
@@ -50,6 +52,11 @@ initialFetchData();
 					]"
 				/>
 			</div>
+			<app-cell-skeleton
+				v-if="isRefreshLoading || isLoading"
+				row="10"
+				:style="{ height: '66px' }"
+			/>
 		</van-list>
 	</van-pull-refresh>
 </template>

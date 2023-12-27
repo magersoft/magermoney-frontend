@@ -1,8 +1,16 @@
-import { AppState, IFetchState } from '@/shared/domain';
+import appConfig from '@/app/config/app.config.ts';
+import { AppState, IFetchPaginatedState, IFetchState } from '@/shared/domain';
 
 export const fetchStateInitialState: IFetchState = {
 	isLoading: false,
 	error: null
+};
+
+export const fetchPaginatedStateInitialState: IFetchPaginatedState = {
+	...fetchStateInitialState,
+	isFinished: false,
+	page: appConfig.defaultPaginationPage,
+	pageSize: appConfig.defaultPaginationPageSize
 };
 
 export const appInitialState: AppState = {

@@ -6,6 +6,8 @@ export default {
 	defaultCurrency: 'RUB',
 	defaultTheme: 'dark',
 	debounceDelay: 1000,
+	defaultPaginationFirstPage: 2,
+	defaultPaginationPage: 1,
 	defaultPaginationPageSize: 10,
 	minDate: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1),
 	maxDate: new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0),

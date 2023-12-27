@@ -9,3 +9,4 @@ export * from './AppFormActionButtons';
 export * from './AppCellTitle';
 export * from './AppCellDescription';
 export * from './AppCellSkeleton';
+export * from './AppFilters';

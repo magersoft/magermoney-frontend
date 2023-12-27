@@ -8,6 +8,13 @@ export interface IFetchState<E = RequestReturnError> {
 	error: E | null;
 }
 
+export interface IFetchPaginatedState<E = RequestReturnError>
+	extends IFetchState<E> {
+	isFinished: boolean;
+	page: number;
+	pageSize: number;
+}
+
 export interface AppHeaderState {
 	title?: string;
 	textLeft?: string;

@@ -1,4 +1,4 @@
-import { IFetchState } from '@/shared/domain';
+import { IFetchPaginatedState } from '@/shared/domain';
 import { RequestReturnError } from '@/shared/types/api';
 import {
 	CreateExpenseDto,
@@ -17,7 +17,7 @@ export namespace NExpenses {
 
 	export interface IQueryExpenses extends ExpensesControllerFindAllParams {}
 
-	export interface IState extends IFetchState {
+	export interface IState extends IFetchPaginatedState {
 		expenses: IExpense[];
 		expense: IExpense | null;
 	}

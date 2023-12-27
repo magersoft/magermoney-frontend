@@ -1,4 +1,4 @@
-import type { Ref } from 'vue';
+import type { MaybeRef, Ref } from 'vue';
 
 import { RequestReturnValue } from '@/shared/types/api';
 import {
@@ -8,8 +8,9 @@ import {
 
 export interface BaseFetchPaginatedParams<T, P extends any[], E = unknown>
 	extends BaseFetchListParams<T, P, E> {
+	setIsFinished: (value: boolean) => void;
 	page: Ref<number>;
-	pageSize?: number;
+	pageSize?: MaybeRef<number>;
 	firstPage?: number;
 	setPage: (page: number) => void;
 }
@@ -18,8 +19,3 @@ export interface BaseFetchPaginatedResult<T, P extends any[]>
 	extends BaseFetchListResult<T, P> {
 	fetchBasePaginated: (...args: P) => Promise<RequestReturnValue<T[]> | void>;
 }
-
-export type BaseFetchPaginatedServiceParams = Pick<
-	BaseFetchPaginatedParams<any, any>,
-	'page' | 'pageSize' | 'firstPage' | 'setPage'
->;

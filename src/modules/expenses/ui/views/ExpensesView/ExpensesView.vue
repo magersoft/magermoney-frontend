@@ -17,7 +17,7 @@ const { setNav } = useAppNav();
 const router = useRouter();
 const { setPopup } = usePopups();
 
-const { handleRefresh } = useExpensesList();
+const { isRefreshLoading, handleRefresh } = useExpensesList();
 
 setHeader({
 	isLeftArrow: true,
@@ -40,10 +40,14 @@ setNav({
 </script>
 
 <template>
-	<div :class="$style['expenses-view']">
-		<expenses-filters v-if="false" />
-		<expenses-list />
-	</div>
+	<van-pull-refresh
+		:model-value="isRefreshLoading"
+		:class="$style['expenses-view']"
+		@refresh="handleRefresh"
+	>
+		<expenses-filters />
+		<expenses-list :is-refresh-loading="isRefreshLoading" />
+	</van-pull-refresh>
 </template>
 
 <style module lang="scss">
