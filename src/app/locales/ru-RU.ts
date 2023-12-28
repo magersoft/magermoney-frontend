@@ -33,6 +33,11 @@ export default {
 	restMonthlyBudget:
 		'осталось {restAmountFormatted} из {monthlyBudgetFormatted}',
 	currencies: 'Валюты',
+	month: 'Месяц',
+	year: 'Год',
+	day: 'День',
+	range: 'Период',
+	selectRange: 'Выберите период',
 	auth: {
 		phone: 'Телефон',
 		email: 'Почта',
@@ -154,12 +159,14 @@ export default {
 	incomesView: {
 		income: 'Доход',
 		removeTitle: 'Удалить доход',
-		empty: 'У вас нет доходов. Добавьте их, чтобы увидеть здесь список.'
+		empty:
+			'Доходы не найдены. Измените условия фильтра или добавьте доходы, чтобы увидеть здесь список.'
 	},
 	expensesView: {
 		expense: 'Расход',
 		removeTitle: 'Удалить расход',
-		empty: 'У вас нет расходов. Добавьте их, чтобы увидеть здесь список.'
+		empty:
+			'Расходы не найдены. Измените условия фильтра или добавьте расходы, чтобы увидеть здесь список.'
 	},
 	currenciesView: {
 		stepName: 'Валюта',

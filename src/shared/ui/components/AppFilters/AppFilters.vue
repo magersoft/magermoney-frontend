@@ -1,71 +1,173 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
-const { locale } = useI18n();
+import {
+	BEGIN_MONTH,
+	BEGIN_YEAR,
+	END_MONTH,
+	END_YEAR,
+	PREVIOUS_YEAR
+} from '@/shared/constants';
+import { AppFilterCalendarRange } from '@/shared/ui/components/AppFilters/types';
 
+interface AppFiltersProps {
+	loading?: boolean;
+}
+
+defineProps<AppFiltersProps>();
+
+interface AppFiltersEvents {
+	(event: 'calendar:opened'): void;
+	(event: 'calendar:closed'): void;
+	(event: 'confirm', selectedRange: AppFilterCalendarRange): void;
+	(event: 'reset'): void;
+}
+
+const emit = defineEmits<AppFiltersEvents>();
+
+const { locale, t } = useI18n();
+
+const calendarRef = ref();
 const showedCalendar = ref(false);
 
-const selectedPeriod = ref<{ start: Date | null; end: Date | null }>({
-	start: null,
-	end: null
+const selectedRange = ref<AppFilterCalendarRange>({
+	startDate: undefined,
+	endDate: undefined
 });
+
+const activeMonth = ref(false);
+const activeYear = ref(false);
 
 const periodText = computed(() => {
-	const { start, end } = unref(selectedPeriod);
+	const { startDate, endDate } = unref(selectedRange);
 
-	return start && end
-		? `${start.toLocaleDateString(unref(locale))} ${end.toLocaleDateString(
+	return startDate && endDate
+		? `${startDate.toLocaleDateString(
 				unref(locale)
-		  )}`
-		: 'Период';
+		  )} ${endDate.toLocaleDateString(unref(locale))}`
+		: t('range');
 });
 
-const activePeriod = computed(
-	() =>
-		unref(selectedPeriod).start !== null && unref(selectedPeriod).end !== null
+const activeRange = computed(
+	() => unref(selectedRange).startDate && unref(selectedRange).endDate
 );
 
-const handleChoosePeriod = () => {
-	if (unref(activePeriod)) {
-		selectedPeriod.value = {
-			start: null,
-			end: null
-		};
+const resetRange = () => {
+	selectedRange.value = {
+		startDate: undefined,
+		endDate: undefined
+	};
+
+	unref(calendarRef).reset();
+};
+
+const handleChooseRange = () => {
+	if (unref(activeRange)) {
+		resetRange();
+
+		emit('reset');
 	} else {
 		showedCalendar.value = true;
 	}
 };
 
-const handleConfirmPeriod = ([startDate, endDate]: Date[]) => {
-	selectedPeriod.value = {
-		start: startDate,
-		end: endDate
+const handleConfirmRange = ([startDate, endDate]: Date[]) => {
+	selectedRange.value = {
+		startDate,
+		endDate
 	};
 
+	emit('confirm', unref(selectedRange));
+
 	showedCalendar.value = false;
+	activeMonth.value = false;
+	activeYear.value = false;
+};
+
+const handleChooseMonth = () => {
+	if (unref(activeMonth)) {
+		emit('reset');
+
+		activeMonth.value = false;
+
+		return;
+	}
+
+	emit('confirm', {
+		startDate: BEGIN_MONTH,
+		endDate: END_MONTH
+	});
+
+	activeMonth.value = true;
+	activeYear.value = false;
+	resetRange();
+};
+
+const handleChooseYear = () => {
+	if (unref(activeYear)) {
+		emit('reset');
+
+		activeYear.value = false;
+
+		return;
+	}
+
+	emit('confirm', {
+		startDate: BEGIN_YEAR,
+		endDate: END_YEAR
+	});
+
+	activeYear.value = true;
+	activeMonth.value = false;
+	resetRange();
 };
 </script>
 
 <template>
 	<div :class="$style['app-filters']">
-		<van-button plain round type="default" size="small">Месяц</van-button>
-		<van-button plain round type="default" size="small">Год</van-button>
 		<van-button
-			:plain="!activePeriod"
+			:disabled="loading"
+			:plain="!activeMonth"
 			round
-			:type="activePeriod ? 'primary' : 'default'"
+			:type="activeMonth ? 'primary' : 'default'"
 			size="small"
-			@click="handleChoosePeriod"
+			@click="handleChooseMonth"
+		>
+			{{ t('month') }}
+		</van-button>
+		<van-button
+			:disabled="loading"
+			:plain="!activeYear"
+			round
+			:type="activeYear ? 'primary' : 'default'"
+			size="small"
+			@click="handleChooseYear"
+		>
+			{{ t('year') }}
+		</van-button>
+		<van-button
+			:disabled="loading"
+			:plain="!activeRange"
+			round
+			:type="activeRange ? 'primary' : 'default'"
+			size="small"
+			@click="handleChooseRange"
 		>
 			{{ periodText }}
 		</van-button>
 
 		<van-calendar
+			ref="calendarRef"
 			v-model:show="showedCalendar"
 			type="range"
-			title="Выберите период"
+			:title="t('selectRange')"
+			allow-same-day
 			:show-confirm="false"
-			@confirm="handleConfirmPeriod"
+			:min-date="PREVIOUS_YEAR"
+			:max-date="END_MONTH"
+			@confirm="handleConfirmRange"
+			@opened="emit('calendar:opened')"
+			@closed="emit('calendar:closed')"
 		/>
 	</div>
 </template>

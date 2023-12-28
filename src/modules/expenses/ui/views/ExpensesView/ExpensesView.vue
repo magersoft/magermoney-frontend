@@ -17,7 +17,7 @@ const { setNav } = useAppNav();
 const router = useRouter();
 const { setPopup } = usePopups();
 
-const { isRefreshLoading, handleRefresh } = useExpensesList();
+const { isLoading, isRefreshLoading, handleRefresh } = useExpensesList();
 
 setHeader({
 	isLeftArrow: true,
@@ -37,15 +37,21 @@ setNav({
 		onSuccess: handleRefresh
 	}
 });
+
+const disabledPullRefresh = ref(false);
 </script>
 
 <template>
 	<van-pull-refresh
 		:model-value="isRefreshLoading"
+		:disabled="disabledPullRefresh || isLoading"
 		:class="$style['expenses-view']"
 		@refresh="handleRefresh"
 	>
-		<expenses-filters />
+		<expenses-filters
+			@calendar:opened="disabledPullRefresh = true"
+			@calendar:closed="disabledPullRefresh = false"
+		/>
 		<expenses-list :is-refresh-loading="isRefreshLoading" />
 	</van-pull-refresh>
 </template>

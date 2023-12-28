@@ -33,7 +33,7 @@ export interface VerifyUserEntity {
 }
 
 export interface CreateUserDto {
-	email: string;
+	email?: string | null;
 	phone?: string | null;
 	darkMode?: boolean;
 	language?: string;
@@ -57,7 +57,7 @@ export interface UserEntity {
 }
 
 export interface UpdateUserDto {
-	email?: string;
+	email?: string | null;
 	phone?: string | null;
 	darkMode?: boolean;
 	language?: string;
@@ -378,4 +378,8 @@ export interface ExpensesControllerFindAllParams {
 export interface HistoryControllerFindAllParams {
 	page?: number;
 	perPage?: number;
+	/** @format date-time */
+	startDate?: string;
+	/** @format date-time */
+	endDate?: string;
 }

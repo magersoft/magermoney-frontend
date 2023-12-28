@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { useExpensesFilters } from '@/modules/expenses/ui/components/ExpensesFilters/features';
+import { useIncomesFilters } from '@/modules/incomes/ui/components/IncomesFilters/features';
 import { AppFilters } from '@/shared/ui/components';
 
-interface ExpensesFiltersEvents {
+interface IncomesFiltersEvents {
 	(event: 'calendar:opened'): void;
 	(event: 'calendar:closed'): void;
 }
 
-const emit = defineEmits<ExpensesFiltersEvents>();
+const emit = defineEmits<IncomesFiltersEvents>();
 
-const { isLoading, handleConfirm, handleReset } = useExpensesFilters();
+const { isLoading, handleConfirm, handleReset } = useIncomesFilters();
 </script>
 
 <template>

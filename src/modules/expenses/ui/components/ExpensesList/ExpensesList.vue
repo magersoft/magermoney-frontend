@@ -30,6 +30,7 @@ initialFetchData();
 	<van-list
 		:loading="isLoading"
 		:finished="isFinished"
+		:disabled="isRefreshLoading"
 		:class="$style['expenses-list']"
 		@load="handleLoadMore"
 	>
@@ -56,6 +57,7 @@ initialFetchData();
 		</div>
 		<app-cell-skeleton
 			v-if="isRefreshLoading || isLoading"
+			title
 			row="10"
 			:style="{ height: '66px' }"
 		/>

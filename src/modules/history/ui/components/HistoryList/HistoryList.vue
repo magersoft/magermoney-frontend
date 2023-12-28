@@ -54,6 +54,7 @@ initialFetchData();
 			</div>
 			<app-cell-skeleton
 				v-if="isRefreshLoading || isLoading"
+				title
 				row="10"
 				:style="{ height: '66px' }"
 			/>

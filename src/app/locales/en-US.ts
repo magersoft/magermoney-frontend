@@ -32,6 +32,11 @@ export default {
 	reload: 'Reload',
 	restMonthlyBudget: '{restAmountFormatted} spent of {monthlyBudgetFormatted}',
 	currencies: 'Currencies',
+	month: 'Month',
+	year: 'Year',
+	day: 'Day',
+	range: 'Range',
+	selectRange: 'Select range',
 	auth: {
 		phone: 'Phone',
 		email: 'Email',

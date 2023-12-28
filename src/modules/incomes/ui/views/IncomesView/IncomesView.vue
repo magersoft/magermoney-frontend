@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 
 import { AppPopups, usePopups } from '@/app/popups';
 import { AppRoutes } from '@/app/router/constants';
-import { IncomesList } from '@/modules/incomes/ui/components';
+import { IncomesFilters, IncomesList } from '@/modules/incomes/ui/components';
 import { useIncomesList } from '@/modules/incomes/ui/components/IncomesList/features';
 import { useAppHeader, useAppNav } from '@/shared/ui/components';
 
@@ -14,7 +14,7 @@ const { setNav } = useAppNav();
 const router = useRouter();
 const { setPopup } = usePopups();
 
-const { handleRefresh } = useIncomesList();
+const { isLoading, isRefreshLoading, handleRefresh } = useIncomesList();
 
 setHeader({
 	isLeftArrow: true,
@@ -34,12 +34,20 @@ setNav({
 		onSuccess: handleRefresh
 	}
 });
+
+const disabledPullRefresh = ref(false);
 </script>
 
 <template>
-	<div :class="$style['incomes-view']">
-		<incomes-list />
-	</div>
+	<van-pull-refresh
+		:model-value="isRefreshLoading"
+		:disabled="disabledPullRefresh || isLoading"
+		:class="$style['incomes-view']"
+		@refresh="handleRefresh"
+	>
+		<incomes-filters />
+		<incomes-list :is-refresh-loading="isRefreshLoading" />
+	</van-pull-refresh>
 </template>
 
 <style module lang="scss">

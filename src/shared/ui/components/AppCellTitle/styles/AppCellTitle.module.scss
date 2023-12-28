@@ -1,8 +1,8 @@
 .app-cell-title {
-  padding: 32px 16px 16px;
+  padding: var(--van-padding-xl) var(--van-padding-md) var(--van-padding-md);
   margin: 0;
-  font-size: 14px;
+  font-size: var(--van-font-size-md);
   font-weight: 400;
-  line-height: 16px;
+  line-height: var(--van-line-height-sm);
   color: var(--van-text-color-2);
 }

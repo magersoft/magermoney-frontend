@@ -1,5 +1,6 @@
 <script setup lang="ts">
 interface AppCellSkeleton {
+	title?: boolean;
 	row?: number | string;
 }
 
@@ -9,6 +10,11 @@ withDefaults(defineProps<AppCellSkeleton>(), {
 </script>
 
 <template>
+	<van-skeleton-paragraph
+		v-if="title"
+		row-width="50%"
+		:class="$style['app-cell-skeleton__title']"
+	/>
 	<van-cell
 		v-for="i in +row"
 		:key="i"
