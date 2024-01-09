@@ -2,7 +2,6 @@
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
-import { AppRoutes } from '@/app/router/constants';
 import {
 	AccumulationFundsBalance,
 	AccumulationFundsCircle,
@@ -19,7 +18,7 @@ setHeader({
 	textLeft: t('back'),
 	isLeftArrow: true,
 	onClickLeft: () => {
-		router.push({ name: AppRoutes.Settings });
+		router.back();
 	}
 });
 

@@ -179,6 +179,8 @@ export interface MonthlyBudgetEntity {
 	spent: number;
 	restAmount: number;
 	restAmountPercentage: number;
+	accumulationFundAmount: number;
+	availableAmountInDay: number;
 	currency: string;
 }
 

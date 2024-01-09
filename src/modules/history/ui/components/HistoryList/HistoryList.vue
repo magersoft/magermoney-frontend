@@ -5,14 +5,18 @@ import { useCurrencyFormat } from '@/modules/currencies';
 import { useHistoryList } from '@/modules/history/ui/components/HistoryList/features';
 import { AppCellSkeleton, AppCellTitle } from '@/shared/ui/components';
 
+interface HistoryListProps {
+	isRefreshLoading?: boolean;
+}
+
+defineProps<HistoryListProps>();
+
 const {
 	groupedHistory,
 	isLoading,
-	isRefreshLoading,
 	isFinished,
 	historyIcons,
 	initialFetchData,
-	handleRefresh,
 	handleLoadMore
 } = useHistoryList();
 
@@ -23,43 +27,35 @@ initialFetchData();
 </script>
 
 <template>
-	<van-pull-refresh
-		:model-value="isRefreshLoading"
-		:disabled="isLoading"
+	<van-list
+		:loading="isLoading"
+		:finished="isFinished"
+		:disabled="isRefreshLoading"
 		:class="$style['history-list']"
-		@refresh="handleRefresh"
+		@load="handleLoadMore"
 	>
-		<van-list
-			:loading="isLoading"
-			:finished="isFinished"
-			:disabled="isRefreshLoading"
-			@load="handleLoadMore"
-		>
-			<div v-for="(item, idx) in groupedHistory" :key="idx + item.group">
-				<app-cell-title :text="item.group.toUpperCase()" />
-				<van-cell
-					v-for="(history, historyIdx) in item.data"
-					:key="historyIdx + history.dateOfIssue"
-					:icon="historyIcons[history.type]"
-					:title="history.title"
-					:label="new Date(history.dateOfIssue).toLocaleDateString(locale)"
-					:value="
-						formatAmountWithCurrency(history.amount, history.currency.code)
-					"
-					:class="[
-						$style['history-list__item'],
-						$style[`history-list__item--${history.type}`]
-					]"
-				/>
-			</div>
-			<app-cell-skeleton
-				v-if="isRefreshLoading || isLoading"
-				title
-				row="10"
-				:style="{ height: '66px' }"
+		<div v-for="(item, idx) in groupedHistory" :key="idx + item.group">
+			<app-cell-title :text="item.group.toUpperCase()" />
+			<van-cell
+				v-for="(history, historyIdx) in item.data"
+				:key="historyIdx + history.dateOfIssue"
+				:icon="historyIcons[history.type]"
+				:title="history.title"
+				:label="new Date(history.dateOfIssue).toLocaleDateString(locale)"
+				:value="formatAmountWithCurrency(history.amount, history.currency.code)"
+				:class="[
+					$style['history-list__item'],
+					$style[`history-list__item--${history.type}`]
+				]"
 			/>
-		</van-list>
-	</van-pull-refresh>
+		</div>
+		<app-cell-skeleton
+			v-if="isRefreshLoading || isLoading"
+			title
+			row="10"
+			:style="{ height: '66px' }"
+		/>
+	</van-list>
 </template>
 
 <style module lang="scss">

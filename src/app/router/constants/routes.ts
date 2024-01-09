@@ -6,6 +6,7 @@ export enum AppRoutes {
 	Wallet = 'Wallet',
 	Incomes = 'Incomes',
 	Expenses = 'Expenses',
+	MonthlyBudget = 'MonthlyBudget',
 	History = 'History',
 	Transfers = 'Transfers',
 	Settings = 'Settings',

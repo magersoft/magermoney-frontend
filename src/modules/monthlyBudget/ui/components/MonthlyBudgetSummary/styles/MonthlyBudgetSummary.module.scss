@@ -1,0 +1,72 @@
+.monthly-budget-summary {
+  padding: var(--van-padding-sm);
+  margin: var(--van-padding-md);
+  background: var(--van-background-2);
+  border-radius: calc(var(--van-radius-lg) * 2);
+  box-shadow: var(--dropdown-shadow);
+
+  :global(.van-skeleton) {
+    padding: 0;
+  }
+}
+
+.monthly-budget-amounts {
+  &__spent {
+    font-size: calc(var(--van-font-size-md) * 2);
+    font-weight: var(--van-font-bold);
+    color: var(--van-text-color);
+  }
+
+  &__divider {
+    margin: 0 var(--van-padding-base);
+    font-size: calc(var(--van-font-size-sm) * 1.5);
+    color: var(--van-text-color-2);
+  }
+
+  &__rest {
+    font-size: calc(var(--van-font-size-sm) * 1.5);
+    font-weight: var(--van-font-bold);
+    color: var(--van-text-color-2);
+  }
+}
+
+.monthly-budget-progress {
+  margin: var(--van-padding-md) 0;
+}
+
+.monthly-budget-info {
+  display: flex;
+  gap: var(--van-padding-lg);
+  padding: var(--van-padding-sm) 0;
+
+  &__title {
+    margin-bottom: var(--van-padding-base);
+    font-size: var(--van-font-size-md);
+    font-weight: normal;
+    color: var(--van-text-color-2);
+  }
+
+  &__field {
+    border-radius: var(--van-radius-lg);
+
+    :global(.van-field__control) {
+      color: var(--van-text-color);
+    }
+  }
+}
+
+:global(.van-theme-dark) {
+  .monthly-budget-info {
+    &__field {
+      background-color: var(--van-background-3);
+    }
+  }
+}
+
+:global(.van-theme-light) {
+  .monthly-budget-info {
+    &__field {
+      background-color: var(--van-background);
+    }
+  }
+}

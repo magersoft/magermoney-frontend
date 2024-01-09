@@ -175,6 +175,10 @@ export default {
 			fail: 'Failed to save currencies'
 		}
 	},
+	monthlyBudgetView: {
+		availableInDay: 'Available in day',
+		saved: 'Saved'
+	},
 	wallets: {
 		countOfWallets: 'You have {count} {declination}',
 		wallet1: 'wallet',
@@ -229,6 +233,7 @@ export default {
 		Transfers: 'Transfers',
 		IncomeSources: 'Income sources',
 		ExpenseSources: 'Expense sources',
+		MonthlyBudget: 'Monthly budget',
 		SavedFunds: 'Saved funds',
 		AccumulationFunds: 'Percent of accumulation',
 		Currencies: 'Currencies',

@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 
 import { useMonthlyBudgetWidget } from '@/modules/dashboard/ui/components/MonthlyBudgetWidget/features';
+import { useMonthlyBudget } from '@/modules/monthlyBudget/features';
 
 const { t } = useI18n();
 
@@ -11,11 +12,15 @@ const {
 	restAmountPercentage,
 	spentAmountFormatted,
 	isLoading
-} = useMonthlyBudgetWidget();
+} = useMonthlyBudget();
+const { handleNavigateToMonthlyBudget } = useMonthlyBudgetWidget();
 </script>
 
 <template>
-	<div :class="$style['monthly-budget-widget']">
+	<div
+		:class="$style['monthly-budget-widget']"
+		@click="handleNavigateToMonthlyBudget"
+	>
 		<div :class="$style['monthly-budget-widget__circle']">
 			<van-circle
 				:current-rate="restAmountPercentage"

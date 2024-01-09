@@ -8,5 +8,5 @@
 export function roundWithDecimals(num: number, decimals: number = 2): string {
 	const factor = Math.pow(10, decimals);
 	const roundedNumber = Math.ceil(num * factor) / factor;
-	return roundedNumber.toFixed(2);
+	return roundedNumber.toFixed(decimals);
 }

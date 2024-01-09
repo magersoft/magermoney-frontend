@@ -177,6 +177,10 @@ export default {
 			fail: 'Не удалось сохранить валюты'
 		}
 	},
+	monthlyBudgetView: {
+		availableInDay: 'Доступно в день',
+		saved: 'Сохраняется'
+	},
 	wallets: {
 		countOfWallets: 'У вас {count} {declination}',
 		wallet1: 'кошелек',
@@ -235,6 +239,7 @@ export default {
 		IncomeSources: 'Источники дохода',
 		ExpenseSources: 'Источники расхода',
 		SavedFunds: 'Накопленные средства',
+		MonthlyBudget: 'Ежемесячный бюджет',
 		Transfers: 'Переводы',
 		AccumulationFunds: 'Процент накопления',
 		Currencies: 'Валюты',

@@ -56,6 +56,15 @@ const routes: RouteRecordRaw[] = [
 			import('@/modules/expenses/ui/views/ExpensesView/ExpensesView.vue')
 	},
 	{
+		path: '/monthly-budget',
+		name: AppRoutes.MonthlyBudget,
+		meta: { middleware: [authMiddleware] },
+		component: () =>
+			import(
+				'@/modules/monthlyBudget/ui/views/MonthlyBudgetView/MonthlyBudgetView.vue'
+			)
+	},
+	{
 		path: '/history',
 		name: AppRoutes.History,
 		meta: { middleware: [authMiddleware] },
