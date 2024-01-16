@@ -16,6 +16,7 @@ export function useSavedFunds() {
 		countSavedFunds,
 		hasSavedFunds,
 		isLoading,
+		error,
 		setSavedFund
 	} = useSavedFundsStore();
 	const { fetchSavedFunds } = useFetchSavedFundsService();
@@ -38,19 +39,22 @@ export function useSavedFunds() {
 	};
 
 	return {
+		savedFunds,
+		savedFundsItems,
+		savedFundsItemsWithAmount,
+		hasSavedFunds,
+		countSavedFunds,
+		savedFund,
+		isLoading,
+		error,
+
 		fetchSavedFunds,
 		fetchSavedFund,
 		createSavedFund,
 		updateSavedFund,
 		updateSavedFundsOrders,
 		removeSavedFund,
-		hasSavedFunds,
-		savedFunds,
-		savedFundsItems,
-		savedFundsItemsWithAmount,
-		countSavedFunds,
-		savedFund,
-		isLoading,
+
 		resetSavedFund
 	};
 }

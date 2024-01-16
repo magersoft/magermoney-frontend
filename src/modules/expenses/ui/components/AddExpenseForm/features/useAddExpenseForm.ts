@@ -4,13 +4,12 @@ import { useI18n } from 'vue-i18n';
 import { usePopups } from '@/app/popups';
 import { useCurrencies, useCurrencyFormat } from '@/modules/currencies';
 import { useInitDashboard } from '@/modules/dashboard/features';
+import { useExpenses } from '@/modules/expenses';
 import { createdExpenseMessages } from '@/modules/expenses/constants';
 import {
 	initialExpenseFormData,
 	TInitialExpenseFormData
 } from '@/modules/expenses/domain';
-import { useCreateExpenseService } from '@/modules/expenses/infrastructure/services';
-import { useExpensesStore } from '@/modules/expenses/infrastructure/stores';
 import { mappingExpenseFormData } from '@/modules/expenses/ui/components/AddExpenseForm/utils';
 import { useExpenseSources } from '@/modules/expenseSources';
 import { useSavedFunds } from '@/modules/savedFunds';
@@ -22,12 +21,11 @@ export function useAddExpenseForm() {
 	const expenseFormData = ref<TInitialExpenseFormData>(
 		cloneDeep(initialExpenseFormData)
 	);
-	const { createExpense } = useCreateExpenseService();
-	const { isLoading, error } = useExpensesStore();
-
+	const { isLoading, error, createExpense } = useExpenses();
 	const { expenseSourcesItems } = useExpenseSources();
 	const { savedFundsItems } = useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
+
 	const { fetchDashboard } = useInitDashboard();
 	const { getCurrencySymbol } = useCurrencyFormat();
 	const { settleResponse } = useSettleResponse();

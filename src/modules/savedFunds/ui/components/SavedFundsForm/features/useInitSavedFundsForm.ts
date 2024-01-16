@@ -1,8 +1,8 @@
 import { useCurrencies } from '@/modules/currencies';
-import { useFetchSavedFundsService } from '@/modules/savedFunds/infrastructure/services';
+import { useSavedFunds } from '@/modules/savedFunds';
 
 export function useInitSavedFundsForm() {
-	const { fetchSavedFunds } = useFetchSavedFundsService();
+	const { fetchSavedFunds } = useSavedFunds();
 	const { fetchCurrencies } = useCurrencies();
 
 	const fetchData = async () => {

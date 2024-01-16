@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
 import {
+	WalletHistory,
 	WalletItem,
 	WalletItemSkeleton
 } from '@/modules/wallets/ui/components';
@@ -14,10 +15,16 @@ const { t } = useI18n();
 const { setHeader } = useAppHeader();
 const router = useRouter();
 
-const { savedFund, isLoading, handleSelectAction } = useWalletView();
+const {
+	savedFund,
+	isLoading,
+	isRefreshLoading,
+	handleSelectAction,
+	handleRefresh
+} = useWalletView();
 
 setHeader({
-	title: 'Кошелек',
+	title: t('routes.Wallet'),
 	textLeft: t('back'),
 	isLeftArrow: true,
 	onClickLeft: () => {
@@ -40,10 +47,20 @@ setHeader({
 </script>
 
 <template>
-	<div :class="$style['wallet-view']">
+	<van-pull-refresh
+		:model-value="isRefreshLoading"
+		:disabled="isLoading"
+		:class="$style['wallet-view']"
+		@refresh="handleRefresh"
+	>
 		<wallet-item-skeleton v-if="isLoading" />
 		<wallet-item v-else :item="savedFund" />
-	</div>
+		<wallet-history
+			v-if="savedFund"
+			:is-refresh-loading="isRefreshLoading"
+			:saved-fund-id="savedFund.id"
+		/>
+	</van-pull-refresh>
 </template>
 
 <style module lang="scss">

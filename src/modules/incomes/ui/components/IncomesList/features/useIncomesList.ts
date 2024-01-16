@@ -1,17 +1,20 @@
 import { useI18n } from 'vue-i18n';
 
+import { useIncomes } from '@/modules/incomes';
 import { NIncomes } from '@/modules/incomes/domain';
-import {
-	useFetchIncomesService,
-	useRemoveIncomeService
-} from '@/modules/incomes/infrastructure/services';
-import { useIncomesStore } from '@/modules/incomes/infrastructure/stores';
 import { groupArrayByMonthYear } from '@/shared/utils';
 
 export function useIncomesList() {
-	const { incomes, page, pageSize, isLoading, isFinished } = useIncomesStore();
-	const { fetchIncomes, fetchIncomesPaginated } = useFetchIncomesService();
-	const { removeIncome } = useRemoveIncomeService();
+	const {
+		incomes,
+		page,
+		pageSize,
+		isLoading,
+		isFinished,
+		fetchIncomes,
+		fetchIncomesPaginated,
+		removeIncome
+	} = useIncomes();
 
 	const { t, locale } = useI18n();
 

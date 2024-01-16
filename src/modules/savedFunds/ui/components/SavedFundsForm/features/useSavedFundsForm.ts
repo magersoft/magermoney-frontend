@@ -1,13 +1,9 @@
 import { useCurrencies } from '@/modules/currencies';
+import { useSavedFunds } from '@/modules/savedFunds';
 import {
 	initialSavedFundsFormControls,
 	TInitialSavedFundsFormData
 } from '@/modules/savedFunds/domain';
-import {
-	useCreateSavedFundService,
-	useFetchSavedFundsService
-} from '@/modules/savedFunds/infrastructure/services';
-import { useSavedFundsStore } from '@/modules/savedFunds/infrastructure/stores';
 import { mappingSavedFundsFormData } from '@/modules/savedFunds/ui/components/SavedFundsForm/utils';
 import { useForm } from '@/shared/features';
 import { ActionButtonsEventListeners } from '@/shared/ui/components';
@@ -23,9 +19,8 @@ export function useSavedFundsForm({
 	const savedFundsFormData = ref<TInitialSavedFundsFormData>(
 		cloneDeep(initialSavedFundsFormControls)
 	);
-	const { createSavedFund } = useCreateSavedFundService();
-	const { fetchSavedFunds } = useFetchSavedFundsService();
-	const { hasSavedFunds, isLoading, error } = useSavedFundsStore();
+	const { hasSavedFunds, isLoading, error, createSavedFund, fetchSavedFunds } =
+		useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 
 	const { formRef, hasServerError, validateForm, resetValidationForm } =

@@ -1,10 +1,18 @@
-import { useFetchExpenseSourcesService } from '@/modules/expenseSources/infrastructure/services';
+import {
+	useCreateExpenseSourceService,
+	useFetchExpenseSourcesService,
+	useRemoveExpenseSourceService
+} from '@/modules/expenseSources/infrastructure/services';
 import { useExpenseSourcesStore } from '@/modules/expenseSources/infrastructure/stores';
 import { mappingExpenseSourcesForPicker } from '@/modules/expenseSources/utils';
 
 export function useExpenseSources() {
-	const { expenseSources, isLoading } = useExpenseSourcesStore();
+	const { expenseSources, isLoading, hasExpenseSources, error } =
+		useExpenseSourcesStore();
+
 	const { fetchExpenseSources } = useFetchExpenseSourcesService();
+	const { createExpenseSource } = useCreateExpenseSourceService();
+	const { removeExpenseSource } = useRemoveExpenseSourceService();
 
 	const expenseSourcesItems = computed(() =>
 		mappingExpenseSourcesForPicker(unref(expenseSources))
@@ -14,6 +22,11 @@ export function useExpenseSources() {
 		expenseSources,
 		expenseSourcesItems,
 		isLoading,
-		fetchExpenseSources
+		error,
+		hasExpenseSources,
+
+		fetchExpenseSources,
+		createExpenseSource,
+		removeExpenseSource
 	};
 }

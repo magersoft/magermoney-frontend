@@ -6,10 +6,11 @@ import { useHistoryList } from '@/modules/history/ui/components/HistoryList/feat
 import { AppCellSkeleton, AppCellTitle } from '@/shared/ui/components';
 
 interface HistoryListProps {
+	savedFundId?: number;
 	isRefreshLoading?: boolean;
 }
 
-defineProps<HistoryListProps>();
+const props = defineProps<HistoryListProps>();
 
 const {
 	groupedHistory,
@@ -18,10 +19,10 @@ const {
 	historyIcons,
 	initialFetchData,
 	handleLoadMore
-} = useHistoryList();
+} = useHistoryList({ savedFundId: props.savedFundId });
 
 const { formatAmountWithCurrency } = useCurrencyFormat();
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 initialFetchData();
 </script>
@@ -54,6 +55,11 @@ initialFetchData();
 			title
 			row="10"
 			:style="{ height: '66px' }"
+		/>
+		<van-empty
+			v-if="!isRefreshLoading && !isLoading && !groupedHistory.length"
+			image="search"
+			:description="t('historyView.empty')"
 		/>
 	</van-list>
 </template>

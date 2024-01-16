@@ -2,6 +2,7 @@ import { useRoute, useRouter } from 'vue-router';
 
 import { AppPopups, usePopups } from '@/app/popups';
 import { AppRoutes } from '@/app/router/constants';
+import { useHistory } from '@/modules/history';
 import { useSavedFunds } from '@/modules/savedFunds';
 import { WalletActions } from '@/modules/wallets/ui/views/WalletView/constants';
 import { useAppHeader } from '@/shared/ui/components';
@@ -20,6 +21,10 @@ export function useWalletView() {
 		removeSavedFund,
 		resetSavedFund
 	} = useSavedFunds();
+
+	const { fetchHistory, pageSize } = useHistory();
+
+	const isRefreshLoading = ref(false);
 
 	const handleEditWallet = () => {
 		setPopup(AppPopups.SaveWallet);
@@ -45,6 +50,20 @@ export function useWalletView() {
 		if (action === WalletActions.Delete) {
 			handleDeleteWallet();
 		}
+	};
+
+	const handleRefresh = async () => {
+		const walletId = route.params.id;
+
+		isRefreshLoading.value = true;
+
+		await fetchSavedFund({ force: true, quite: true }, Number(walletId));
+		await fetchHistory(
+			{ force: true, quite: true },
+			{ perPage: unref(pageSize), savedFundId: unref(savedFund)!.id }
+		);
+
+		isRefreshLoading.value = false;
 	};
 
 	const fetchInitWallet = async () => {
@@ -74,8 +93,10 @@ export function useWalletView() {
 	});
 
 	return {
-		isLoading,
 		savedFund,
-		handleSelectAction
+		isLoading,
+		isRefreshLoading,
+		handleSelectAction,
+		handleRefresh
 	};
 }

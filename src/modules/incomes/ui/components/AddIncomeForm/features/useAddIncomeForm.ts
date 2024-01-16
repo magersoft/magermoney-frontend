@@ -4,13 +4,12 @@ import { useI18n } from 'vue-i18n';
 import { usePopups } from '@/app/popups';
 import { useCurrencies, useCurrencyFormat } from '@/modules/currencies';
 import { useInitDashboard } from '@/modules/dashboard/features';
+import { useIncomes } from '@/modules/incomes';
 import { createdIncomeMessages } from '@/modules/incomes/constants';
 import {
 	initialIncomeFormData,
 	TInitialIncomeFormData
 } from '@/modules/incomes/domain';
-import { useCreateIncomeService } from '@/modules/incomes/infrastructure/services';
-import { useIncomesStore } from '@/modules/incomes/infrastructure/stores';
 import { mappingIncomeFormData } from '@/modules/incomes/ui/components/AddIncomeForm/utils';
 import { useIncomeSources } from '@/modules/incomeSources';
 import { useSavedFunds } from '@/modules/savedFunds';
@@ -22,12 +21,12 @@ export function useAddIncomeForm() {
 	const incomeFormData = ref<TInitialIncomeFormData>(
 		cloneDeep(initialIncomeFormData)
 	);
-	const { createIncome } = useCreateIncomeService();
-	const { isLoading, error } = useIncomesStore();
 
+	const { isLoading, error, createIncome } = useIncomes();
 	const { incomeSourcesItems } = useIncomeSources();
 	const { savedFundsItems } = useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
+
 	const { fetchDashboard } = useInitDashboard();
 	const { getCurrencySymbol } = useCurrencyFormat();
 	const { settleResponse } = useSettleResponse();

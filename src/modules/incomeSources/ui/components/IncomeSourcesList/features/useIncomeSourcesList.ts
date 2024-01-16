@@ -1,15 +1,14 @@
 import { useCurrencyFormat } from '@/modules/currencies';
+import { useIncomeSources } from '@/modules/incomeSources';
 import { NIncomeSources } from '@/modules/incomeSources/domain';
-import {
-	useFetchIncomeSourcesService,
-	useRemoveIncomeSourceService
-} from '@/modules/incomeSources/infrastructure/services';
-import { useIncomeSourcesStore } from '@/modules/incomeSources/infrastructure/stores';
 
 export function useIncomeSourcesList() {
-	const { incomeSources, hasIncomeSources } = useIncomeSourcesStore();
-	const { fetchIncomeSources } = useFetchIncomeSourcesService();
-	const { removeIncomeSource } = useRemoveIncomeSourceService();
+	const {
+		incomeSources,
+		hasIncomeSources,
+		fetchIncomeSources,
+		removeIncomeSource
+	} = useIncomeSources();
 	const { formatAmountWithCurrency } = useCurrencyFormat();
 
 	const handleRemove = async (incomeSource: NIncomeSources.IIncomeSource) => {

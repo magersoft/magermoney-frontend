@@ -1,10 +1,8 @@
-import { useFetchExpensesService } from '@/modules/expenses/infrastructure/services';
-import { useExpensesStore } from '@/modules/expenses/infrastructure/stores';
+import { useExpenses } from '@/modules/expenses';
 import { AppFilterCalendarRange } from '@/shared/ui/components';
 
 export function useExpensesFilters() {
-	const { fetchExpenses } = useFetchExpensesService();
-	const { isLoading } = useExpensesStore();
+	const { fetchExpenses, isLoading } = useExpenses();
 
 	const handleConfirm = async (range: AppFilterCalendarRange) => {
 		const { startDate, endDate } = range;

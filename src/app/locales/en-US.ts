@@ -179,6 +179,9 @@ export default {
 		availableInDay: 'Available in day',
 		saved: 'Saved'
 	},
+	historyView: {
+		empty: 'You have no history. Add them to see the list here.'
+	},
 	wallets: {
 		countOfWallets: 'You have {count} {declination}',
 		wallet1: 'wallet',

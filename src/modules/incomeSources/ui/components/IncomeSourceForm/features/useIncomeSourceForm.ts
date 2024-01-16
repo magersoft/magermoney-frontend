@@ -1,17 +1,13 @@
 import { useCurrencies } from '@/modules/currencies';
+import { useIncomeSources } from '@/modules/incomeSources';
+import {
+	initialIncomeSourceFormControls,
+	TInitialIncomeSourceFormData
+} from '@/modules/incomeSources/domain';
 import { useForm } from '@/shared/features';
 import { ActionButtonsEventListeners } from '@/shared/ui/components';
 import { cloneDeep } from '@/shared/utils';
 
-import {
-	initialIncomeSourceFormControls,
-	TInitialIncomeSourceFormData
-} from '../../../../domain';
-import {
-	useCreateIncomeSourceService,
-	useFetchIncomeSourcesService
-} from '../../../../infrastructure/services';
-import { useIncomeSourcesStore } from '../../../../infrastructure/stores';
 import { mappingIncomeSourceFormData } from '../utils';
 
 interface UseIncomeSourceFormParams extends ActionButtonsEventListeners {}
@@ -24,9 +20,13 @@ export function useIncomeSourceForm({
 	const incomeSourceFormData = ref<TInitialIncomeSourceFormData>(
 		cloneDeep(initialIncomeSourceFormControls)
 	);
-	const { createIncomeSource } = useCreateIncomeSourceService();
-	const { fetchIncomeSources } = useFetchIncomeSourcesService();
-	const { hasIncomeSources, isLoading, error } = useIncomeSourcesStore();
+	const {
+		hasIncomeSources,
+		isLoading,
+		error,
+		fetchIncomeSources,
+		createIncomeSource
+	} = useIncomeSources();
 
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 

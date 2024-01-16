@@ -1,10 +1,8 @@
-import { useFetchIncomesService } from '@/modules/incomes/infrastructure/services';
-import { useIncomesStore } from '@/modules/incomes/infrastructure/stores';
+import { useIncomes } from '@/modules/incomes';
 import { AppFilterCalendarRange } from '@/shared/ui/components';
 
 export function useIncomesFilters() {
-	const { fetchIncomes } = useFetchIncomesService();
-	const { isLoading } = useIncomesStore();
+	const { fetchIncomes, isLoading } = useIncomes();
 
 	const handleConfirm = async (range: AppFilterCalendarRange) => {
 		const { startDate, endDate } = range;

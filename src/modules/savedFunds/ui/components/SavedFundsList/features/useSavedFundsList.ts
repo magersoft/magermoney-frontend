@@ -1,15 +1,10 @@
 import { useCurrencyFormat } from '@/modules/currencies';
+import { useSavedFunds } from '@/modules/savedFunds';
 import { NSavedFunds } from '@/modules/savedFunds/domain';
-import {
-	useFetchSavedFundsService,
-	useRemoveSavedFundService
-} from '@/modules/savedFunds/infrastructure/services';
-import { useSavedFundsStore } from '@/modules/savedFunds/infrastructure/stores';
 
 export function useSavedFundsList() {
-	const { savedFunds, hasSavedFunds } = useSavedFundsStore();
-	const { fetchSavedFunds } = useFetchSavedFundsService();
-	const { removeSavedFund } = useRemoveSavedFundService();
+	const { savedFunds, hasSavedFunds, fetchSavedFunds, removeSavedFund } =
+		useSavedFunds();
 	const { formatAmountWithCurrency } = useCurrencyFormat();
 
 	const handleRemove = async (savedFund: NSavedFunds.ISavedFund) => {

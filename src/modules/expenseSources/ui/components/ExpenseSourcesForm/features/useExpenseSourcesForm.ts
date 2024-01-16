@@ -1,13 +1,9 @@
 import { useCurrencies } from '@/modules/currencies';
+import { useExpenseSources } from '@/modules/expenseSources';
 import {
 	initialExpenseSourcesFormControls,
 	TInitialExpenseSourcesFormData
 } from '@/modules/expenseSources/domain';
-import {
-	useCreateExpenseSourceService,
-	useFetchExpenseSourcesService
-} from '@/modules/expenseSources/infrastructure/services';
-import { useExpenseSourcesStore } from '@/modules/expenseSources/infrastructure/stores';
 import { mappingExpenseSourcesFormData } from '@/modules/expenseSources/ui/components/ExpenseSourcesForm/utils';
 import { useForm } from '@/shared/features';
 import { ActionButtonsEventListeners } from '@/shared/ui/components';
@@ -23,9 +19,13 @@ export function useExpenseSourcesForm({
 	const expenseSourcesFormData = ref<TInitialExpenseSourcesFormData>(
 		cloneDeep(initialExpenseSourcesFormControls)
 	);
-	const { createExpenseSource } = useCreateExpenseSourceService();
-	const { fetchExpenseSources } = useFetchExpenseSourcesService();
-	const { hasExpenseSources, isLoading, error } = useExpenseSourcesStore();
+	const {
+		hasExpenseSources,
+		isLoading,
+		error,
+		fetchExpenseSources,
+		createExpenseSource
+	} = useExpenseSources();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 
 	const {

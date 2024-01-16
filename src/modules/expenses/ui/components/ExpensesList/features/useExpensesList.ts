@@ -1,18 +1,20 @@
 import { useI18n } from 'vue-i18n';
 
+import { useExpenses } from '@/modules/expenses';
 import { NExpenses } from '@/modules/expenses/domain';
-import {
-	useFetchExpensesService,
-	useRemoveExpenseService
-} from '@/modules/expenses/infrastructure/services';
-import { useExpensesStore } from '@/modules/expenses/infrastructure/stores';
 import { groupArrayByMonthYear } from '@/shared/utils';
 
 export function useExpensesList() {
-	const { expenses, page, pageSize, isLoading, isFinished } =
-		useExpensesStore();
-	const { fetchExpenses, fetchExpensesPaginated } = useFetchExpensesService();
-	const { removeExpense } = useRemoveExpenseService();
+	const {
+		expenses,
+		page,
+		pageSize,
+		isLoading,
+		isFinished,
+		fetchExpenses,
+		fetchExpensesPaginated,
+		removeExpense
+	} = useExpenses();
 
 	const { t, locale } = useI18n();
 

@@ -1,10 +1,18 @@
-import { useFetchIncomeSourcesService } from '@/modules/incomeSources/infrastructure/services';
+import {
+	useCreateIncomeSourceService,
+	useFetchIncomeSourcesService,
+	useRemoveIncomeSourceService
+} from '@/modules/incomeSources/infrastructure/services';
 import { useIncomeSourcesStore } from '@/modules/incomeSources/infrastructure/stores';
 import { mappingIncomeSourcesForPicker } from '@/modules/incomeSources/utils';
 
 export function useIncomeSources() {
-	const { incomeSources, isLoading } = useIncomeSourcesStore();
+	const { incomeSources, hasIncomeSources, isLoading, error } =
+		useIncomeSourcesStore();
+
 	const { fetchIncomeSources } = useFetchIncomeSourcesService();
+	const { createIncomeSource } = useCreateIncomeSourceService();
+	const { removeIncomeSource } = useRemoveIncomeSourceService();
 
 	const incomeSourcesItems = computed(() =>
 		mappingIncomeSourcesForPicker(unref(incomeSources))
@@ -13,7 +21,12 @@ export function useIncomeSources() {
 	return {
 		incomeSources,
 		incomeSourcesItems,
+		hasIncomeSources,
 		isLoading,
-		fetchIncomeSources
+		error,
+
+		fetchIncomeSources,
+		createIncomeSource,
+		removeIncomeSource
 	};
 }

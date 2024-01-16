@@ -1,8 +1,8 @@
 import { useCurrencies } from '@/modules/currencies';
-import { useFetchExpenseSourcesService } from '@/modules/expenseSources/infrastructure/services';
+import { useExpenseSources } from '@/modules/expenseSources';
 
 export function useInitExpenseSourcesForm() {
-	const { fetchExpenseSources } = useFetchExpenseSourcesService();
+	const { fetchExpenseSources } = useExpenseSources();
 	const { fetchCurrencies } = useCurrencies();
 
 	const fetchData = async () => {

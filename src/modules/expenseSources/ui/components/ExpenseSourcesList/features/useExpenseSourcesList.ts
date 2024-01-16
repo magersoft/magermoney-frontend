@@ -1,15 +1,14 @@
 import { useCurrencyFormat } from '@/modules/currencies';
+import { useExpenseSources } from '@/modules/expenseSources';
 import { NExpenseSources } from '@/modules/expenseSources/domain';
-import {
-	useFetchExpenseSourcesService,
-	useRemoveExpenseSourceService
-} from '@/modules/expenseSources/infrastructure/services';
-import { useExpenseSourcesStore } from '@/modules/expenseSources/infrastructure/stores';
 
 export function useExpenseSourcesList() {
-	const { expenseSources, hasExpenseSources } = useExpenseSourcesStore();
-	const { fetchExpenseSources } = useFetchExpenseSourcesService();
-	const { removeExpenseSource } = useRemoveExpenseSourceService();
+	const {
+		expenseSources,
+		hasExpenseSources,
+		fetchExpenseSources,
+		removeExpenseSource
+	} = useExpenseSources();
 	const { formatAmountWithCurrency } = useCurrencyFormat();
 
 	const handleRemove = async (

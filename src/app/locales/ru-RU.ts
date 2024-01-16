@@ -181,6 +181,9 @@ export default {
 		availableInDay: 'Доступно в день',
 		saved: 'Сохраняется'
 	},
+	historyView: {
+		empty: 'История транзакций не найдена.'
+	},
 	wallets: {
 		countOfWallets: 'У вас {count} {declination}',
 		wallet1: 'кошелек',

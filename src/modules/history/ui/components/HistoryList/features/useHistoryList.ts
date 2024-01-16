@@ -1,12 +1,22 @@
 import { useI18n } from 'vue-i18n';
 
-import { useFetchHistoryService } from '@/modules/history/infrastructure/services';
-import { useHistoryStore } from '@/modules/history/infrastructure/stores';
+import { useHistory } from '@/modules/history/features';
 import { groupArrayByMonthYear } from '@/shared/utils';
 
-export function useHistoryList() {
-	const { history, page, pageSize, isLoading, isFinished } = useHistoryStore();
-	const { fetchHistory, fetchHistoryPaginated } = useFetchHistoryService();
+interface UseHistoryListParams {
+	savedFundId?: number;
+}
+
+export function useHistoryList({ savedFundId }: UseHistoryListParams = {}) {
+	const {
+		history,
+		isLoading,
+		isFinished,
+		page,
+		pageSize,
+		fetchHistory,
+		fetchHistoryPaginated
+	} = useHistory();
 
 	const { locale } = useI18n();
 
@@ -23,7 +33,12 @@ export function useHistoryList() {
 	}));
 
 	const initialFetchData = async () => {
-		await fetchHistory({ force: true }, { perPage: unref(pageSize) });
+		await fetchHistory(
+			{ force: true },
+			savedFundId
+				? { perPage: unref(pageSize), savedFundId }
+				: { perPage: unref(pageSize) }
+		);
 	};
 
 	const handleRefresh = async () => {

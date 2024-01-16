@@ -384,4 +384,5 @@ export interface HistoryControllerFindAllParams {
 	startDate?: string;
 	/** @format date-time */
 	endDate?: string;
+	savedFundId?: number;
 }
