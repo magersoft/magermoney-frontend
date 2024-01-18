@@ -4,7 +4,7 @@ import { NIncomeSources } from '@/modules/incomeSources/domain';
 
 export function useIncomeSourcesList() {
 	const {
-		incomeSources,
+		incomeSourcesItems,
 		hasIncomeSources,
 		fetchIncomeSources,
 		removeIncomeSource
@@ -13,7 +13,7 @@ export function useIncomeSourcesList() {
 
 	const handleRemove = async (incomeSource: NIncomeSources.IIncomeSource) => {
 		const isRemovedSuccess = await removeIncomeSource(
-			incomeSource.title,
+			incomeSource.category.name,
 			incomeSource.id
 		);
 
@@ -23,7 +23,7 @@ export function useIncomeSourcesList() {
 	};
 
 	return {
-		incomeSources,
+		incomeSourcesItems,
 		hasIncomeSources,
 		formatAmountWithCurrency,
 		handleRemove

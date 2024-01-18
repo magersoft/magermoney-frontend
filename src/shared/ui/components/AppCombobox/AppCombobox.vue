@@ -11,16 +11,17 @@ interface AppComboboxProps {
 	readonly customTitle?: string;
 	readonly error?: boolean;
 	readonly errorMessage?: string;
-	readonly modelValue: string | number | undefined;
+	readonly modelValue: string;
 	readonly items?: PickerColumn;
 	readonly rules?: FieldRule[];
 	readonly disabled?: boolean;
 	readonly readonly?: boolean;
+	readonly loading?: boolean;
 }
 
 interface AppComboboxEvents {
 	(event: 'confirm', value: PickerConfirmEventParams): void;
-	(event: 'update:modelValue', value: string | number | undefined): void;
+	(event: 'update:modelValue', value: string): void;
 }
 
 const props = defineProps<AppComboboxProps>();
@@ -28,6 +29,21 @@ const emit = defineEmits<AppComboboxEvents>();
 
 const showPicker = ref(false);
 const customInternalValue = ref('');
+
+const internalValue = computed({
+	get() {
+		return props.modelValue;
+	},
+	set(value) {
+		emit('update:modelValue', value);
+		customInternalValue.value = '';
+	}
+});
+
+const isCustom = computed(
+	() => props.customTitle && props.modelValue === props.customTitle
+);
+
 const internalItems = computed(() => {
 	const items = props.items || [];
 
@@ -42,19 +58,6 @@ const internalItems = computed(() => {
 			value: 'other'
 		}
 	];
-});
-
-const isCustom = computed(
-	() => props.customTitle && props.modelValue === props.customTitle
-);
-const internalValue = computed({
-	get() {
-		return props.modelValue;
-	},
-	set(value) {
-		emit('update:modelValue', value);
-		customInternalValue.value = '';
-	}
 });
 
 const onConfirm = (pickerConfirmEventParams: PickerConfirmEventParams) => {
@@ -112,6 +115,7 @@ const handleShowPicker = () => {
 	<van-popup v-model:show="showPicker" position="bottom">
 		<van-picker
 			:columns="internalItems"
+			:loading="loading"
 			@confirm="onConfirm"
 			@cancel="showPicker = false"
 		/>

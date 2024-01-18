@@ -6,7 +6,7 @@ import { groupArrayByMonthYear } from '@/shared/utils';
 
 export function useIncomesList() {
 	const {
-		incomes,
+		incomesItems,
 		page,
 		pageSize,
 		isLoading,
@@ -21,7 +21,7 @@ export function useIncomesList() {
 	const isRefreshLoading = ref(false);
 
 	const groupedIncomes = computed(() =>
-		groupArrayByMonthYear(unref(incomes), 'dateOfIssue', unref(locale))
+		groupArrayByMonthYear(unref(incomesItems), 'dateOfIssue', unref(locale))
 	);
 
 	const initialFetchData = async () => {
@@ -48,7 +48,7 @@ export function useIncomesList() {
 
 	const handleRemove = async (income: NIncomes.IIncome) => {
 		const isRemovedSuccess = await removeIncome(
-			`${t('incomesView.income').toLowerCase()} «${income.title}»`,
+			`${t('incomesView.income').toLowerCase()} «${income.category.name}»`,
 			income.id
 		);
 

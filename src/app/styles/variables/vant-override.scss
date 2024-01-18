@@ -6,3 +6,11 @@
 .van-pull-refresh {
   overflow: visible !important;
 }
+
+.van-theme-dark .van-empty {
+  opacity: 1 !important;
+}
+
+.van-empty__description {
+  text-align: center;
+}

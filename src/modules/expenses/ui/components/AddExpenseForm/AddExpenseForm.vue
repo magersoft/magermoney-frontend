@@ -23,15 +23,19 @@ const {
 	currenciesItems,
 	savedFundsItems,
 	expenseSourcesItems,
+	categoriesItems,
 	savedFundTitle,
 	formattedDate,
 	isSingleExpense,
 	isLoading,
 	isLoadingCurrencies,
+	isLoadingCategories,
 	showedDatePicker,
 	showedExpenseSourcesPicker,
 	getCurrencySymbol,
 	handleShowDatePicker,
+	handleUpdateCategoriesTitle,
+	handleConfirmCategoriesPicker,
 	handleConfirmExpenseSourcesPicker,
 	handleShowExpenseSourcesPicker,
 	handleConfirmDatePicker,
@@ -77,9 +81,13 @@ const {
 				:enter-label="t('addExpenseForm.name')"
 				:enter-placeholder="t('addExpenseForm.enterExpense')"
 				:custom-title="t('Other')"
-				:disabled="isLoading"
+				:disabled="isLoading || isLoadingCategories"
+				:loading="isLoadingCategories"
 				:rules="[{ required: true, message: t('validation.required') }]"
+				:items="categoriesItems"
 				:class="$style['add-expense-form__field']"
+				@confirm="handleConfirmCategoriesPicker"
+				@update:model-value="handleUpdateCategoriesTitle"
 			/>
 
 			<app-amount-input

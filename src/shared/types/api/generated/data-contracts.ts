@@ -67,9 +67,10 @@ export interface UpdateUserDto {
 }
 
 export interface CreateIncomeSourceDto {
-	title: string;
+	title?: string;
 	description?: string | null;
 	amount: number;
+	categoryId?: number;
 	currency: string;
 }
 
@@ -80,17 +81,22 @@ export interface CurrencyEntity {
 	code: string;
 }
 
+export interface CategoryRelationEntity {
+	name: string;
+}
+
 export interface IncomeSourceEntity {
 	id: number;
 	/** @format date-time */
 	createdAt: string;
 	/** @format date-time */
 	updatedAt: string;
-	title: string;
 	description?: string | null;
 	amount: number;
 	currency: CurrencyEntity;
 	currencyId: string;
+	category: CategoryRelationEntity;
+	categoryId: number;
 	userId: number;
 }
 
@@ -98,6 +104,7 @@ export interface UpdateIncomeSourceDto {
 	title?: string;
 	description?: string | null;
 	amount?: number;
+	categoryId?: number;
 	currency?: string;
 }
 
@@ -111,10 +118,31 @@ export interface CurrencyRateEntity {
 	price: number;
 }
 
+export interface CreateCategoryDto {
+	name: string;
+	type: 'INCOME' | 'EXPENSE' | 'SAVED';
+}
+
+export interface CategoryEntity {
+	id: number;
+	/** @format date-time */
+	createdAt: string;
+	/** @format date-time */
+	updatedAt: string;
+	name: string;
+	type: 'INCOME' | 'EXPENSE' | 'SAVED';
+	userId?: number | null;
+}
+
+export interface UpdateCategoryDto {
+	name: string;
+}
+
 export interface CreateSavedFundDto {
 	source: string;
 	amount: number;
 	currency: string;
+	categoryId?: number;
 	color?: string;
 	order?: number;
 }
@@ -205,8 +233,9 @@ export interface TransferDetailsEntity {
 }
 
 export interface CreateExpenseSourceDto {
-	title: string;
+	title?: string;
 	amount: number;
+	categoryId?: number;
 	currency: string;
 }
 
@@ -216,9 +245,10 @@ export interface ExpenseSourceEntity {
 	createdAt: string;
 	/** @format date-time */
 	updatedAt: string;
-	title: string;
 	amount: number;
 	currency: CurrencyEntity;
+	category: CategoryRelationEntity;
+	categoryId: number;
 	currencyId: number;
 	userId: number;
 }
@@ -226,17 +256,24 @@ export interface ExpenseSourceEntity {
 export interface UpdateExpenseSourceDto {
 	title?: string;
 	amount?: number;
+	categoryId?: number;
 	currency?: string;
 }
 
 export interface CreateIncomeDto {
-	title: string;
+	title?: string;
 	amount: number;
 	currency: string;
+	categoryId?: number;
 	/** @format date-time */
 	dateOfIssue: string;
 	incomeSourceId?: number;
 	savedFundId?: number;
+}
+
+export interface SavedFundRelationEntity {
+	source: string;
+	color: string;
 }
 
 export interface IncomeEntity {
@@ -245,27 +282,30 @@ export interface IncomeEntity {
 	createdAt: string;
 	/** @format date-time */
 	updatedAt: string;
-	title: string;
 	amount: number;
 	/** @format date-time */
 	dateOfIssue: string;
 	currency: CurrencyEntity;
 	currencyId: number;
+	category: CategoryRelationEntity;
+	categoryId: number;
+	savedFund: SavedFundRelationEntity;
 	savedFundId: number;
 	incomeSourceId?: number;
 	userId: number;
 }
 
 export interface UpdateIncomeDto {
-	title: string;
+	categoryId?: number;
 	/** @format date-time */
 	dateOfIssue: string;
 }
 
 export interface CreateExpenseDto {
-	title: string;
+	title?: string;
 	amount: number;
 	currency: string;
+	categoryId?: number;
 	/** @format date-time */
 	dateOfIssue: string;
 	expenseSourceId?: number;
@@ -278,19 +318,21 @@ export interface ExpenseEntity {
 	createdAt: string;
 	/** @format date-time */
 	updatedAt: string;
-	title: string;
 	amount: number;
 	/** @format date-time */
 	dateOfIssue: string;
 	currency: CurrencyEntity;
 	currencyId: number;
+	category: CategoryRelationEntity;
+	categoryId: number;
+	savedFund: SavedFundRelationEntity;
 	savedFundId: number;
 	expenseSourceId: number;
 	userId: number;
 }
 
 export interface UpdateExpenseDto {
-	title: string;
+	categoryId?: number;
 	/** @format date-time */
 	dateOfIssue: string;
 }
@@ -324,6 +366,10 @@ export interface HistoryEntity {
 	currency: CurrencyEntity;
 	/** @format date-time */
 	dateOfIssue: string;
+}
+
+export interface CategoriesControllerFindAllParams {
+	type?: 'INCOME' | 'EXPENSE' | 'SAVED';
 }
 
 export interface CalculationsControllerGetTotalBalanceParams {

@@ -6,11 +6,13 @@ export type TInitialWalletFormData = {
 	amount: string;
 	currency: string;
 	color: string;
+	categoryId?: number;
 };
 
 export const initialWalletFormControls: TInitialWalletFormData = {
 	source: '',
 	amount: '',
 	currency: appConfig.defaultCurrency,
-	color: walletColors[0]
+	color: walletColors[0],
+	categoryId: undefined
 };

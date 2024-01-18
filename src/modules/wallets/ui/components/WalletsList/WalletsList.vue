@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 import draggable from 'vuedraggable';
 
+import { AppPopups, usePopups } from '@/app/popups';
 import { WalletItem } from '@/modules/wallets/ui/components';
 import { useWalletsList } from '@/modules/wallets/ui/components/WalletsList/features';
 import WalletsListSkeleton from '@/modules/wallets/ui/components/WalletsList/WalletsListSkeleton.vue';
@@ -26,6 +27,8 @@ const {
 } = useWalletsList({
 	onSort: (value: boolean) => emit('click:sort', value)
 });
+
+const { setPopup } = usePopups();
 </script>
 
 <template>
@@ -78,7 +81,12 @@ const {
 				</draggable>
 			</div>
 			<van-empty v-else :description="t('wallets.empty')">
-				<van-button round type="primary" class="bottom-button">
+				<van-button
+					round
+					type="primary"
+					class="bottom-button"
+					@click="setPopup(AppPopups.SaveWallet)"
+				>
 					{{ t('add') }} {{ t('wallets.wallet1') }}
 				</van-button>
 			</van-empty>

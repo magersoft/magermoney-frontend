@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
-import { incomeSourcesTypes } from '@/modules/incomeSources/constants';
 import {
 	useIncomeSourceForm,
 	useInitIncomeSourcesForm
@@ -36,8 +35,12 @@ const {
 	hasServerError,
 	hasIncomeSources,
 	currenciesItems,
+	categoriesItems,
 	isLoading,
 	isLoadingCurrencies,
+	isLoadingCategories,
+	handleConfirmIncomeSourcesPicker,
+	handleUpdateIncomeSourcesTitle,
 	handleAddSubmit,
 	handleSubmit,
 	handleBack
@@ -68,8 +71,11 @@ const {
 				:custom-title="t('incomeSource.other')"
 				:error="hasServerError"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:disabled="isLoading"
-				:items="incomeSourcesTypes"
+				:disabled="isLoading || isLoadingCategories"
+				:loading="isLoadingCategories"
+				:items="categoriesItems"
+				@confirm="handleConfirmIncomeSourcesPicker"
+				@update:model-value="handleUpdateIncomeSourcesTitle"
 			/>
 			<app-amount-input
 				v-model="incomeSourceFormData.amount"
@@ -80,7 +86,7 @@ const {
 				:currencies="currenciesItems"
 				:error="hasServerError"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:readonly="isLoading"
+				:disabled="isLoading"
 				:loading="isLoadingCurrencies"
 				show-currencies
 				enable-keyboard

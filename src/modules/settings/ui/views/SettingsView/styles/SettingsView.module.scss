@@ -1,9 +1,10 @@
 .settings-view {
   &__cell-title:first-child {
-    padding-top: 20px;
+    padding-top: var(--van-padding-lg);
   }
 
   &__logout {
-    margin-top: 50px;
+    margin-top: calc(var(--van-padding-lg) * 2);
+    margin-bottom: var(--van-padding-lg);
   }
 }

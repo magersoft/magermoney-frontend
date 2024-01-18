@@ -1,3 +1,6 @@
+import { PickerConfirmEventParams } from 'vant/es/picker/types';
+
+import { useCategories } from '@/modules/categories';
 import { useCurrencies } from '@/modules/currencies';
 import { useSavedFunds } from '@/modules/savedFunds';
 import {
@@ -26,6 +29,34 @@ export function useSavedFundsForm({
 	const { formRef, hasServerError, validateForm, resetValidationForm } =
 		useForm(error);
 
+	const {
+		savedCategoriesItems,
+		isLoading: isLoadingCategories,
+		fetchCategories
+	} = useCategories();
+
+	const handleConfirmSavedFundsPicker = ({
+		selectedOptions
+	}: PickerConfirmEventParams) => {
+		const [option] = selectedOptions;
+
+		if (option) {
+			savedFundsFormData.value = {
+				...unref(savedFundsFormData),
+				source: option.text as string,
+				categoryId: option.value as number
+			};
+		}
+	};
+
+	const handleUpdateSavedFundsTitle = (title?: string | number) => {
+		savedFundsFormData.value = {
+			...unref(savedFundsFormData),
+			source: title as string,
+			categoryId: undefined
+		};
+	};
+
 	const handleSubmit = async () => {
 		if (!unref(hasSavedFunds)) return;
 
@@ -52,6 +83,7 @@ export function useSavedFundsForm({
 			};
 
 			await fetchSavedFunds({ force: true, quite: true });
+			await fetchCategories({ force: true, quite: true });
 
 			onAdd?.();
 		}
@@ -69,8 +101,12 @@ export function useSavedFundsForm({
 		hasServerError,
 		hasSavedFunds,
 		currenciesItems,
+		savedCategoriesItems,
 		isLoading,
 		isLoadingCurrencies,
+		isLoadingCategories,
+		handleConfirmSavedFundsPicker,
+		handleUpdateSavedFundsTitle,
 		handleAddSubmit,
 		handleSubmit,
 		handleBack

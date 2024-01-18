@@ -2,6 +2,7 @@ import { PickerConfirmEventParams } from 'vant/es/picker/types';
 import { useI18n } from 'vue-i18n';
 
 import { usePopups } from '@/app/popups';
+import { useCategories } from '@/modules/categories';
 import { useCurrencies, useCurrencyFormat } from '@/modules/currencies';
 import { useInitDashboard } from '@/modules/dashboard/features';
 import { useIncomes } from '@/modules/incomes';
@@ -26,6 +27,10 @@ export function useAddIncomeForm() {
 	const { incomeSourcesItems } = useIncomeSources();
 	const { savedFundsItems } = useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
+	const {
+		incomesCategoriesItems: categoriesItems,
+		isLoading: isLoadingCategories
+	} = useCategories();
 
 	const { fetchDashboard } = useInitDashboard();
 	const { getCurrencySymbol } = useCurrencyFormat();
@@ -60,6 +65,28 @@ export function useAddIncomeForm() {
 	const handleShowDatePicker = () => {
 		if (unref(isLoading)) return;
 		showedDatePicker.value = true;
+	};
+
+	const handleConfirmCategoriesPicker = ({
+		selectedOptions
+	}: PickerConfirmEventParams) => {
+		const [option] = selectedOptions;
+
+		if (option) {
+			incomeFormData.value = {
+				...unref(incomeFormData),
+				title: option.text as string,
+				categoryId: option.value as number
+			};
+		}
+	};
+
+	const handleUpdateCategoriesTitle = (title?: string | number) => {
+		incomeFormData.value = {
+			...unref(incomeFormData),
+			title: title as string,
+			categoryId: undefined
+		};
 	};
 
 	const handleConfirmIncomeSourcesPicker = ({
@@ -141,16 +168,20 @@ export function useAddIncomeForm() {
 		incomeSourcesItems,
 		savedFundsItems,
 		currenciesItems,
+		categoriesItems,
 		showedIncomeSourcesPicker,
 		showedDatePicker,
 		isLoading,
 		isLoadingCurrencies,
+		isLoadingCategories,
 		isSingleIncome,
 		formattedDate,
 		savedFundTitle,
 		getCurrencySymbol,
 		handleShowDatePicker,
 		handleShowIncomeSourcesPicker,
+		handleUpdateCategoriesTitle,
+		handleConfirmCategoriesPicker,
 		handleConfirmIncomeSourcesPicker,
 		handleConfirmSavedFundsPicker,
 		handleConfirmDatePicker,

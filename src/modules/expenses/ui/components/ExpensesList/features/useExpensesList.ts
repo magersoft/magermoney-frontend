@@ -6,7 +6,7 @@ import { groupArrayByMonthYear } from '@/shared/utils';
 
 export function useExpensesList() {
 	const {
-		expenses,
+		expensesItems,
 		page,
 		pageSize,
 		isLoading,
@@ -21,7 +21,7 @@ export function useExpensesList() {
 	const isRefreshLoading = ref(false);
 
 	const groupedExpenses = computed(() =>
-		groupArrayByMonthYear(unref(expenses), 'dateOfIssue', unref(locale))
+		groupArrayByMonthYear(unref(expensesItems), 'dateOfIssue', unref(locale))
 	);
 
 	const initialFetchData = async () => {
@@ -48,7 +48,7 @@ export function useExpensesList() {
 
 	const handleRemove = async (expense: NExpenses.IExpense) => {
 		const isRemovedSuccess = await removeExpense(
-			`${t('expensesView.expense').toLowerCase()} «${expense.title}»`,
+			`${t('expensesView.expense').toLowerCase()} «${expense.category.name}»`,
 			expense.id
 		);
 

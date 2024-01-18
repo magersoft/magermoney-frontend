@@ -246,6 +246,7 @@ export default {
 		Transfers: 'Переводы',
 		AccumulationFunds: 'Процент накопления',
 		Currencies: 'Валюты',
+		Categories: 'Категории',
 		NotFound: 'Поворот не туда',
 		InternalServerError: 'Внутренняя ошибка сервера'
 	},
@@ -262,6 +263,25 @@ export default {
 		required: 'Поле обязательно для заполнения',
 		isEmail: 'Введите корректный email',
 		isPhone: 'Введите корректный номер телефона'
+	},
+	categoriesNames: {
+		Salary: 'Зарплата',
+		Investments: 'Инвестиции',
+		'Side Job': 'Подработка',
+		Scholarship: 'Стипендия',
+		Gifts: 'Подарки',
+		'Rental Flat': 'Аренда квартиры',
+		'Rental Car': 'Аренда автомобиля',
+		'Income from deposit': 'Доход от вклада',
+		Pension: 'Пенсия',
+		Food: 'Еда',
+		Clothing: 'Одежда',
+		Transportation: 'Транспорт',
+		Entertainment: 'Развлечения',
+		Health: 'Здоровье',
+		Education: 'Образование',
+		Cash: 'Наличные',
+		Deposit: 'Вклад в банке'
 	},
 	currenciesNames: {
 		RUB: 'Российский рубль',

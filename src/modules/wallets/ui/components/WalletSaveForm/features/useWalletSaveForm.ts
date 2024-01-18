@@ -1,6 +1,8 @@
+import { PickerConfirmEventParams } from 'vant/es/picker/types';
 import { useI18n } from 'vue-i18n';
 
 import { usePopups } from '@/app/popups';
+import { useCategories } from '@/modules/categories';
 import { useCurrencies } from '@/modules/currencies';
 import { useSavedFunds } from '@/modules/savedFunds';
 import { savedWalletMessages, walletColors } from '@/modules/wallets/constants';
@@ -28,7 +30,13 @@ export function useWalletSaveForm() {
 		createSavedFund,
 		updateSavedFund
 	} = useSavedFunds();
+
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
+	const {
+		savedCategoriesItems,
+		isLoading: isLoadingCategories,
+		fetchCategories
+	} = useCategories();
 
 	const { t } = useI18n();
 	const { formRef, validateForm, resetValidationForm } = useForm();
@@ -74,6 +82,28 @@ export function useWalletSaveForm() {
 		};
 	};
 
+	const handleConfirmWalletsPicker = ({
+		selectedOptions
+	}: PickerConfirmEventParams) => {
+		const [option] = selectedOptions;
+
+		if (option) {
+			walletSaveFormData.value = {
+				...unref(walletSaveFormData),
+				source: option.text as string,
+				categoryId: option.value as number
+			};
+		}
+	};
+
+	const handleUpdateWalletsTitle = (title?: string | number) => {
+		walletSaveFormData.value = {
+			...unref(walletSaveFormData),
+			source: title as string,
+			categoryId: undefined
+		};
+	};
+
 	const handleSubmit = async () => {
 		if (await validateForm()) {
 			if (unref(isEditedAmount)) {
@@ -106,6 +136,7 @@ export function useWalletSaveForm() {
 						handleClose();
 
 						await fetchSavedFunds({ force: true });
+						await fetchCategories({ force: true, quite: true });
 					}
 				});
 			}
@@ -117,9 +148,13 @@ export function useWalletSaveForm() {
 		formRef,
 		walletSaveFormData,
 		currentColorIdx,
+		currenciesItems,
+		savedCategoriesItems,
 		isLoading,
 		isLoadingCurrencies,
-		currenciesItems,
+		isLoadingCategories,
+		handleConfirmWalletsPicker,
+		handleUpdateWalletsTitle,
 		handleChangeColor,
 		handleSubmit
 	};

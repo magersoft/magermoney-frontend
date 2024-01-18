@@ -1,1 +1,11 @@
-.expenses-list {}
+.expenses-list {
+  &__item {
+    :global(.van-cell__value) {
+      color: var(--van-danger-color);
+
+      &::before {
+        content: "- ";
+      }
+    }
+  }
+}

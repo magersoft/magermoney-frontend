@@ -4,7 +4,7 @@ import { NExpenseSources } from '@/modules/expenseSources/domain';
 
 export function useExpenseSourcesList() {
 	const {
-		expenseSources,
+		expenseSourcesItems,
 		hasExpenseSources,
 		fetchExpenseSources,
 		removeExpenseSource
@@ -15,7 +15,7 @@ export function useExpenseSourcesList() {
 		expenseSource: NExpenseSources.IExpenseSource
 	) => {
 		const isRemovedSuccess = await removeExpenseSource(
-			expenseSource.title,
+			expenseSource.category.name,
 			expenseSource.id
 		);
 
@@ -25,7 +25,7 @@ export function useExpenseSourcesList() {
 	};
 
 	return {
-		expenseSources,
+		expenseSourcesItems,
 		hasExpenseSources,
 		formatAmountWithCurrency,
 		handleRemove

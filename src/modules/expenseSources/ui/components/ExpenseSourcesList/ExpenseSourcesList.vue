@@ -7,7 +7,7 @@ import { AppCellDescription, AppCellTitle } from '@/shared/ui/components';
 const { t } = useI18n();
 
 const {
-	expenseSources,
+	expenseSourcesItems,
 	hasExpenseSources,
 	formatAmountWithCurrency,
 	handleRemove
@@ -22,11 +22,11 @@ const {
 		/>
 
 		<van-swipe-cell
-			v-for="expenseSource of expenseSources"
+			v-for="expenseSource of expenseSourcesItems"
 			:key="expenseSource.id"
 		>
 			<van-cell
-				:title="expenseSource.title"
+				:title="expenseSource.category.name"
 				:value="
 					formatAmountWithCurrency(
 						expenseSource.amount,

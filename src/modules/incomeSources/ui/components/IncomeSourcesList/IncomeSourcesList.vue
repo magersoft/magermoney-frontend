@@ -7,7 +7,7 @@ import { AppCellDescription, AppCellTitle } from '@/shared/ui/components';
 const { t } = useI18n();
 
 const {
-	incomeSources,
+	incomeSourcesItems,
 	hasIncomeSources,
 	formatAmountWithCurrency,
 	handleRemove
@@ -20,11 +20,11 @@ const {
 		<app-cell-description :text="t('incomeSource.sourceOfIncomeDescription')" />
 
 		<van-swipe-cell
-			v-for="incomeSource of incomeSources"
+			v-for="incomeSource of incomeSourcesItems"
 			:key="incomeSource.id"
 		>
 			<van-cell
-				:title="incomeSource.title"
+				:title="incomeSource.category.name"
 				:value="
 					formatAmountWithCurrency(
 						incomeSource.amount,

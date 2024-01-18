@@ -2,6 +2,7 @@ import { PickerConfirmEventParams } from 'vant/es/picker/types';
 import { useI18n } from 'vue-i18n';
 
 import { usePopups } from '@/app/popups';
+import { useCategories } from '@/modules/categories';
 import { useCurrencies, useCurrencyFormat } from '@/modules/currencies';
 import { useInitDashboard } from '@/modules/dashboard/features';
 import { useExpenses } from '@/modules/expenses';
@@ -25,6 +26,10 @@ export function useAddExpenseForm() {
 	const { expenseSourcesItems } = useExpenseSources();
 	const { savedFundsItems } = useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
+	const {
+		expensesCategoriesItems: categoriesItems,
+		isLoading: isLoadingCategories
+	} = useCategories();
 
 	const { fetchDashboard } = useInitDashboard();
 	const { getCurrencySymbol } = useCurrencyFormat();
@@ -59,6 +64,28 @@ export function useAddExpenseForm() {
 	const handleShowDatePicker = () => {
 		if (unref(isLoading)) return;
 		showedDatePicker.value = true;
+	};
+
+	const handleConfirmCategoriesPicker = ({
+		selectedOptions
+	}: PickerConfirmEventParams) => {
+		const [option] = selectedOptions;
+
+		if (option) {
+			expenseFormData.value = {
+				...unref(expenseFormData),
+				title: option.text as string,
+				categoryId: option.value as number
+			};
+		}
+	};
+
+	const handleUpdateCategoriesTitle = (title?: string | number) => {
+		expenseFormData.value = {
+			...unref(expenseFormData),
+			title: title as string,
+			categoryId: undefined
+		};
 	};
 
 	const handleConfirmExpenseSourcesPicker = ({
@@ -140,16 +167,20 @@ export function useAddExpenseForm() {
 		expenseSourcesItems,
 		savedFundsItems,
 		currenciesItems,
+		categoriesItems,
 		showedExpenseSourcesPicker,
 		showedDatePicker,
-		isLoadingCurrencies,
 		isLoading,
+		isLoadingCurrencies,
+		isLoadingCategories,
 		isSingleExpense,
 		formattedDate,
 		savedFundTitle,
 		getCurrencySymbol,
 		handleShowDatePicker,
 		handleShowExpenseSourcesPicker,
+		handleUpdateCategoriesTitle,
+		handleConfirmCategoriesPicker,
 		handleConfirmExpenseSourcesPicker,
 		handleConfirmSavedFundsPicker,
 		handleConfirmDatePicker,

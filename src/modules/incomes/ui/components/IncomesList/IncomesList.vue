@@ -31,15 +31,19 @@ initialFetchData();
 		:loading="isLoading"
 		:finished="isFinished"
 		:disabled="isRefreshLoading"
+		:class="$style['incomes-list']"
 		@load="handleLoadMore"
 	>
 		<div v-for="(item, idx) in groupedIncomes" :key="idx + item.group">
 			<app-cell-title :text="item.group.toUpperCase()" />
 			<van-swipe-cell v-for="income in item.data" :key="income.id">
 				<van-cell
-					:title="income.title"
-					:label="new Date(income.dateOfIssue).toLocaleDateString(locale)"
+					:title="income.category.name"
+					:label="`${new Date(income.dateOfIssue).toLocaleDateString(
+						locale
+					)} - ${income.savedFund.source}`"
 					:value="formatAmountWithCurrency(income.amount, income.currency.code)"
+					:class="$style['incomes-list__item']"
 				/>
 				<template #right>
 					<van-button

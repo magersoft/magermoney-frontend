@@ -1,3 +1,6 @@
+import { PickerConfirmEventParams } from 'vant/es/picker/types';
+
+import { useCategories } from '@/modules/categories';
 import { useCurrencies } from '@/modules/currencies';
 import { useIncomeSources } from '@/modules/incomeSources';
 import {
@@ -29,15 +32,47 @@ export function useIncomeSourceForm({
 	} = useIncomeSources();
 
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
+	const {
+		incomesCategoriesItems: categoriesItems,
+		isLoading: isLoadingCategories,
+		fetchCategories
+	} = useCategories();
 
-	const { formRef, hasServerError, validateForm, resetValidationForm } =
-		useForm(error);
+	const {
+		formRef,
+		hasServerError,
+		errorMessages,
+		validateForm,
+		resetValidationForm
+	} = useForm(error);
+
+	const handleConfirmIncomeSourcesPicker = ({
+		selectedOptions
+	}: PickerConfirmEventParams) => {
+		const [option] = selectedOptions;
+
+		if (option) {
+			incomeSourceFormData.value = {
+				...unref(incomeSourceFormData),
+				title: option.text as string,
+				categoryId: option.value as number
+			};
+		}
+	};
+
+	const handleUpdateIncomeSourcesTitle = (title?: string | number) => {
+		incomeSourceFormData.value = {
+			...unref(incomeSourceFormData),
+			title: title as string,
+			categoryId: undefined
+		};
+	};
 
 	const handleSubmit = async () => {
 		if (!unref(hasIncomeSources)) return;
 
 		if (await validateForm()) {
-			await handleSubmit();
+			await handleAddSubmit();
 		}
 
 		resetValidationForm();
@@ -57,6 +92,7 @@ export function useIncomeSourceForm({
 			incomeSourceFormData.value = { ...initialIncomeSourceFormControls };
 
 			await fetchIncomeSources({ force: true, quite: true });
+			await fetchCategories({ force: true, quite: true });
 
 			onAdd?.();
 		}
@@ -72,10 +108,15 @@ export function useIncomeSourceForm({
 		formRef,
 		incomeSourceFormData,
 		hasServerError,
+		errorMessages,
 		hasIncomeSources,
 		currenciesItems,
+		categoriesItems,
 		isLoading,
 		isLoadingCurrencies,
+		isLoadingCategories,
+		handleConfirmIncomeSourcesPicker,
+		handleUpdateIncomeSourcesTitle,
 		handleAddSubmit,
 		handleSubmit,
 		handleBack

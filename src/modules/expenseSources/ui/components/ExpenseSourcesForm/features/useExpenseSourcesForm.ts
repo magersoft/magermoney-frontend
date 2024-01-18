@@ -1,3 +1,6 @@
+import { PickerConfirmEventParams } from 'vant/es/picker/types';
+
+import { useCategories } from '@/modules/categories';
 import { useCurrencies } from '@/modules/currencies';
 import { useExpenseSources } from '@/modules/expenseSources';
 import {
@@ -26,7 +29,13 @@ export function useExpenseSourcesForm({
 		fetchExpenseSources,
 		createExpenseSource
 	} = useExpenseSources();
+
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
+	const {
+		expensesCategoriesItems: categoriesItems,
+		isLoading: isLoadingCategories,
+		fetchCategories
+	} = useCategories();
 
 	const {
 		formRef,
@@ -35,6 +44,28 @@ export function useExpenseSourcesForm({
 		validateForm,
 		resetValidationForm
 	} = useForm(error);
+
+	const handleConfirmExpenseSourcesPicker = ({
+		selectedOptions
+	}: PickerConfirmEventParams) => {
+		const [option] = selectedOptions;
+
+		if (option) {
+			expenseSourcesFormData.value = {
+				...unref(expenseSourcesFormData),
+				title: option.text as string,
+				categoryId: option.value as number
+			};
+		}
+	};
+
+	const handleUpdateExpenseSourcesTitle = (title?: string | number) => {
+		expenseSourcesFormData.value = {
+			...unref(expenseSourcesFormData),
+			title: title as string,
+			categoryId: undefined
+		};
+	};
 
 	const handleSubmit = async () => {
 		if (!unref(hasExpenseSources)) return;
@@ -63,6 +94,7 @@ export function useExpenseSourcesForm({
 		}
 
 		await fetchExpenseSources({ force: true, quite: true });
+		await fetchCategories({ force: true, quite: true });
 
 		onAdd?.();
 	};
@@ -77,11 +109,15 @@ export function useExpenseSourcesForm({
 		formRef,
 		expenseSourcesFormData,
 		currenciesItems,
-		isLoadingCurrencies,
+		categoriesItems,
 		hasServerError,
 		errorMessages,
 		isLoading,
+		isLoadingCategories,
+		isLoadingCurrencies,
 		hasExpenseSources,
+		handleConfirmExpenseSourcesPicker,
+		handleUpdateExpenseSourcesTitle,
 		handleSubmit,
 		handleAddSubmit,
 		handleBack

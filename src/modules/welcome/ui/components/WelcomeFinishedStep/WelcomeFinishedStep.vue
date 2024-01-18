@@ -18,7 +18,7 @@ const { setStep, handleFinished } = useWelcomeSteps();
 			<van-cell title="Вы сохраняете" value="100" />
 			<van-cell title="Вы тратите" value="100" />
 		</van-cell-group>
-		<van-button size="small" @click="setStep(WelcomeStepsType.INCOME_SOURCES)">
+		<van-button size="small" @click="setStep(WelcomeStepsType.CURRENCIES)">
 			Редактировать
 		</van-button>
 		<van-button type="success" size="small" @click="handleFinished">

@@ -4,6 +4,7 @@ import {
 	useRemoveExpenseService
 } from '@/modules/expenses/infrastructure/services';
 import { useExpensesStore } from '@/modules/expenses/infrastructure/stores';
+import { mappingExpensesItems } from '@/modules/expenses/utils';
 
 export function useExpenses() {
 	const { expenses, page, pageSize, isLoading, isFinished, error } =
@@ -13,8 +14,11 @@ export function useExpenses() {
 	const { createExpense } = useCreateExpenseService();
 	const { removeExpense } = useRemoveExpenseService();
 
+	const expensesItems = computed(() => mappingExpensesItems(unref(expenses)));
+
 	return {
 		expenses,
+		expensesItems,
 		page,
 		pageSize,
 		isLoading,

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
-import { expenseSourcesTypesItems } from '@/modules/expenseSources/constants';
 import {
 	useExpenseSourcesForm,
 	useInitExpenseSourcesForm
@@ -36,8 +35,12 @@ const {
 	hasExpenseSources,
 	hasServerError,
 	currenciesItems,
+	categoriesItems,
 	isLoading,
 	isLoadingCurrencies,
+	isLoadingCategories,
+	handleConfirmExpenseSourcesPicker,
+	handleUpdateExpenseSourcesTitle,
 	handleSubmit,
 	handleAddSubmit,
 	handleBack
@@ -68,8 +71,11 @@ const {
 				:custom-title="t('expenseSources.other')"
 				:error="hasServerError"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:readonly="isLoading"
-				:items="expenseSourcesTypesItems"
+				:disabled="isLoading || isLoadingCategories"
+				:loading="isLoadingCategories"
+				:items="categoriesItems"
+				@confirm="handleConfirmExpenseSourcesPicker"
+				@update:model-value="handleUpdateExpenseSourcesTitle"
 			/>
 			<app-amount-input
 				v-model="expenseSourcesFormData.amount"
@@ -80,7 +86,7 @@ const {
 				:currencies="currenciesItems"
 				:error="hasServerError"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:readonly="isLoading"
+				:disabled="isLoading"
 				:loading="isLoadingCurrencies"
 				show-currencies
 				enable-keyboard

@@ -25,8 +25,13 @@ const router = useRouter();
 			<van-cell
 				v-if="isAuthorization"
 				is-link
-				:title="t('currencies')"
+				:title="t('routes.Currencies')"
 				@click="router.push({ name: AppRoutes.Currencies })"
+			/>
+			<van-cell
+				v-if="isAuthorization"
+				is-link
+				:title="t('routes.Categories')"
 			/>
 		</van-cell-group>
 

@@ -240,6 +240,7 @@ export default {
 		SavedFunds: 'Saved funds',
 		AccumulationFunds: 'Percent of accumulation',
 		Currencies: 'Currencies',
+		Categories: 'Categories',
 		NotFound: 'Not found',
 		InternalServerError: 'Internal Server Error'
 	},

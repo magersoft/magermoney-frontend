@@ -1,4 +1,5 @@
 import { useCurrencyFormat } from '@/modules/currencies';
+import { translateCategories } from '@/modules/currencies/utils';
 import { NExpenseSources } from '@/modules/expenseSources/domain';
 
 export function mappingExpenseSourcesForPicker(
@@ -8,10 +9,14 @@ export function mappingExpenseSourcesForPicker(
 
 	return expenseSources.map((expenseSource) => ({
 		...expenseSource,
+		category: {
+			...expenseSource.category,
+			name: translateCategories(expenseSource.category)
+		},
 		text: `${formatAmountWithCurrencyNoFraction(
 			expenseSource.amount,
 			expenseSource.currency.code
-		)} - ${expenseSource.title}`,
+		)} - ${translateCategories(expenseSource.category)}`,
 		value: expenseSource.amount
 	}));
 }

@@ -38,11 +38,14 @@ initialFetchData();
 			<app-cell-title :text="item.group.toUpperCase()" />
 			<van-swipe-cell v-for="expense in item.data" :key="expense.id">
 				<van-cell
-					:title="expense.title"
-					:label="new Date(expense.dateOfIssue).toLocaleDateString(locale)"
+					:title="expense.category.name"
+					:label="`${new Date(expense.dateOfIssue).toLocaleDateString(
+						locale
+					)} - ${expense.savedFund.source}`"
 					:value="
 						formatAmountWithCurrency(expense.amount, expense.currency.code)
 					"
+					:class="$style['expenses-list__item']"
 				/>
 				<template #right>
 					<van-button

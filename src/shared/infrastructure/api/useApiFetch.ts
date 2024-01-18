@@ -1,4 +1,5 @@
 import { createFetch } from '@vueuse/core';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
 import { appConfig } from '@/app/config';
@@ -9,6 +10,7 @@ import { useCatchErrors } from '@/shared/features';
 
 export const useApiFetch = () => {
 	const router = useRouter();
+	const { locale } = useI18n();
 
 	const fetch = createFetch({
 		baseUrl: appConfig.apiBaseUrl,
@@ -17,6 +19,7 @@ export const useApiFetch = () => {
 				const { accessToken } = useAuthStore();
 				options.headers = {
 					...options.headers,
+					'x-lang': unref(locale),
 					Authorization: `Bearer ${unref(accessToken)}`
 				};
 

@@ -23,16 +23,20 @@ const {
 	incomeSourcesItems,
 	savedFundsItems,
 	currenciesItems,
+	categoriesItems,
 	showedIncomeSourcesPicker,
 	showedDatePicker,
 	savedFundTitle,
 	isSingleIncome,
 	isLoading,
 	isLoadingCurrencies,
+	isLoadingCategories,
 	formattedDate,
 	handleSubmit,
 	handleShowDatePicker,
 	handleShowIncomeSourcesPicker,
+	handleUpdateCategoriesTitle,
+	handleConfirmCategoriesPicker,
 	handleConfirmIncomeSourcesPicker,
 	handleConfirmSavedFundsPicker,
 	handleConfirmDatePicker,
@@ -77,9 +81,13 @@ const {
 				:enter-label="t('addIncomeForm.name')"
 				:enter-placeholder="t('addIncomeForm.enterIncome')"
 				:custom-title="t('Other')"
-				:disabled="isLoading"
+				:disabled="isLoading || isLoadingCategories"
+				:loading="isLoadingCategories"
 				:rules="[{ required: true, message: t('validation.required') }]"
+				:items="categoriesItems"
 				:class="$style['add-income-form__field']"
+				@confirm="handleConfirmCategoriesPicker"
+				@update:model-value="handleUpdateCategoriesTitle"
 			/>
 
 			<app-amount-input

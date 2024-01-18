@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
-import { savedFundsTypesItems } from '@/modules/savedFunds/constants';
 import { walletColors } from '@/modules/wallets/constants';
-import { useWalletSaveForm } from '@/modules/wallets/ui/components/WalletSaveForm/features';
+import {
+	useInitWalletSaveForm,
+	useWalletSaveForm
+} from '@/modules/wallets/ui/components/WalletSaveForm/features';
 import {
 	AppAmountInput,
 	AppCellDescription,
@@ -19,11 +21,17 @@ const {
 	walletSaveFormData,
 	currentColorIdx,
 	currenciesItems,
+	savedCategoriesItems,
 	isLoading,
 	isLoadingCurrencies,
+	isLoadingCategories,
+	handleConfirmWalletsPicker,
+	handleUpdateWalletsTitle,
 	handleChangeColor,
 	handleSubmit
 } = useWalletSaveForm();
+
+useInitWalletSaveForm();
 </script>
 
 <template>
@@ -46,8 +54,11 @@ const {
 				:custom-title="t('Other')"
 				:class="$style['wallet-save-form__field']"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:readonly="isLoading"
-				:items="savedFundsTypesItems"
+				:readonly="isLoading || isLoadingCategories"
+				:loading="isLoadingCategories"
+				:items="savedCategoriesItems"
+				@confirm="handleConfirmWalletsPicker"
+				@update:model-value="handleUpdateWalletsTitle"
 			/>
 			<app-amount-input
 				v-model="walletSaveFormData.amount"

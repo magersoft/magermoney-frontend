@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
-import { savedFundsTypesItems } from '@/modules/savedFunds/constants';
 import {
 	useInitSavedFundsForm,
 	useSavedFundsForm
@@ -36,8 +35,12 @@ const {
 	hasSavedFunds,
 	hasServerError,
 	currenciesItems,
+	savedCategoriesItems,
 	isLoading,
 	isLoadingCurrencies,
+	isLoadingCategories,
+	handleConfirmSavedFundsPicker,
+	handleUpdateSavedFundsTitle,
 	handleAddSubmit,
 	handleSubmit,
 	handleBack
@@ -68,8 +71,11 @@ const {
 				:custom-title="t('savedFunds.other')"
 				:error="hasServerError"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:readonly="isLoading"
-				:items="savedFundsTypesItems"
+				:readonly="isLoading || isLoadingCategories"
+				:loading="isLoadingCategories"
+				:items="savedCategoriesItems"
+				@confirm="handleConfirmSavedFundsPicker"
+				@update:model-value="handleUpdateSavedFundsTitle"
 			/>
 			<app-amount-input
 				v-model="savedFundsFormData.amount"

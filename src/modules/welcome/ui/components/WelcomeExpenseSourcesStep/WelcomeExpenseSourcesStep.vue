@@ -8,7 +8,7 @@ import { useWelcomeSteps } from '@/modules/welcome';
 import { WelcomeStepsType } from '@/modules/welcome/constants';
 
 const { isLoading, fetchExpenseSources } = useExpenseSources();
-const { setStep } = useWelcomeSteps();
+const { setStep, handleFinished } = useWelcomeSteps();
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const { setStep } = useWelcomeSteps();
 			has-back-button
 			has-submit-button
 			@click:back="setStep(WelcomeStepsType.ACCUMULATION_FUNDS)"
-			@click:submit="setStep(WelcomeStepsType.FINISHED)"
+			@click:submit="handleFinished"
 		/>
 		<expense-sources-list />
 	</van-pull-refresh>

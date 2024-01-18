@@ -9,7 +9,7 @@ interface UseHistoryListParams {
 
 export function useHistoryList({ savedFundId }: UseHistoryListParams = {}) {
 	const {
-		history,
+		historyItems,
 		isLoading,
 		isFinished,
 		page,
@@ -23,7 +23,7 @@ export function useHistoryList({ savedFundId }: UseHistoryListParams = {}) {
 	const isRefreshLoading = ref(false);
 
 	const groupedHistory = computed(() =>
-		groupArrayByMonthYear(unref(history), 'dateOfIssue', unref(locale))
+		groupArrayByMonthYear(unref(historyItems), 'dateOfIssue', unref(locale))
 	);
 
 	const historyIcons = computed(() => ({
