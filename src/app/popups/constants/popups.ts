@@ -1,5 +1,6 @@
 export enum AppPopups {
 	AddIncome = 'AddIncome',
 	AddExpense = 'AddExpense',
-	SaveWallet = 'SaveWallet'
+	SaveWallet = 'SaveWallet',
+	SaveCategory = 'SaveCategory'
 }

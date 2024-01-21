@@ -28,8 +28,9 @@ export function useAddIncomeForm() {
 	const { savedFundsItems } = useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 	const {
-		incomesCategoriesItems: categoriesItems,
-		isLoading: isLoadingCategories
+		incomeCategoriesItems,
+		isLoading: isLoadingCategories,
+		fetchIncomeCategories
 	} = useCategories();
 
 	const { fetchDashboard } = useInitDashboard();
@@ -152,6 +153,7 @@ export function useAddIncomeForm() {
 						handleClose();
 
 						await fetchDashboard();
+						await fetchIncomeCategories({ force: true, quite: true });
 					},
 					onError: async () => {
 						await unref(popupOptions)?.onError?.();
@@ -168,7 +170,7 @@ export function useAddIncomeForm() {
 		incomeSourcesItems,
 		savedFundsItems,
 		currenciesItems,
-		categoriesItems,
+		incomeCategoriesItems,
 		showedIncomeSourcesPicker,
 		showedDatePicker,
 		isLoading,

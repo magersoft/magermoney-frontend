@@ -1,5 +1,4 @@
 .app-view {
-  width: 100%;
   height: calc(100dvh - var(--header-nav-bar-height) - var(--footer-tabbar-height));
   margin-top: var(--header-nav-bar-height);
   overflow: auto;

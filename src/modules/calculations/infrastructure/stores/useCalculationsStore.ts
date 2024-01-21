@@ -10,12 +10,14 @@ const calculationsStore = defineStore('calculations', {
 	state: (): NCalculations.IState => ({
 		...fetchStateInitialState,
 		totalBalance: null,
-		totalMonthlyIncomes: null,
-		totalMonthlyExpenses: null,
+		totalIncomes: null,
+		totalExpenses: null,
 		monthlyBudget: null,
 		percentByAmount: null,
 		amountByPercent: null,
-		transferDetails: null
+		transferDetails: null,
+		summaryIncomesByCategories: [],
+		summaryExpensesByCategories: []
 	}),
 	getters: {
 		roundedAmountByPercent: (state) =>
@@ -39,11 +41,11 @@ const calculationsStore = defineStore('calculations', {
 		setTotalBalance(value: NCalculations.ITotalBalance) {
 			this.totalBalance = value;
 		},
-		setTotalMonthlyIncomes(value: NCalculations.ITotalMonthlyIncomes) {
-			this.totalMonthlyIncomes = value;
+		setTotalIncomes(value: NCalculations.ITotalIncomes) {
+			this.totalIncomes = value;
 		},
-		setTotalMonthlyExpenses(value: NCalculations.ITotalMonthlyExpenses) {
-			this.totalMonthlyExpenses = value;
+		setTotalExpenses(value: NCalculations.ITotalExpenses) {
+			this.totalExpenses = value;
 		},
 		setMonthlyBudget(value: NCalculations.IMonthlyBudget) {
 			this.monthlyBudget = value;
@@ -56,6 +58,16 @@ const calculationsStore = defineStore('calculations', {
 		},
 		setTransferDetails(value: NCalculations.ITransferDetails) {
 			this.transferDetails = value;
+		},
+		setSummaryIncomesByCategories(
+			summaryIncomesByCategories: NCalculations.ISummaryIncomesByCategories[]
+		) {
+			this.summaryIncomesByCategories = summaryIncomesByCategories;
+		},
+		setSummaryExpensesByCategories(
+			summaryExpensesByCategories: NCalculations.ISummaryExpensesByCategories[]
+		) {
+			this.summaryExpensesByCategories = summaryExpensesByCategories;
 		},
 		setIsLoading(value: boolean) {
 			this.isLoading = value;

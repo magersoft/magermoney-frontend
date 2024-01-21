@@ -33,9 +33,9 @@ export function useIncomeSourceForm({
 
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 	const {
-		incomesCategoriesItems: categoriesItems,
+		incomeCategoriesItems,
 		isLoading: isLoadingCategories,
-		fetchCategories
+		fetchIncomeCategories
 	} = useCategories();
 
 	const {
@@ -92,7 +92,7 @@ export function useIncomeSourceForm({
 			incomeSourceFormData.value = { ...initialIncomeSourceFormControls };
 
 			await fetchIncomeSources({ force: true, quite: true });
-			await fetchCategories({ force: true, quite: true });
+			await fetchIncomeCategories({ force: true, quite: true });
 
 			onAdd?.();
 		}
@@ -111,7 +111,7 @@ export function useIncomeSourceForm({
 		errorMessages,
 		hasIncomeSources,
 		currenciesItems,
-		categoriesItems,
+		incomeCategoriesItems,
 		isLoading,
 		isLoadingCurrencies,
 		isLoadingCategories,

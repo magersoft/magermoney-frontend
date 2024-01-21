@@ -35,7 +35,7 @@ const {
 	hasExpenseSources,
 	hasServerError,
 	currenciesItems,
-	categoriesItems,
+	expenseCategoriesItems,
 	isLoading,
 	isLoadingCurrencies,
 	isLoadingCategories,
@@ -73,7 +73,7 @@ const {
 				:rules="[{ required: true, message: t('validation.required') }]"
 				:disabled="isLoading || isLoadingCategories"
 				:loading="isLoadingCategories"
-				:items="categoriesItems"
+				:items="expenseCategoriesItems"
 				@confirm="handleConfirmExpenseSourcesPicker"
 				@update:model-value="handleUpdateExpenseSourcesTitle"
 			/>

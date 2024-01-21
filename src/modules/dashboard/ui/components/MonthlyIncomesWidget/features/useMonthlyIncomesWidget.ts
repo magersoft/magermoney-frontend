@@ -6,19 +6,19 @@ import { useCalculations } from '@/modules/calculations';
 import { useCurrencyFormat } from '@/modules/currencies';
 
 export function useMonthlyIncomesWidget() {
-	const { totalMonthlyIncomes, isLoading } = useCalculations();
+	const { totalIncomes, isLoading } = useCalculations();
 	const { formatAmountWithCurrencyNoFraction } = useCurrencyFormat();
 
 	const { t } = useI18n();
 
 	const totalMonthlyIncomesFormatted = computed(() => {
-		if (!unref(totalMonthlyIncomes)) {
+		if (!unref(totalIncomes)) {
 			return t('noData');
 		}
 
 		return formatAmountWithCurrencyNoFraction(
-			unref(totalMonthlyIncomes)!.amount,
-			unref(totalMonthlyIncomes)!.currency
+			unref(totalIncomes)!.amount,
+			unref(totalIncomes)!.currency
 		);
 	});
 

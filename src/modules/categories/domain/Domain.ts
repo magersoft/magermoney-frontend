@@ -1,4 +1,4 @@
-import { IFetchState } from '@/shared/domain';
+import { IFetchPaginatedState } from '@/shared/domain';
 import { RequestReturnError } from '@/shared/types/api';
 import {
 	CategoriesControllerFindAllParams,
@@ -19,8 +19,11 @@ export namespace NCategories {
 
 	export interface IQueryCategories extends CategoriesControllerFindAllParams {}
 
-	export interface IState extends IFetchState {
+	export interface IState extends IFetchPaginatedState {
 		categories: ICategory[];
+		incomeCategories: ICategory[];
+		expenseCategories: ICategory[];
+		savedCategories: ICategory[];
 		category: ICategory | null;
 	}
 

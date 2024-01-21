@@ -35,7 +35,7 @@ export function useWalletSaveForm() {
 	const {
 		savedCategoriesItems,
 		isLoading: isLoadingCategories,
-		fetchCategories
+		fetchSavedCategories
 	} = useCategories();
 
 	const { t } = useI18n();
@@ -136,7 +136,7 @@ export function useWalletSaveForm() {
 						handleClose();
 
 						await fetchSavedFunds({ force: true });
-						await fetchCategories({ force: true, quite: true });
+						await fetchSavedCategories({ force: true, quite: true });
 					}
 				});
 			}

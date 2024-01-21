@@ -27,8 +27,9 @@ export function useAddExpenseForm() {
 	const { savedFundsItems } = useSavedFunds();
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 	const {
-		expensesCategoriesItems: categoriesItems,
-		isLoading: isLoadingCategories
+		expenseCategoriesItems,
+		isLoading: isLoadingCategories,
+		fetchExpenseCategories
 	} = useCategories();
 
 	const { fetchDashboard } = useInitDashboard();
@@ -151,6 +152,7 @@ export function useAddExpenseForm() {
 						handleClose();
 
 						await fetchDashboard();
+						await fetchExpenseCategories({ force: true, quite: true });
 					},
 					onError: async () => {
 						await unref(popupOptions)?.onError?.();
@@ -167,7 +169,7 @@ export function useAddExpenseForm() {
 		expenseSourcesItems,
 		savedFundsItems,
 		currenciesItems,
-		categoriesItems,
+		expenseCategoriesItems,
 		showedExpenseSourcesPicker,
 		showedDatePicker,
 		isLoading,

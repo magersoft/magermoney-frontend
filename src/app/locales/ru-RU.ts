@@ -22,6 +22,7 @@ export default {
 	viewAll: 'Показать все',
 	incomes: 'Доходы',
 	expenses: 'Расходы',
+	wallet: 'Кошелек',
 	monthlyBudget: 'Ежемесячный бюджет',
 	currentBalance: 'Текущий баланс',
 	sort: 'Сортировка',
@@ -176,6 +177,15 @@ export default {
 			success: 'Валюты успешно сохранены',
 			fail: 'Не удалось сохранить валюты'
 		}
+	},
+	categoriesView: {
+		title: 'Редактирование категорий',
+		description:
+			'Вы можете добавлять, удалять и редактировать ваши категории доходов и расходов',
+		category: 'Категорию',
+		removeTitle: 'Удалить категорию',
+		empty:
+			'У вас пока нет категорий. Добавьте категории, чтобы увидеть здесь список.'
 	},
 	monthlyBudgetView: {
 		availableInDay: 'Доступно в день',

@@ -7,14 +7,14 @@ export function useInitAddExpenseForm() {
 	const { fetchExpenseSources } = useExpenseSources();
 	const { fetchSavedFunds } = useSavedFunds();
 	const { fetchCurrencies } = useCurrencies();
-	const { fetchCategories } = useCategories();
+	const { fetchExpenseCategories } = useCategories();
 
 	const fetchData = async () => {
 		await Promise.all([
 			fetchExpenseSources(),
 			fetchSavedFunds(),
 			fetchCurrencies(),
-			fetchCategories()
+			fetchExpenseCategories()
 		]);
 	};
 

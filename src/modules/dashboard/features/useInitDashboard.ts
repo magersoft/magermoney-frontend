@@ -7,8 +7,8 @@ export const useInitDashboard = () => {
 	const { currency } = useSettingsStore();
 	const {
 		fetchTotalBalance,
-		fetchTotalMonthlyIncomes,
-		fetchTotalMonthlyExpenses,
+		fetchTotalIncomes,
+		fetchTotalExpenses,
 		fetchMonthlyBudget
 	} = useCalculations();
 	const { fetchSavedFunds } = useSavedFunds();
@@ -20,13 +20,13 @@ export const useInitDashboard = () => {
 		isLoading.value = true;
 
 		await fetchTotalBalance({ force: true, showError: true }, unref(currency));
-		await fetchTotalMonthlyIncomes(
+		await fetchTotalIncomes(
 			{ force: true, showError: true },
-			unref(currency)
+			{ currency: unref(currency) }
 		);
-		await fetchTotalMonthlyExpenses(
+		await fetchTotalExpenses(
 			{ force: true, showError: true },
-			unref(currency)
+			{ currency: unref(currency) }
 		);
 		await fetchMonthlyBudget({ force: true, showError: true }, unref(currency));
 		await fetchSavedFunds({ force: true, showError: true });

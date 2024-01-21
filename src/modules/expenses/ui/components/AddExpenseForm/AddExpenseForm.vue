@@ -23,7 +23,7 @@ const {
 	currenciesItems,
 	savedFundsItems,
 	expenseSourcesItems,
-	categoriesItems,
+	expenseCategoriesItems,
 	savedFundTitle,
 	formattedDate,
 	isSingleExpense,
@@ -51,7 +51,7 @@ const {
 		@submit="handleSubmit"
 	>
 		<app-cell-title :text="t('addExpenseForm.title')" />
-		<app-cell-description />
+		<app-cell-description :text="t('addExpenseForm.description')" />
 
 		<van-cell-group inset>
 			<app-amount-input
@@ -84,7 +84,7 @@ const {
 				:disabled="isLoading || isLoadingCategories"
 				:loading="isLoadingCategories"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:items="categoriesItems"
+				:items="expenseCategoriesItems"
 				:class="$style['add-expense-form__field']"
 				@confirm="handleConfirmCategoriesPicker"
 				@update:model-value="handleUpdateCategoriesTitle"
@@ -165,6 +165,7 @@ const {
 		v-model:show="showedDatePicker"
 		:min-date="appConfig.minDate"
 		:max-date="appConfig.maxDate"
+		:first-day-of-week="appConfig.firstDayOfWeek"
 		@confirm="handleConfirmDatePicker"
 	/>
 </template>

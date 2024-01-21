@@ -32,7 +32,7 @@ export function useSavedFundsForm({
 	const {
 		savedCategoriesItems,
 		isLoading: isLoadingCategories,
-		fetchCategories
+		fetchSavedCategories
 	} = useCategories();
 
 	const handleConfirmSavedFundsPicker = ({
@@ -83,7 +83,7 @@ export function useSavedFundsForm({
 			};
 
 			await fetchSavedFunds({ force: true, quite: true });
-			await fetchCategories({ force: true, quite: true });
+			await fetchSavedCategories({ force: true, quite: true });
 
 			onAdd?.();
 		}

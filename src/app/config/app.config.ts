@@ -11,6 +11,7 @@ export default {
 	defaultPaginationPageSize: 10,
 	minDate: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1),
 	maxDate: new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0),
+	firstDayOfWeek: 1,
 	availableLanguages: [
 		{
 			name: 'Русский',

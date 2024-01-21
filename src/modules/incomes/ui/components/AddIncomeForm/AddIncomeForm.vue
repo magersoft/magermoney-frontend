@@ -23,7 +23,7 @@ const {
 	incomeSourcesItems,
 	savedFundsItems,
 	currenciesItems,
-	categoriesItems,
+	incomeCategoriesItems,
 	showedIncomeSourcesPicker,
 	showedDatePicker,
 	savedFundTitle,
@@ -84,7 +84,7 @@ const {
 				:disabled="isLoading || isLoadingCategories"
 				:loading="isLoadingCategories"
 				:rules="[{ required: true, message: t('validation.required') }]"
-				:items="categoriesItems"
+				:items="incomeCategoriesItems"
 				:class="$style['add-income-form__field']"
 				@confirm="handleConfirmCategoriesPicker"
 				@update:model-value="handleUpdateCategoriesTitle"
@@ -164,6 +164,7 @@ const {
 		v-model:show="showedDatePicker"
 		:min-date="appConfig.minDate"
 		:max-date="appConfig.maxDate"
+		:first-day-of-week="appConfig.firstDayOfWeek"
 		@confirm="handleConfirmDatePicker"
 	/>
 </template>

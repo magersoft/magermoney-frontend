@@ -16,6 +16,7 @@ export function useSettleResponse<T, E extends SettleResponseError>() {
 		{
 			messages,
 			isNotifySuccess = true,
+			isNotifyError = true,
 			onError,
 			onSuccess
 		}: SettleResponseOptions<E>
@@ -30,7 +31,7 @@ export function useSettleResponse<T, E extends SettleResponseError>() {
 			return true;
 		}
 
-		showErrorNotify(unref(error));
+		isNotifyError && showErrorNotify(unref(error));
 
 		onError && onError(unref(error));
 

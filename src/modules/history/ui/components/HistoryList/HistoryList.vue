@@ -42,7 +42,9 @@ initialFetchData();
 				:key="historyIdx + history.dateOfIssue"
 				:icon="historyIcons[history.type]"
 				:title="history.title"
-				:label="new Date(history.dateOfIssue).toLocaleDateString(locale)"
+				:label="`${new Date(history.dateOfIssue).toLocaleDateString(
+					locale
+				)} - ${history.source}`"
 				:value="formatAmountWithCurrency(history.amount, history.currency.code)"
 				:class="[
 					$style['history-list__item'],

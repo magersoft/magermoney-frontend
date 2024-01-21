@@ -22,6 +22,7 @@ export default {
 	viewAll: 'View all',
 	incomes: 'Incomes',
 	expenses: 'Expenses',
+	wallet: 'Wallet',
 	monthlyBudget: 'Monthly budget',
 	currentBalance: 'Current balance',
 	sort: 'Sort',
@@ -174,6 +175,13 @@ export default {
 			success: 'Currencies saved successfully',
 			fail: 'Failed to save currencies'
 		}
+	},
+	categoriesView: {
+		title: 'Edit categories',
+		description: 'You can add, edit or delete your categories',
+		category: 'Category',
+		removeTitle: 'Remove category',
+		empty: 'You have no categories. Add them to see the list here.'
 	},
 	monthlyBudgetView: {
 		availableInDay: 'Available in day',

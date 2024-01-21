@@ -5,6 +5,8 @@ export interface BaseRemoveParams<T extends any[], EntityName> {
 	handleRemove: (...args: T) => RequestReturnValue<unknown>;
 	onSuccess?: () => unknown;
 	onError?: () => unknown;
+	isNotifyError?: boolean;
+	isNotifySuccess?: boolean;
 	title?: string;
 	removedMessages?: SystemMessages;
 	entityTitle?: (entityName: EntityName) => string;

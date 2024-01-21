@@ -2,12 +2,18 @@ import { IFetchState } from '@/shared/domain';
 import { RequestReturnError, RequestReturnValue } from '@/shared/types/api';
 import {
 	AmountByPercentEntity,
+	CalculationsControllerGetSummaryExpensesByCategoriesParams,
+	CalculationsControllerGetSummaryIncomesByCategoriesParams,
+	CalculationsControllerGetTotalExpensesParams,
+	CalculationsControllerGetTotalIncomesParams,
 	CalculationsControllerGetTransferDetailsParams,
 	MonthlyBudgetEntity,
 	PercentByAmountEntity,
+	SummaryExpensesByCategoriesEntity,
+	SummaryIncomesByCategoriesEntity,
 	TotalBalanceEntity,
-	TotalMonthlyExpensesEntity,
-	TotalMonthlyIncomesEntity,
+	TotalExpensesEntity,
+	TotalIncomesEntity,
 	TransferDetailsEntity
 } from '@/shared/types/api/generated';
 
@@ -15,34 +21,48 @@ export namespace NCalculations {
 	export const API_NAMESPACE = 'calculations';
 
 	export interface ITotalBalance extends TotalBalanceEntity {}
-	export interface ITotalMonthlyIncomes extends TotalMonthlyIncomesEntity {}
-	export interface ITotalMonthlyExpenses extends TotalMonthlyExpensesEntity {}
+	export interface ITotalIncomes extends TotalIncomesEntity {}
+	export interface ITotalExpenses extends TotalExpensesEntity {}
 	export interface IMonthlyBudget extends MonthlyBudgetEntity {}
 	export interface IPercentByAmount extends PercentByAmountEntity {}
 	export interface IAmountByPercent extends AmountByPercentEntity {}
 	export interface ITransferDetails extends TransferDetailsEntity {}
+	export interface ISummaryIncomesByCategories
+		extends SummaryIncomesByCategoriesEntity {}
+	export interface ISummaryExpensesByCategories
+		extends SummaryExpensesByCategoriesEntity {}
 
+	export interface IQueryTotalIncomes
+		extends CalculationsControllerGetTotalIncomesParams {}
+	export interface IQueryTotalExpenses
+		extends CalculationsControllerGetTotalExpensesParams {}
 	export interface IQueryTransferDetails
 		extends CalculationsControllerGetTransferDetailsParams {}
+	export interface IQuerySummaryIncomesByCategories
+		extends CalculationsControllerGetSummaryIncomesByCategoriesParams {}
+	export interface IQuerySummaryExpensesByCategories
+		extends CalculationsControllerGetSummaryExpensesByCategoriesParams {}
 
 	export interface IState extends IFetchState {
 		totalBalance: ITotalBalance | null;
-		totalMonthlyIncomes: ITotalMonthlyIncomes | null;
-		totalMonthlyExpenses: ITotalMonthlyExpenses | null;
+		totalIncomes: ITotalIncomes | null;
+		totalExpenses: ITotalExpenses | null;
 		monthlyBudget: IMonthlyBudget | null;
 		percentByAmount: IPercentByAmount | null;
 		amountByPercent: IAmountByPercent | null;
 		transferDetails: ITransferDetails | null;
+		summaryIncomesByCategories: ISummaryIncomesByCategories[];
+		summaryExpensesByCategories: ISummaryExpensesByCategories[];
 	}
 
 	export interface IModel {
 		fetchTotalBalance: (currency: string) => RequestReturnValue<ITotalBalance>;
-		fetchTotalMonthlyIncomes: (
-			currency: string
-		) => RequestReturnValue<ITotalMonthlyIncomes>;
-		fetchTotalMonthlyExpenses: (
-			currency: string
-		) => RequestReturnValue<ITotalMonthlyExpenses>;
+		fetchTotalIncomes: (
+			query: IQueryTotalIncomes
+		) => RequestReturnValue<ITotalIncomes>;
+		fetchTotalExpenses: (
+			query: IQueryTotalExpenses
+		) => RequestReturnValue<ITotalExpenses>;
 		fetchMonthlyBudget: (
 			currency: string
 		) => RequestReturnValue<IMonthlyBudget>;
@@ -57,6 +77,12 @@ export namespace NCalculations {
 		fetchTransferDetails: (
 			query: IQueryTransferDetails
 		) => RequestReturnValue<ITransferDetails>;
+		fetchSummaryIncomesByCategories: (
+			query: IQuerySummaryIncomesByCategories
+		) => RequestReturnValue<ISummaryIncomesByCategories[]>;
+		fetchSummaryExpensesByCategories: (
+			query: IQuerySummaryExpensesByCategories
+		) => RequestReturnValue<ISummaryExpensesByCategories[]>;
 	}
 
 	export interface IError extends RequestReturnError {}

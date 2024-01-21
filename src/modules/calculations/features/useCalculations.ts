@@ -3,8 +3,8 @@ import {
 	useFetchMonthlyBudgetService,
 	useFetchPercentByAmountService,
 	useFetchTotalBalanceService,
-	useFetchTotalMonthlyExpensesService,
-	useFetchTotalMonthlyIncomesService,
+	useFetchTotalExpensesService,
+	useFetchTotalIncomesService,
 	useFetchTransferDetailsService
 } from '@/modules/calculations/infrastructure/services';
 import { useCalculationsStore } from '@/modules/calculations/infrastructure/stores';
@@ -12,8 +12,8 @@ import { useCalculationsStore } from '@/modules/calculations/infrastructure/stor
 export function useCalculations() {
 	const {
 		totalBalance,
-		totalMonthlyIncomes,
-		totalMonthlyExpenses,
+		totalIncomes,
+		totalExpenses,
 		monthlyBudget,
 		amountByPercent,
 		roundedAmountByPercent,
@@ -29,8 +29,8 @@ export function useCalculations() {
 	} = useCalculationsStore();
 
 	const { fetchTotalBalance } = useFetchTotalBalanceService();
-	const { fetchTotalMonthlyIncomes } = useFetchTotalMonthlyIncomesService();
-	const { fetchTotalMonthlyExpenses } = useFetchTotalMonthlyExpensesService();
+	const { fetchTotalIncomes } = useFetchTotalIncomesService();
+	const { fetchTotalExpenses } = useFetchTotalExpensesService();
 	const { fetchMonthlyBudget } = useFetchMonthlyBudgetService();
 	const { fetchPercentByAmount } = useFetchPercentByAmountService();
 	const { fetchAmountByPercent } = useFetchAmountByPercentService();
@@ -38,8 +38,8 @@ export function useCalculations() {
 
 	return {
 		totalBalance,
-		totalMonthlyIncomes,
-		totalMonthlyExpenses,
+		totalIncomes,
+		totalExpenses,
 		monthlyBudget,
 		transferDetails,
 
@@ -54,8 +54,8 @@ export function useCalculations() {
 		balanceAccumulationCurrency,
 
 		fetchTotalBalance,
-		fetchTotalMonthlyIncomes,
-		fetchTotalMonthlyExpenses,
+		fetchTotalIncomes,
+		fetchTotalExpenses,
 		fetchMonthlyBudget,
 		fetchPercentByAmount,
 		fetchAmountByPercent,

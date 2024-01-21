@@ -32,6 +32,7 @@ const router = useRouter();
 				v-if="isAuthorization"
 				is-link
 				:title="t('routes.Categories')"
+				@click="router.push({ name: AppRoutes.Categories })"
 			/>
 		</van-cell-group>
 

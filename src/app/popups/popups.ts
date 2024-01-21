@@ -12,5 +12,11 @@ export const popups: Record<AppPopups, any> = {
 	[AppPopups.SaveWallet]: defineAsyncComponent(
 		() =>
 			import('@/modules/wallets/ui/popups/SaveWalletPopup/SaveWalletPopup.vue')
+	),
+	[AppPopups.SaveCategory]: defineAsyncComponent(
+		() =>
+			import(
+				'@/modules/categories/ui/popups/SaveCategoryPopup/SaveCategoryPopup.vue'
+			)
 	)
 };

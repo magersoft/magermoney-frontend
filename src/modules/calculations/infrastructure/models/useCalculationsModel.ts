@@ -11,23 +11,19 @@ export const useCalculationsModel = (): NCalculations.IModel => {
 			})
 		).get();
 
-	const fetchTotalMonthlyIncomes = (currency: string) =>
-		fetch<NCalculations.ITotalMonthlyIncomes>(
+	const fetchTotalIncomes = (query: NCalculations.IQueryTotalIncomes) =>
+		fetch<NCalculations.ITotalIncomes>(
 			getUrlWithQueryParams(
-				`/${NCalculations.API_NAMESPACE}/total-monthly-incomes`,
-				{
-					currency
-				}
+				`/${NCalculations.API_NAMESPACE}/total-incomes`,
+				query
 			)
 		).get();
 
-	const fetchTotalMonthlyExpenses = (currency: string) =>
-		fetch<NCalculations.ITotalMonthlyExpenses>(
+	const fetchTotalExpenses = (query: NCalculations.IQueryTotalExpenses) =>
+		fetch<NCalculations.ITotalExpenses>(
 			getUrlWithQueryParams(
-				`/${NCalculations.API_NAMESPACE}/total-monthly-expenses`,
-				{
-					currency
-				}
+				`/${NCalculations.API_NAMESPACE}/total-expenses`,
+				query
 			)
 		).get();
 
@@ -68,13 +64,35 @@ export const useCalculationsModel = (): NCalculations.IModel => {
 			)
 		).get();
 
+	const fetchSummaryIncomesByCategories = (
+		query: NCalculations.IQuerySummaryIncomesByCategories
+	) =>
+		fetch<NCalculations.ISummaryIncomesByCategories[]>(
+			getUrlWithQueryParams(
+				`/${NCalculations.API_NAMESPACE}/get-summary-incomes-by-categories`,
+				query
+			)
+		).get();
+
+	const fetchSummaryExpensesByCategories = (
+		query: NCalculations.IQuerySummaryExpensesByCategories
+	) =>
+		fetch<NCalculations.ISummaryExpensesByCategories[]>(
+			getUrlWithQueryParams(
+				`/${NCalculations.API_NAMESPACE}/get-summary-expenses-by-categories`,
+				query
+			)
+		).get();
+
 	return {
 		fetchTotalBalance,
-		fetchTotalMonthlyIncomes,
-		fetchTotalMonthlyExpenses,
+		fetchTotalIncomes,
+		fetchTotalExpenses,
 		fetchMonthlyBudget,
 		fetchPercentByAmount,
 		fetchAmountByPercent,
-		fetchTransferDetails
+		fetchTransferDetails,
+		fetchSummaryIncomesByCategories,
+		fetchSummaryExpensesByCategories
 	};
 };

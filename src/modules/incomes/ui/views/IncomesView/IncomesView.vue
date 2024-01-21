@@ -45,7 +45,10 @@ const disabledPullRefresh = ref(false);
 		:class="$style['incomes-view']"
 		@refresh="handleRefresh"
 	>
-		<incomes-filters />
+		<incomes-filters
+			@calendar:opened="disabledPullRefresh = true"
+			@calendar:closed="disabledPullRefresh = false"
+		/>
 		<incomes-list :is-refresh-loading="isRefreshLoading" />
 	</van-pull-refresh>
 </template>

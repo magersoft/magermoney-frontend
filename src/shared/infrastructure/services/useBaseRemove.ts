@@ -12,6 +12,8 @@ export function useBaseRemove<T extends any[], EntityName = string>({
 	handleRemove,
 	onSuccess,
 	onError,
+	isNotifyError = true,
+	isNotifySuccess = true,
 	title = baseRemoveTitle,
 	removedMessages = baseRemoveMessages,
 	entityTitle = (entityName: EntityName) => `«${entityName}»`,
@@ -29,6 +31,8 @@ export function useBaseRemove<T extends any[], EntityName = string>({
 				success: t(removedMessages.success),
 				fail: t(removedMessages.fail)
 			},
+			isNotifySuccess,
+			isNotifyError,
 			onSuccess,
 			onError
 		});
@@ -49,8 +53,7 @@ export function useBaseRemove<T extends any[], EntityName = string>({
 		if (action === DialogActionType.CANCEL) return false;
 
 		if (action === DialogActionType.CONFIRM) {
-			await remove(...args);
-			return true;
+			return await remove(...args);
 		}
 	};
 

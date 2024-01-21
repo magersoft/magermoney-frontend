@@ -1,10 +1,10 @@
 import { useCategories } from '@/modules/categories';
 
 export function useInitWalletSaveForm() {
-	const { fetchCategories } = useCategories();
+	const { fetchSavedCategories } = useCategories();
 
 	const fetchData = async () => {
-		await Promise.all([fetchCategories({ showError: true })]);
+		await Promise.all([fetchSavedCategories()]);
 	};
 
 	fetchData();

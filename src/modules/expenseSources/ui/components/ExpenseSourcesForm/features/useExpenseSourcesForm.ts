@@ -32,9 +32,9 @@ export function useExpenseSourcesForm({
 
 	const { currenciesItems, isLoading: isLoadingCurrencies } = useCurrencies();
 	const {
-		expensesCategoriesItems: categoriesItems,
+		expenseCategoriesItems,
 		isLoading: isLoadingCategories,
-		fetchCategories
+		fetchExpenseCategories
 	} = useCategories();
 
 	const {
@@ -94,7 +94,7 @@ export function useExpenseSourcesForm({
 		}
 
 		await fetchExpenseSources({ force: true, quite: true });
-		await fetchCategories({ force: true, quite: true });
+		await fetchExpenseCategories({ force: true, quite: true });
 
 		onAdd?.();
 	};
@@ -109,7 +109,7 @@ export function useExpenseSourcesForm({
 		formRef,
 		expenseSourcesFormData,
 		currenciesItems,
-		categoriesItems,
+		expenseCategoriesItems,
 		hasServerError,
 		errorMessages,
 		isLoading,

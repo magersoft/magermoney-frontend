@@ -10,4 +10,5 @@ export interface SettleResponseOptions<E extends SettleResponseError> {
 	onSuccess?: () => void;
 	onError?: (error: E) => void;
 	isNotifySuccess?: boolean;
+	isNotifyError?: boolean;
 }

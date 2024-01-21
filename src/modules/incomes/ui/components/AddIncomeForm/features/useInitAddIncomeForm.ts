@@ -7,14 +7,14 @@ export function useInitAddIncomeForm() {
 	const { fetchIncomeSources } = useIncomeSources();
 	const { fetchSavedFunds } = useSavedFunds();
 	const { fetchCurrencies } = useCurrencies();
-	const { fetchCategories } = useCategories();
+	const { fetchIncomeCategories } = useCategories();
 
 	const fetchData = async () => {
 		await Promise.all([
 			fetchIncomeSources(),
 			fetchSavedFunds(),
 			fetchCurrencies(),
-			fetchCategories()
+			fetchIncomeCategories()
 		]);
 	};
 

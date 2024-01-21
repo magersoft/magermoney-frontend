@@ -192,12 +192,12 @@ export interface TotalBalanceEntity {
 	currency: string;
 }
 
-export interface TotalMonthlyIncomesEntity {
+export interface TotalIncomesEntity {
 	amount: number;
 	currency: string;
 }
 
-export interface TotalMonthlyExpensesEntity {
+export interface TotalExpensesEntity {
 	amount: number;
 	currency: string;
 }
@@ -230,6 +230,22 @@ export interface TransferDetailsEntity {
 	outcome: TotalBalanceEntity;
 	income: TotalBalanceEntity;
 	rate: TotalBalanceEntity;
+}
+
+export interface SummaryIncomesByCategoriesEntity {
+	categoryId: number;
+	title: string;
+	amount: number;
+	percent: number;
+	currency: string;
+}
+
+export interface SummaryExpensesByCategoriesEntity {
+	categoryId: number;
+	title: string;
+	amount: number;
+	percent: number;
+	currency: string;
 }
 
 export interface CreateExpenseSourceDto {
@@ -366,21 +382,33 @@ export interface HistoryEntity {
 	currency: CurrencyEntity;
 	/** @format date-time */
 	dateOfIssue: string;
+	source: string;
 }
 
 export interface CategoriesControllerFindAllParams {
+	page?: number;
+	perPage?: number;
 	type?: 'INCOME' | 'EXPENSE' | 'SAVED';
+	isDefault?: boolean;
 }
 
 export interface CalculationsControllerGetTotalBalanceParams {
 	currency: string;
 }
 
-export interface CalculationsControllerGetTotalMonthlyIncomesParams {
+export interface CalculationsControllerGetTotalIncomesParams {
+	/** @format date-time */
+	startDate?: string;
+	/** @format date-time */
+	endDate?: string;
 	currency: string;
 }
 
-export interface CalculationsControllerGetTotalMonthlyExpensesParams {
+export interface CalculationsControllerGetTotalExpensesParams {
+	/** @format date-time */
+	startDate?: string;
+	/** @format date-time */
+	endDate?: string;
 	currency: string;
 }
 
@@ -402,6 +430,22 @@ export interface CalculationsControllerGetTransferDetailsParams {
 	fromId: number;
 	toId: number;
 	amount: number;
+	currency: string;
+}
+
+export interface CalculationsControllerGetSummaryIncomesByCategoriesParams {
+	/** @format date-time */
+	startDate?: string;
+	/** @format date-time */
+	endDate?: string;
+	currency: string;
+}
+
+export interface CalculationsControllerGetSummaryExpensesByCategoriesParams {
+	/** @format date-time */
+	startDate?: string;
+	/** @format date-time */
+	endDate?: string;
 	currency: string;
 }
 

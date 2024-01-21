@@ -12,6 +12,7 @@ export enum AppRoutes {
 	Settings = 'Settings',
 	IncomeSources = 'IncomeSources',
 	Currencies = 'Currencies',
+	Categories = 'Categories',
 	ExpenseSources = 'ExpenseSources',
 	AccumulationFunds = 'AccumulationFunds',
 	SavedFunds = 'SavedFunds',
