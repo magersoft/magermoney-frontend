@@ -6,7 +6,8 @@ import { AppPopups, usePopups } from '@/app/popups';
 import { AppRoutes } from '@/app/router/constants';
 import {
 	ExpensesFilters,
-	ExpensesList
+	ExpensesList,
+	ExpensesSummary
 } from '@/modules/expenses/ui/components';
 import { useExpensesList } from '@/modules/expenses/ui/components/ExpensesList/features';
 import { useAppHeader, useAppNav } from '@/shared/ui/components';
@@ -14,8 +15,8 @@ import { useAppHeader, useAppNav } from '@/shared/ui/components';
 const { t } = useI18n();
 const { setHeader } = useAppHeader();
 const { setNav } = useAppNav();
-const router = useRouter();
 const { setPopup } = usePopups();
+const router = useRouter();
 
 const { isLoading, isRefreshLoading, handleRefresh } = useExpensesList();
 
@@ -52,6 +53,7 @@ const disabledPullRefresh = ref(false);
 			@calendar:opened="disabledPullRefresh = true"
 			@calendar:closed="disabledPullRefresh = false"
 		/>
+		<expenses-summary />
 		<expenses-list :is-refresh-loading="isRefreshLoading" />
 	</van-pull-refresh>
 </template>

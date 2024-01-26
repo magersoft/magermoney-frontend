@@ -3,7 +3,11 @@ import { useI18n } from 'vue-i18n';
 
 import { useCurrencyFormat } from '@/modules/currencies';
 import { useHistoryList } from '@/modules/history/ui/components/HistoryList/features';
-import { AppCellSkeleton, AppCellTitle } from '@/shared/ui/components';
+import {
+	AppCellItem,
+	AppCellSkeleton,
+	AppCellTitle
+} from '@/shared/ui/components';
 
 interface HistoryListProps {
 	savedFundId?: number;
@@ -16,7 +20,6 @@ const {
 	groupedHistory,
 	isLoading,
 	isFinished,
-	historyIcons,
 	initialFetchData,
 	handleLoadMore
 } = useHistoryList({ savedFundId: props.savedFundId });
@@ -37,19 +40,19 @@ initialFetchData();
 	>
 		<div v-for="(item, idx) in groupedHistory" :key="idx + item.group">
 			<app-cell-title :text="item.group.toUpperCase()" />
-			<van-cell
+			<app-cell-item
 				v-for="(history, historyIdx) in item.data"
 				:key="historyIdx + history.dateOfIssue"
-				:icon="historyIcons[history.type]"
-				:title="history.title"
-				:label="`${new Date(history.dateOfIssue).toLocaleDateString(
-					locale
-				)} - ${history.source}`"
+				:type="history.type"
+				:title="
+					history.type === 'transfer' ? t('transferFunds') : history.title
+				"
+				:label="history.title"
+				:description="`${history.source} - ${new Date(
+					history.dateOfIssue
+				).toLocaleDateString(locale)}`"
 				:value="formatAmountWithCurrency(history.amount, history.currency.code)"
-				:class="[
-					$style['history-list__item'],
-					$style[`history-list__item--${history.type}`]
-				]"
+				show-icon
 			/>
 		</div>
 		<app-cell-skeleton

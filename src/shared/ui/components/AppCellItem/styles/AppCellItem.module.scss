@@ -1,0 +1,70 @@
+.app-cell-item {
+  position: relative;
+
+  &__cell {
+    :global(.van-cell__title), :global(.van-cell__label) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__description {
+    margin-top: var(--van-cell-label-margin-top);
+    overflow: hidden;
+    font-size: var(--van-cell-label-font-size);
+    line-height: var(--van-cell-label-line-height);
+    color: var(--van-cell-label-color);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &--income {
+    .app-cell-item {
+      &__cell {
+        :global(.van-icon) {
+          transform: rotate(-45deg);
+        }
+      }
+
+      &__value {
+        color: var(--van-success-color);
+
+        &::before {
+          content: "+ ";
+        }
+      }
+    }
+  }
+
+  &--expense {
+    .app-cell-item {
+      &__cell {
+        :global(.van-icon) {
+          transform: rotate(220deg);
+        }
+      }
+
+      &__value {
+        color: var(--van-danger-color);
+
+        &::before {
+          content: "- ";
+        }
+      }
+    }
+  }
+
+  &--transfer {
+    .app-cell-item {
+      &__value {
+        color: var(--van-warning-color);
+      }
+    }
+  }
+}

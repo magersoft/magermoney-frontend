@@ -27,6 +27,7 @@ export default {
 	currentBalance: 'Current balance',
 	sort: 'Sort',
 	apply: 'Apply',
+	transferFunds: 'Transfer funds',
 	notFoundView:
 		'Oops... You got somewhere wrong. The section does not exist or has been deleted.',
 	internalServerError: 'Internal server error',

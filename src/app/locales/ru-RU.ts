@@ -27,6 +27,7 @@ export default {
 	currentBalance: 'Текущий баланс',
 	sort: 'Сортировка',
 	apply: 'Применить',
+	transferFunds: 'Перевод средств',
 	notFoundView:
 		'Ууупс... Вы попали куда-то не туда. Раздел не существует или был удален.',
 	internalServerError: 'Внутренняя ошибка сервера',

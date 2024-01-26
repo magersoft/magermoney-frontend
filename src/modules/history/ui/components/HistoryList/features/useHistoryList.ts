@@ -26,12 +26,6 @@ export function useHistoryList({ savedFundId }: UseHistoryListParams = {}) {
 		groupArrayByMonthYear(unref(historyItems), 'dateOfIssue', unref(locale))
 	);
 
-	const historyIcons = computed(() => ({
-		income: 'down',
-		expense: 'down',
-		transfer: 'exchange'
-	}));
-
 	const initialFetchData = async () => {
 		await fetchHistory(
 			{ force: true },
@@ -64,7 +58,6 @@ export function useHistoryList({ savedFundId }: UseHistoryListParams = {}) {
 		isLoading,
 		isFinished,
 		isRefreshLoading,
-		historyIcons,
 		initialFetchData,
 		handleRefresh,
 		handleLoadMore

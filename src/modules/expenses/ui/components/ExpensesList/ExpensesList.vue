@@ -3,7 +3,11 @@ import { useI18n } from 'vue-i18n';
 
 import { useCurrencyFormat } from '@/modules/currencies';
 import { useExpensesList } from '@/modules/expenses/ui/components/ExpensesList/features';
-import { AppCellSkeleton, AppCellTitle } from '@/shared/ui/components';
+import {
+	AppCellItem,
+	AppCellSkeleton,
+	AppCellTitle
+} from '@/shared/ui/components';
 
 interface ExpensesListProps {
 	isRefreshLoading?: boolean;
@@ -36,27 +40,19 @@ initialFetchData();
 	>
 		<div v-for="(item, idx) in groupedExpenses" :key="idx + item.group">
 			<app-cell-title :text="item.group.toUpperCase()" />
-			<van-swipe-cell v-for="expense in item.data" :key="expense.id">
-				<van-cell
-					:title="expense.category.name"
-					:label="`${new Date(expense.dateOfIssue).toLocaleDateString(
-						locale
-					)} - ${expense.savedFund.source}`"
-					:value="
-						formatAmountWithCurrency(expense.amount, expense.currency.code)
-					"
-					:class="$style['expenses-list__item']"
-				/>
-				<template #right>
-					<van-button
-						square
-						type="danger"
-						:text="t('delete')"
-						:style="{ height: '100%' }"
-						@click="() => handleRemove(expense)"
-					/>
-				</template>
-			</van-swipe-cell>
+			<app-cell-item
+				v-for="expense in item.data"
+				:key="expense.id"
+				type="expense"
+				:title="expense.category.name"
+				:label="expense.category.name"
+				:description="`${expense.savedFund.source} - ${new Date(
+					expense.dateOfIssue
+				).toLocaleDateString(locale)}`"
+				:value="formatAmountWithCurrency(expense.amount, expense.currency.code)"
+				removable
+				@remove="() => handleRemove(expense)"
+			/>
 		</div>
 		<app-cell-skeleton
 			v-if="isRefreshLoading || isLoading"

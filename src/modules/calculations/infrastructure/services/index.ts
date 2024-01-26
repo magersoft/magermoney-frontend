@@ -5,3 +5,5 @@ export * from './useFetchMonthlyBudgetService';
 export * from './useFetchPercentByAmountService';
 export * from './useFetchAmountByPercentService';
 export * from './useFetchTransferDetailsService';
+export * from './useFetchSummaryIncomesByCategoriesService';
+export * from './useFetchSummaryExpensesByCategoriesService';

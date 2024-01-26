@@ -2,12 +2,15 @@ import {
 	useFetchAmountByPercentService,
 	useFetchMonthlyBudgetService,
 	useFetchPercentByAmountService,
+	useFetchSummaryExpensesByCategoriesService,
+	useFetchSummaryIncomesByCategoriesService,
 	useFetchTotalBalanceService,
 	useFetchTotalExpensesService,
 	useFetchTotalIncomesService,
 	useFetchTransferDetailsService
 } from '@/modules/calculations/infrastructure/services';
 import { useCalculationsStore } from '@/modules/calculations/infrastructure/stores';
+import { translateCategories } from '@/modules/currencies/utils';
 
 export function useCalculations() {
 	const {
@@ -24,6 +27,10 @@ export function useCalculations() {
 		balanceMinusAccumulationPercent,
 		balanceAccumulationCurrency,
 		transferDetails,
+		summaryIncomesByCategories,
+		summaryExpensesByCategories,
+		hasSummaryIncomesByCategories,
+		hasSummaryExpensesByCategories,
 		restoreStore: restoreCalculationsStore,
 		error
 	} = useCalculationsStore();
@@ -35,6 +42,10 @@ export function useCalculations() {
 	const { fetchPercentByAmount } = useFetchPercentByAmountService();
 	const { fetchAmountByPercent } = useFetchAmountByPercentService();
 	const { fetchTransferDetails } = useFetchTransferDetailsService();
+	const { fetchSummaryIncomesByCategories } =
+		useFetchSummaryIncomesByCategoriesService();
+	const { fetchSummaryExpensesByCategories } =
+		useFetchSummaryExpensesByCategoriesService();
 
 	return {
 		totalBalance,
@@ -53,6 +64,21 @@ export function useCalculations() {
 		balanceMinusAccumulationPercent,
 		balanceAccumulationCurrency,
 
+		summaryIncomesByCategories: computed(() =>
+			unref(summaryIncomesByCategories).map((item) => ({
+				...item,
+				title: translateCategories({ name: item.title })
+			}))
+		),
+		summaryExpensesByCategories: computed(() =>
+			unref(summaryExpensesByCategories).map((item) => ({
+				...item,
+				title: translateCategories({ name: item.title })
+			}))
+		),
+		hasSummaryIncomesByCategories,
+		hasSummaryExpensesByCategories,
+
 		fetchTotalBalance,
 		fetchTotalIncomes,
 		fetchTotalExpenses,
@@ -60,6 +86,8 @@ export function useCalculations() {
 		fetchPercentByAmount,
 		fetchAmountByPercent,
 		fetchTransferDetails,
+		fetchSummaryIncomesByCategories,
+		fetchSummaryExpensesByCategories,
 
 		isLoading,
 		restoreCalculationsStore,

@@ -1,7 +1,9 @@
 import { useI18n } from 'vue-i18n';
 
+import { useCalculations } from '@/modules/calculations';
 import { useExpenses } from '@/modules/expenses';
 import { NExpenses } from '@/modules/expenses/domain';
+import { useSettingsStore } from '@/modules/settings/infrastructure/stores';
 import { groupArrayByMonthYear } from '@/shared/utils';
 
 export function useExpensesList() {
@@ -15,6 +17,10 @@ export function useExpensesList() {
 		fetchExpensesPaginated,
 		removeExpense
 	} = useExpenses();
+	const { fetchTotalExpenses, fetchSummaryExpensesByCategories } =
+		useCalculations();
+
+	const { currency } = useSettingsStore();
 
 	const { t, locale } = useI18n();
 
@@ -31,6 +37,11 @@ export function useExpensesList() {
 	const handleRefresh = async () => {
 		isRefreshLoading.value = true;
 
+		await fetchTotalExpenses({ force: true }, { currency: unref(currency) });
+		await fetchSummaryExpensesByCategories(
+			{ force: true },
+			{ currency: unref(currency) }
+		);
 		await fetchExpenses(
 			{ force: true, quite: true },
 			{ perPage: unref(pageSize) }

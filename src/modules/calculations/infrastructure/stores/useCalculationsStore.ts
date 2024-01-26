@@ -35,7 +35,11 @@ const calculationsStore = defineStore('calculations', {
 		balanceAccumulationCurrency: (state) =>
 			state.amountByPercent?.currency ||
 			state.percentByAmount?.currency ||
-			appConfig.defaultCurrency
+			appConfig.defaultCurrency,
+		hasSummaryIncomesByCategories: (state) =>
+			!!state.summaryIncomesByCategories.length,
+		hasSummaryExpensesByCategories: (state) =>
+			!!state.summaryExpensesByCategories.length
 	},
 	actions: {
 		setTotalBalance(value: NCalculations.ITotalBalance) {

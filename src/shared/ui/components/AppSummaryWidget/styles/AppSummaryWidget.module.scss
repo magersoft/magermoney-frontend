@@ -1,0 +1,76 @@
+.app-summary-widget {
+  display: flex;
+  flex-direction: column;
+  gap: var(--van-padding-sm);
+  max-width: 100%;
+  padding: var(--van-padding-sm);
+  margin: var(--van-padding-md);
+  background: var(--van-background-2);
+  border-radius: calc(var(--van-radius-lg) * 2);
+  box-shadow: var(--dropdown-shadow);
+
+  &__doughnut {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 200px;
+    margin-bottom: var(--van-padding-md);
+
+    > canvas {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  &__total {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .title {
+      font-size: var(--van-font-size-sm);
+    }
+
+    .amount {
+      font-size: calc(var(--van-font-size-sm) * 2);
+      color: var(--van-text-color);
+    }
+  }
+
+  &__legends {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--van-padding-base);
+    place-items: flex-start start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--expense {
+    .app-summary-widget__total {
+      .amount {
+        &::before {
+          content: '- ';
+        }
+      }
+    }
+  }
+
+  &--income {
+    .app-summary-widget__total {
+      .amount {
+        &::before {
+          content: '+ ';
+        }
+      }
+    }
+  }
+}
