@@ -17,6 +17,7 @@ export function useExpensesList() {
 		fetchExpensesPaginated,
 		removeExpense
 	} = useExpenses();
+
 	const { fetchTotalExpenses, fetchSummaryExpensesByCategories } =
 		useCalculations();
 

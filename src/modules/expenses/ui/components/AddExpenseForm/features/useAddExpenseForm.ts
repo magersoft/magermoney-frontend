@@ -45,11 +45,11 @@ export function useAddExpenseForm() {
 
 	const showedExpenseSourcesPicker = ref(false);
 	const showedDatePicker = ref(false);
-	const isSingleExpense = ref(false);
+	const isMonthlyExpense = ref(false);
 	const formattedDate = ref(new Date().toLocaleDateString(unref(locale)));
 	const savedFundTitle = ref('');
 
-	watch(isSingleExpense, () => {
+	watch(isMonthlyExpense, () => {
 		resetValidationForm();
 
 		expenseFormData.value = {
@@ -75,16 +75,16 @@ export function useAddExpenseForm() {
 		if (option) {
 			expenseFormData.value = {
 				...unref(expenseFormData),
-				title: option.text as string,
+				customCategoryName: option.text as string,
 				categoryId: option.value as number
 			};
 		}
 	};
 
-	const handleUpdateCategoriesTitle = (title?: string | number) => {
+	const handleUpdateCategoriesName = (title?: string | number) => {
 		expenseFormData.value = {
 			...unref(expenseFormData),
-			title: title as string,
+			customCategoryName: title as string,
 			categoryId: undefined
 		};
 	};
@@ -97,7 +97,7 @@ export function useAddExpenseForm() {
 		if (option) {
 			expenseFormData.value = {
 				...unref(expenseFormData),
-				title: option.title,
+				title: option.category.name,
 				amount: roundWithDecimals(option.amount),
 				currency: option.currency.code,
 				expenseSourceId: option.id
@@ -175,13 +175,13 @@ export function useAddExpenseForm() {
 		isLoading,
 		isLoadingCurrencies,
 		isLoadingCategories,
-		isSingleExpense,
+		isMonthlyExpense,
 		formattedDate,
 		savedFundTitle,
 		getCurrencySymbol,
 		handleShowDatePicker,
 		handleShowExpenseSourcesPicker,
-		handleUpdateCategoriesTitle,
+		handleUpdateCategoriesName,
 		handleConfirmCategoriesPicker,
 		handleConfirmExpenseSourcesPicker,
 		handleConfirmSavedFundsPicker,

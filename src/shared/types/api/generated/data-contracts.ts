@@ -281,6 +281,7 @@ export interface CreateIncomeDto {
 	amount: number;
 	currency: string;
 	categoryId?: number;
+	customCategoryName?: string;
 	/** @format date-time */
 	dateOfIssue: string;
 	incomeSourceId?: number;
@@ -298,6 +299,7 @@ export interface IncomeEntity {
 	createdAt: string;
 	/** @format date-time */
 	updatedAt: string;
+	title: string;
 	amount: number;
 	/** @format date-time */
 	dateOfIssue: string;
@@ -322,6 +324,7 @@ export interface CreateExpenseDto {
 	amount: number;
 	currency: string;
 	categoryId?: number;
+	customCategoryName?: string;
 	/** @format date-time */
 	dateOfIssue: string;
 	expenseSourceId?: number;
@@ -334,6 +337,7 @@ export interface ExpenseEntity {
 	createdAt: string;
 	/** @format date-time */
 	updatedAt: string;
+	title: string;
 	amount: number;
 	/** @format date-time */
 	dateOfIssue: string;
@@ -348,6 +352,7 @@ export interface ExpenseEntity {
 }
 
 export interface UpdateExpenseDto {
+	title?: string;
 	categoryId?: number;
 	/** @format date-time */
 	dateOfIssue: string;

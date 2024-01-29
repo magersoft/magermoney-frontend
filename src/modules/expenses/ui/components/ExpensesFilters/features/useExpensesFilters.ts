@@ -7,40 +7,35 @@ export function useExpensesFilters() {
 	const { fetchExpenses, isLoading } = useExpenses();
 	const { fetchTotalExpenses, fetchSummaryExpensesByCategories } =
 		useCalculations();
+
 	const { currency } = useSettingsStore();
 
 	const handleConfirm = async (range: AppFilterCalendarRange) => {
 		const startDate = range.startDate!.toISOString();
 		const endDate = range.endDate!.toISOString();
 
-		await fetchExpenses(
-			{ force: true },
-			{
-				startDate,
-				endDate
-			}
-		);
-		await fetchTotalExpenses(
-			{ force: true },
-			{ startDate, endDate, currency: unref(currency) }
-		);
-		await fetchSummaryExpensesByCategories(
-			{ force: true },
-			{
-				startDate,
-				endDate,
-				currency: unref(currency)
-			}
-		);
+		await Promise.all([
+			fetchExpenses({ force: true }, { startDate, endDate }),
+			fetchTotalExpenses(
+				{ force: true },
+				{ startDate, endDate, currency: unref(currency) }
+			),
+			fetchSummaryExpensesByCategories(
+				{ force: true },
+				{ startDate, endDate, currency: unref(currency) }
+			)
+		]);
 	};
 
 	const handleReset = async () => {
-		await fetchExpenses({ force: true });
-		await fetchTotalExpenses({ force: true }, { currency: unref(currency) });
-		await fetchSummaryExpensesByCategories(
-			{ force: true },
-			{ currency: unref(currency) }
-		);
+		await Promise.all([
+			fetchExpenses({ force: true }),
+			fetchTotalExpenses({ force: true }, { currency: unref(currency) }),
+			fetchSummaryExpensesByCategories(
+				{ force: true },
+				{ currency: unref(currency) }
+			)
+		]);
 	};
 
 	return {

@@ -1,7 +1,9 @@
 import { useI18n } from 'vue-i18n';
 
+import { useCalculations } from '@/modules/calculations';
 import { useIncomes } from '@/modules/incomes';
 import { NIncomes } from '@/modules/incomes/domain';
+import { useSettingsStore } from '@/modules/settings/infrastructure/stores';
 import { groupArrayByMonthYear } from '@/shared/utils';
 
 export function useIncomesList() {
@@ -15,6 +17,11 @@ export function useIncomesList() {
 		fetchIncomesPaginated,
 		removeIncome
 	} = useIncomes();
+
+	const { fetchTotalIncomes, fetchSummaryIncomesByCategories } =
+		useCalculations();
+
+	const { currency } = useSettingsStore();
 
 	const { t, locale } = useI18n();
 
@@ -31,6 +38,11 @@ export function useIncomesList() {
 	const handleRefresh = async () => {
 		isRefreshLoading.value = true;
 
+		await fetchTotalIncomes({ force: true }, { currency: unref(currency) });
+		await fetchSummaryIncomesByCategories(
+			{ force: true },
+			{ currency: unref(currency) }
+		);
 		await fetchIncomes(
 			{ force: true, quite: true },
 			{ perPage: unref(pageSize) }

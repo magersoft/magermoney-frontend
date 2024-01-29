@@ -58,7 +58,7 @@ const classes = computed(() => ({
 <template>
 	<van-swipe-cell :class="classes">
 		<van-cell
-			:title="title"
+			:title="title || '-'"
 			:label="label"
 			:icon="internalIcon"
 			:class="$style['app-cell-item__cell']"
@@ -67,9 +67,9 @@ const classes = computed(() => ({
 			<template #value>
 				<div :class="$style['app-cell-item__right']">
 					<span :class="$style['app-cell-item__value']">{{ value }}</span>
-					<span :class="$style['app-cell-item__description']">{{
-						description
-					}}</span>
+					<span :class="$style['app-cell-item__description']">
+						{{ description }}
+					</span>
 				</div>
 			</template>
 		</van-cell>

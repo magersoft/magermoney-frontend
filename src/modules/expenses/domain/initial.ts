@@ -5,6 +5,7 @@ import { appConfig } from '@/app/config';
 export type TInitialExpenseFormData = {
 	title: string;
 	amount: string;
+	customCategoryName?: string;
 	currency: string;
 	dateOfIssue: string;
 	expenseSourceId?: number;
@@ -19,6 +20,7 @@ const appSettings = useStorage('settings', {
 export const initialExpenseFormData: TInitialExpenseFormData = {
 	title: '',
 	amount: '',
+	customCategoryName: undefined,
 	currency: unref(appSettings).currency,
 	expenseSourceId: undefined,
 	savedFundId: undefined,

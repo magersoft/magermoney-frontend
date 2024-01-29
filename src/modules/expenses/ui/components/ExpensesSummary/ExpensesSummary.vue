@@ -15,7 +15,7 @@ initialFetchData();
 
 <template>
 	<app-summary-widget
-		v-if="hasSummaryExpensesByCategories"
+		v-if="hasSummaryExpensesByCategories || isLoading"
 		type="expense"
 		:data="summaryExpensesByCategories"
 		:total="totalExpenses?.amount"

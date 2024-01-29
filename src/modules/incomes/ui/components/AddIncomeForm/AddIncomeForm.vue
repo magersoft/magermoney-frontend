@@ -27,7 +27,7 @@ const {
 	showedIncomeSourcesPicker,
 	showedDatePicker,
 	savedFundTitle,
-	isSingleIncome,
+	isMonthlyExpense,
 	isLoading,
 	isLoadingCurrencies,
 	isLoadingCategories,
@@ -54,8 +54,18 @@ const {
 		<app-cell-description :text="t('addIncomeForm.description')" />
 
 		<van-cell-group inset>
+			<van-cell
+				center
+				:title="t('addIncomeForm.monthlyIncome')"
+				:class="$style['add-income-form__field']"
+			>
+				<template #right-icon>
+					<van-switch v-model="isMonthlyExpense" :loading="isLoading" />
+				</template>
+			</van-cell>
+
 			<app-amount-input
-				v-if="!isSingleIncome"
+				v-if="isMonthlyExpense"
 				v-model="incomeFormData.amount"
 				name="amount"
 				readonly
@@ -72,9 +82,19 @@ const {
 				</template>
 			</app-amount-input>
 
-			<app-combobox
-				v-if="isSingleIncome"
+			<van-field
 				v-model="incomeFormData.title"
+				name="title"
+				:label="t('addIncomeForm.name')"
+				:placeholder="t('addIncomeForm.enterIncome')"
+				:disabled="isLoading"
+				:rules="[{ required: true, message: t('validation.required') }]"
+				:class="$style['add-income-form__field']"
+			/>
+
+			<app-combobox
+				v-if="!isMonthlyExpense"
+				v-model="incomeFormData.customCategoryName"
 				name="title"
 				:label="t('addIncomeForm.category')"
 				:placeholder="t('addIncomeForm.selectCategory')"
@@ -91,7 +111,7 @@ const {
 			/>
 
 			<app-amount-input
-				v-if="isSingleIncome"
+				v-if="!isMonthlyExpense"
 				v-model="incomeFormData.amount"
 				v-model:currency="incomeFormData.currency"
 				name="amount"
@@ -127,16 +147,6 @@ const {
 				:class="$style['add-income-form__field']"
 				@click="handleShowDatePicker"
 			/>
-
-			<van-cell
-				center
-				:title="t('addIncomeForm.singleIncome')"
-				:class="$style['add-income-form__field']"
-			>
-				<template #right-icon>
-					<van-switch v-model="isSingleIncome" :loading="isLoading" />
-				</template>
-			</van-cell>
 		</van-cell-group>
 
 		<div :class="$style['add-income-form__actions']">

@@ -11,7 +11,7 @@ interface AppComboboxProps {
 	readonly customTitle?: string;
 	readonly error?: boolean;
 	readonly errorMessage?: string;
-	readonly modelValue: string;
+	readonly modelValue?: string;
 	readonly items?: PickerColumn;
 	readonly rules?: FieldRule[];
 	readonly disabled?: boolean;
@@ -21,7 +21,7 @@ interface AppComboboxProps {
 
 interface AppComboboxEvents {
 	(event: 'confirm', value: PickerConfirmEventParams): void;
-	(event: 'update:modelValue', value: string): void;
+	(event: 'update:modelValue', value: string | undefined): void;
 }
 
 const props = defineProps<AppComboboxProps>();

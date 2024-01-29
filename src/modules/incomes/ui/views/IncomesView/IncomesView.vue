@@ -4,7 +4,11 @@ import { useRouter } from 'vue-router';
 
 import { AppPopups, usePopups } from '@/app/popups';
 import { AppRoutes } from '@/app/router/constants';
-import { IncomesFilters, IncomesList } from '@/modules/incomes/ui/components';
+import {
+	IncomesFilters,
+	IncomesList,
+	IncomesSummary
+} from '@/modules/incomes/ui/components';
 import { useIncomesList } from '@/modules/incomes/ui/components/IncomesList/features';
 import { useAppHeader, useAppNav } from '@/shared/ui/components';
 
@@ -49,6 +53,7 @@ const disabledPullRefresh = ref(false);
 			@calendar:opened="disabledPullRefresh = true"
 			@calendar:closed="disabledPullRefresh = false"
 		/>
+		<incomes-summary />
 		<incomes-list :is-refresh-loading="isRefreshLoading" />
 	</van-pull-refresh>
 </template>

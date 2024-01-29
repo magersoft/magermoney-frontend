@@ -44,7 +44,7 @@ initialFetchData();
 				v-for="expense in item.data"
 				:key="expense.id"
 				type="expense"
-				:title="expense.category.name"
+				:title="expense.title"
 				:label="expense.category.name"
 				:description="`${expense.savedFund.source} - ${new Date(
 					expense.dateOfIssue

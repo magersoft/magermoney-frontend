@@ -26,7 +26,7 @@ const {
 	expenseCategoriesItems,
 	savedFundTitle,
 	formattedDate,
-	isSingleExpense,
+	isMonthlyExpense,
 	isLoading,
 	isLoadingCurrencies,
 	isLoadingCategories,
@@ -34,7 +34,7 @@ const {
 	showedExpenseSourcesPicker,
 	getCurrencySymbol,
 	handleShowDatePicker,
-	handleUpdateCategoriesTitle,
+	handleUpdateCategoriesName,
 	handleConfirmCategoriesPicker,
 	handleConfirmExpenseSourcesPicker,
 	handleShowExpenseSourcesPicker,
@@ -54,8 +54,18 @@ const {
 		<app-cell-description :text="t('addExpenseForm.description')" />
 
 		<van-cell-group inset>
+			<van-cell
+				center
+				:title="t('addExpenseForm.monthlyExpense')"
+				:class="$style['add-expense-form__field']"
+			>
+				<template #right-icon>
+					<van-switch v-model="isMonthlyExpense" :loading="isLoading" />
+				</template>
+			</van-cell>
+
 			<app-amount-input
-				v-if="!isSingleExpense"
+				v-if="isMonthlyExpense"
 				v-model="expenseFormData.amount"
 				name="amount"
 				readonly
@@ -72,14 +82,24 @@ const {
 				</template>
 			</app-amount-input>
 
-			<app-combobox
-				v-if="isSingleExpense"
+			<van-field
 				v-model="expenseFormData.title"
+				name="title"
+				:label="t('addExpenseForm.name')"
+				:placeholder="t('addExpenseForm.enterExpense')"
+				:disabled="isLoading"
+				:rules="[{ required: true, message: t('validation.required') }]"
+				:class="$style['add-expense-form__field']"
+			/>
+
+			<app-combobox
+				v-if="!isMonthlyExpense"
+				v-model="expenseFormData.customCategoryName"
 				name="title"
 				:label="t('addExpenseForm.category')"
 				:placeholder="t('addExpenseForm.selectCategory')"
-				:enter-label="t('addExpenseForm.name')"
-				:enter-placeholder="t('addExpenseForm.enterExpense')"
+				:enter-label="t('addExpenseForm.category')"
+				:enter-placeholder="t('addExpenseForm.enterCategory')"
 				:custom-title="t('Other')"
 				:disabled="isLoading || isLoadingCategories"
 				:loading="isLoadingCategories"
@@ -87,11 +107,11 @@ const {
 				:items="expenseCategoriesItems"
 				:class="$style['add-expense-form__field']"
 				@confirm="handleConfirmCategoriesPicker"
-				@update:model-value="handleUpdateCategoriesTitle"
+				@update:model-value="handleUpdateCategoriesName"
 			/>
 
 			<app-amount-input
-				v-if="isSingleExpense"
+				v-if="!isMonthlyExpense"
 				v-model="expenseFormData.amount"
 				v-model:currency="expenseFormData.currency"
 				name="amount"
@@ -102,6 +122,7 @@ const {
 				:disabled="isLoading"
 				:loading="isLoadingCurrencies"
 				:rules="[{ required: true, message: t('validation.required') }]"
+				:confirm-keyboard-button-text="t('done')"
 				show-currencies
 				enable-keyboard
 				:class="[
@@ -128,16 +149,6 @@ const {
 				:class="$style['add-expense-form__field']"
 				@click="handleShowDatePicker"
 			/>
-
-			<van-cell
-				center
-				:title="t('addExpenseForm.singleExpense')"
-				:class="$style['add-expense-form__field']"
-			>
-				<template #right-icon>
-					<van-switch v-model="isSingleExpense" :loading="isLoading" />
-				</template>
-			</van-cell>
 		</van-cell-group>
 
 		<div :class="$style['add-expense-form__actions']">

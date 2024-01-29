@@ -46,11 +46,11 @@ export function useAddIncomeForm() {
 
 	const showedIncomeSourcesPicker = ref(false);
 	const showedDatePicker = ref(false);
-	const isSingleIncome = ref(false);
+	const isMonthlyExpense = ref(false);
 	const formattedDate = ref(new Date().toLocaleDateString(unref(locale)));
 	const savedFundTitle = ref('');
 
-	watch(isSingleIncome, () => {
+	watch(isMonthlyExpense, () => {
 		resetValidationForm();
 
 		incomeFormData.value = {
@@ -76,7 +76,7 @@ export function useAddIncomeForm() {
 		if (option) {
 			incomeFormData.value = {
 				...unref(incomeFormData),
-				title: option.text as string,
+				customCategoryName: option.text as string,
 				categoryId: option.value as number
 			};
 		}
@@ -85,7 +85,7 @@ export function useAddIncomeForm() {
 	const handleUpdateCategoriesTitle = (title?: string | number) => {
 		incomeFormData.value = {
 			...unref(incomeFormData),
-			title: title as string,
+			customCategoryName: title as string,
 			categoryId: undefined
 		};
 	};
@@ -98,7 +98,7 @@ export function useAddIncomeForm() {
 		if (option) {
 			incomeFormData.value = {
 				...unref(incomeFormData),
-				title: option.title,
+				title: option.category.name,
 				amount: roundWithDecimals(option.amount),
 				currency: option.currency.code,
 				incomeSourceId: option.id
@@ -176,7 +176,7 @@ export function useAddIncomeForm() {
 		isLoading,
 		isLoadingCurrencies,
 		isLoadingCategories,
-		isSingleIncome,
+		isMonthlyExpense,
 		formattedDate,
 		savedFundTitle,
 		getCurrencySymbol,
