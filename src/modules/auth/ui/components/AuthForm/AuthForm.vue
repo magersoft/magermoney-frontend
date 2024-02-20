@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 
-import { AUTH_CODE_LENGTH } from '@/modules/auth/constants';
+import {
+	AUTH_CODE_COUNTDOWN,
+	AUTH_CODE_LENGTH
+} from '@/modules/auth/constants';
 import { WelcomeInfo } from '@/modules/auth/ui/components/WelcomeInfo';
 import { AppCellTitle } from '@/shared/ui/components';
 
@@ -20,6 +23,7 @@ const {
 	isSendAuthCode,
 	authCode,
 	authCodeTitle,
+	authCodeCountdown,
 	loginSubmitHandler
 } = useAuthForm();
 
@@ -68,7 +72,6 @@ const showKeyboard = ref(true);
 					:value="authCode"
 					:length="AUTH_CODE_LENGTH"
 					:error-info="errorMessages"
-					info="Запросить повторный код через 15 сек"
 					:focused="showKeyboard"
 					@focus="showKeyboard = true"
 				/>
@@ -77,6 +80,14 @@ const showKeyboard = ref(true);
 					:show="showKeyboard"
 					@blur="showKeyboard = false"
 				/>
+				<div v-if="false" :class="$style['auth-form__resend']">
+					{{ t('auth.requestCode') }}
+					<van-count-down
+						ref="authCodeCountdown"
+						:time="AUTH_CODE_COUNTDOWN"
+						format="ss"
+					/>
+				</div>
 			</div>
 		</transition>
 	</van-form>

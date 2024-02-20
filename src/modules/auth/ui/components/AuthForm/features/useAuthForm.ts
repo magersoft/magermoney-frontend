@@ -83,8 +83,9 @@ export function useAuthForm() {
 	]);
 
 	const { verifyAuthCode } = useVerifyUserService();
-	const isSendAuthCode = computed(() => !!unref(user));
 	const authCode = ref('');
+	const authCodeCountdown = ref(null);
+	const isSendAuthCode = computed(() => !!unref(user));
 	const authCodeTitle = computed(() =>
 		t('auth.authCode', {
 			where: unref(isDigits)
@@ -151,6 +152,7 @@ export function useAuthForm() {
 		isSendAuthCode,
 		authCode,
 		authCodeTitle,
+		authCodeCountdown,
 		loginSubmitHandler
 	};
 }

@@ -188,6 +188,12 @@ export default {
 		removeTitle: 'Remove category',
 		empty: 'You have no categories. Add them to see the list here.'
 	},
+	categorySaveForm: {
+		edit: 'Edit category',
+		add: 'Add new category',
+		name: 'Name',
+		enterCategoryName: 'Enter category name'
+	},
 	monthlyBudgetView: {
 		availableInDay: 'Available in day',
 		saved: 'Saved'
