@@ -44,10 +44,8 @@ initialFetchData();
 				v-for="(history, historyIdx) in item.data"
 				:key="historyIdx + history.dateOfIssue"
 				:type="history.type"
-				:title="
-					history.type === 'transfer' ? t('transferFunds') : history.title
-				"
-				:label="history.title"
+				:title="history.title"
+				:label="history.category.name"
 				:description="`${history.source} - ${new Date(
 					history.dateOfIssue
 				).toLocaleDateString(locale)}`"

@@ -6,6 +6,9 @@ export function mappingHistoryItems(
 ): NHistory.IHistory[] {
 	return history.map((historyItem) => ({
 		...historyItem,
-		title: translateCategories({ name: historyItem.title })
+		title: translateCategories({ name: historyItem.title }),
+		category: {
+			name: translateCategories(historyItem.category)
+		}
 	}));
 }

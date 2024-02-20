@@ -96,9 +96,13 @@ useInitWalletSaveForm();
 		</van-swipe>
 
 		<div :class="$style['wallet-save-form__actions']">
-			<van-button round block type="primary" native-type="submit">
-				{{ t('save') }}
-			</van-button>
+			<van-button
+				round
+				block
+				type="primary"
+				native-type="submit"
+				:text="t('save')"
+			/>
 		</div>
 	</van-form>
 </template>

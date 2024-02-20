@@ -385,6 +385,7 @@ export interface HistoryEntity {
 	title: string;
 	amount: number;
 	currency: CurrencyEntity;
+	category: CategoryRelationEntity;
 	/** @format date-time */
 	dateOfIssue: string;
 	source: string;

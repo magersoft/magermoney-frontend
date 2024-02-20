@@ -191,6 +191,12 @@ export default {
 		empty:
 			'У вас пока нет категорий. Добавьте категории, чтобы увидеть здесь список.'
 	},
+	categorySaveForm: {
+		edit: 'Редактировать категорию',
+		add: 'Добавить категорию',
+		name: 'Название',
+		enterCategoryName: 'Введите название категории'
+	},
 	monthlyBudgetView: {
 		availableInDay: 'Доступно в день',
 		saved: 'Сохраняется'
@@ -297,7 +303,8 @@ export default {
 		Health: 'Здоровье',
 		Education: 'Образование',
 		Cash: 'Наличные',
-		Deposit: 'Вклад в банке'
+		Deposit: 'Вклад в банке',
+		'Transfer Funds': 'Перевод средств'
 	},
 	currenciesNames: {
 		RUB: 'Российский рубль',
